@@ -8,5 +8,6 @@ namespace CapaDatos
 {
     public class Class1
     {
+        //hola desde master
     }
 }
