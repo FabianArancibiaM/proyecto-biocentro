@@ -78,9 +78,9 @@ namespace CapaConexion
 
         //Variables creadas para el proyecto
 
-        private Boolean idReferencia;
+        private Boolean esInsert;
         private int idAsignado;
-        public Boolean IdReferencia { get => idReferencia; set => idReferencia = value; }
+        public Boolean EsInsert { get => esInsert; set => esInsert = value; }
         public int IdAsignado { get => idAsignado; set => idAsignado = value; }
 
         
@@ -185,7 +185,7 @@ namespace CapaConexion
                 try
                 {
                     SqlCommand variableSQL = new SqlCommand(this.CadenaSQL, this.DbConnection);
-                    if (this.idReferencia)
+                    if (this.esInsert)
                     {
                         this.IdAsignado = (int)variableSQL.ExecuteScalar();
                     }

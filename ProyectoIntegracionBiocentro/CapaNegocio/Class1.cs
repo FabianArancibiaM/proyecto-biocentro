@@ -28,7 +28,7 @@ namespace CapaNegocio
             this.conexion.CadenaSQL= "INSERT INTO BIOCENTRO_DB.dbo.PERSONA (RUT,NOMBRE,APELLIDO_PATERNO,APELLIDO_MATERNO) OUTPUT INSERTED.ID_PERSONA VALUES " +
                 " ('"+ perosona.Rut+ "','" + perosona.Nombre + "','" + perosona.ApellidoPaterno + "','" + perosona.ApellidoMaterno + "');";
             this.conexion.EsSelect = false;
-            this.conexion.IdReferencia = true;
+            this.conexion.EsInsert = true;
             this.conexion.conectar();
             Console.WriteLine("Id Asignado es : "+ this.conexion.IdAsignado);
         }
