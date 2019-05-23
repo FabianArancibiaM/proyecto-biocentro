@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDTO", "CapaDTO\CapaDTO.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaNegocio", "CapaNegocio\CapaNegocio.csproj", "{04B7D18B-AE6D-4E4E-9DE6-B50000E52C87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{4EF228CE-AF53-4D82-BB76-9D560CEAF76F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{04B7D18B-AE6D-4E4E-9DE6-B50000E52C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04B7D18B-AE6D-4E4E-9DE6-B50000E52C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04B7D18B-AE6D-4E4E-9DE6-B50000E52C87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EF228CE-AF53-4D82-BB76-9D560CEAF76F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EF228CE-AF53-4D82-BB76-9D560CEAF76F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EF228CE-AF53-4D82-BB76-9D560CEAF76F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EF228CE-AF53-4D82-BB76-9D560CEAF76F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

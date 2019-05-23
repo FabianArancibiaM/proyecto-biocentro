@@ -40,10 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="INegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">
+      <Project>{D9BB4A63-E718-4076-A014-8CAF2A2BC6B3}</Project>
+      <Name>CapaDatos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CapaDTO\CapaDTO.csproj">
       <Project>{6642c2e8-7611-4ea4-ada5-b651f2eb540b}</Project>
       <Name>CapaDTO</Name>
