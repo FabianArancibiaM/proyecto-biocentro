@@ -19,7 +19,10 @@ namespace CapaNegocio
         {
             this.conexion = new Conexion();
             this.conexion.NombreBaseDeDatos = "BIOCENTRO_DB";
-            this.conexion.CadenaConexion = "Data Source=DESKTOP-E5RAPBM\\SQLSERVER;Initial Catalog=BIOCENTRO_DB;Integrated Security=True";
+            //Conex casa
+            //this.conexion.CadenaConexion = "Data Source=DESKTOP-E5RAPBM\\SQLSERVER;Initial Catalog=BIOCENTRO_DB;Integrated Security=True";
+            //Conex pega
+            this.conexion.CadenaConexion = "Data Source=SAN-51KT2M2\\SQLEXPRESS;Initial Catalog=BIOCENTRO_DB;Integrated Security=True";
         }
 
         public void insertarUsuario(Persona perosona)
