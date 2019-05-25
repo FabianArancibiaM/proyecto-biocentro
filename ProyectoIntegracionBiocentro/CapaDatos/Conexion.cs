@@ -80,10 +80,23 @@ namespace CapaConexion
 
         private Boolean esInsert;
         private int idAsignado;
-        public Boolean EsInsert { get => esInsert; set => esInsert = value; }
-        public int IdAsignado { get => idAsignado; set => idAsignado = value; }
+        public Boolean EsInsert
+        {
+            get { return esInsert; }
+            set { esInsert = value; }
+        }
+        public int IdAsignado
+        {
+            get { return idAsignado; }
+            set { idAsignado = value; }
+        }
 
-        
+        private Boolean esDataReader;
+        public Boolean EsDataReader
+        {
+            get { return esDataReader; }
+            set { esDataReader = value; }
+        }
 
         //Abrir la conexion
 
@@ -161,9 +174,15 @@ namespace CapaConexion
 
             this.abrir();
 
-            // Preguntar si es Select o no
+            // Preguntar si es Select o no. Si es select se pregunta si se necesita extraer mas de una tabla
+            if (esDataReader)
+            {
+                this.DbDataSet = new DataSet();
+                this.DbDataAdapter = new SqlDataAdapter(this.CadenaSQL, this.DbConnection);
+                this.DbDataAdapter.Fill(DbDataSet);
 
-            if (this.EsSelect)
+            }
+            else if(this.EsSelect)
             {
                 //SE carga el dataSet
                 this.DbDataSet = new DataSet();

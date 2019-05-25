@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,7 +34,7 @@ namespace CapaNegocio
             this.conexion.conectar();
             return this.conexion.IdAsignado;
         }
-        public DataSet listarObject(String sqlSelect,String nombreTabla)
+        public DataSet listarObjectConTablaEspecifica(String sqlSelect,String nombreTabla)
         {
             this.configurarConexion();
             this.conexion.NombreTabla = nombreTabla;
@@ -42,6 +43,17 @@ namespace CapaNegocio
             this.conexion.conectar();
             return this.conexion.DbDataSet;
         }
+
+        public DataSet listarObjectMultiTabla(String sqlSelect)
+        {
+            this.configurarConexion();
+            this.conexion.CadenaSQL = sqlSelect;
+            this.conexion.EsDataReader = true;
+            this.conexion.conectar();
+            return this.conexion.DbDataSet;
+        }
+
+
 
     }
 }

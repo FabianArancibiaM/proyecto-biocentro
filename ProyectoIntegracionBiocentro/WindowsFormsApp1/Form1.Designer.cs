@@ -37,7 +37,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.selectRol = new System.Windows.Forms.ComboBox();
             this.selectEspecialidad = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -45,6 +44,9 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbTerapeuta = new System.Windows.Forms.ComboBox();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -122,15 +124,6 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Apellido Materno";
             // 
-            // selectRol
-            // 
-            this.selectRol.FormattingEnabled = true;
-            this.selectRol.Location = new System.Drawing.Point(209, 165);
-            this.selectRol.Name = "selectRol";
-            this.selectRol.Size = new System.Drawing.Size(121, 21);
-            this.selectRol.TabIndex = 9;
-            this.selectRol.Text = "Seleccione";
-            // 
             // selectEspecialidad
             // 
             this.selectEspecialidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -166,7 +159,7 @@
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(396, 103);
+            this.dataGridView1.Location = new System.Drawing.Point(336, 145);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -180,7 +173,6 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 15;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.buscarHorasSegunFecha);
             // 
             // label5
             // 
@@ -193,18 +185,49 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(396, 254);
+            this.button2.Location = new System.Drawing.Point(336, 296);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 17;
             this.button2.Text = "Seleccionar";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(333, 93);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(115, 13);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Seleccionar Terapeuta";
+            // 
+            // cmbTerapeuta
+            // 
+            this.cmbTerapeuta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTerapeuta.FormattingEnabled = true;
+            this.cmbTerapeuta.Location = new System.Drawing.Point(336, 109);
+            this.cmbTerapeuta.Name = "cmbTerapeuta";
+            this.cmbTerapeuta.Size = new System.Drawing.Size(121, 21);
+            this.cmbTerapeuta.TabIndex = 18;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(52, 52);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 20;
+            this.button3.Text = "Buscar RUT";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.cmbTerapeuta);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dateTimePicker1);
@@ -212,7 +235,6 @@
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.selectEspecialidad);
-            this.Controls.Add(this.selectRol);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -241,7 +263,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox selectRol;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -249,6 +270,9 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbTerapeuta;
+        private System.Windows.Forms.Button button3;
     }
 }
 

@@ -13,6 +13,18 @@ namespace CapaDTO
         private Bloque idBloque;
         private Terapeuta idTerapeuta;
 
+        public Terapeuta IdTerapeuta
+        {
+            get
+            {
+                return idTerapeuta;
+            }
+
+            set
+            {
+                idTerapeuta = value;
+            }
+        }
         public int IdHora
         {
             get
@@ -52,17 +64,6 @@ namespace CapaDTO
             }
         }
 
-        public Terapeuta IdTerapeuta
-        {
-            get
-            {
-                return idTerapeuta;
-            }
-
-            set
-            {
-                idTerapeuta = value;
-            }
-        }
+        
     }
 }
