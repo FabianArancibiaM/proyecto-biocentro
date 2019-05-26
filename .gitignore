@@ -11,3 +11,13 @@ buildNumber.properties
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
+/ProyectoIntegracionBiocentro/CapaDatos/bin
+/ProyectoIntegracionBiocentro/CapaDatos/obj
+ProyectoIntegracionBiocentro/CapaDTO/bin
+ProyectoIntegracionBiocentro/CapaDTO/obj
+ProyectoIntegracionBiocentro/CapaNegocio/bin
+ProyectoIntegracionBiocentro/CapaNegocio/obj
+ProyectoIntegracionBiocentro/CapaPresentacion/bin
+ProyectoIntegracionBiocentro/CapaPresentacion/obj
+ProyectoIntegracionBiocentro/WindowsFormsApp1/bin
+ProyectoIntegracionBiocentro/WindowsFormsApp1/obj

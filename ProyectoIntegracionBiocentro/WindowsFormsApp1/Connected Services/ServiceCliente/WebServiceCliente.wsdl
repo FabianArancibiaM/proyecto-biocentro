@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registrarPacienteService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="persona" type="tns:Persona" />
+            <s:element minOccurs="1" maxOccurs="1" name="idHoraAtencion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Persona">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPersona" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rut" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoPaterno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoMaterno" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="registrarPacienteServiceResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="buscarHorasDisponiblesService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="especialidad" type="tns:Especialidad" />
+            <s:element minOccurs="1" maxOccurs="1" name="fecha" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="persona" type="tns:Persona" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Especialidad">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdEspecialidad" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="buscarHorasDisponiblesServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscarHorasDisponiblesServiceResult" type="tns:ArrayOfHoraAtencion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfHoraAtencion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="HoraAtencion" nillable="true" type="tns:HoraAtencion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HoraAtencion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IdTerapeuta" type="tns:Terapeuta" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdHora" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdBloque" type="tns:Bloque" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Terapeuta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTerapeuta" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdEspecialidad" type="tns:Especialidad" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdUsuario" type="tns:Usuario" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Usuario">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdRol" type="tns:RolUsuario" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdPersona" type="tns:Persona" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RolUsuario">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdRol" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Bloque">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdBloque" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="HoraInicio" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="HoraFin" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="generarListaEspecialidadService">
+        <s:complexType />
+      </s:element>
+      <s:element name="generarListaEspecialidadServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="generarListaEspecialidadServiceResult" type="tns:ArrayOfEspecialidad" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfEspecialidad">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Especialidad" nillable="true" type="tns:Especialidad" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="generarListaEspecialistaService">
+        <s:complexType />
+      </s:element>
+      <s:element name="generarListaEspecialistaServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="generarListaEspecialistaServiceResult" type="tns:ArrayOfTerapeuta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTerapeuta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Terapeuta" nillable="true" type="tns:Terapeuta" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="buscarPacienteService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rut" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscarPacienteServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscarPacienteServiceResult" type="tns:Usuario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listaReservasPorRutService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rut" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="listaReservasPorRutServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listaReservasPorRutServiceResult" type="tns:ArrayOfReserva" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfReserva">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Reserva" nillable="true" type="tns:Reserva" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Reserva">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdReserva" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdHora" type="tns:HoraAtencion" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdPaciente" type="tns:Usuario" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdEstado" type="tns:EstadoReserva" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EstadoReserva">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdEstado" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="rechazarConfirmarReservaService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cambioEstado" type="s1:char" />
+            <s:element minOccurs="1" maxOccurs="1" name="idReserva" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rechazarConfirmarReservaServiceResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="char">
+        <s:restriction base="s:unsignedShort" />
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="registrarPacienteServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:registrarPacienteService" />
+  </wsdl:message>
+  <wsdl:message name="registrarPacienteServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:registrarPacienteServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscarHorasDisponiblesServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:buscarHorasDisponiblesService" />
+  </wsdl:message>
+  <wsdl:message name="buscarHorasDisponiblesServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:buscarHorasDisponiblesServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="generarListaEspecialidadServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:generarListaEspecialidadService" />
+  </wsdl:message>
+  <wsdl:message name="generarListaEspecialidadServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:generarListaEspecialidadServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="generarListaEspecialistaServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:generarListaEspecialistaService" />
+  </wsdl:message>
+  <wsdl:message name="generarListaEspecialistaServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:generarListaEspecialistaServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscarPacienteServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:buscarPacienteService" />
+  </wsdl:message>
+  <wsdl:message name="buscarPacienteServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:buscarPacienteServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="listaReservasPorRutServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:listaReservasPorRutService" />
+  </wsdl:message>
+  <wsdl:message name="listaReservasPorRutServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:listaReservasPorRutServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="rechazarConfirmarReservaServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:rechazarConfirmarReservaService" />
+  </wsdl:message>
+  <wsdl:message name="rechazarConfirmarReservaServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:rechazarConfirmarReservaServiceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceClienteSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="registrarPacienteService">
+      <wsdl:input message="tns:registrarPacienteServiceSoapIn" />
+      <wsdl:output message="tns:registrarPacienteServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarHorasDisponiblesService">
+      <wsdl:input message="tns:buscarHorasDisponiblesServiceSoapIn" />
+      <wsdl:output message="tns:buscarHorasDisponiblesServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="generarListaEspecialidadService">
+      <wsdl:input message="tns:generarListaEspecialidadServiceSoapIn" />
+      <wsdl:output message="tns:generarListaEspecialidadServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="generarListaEspecialistaService">
+      <wsdl:input message="tns:generarListaEspecialistaServiceSoapIn" />
+      <wsdl:output message="tns:generarListaEspecialistaServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarPacienteService">
+      <wsdl:input message="tns:buscarPacienteServiceSoapIn" />
+      <wsdl:output message="tns:buscarPacienteServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="listaReservasPorRutService">
+      <wsdl:input message="tns:listaReservasPorRutServiceSoapIn" />
+      <wsdl:output message="tns:listaReservasPorRutServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="rechazarConfirmarReservaService">
+      <wsdl:input message="tns:rechazarConfirmarReservaServiceSoapIn" />
+      <wsdl:output message="tns:rechazarConfirmarReservaServiceSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceClienteSoap" type="tns:WebServiceClienteSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registrarPacienteService">
+      <soap:operation soapAction="http://tempuri.org/registrarPacienteService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarHorasDisponiblesService">
+      <soap:operation soapAction="http://tempuri.org/buscarHorasDisponiblesService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarListaEspecialidadService">
+      <soap:operation soapAction="http://tempuri.org/generarListaEspecialidadService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarListaEspecialistaService">
+      <soap:operation soapAction="http://tempuri.org/generarListaEspecialistaService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarPacienteService">
+      <soap:operation soapAction="http://tempuri.org/buscarPacienteService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaReservasPorRutService">
+      <soap:operation soapAction="http://tempuri.org/listaReservasPorRutService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rechazarConfirmarReservaService">
+      <soap:operation soapAction="http://tempuri.org/rechazarConfirmarReservaService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceClienteSoap12" type="tns:WebServiceClienteSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registrarPacienteService">
+      <soap12:operation soapAction="http://tempuri.org/registrarPacienteService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarHorasDisponiblesService">
+      <soap12:operation soapAction="http://tempuri.org/buscarHorasDisponiblesService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarListaEspecialidadService">
+      <soap12:operation soapAction="http://tempuri.org/generarListaEspecialidadService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarListaEspecialistaService">
+      <soap12:operation soapAction="http://tempuri.org/generarListaEspecialistaService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarPacienteService">
+      <soap12:operation soapAction="http://tempuri.org/buscarPacienteService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaReservasPorRutService">
+      <soap12:operation soapAction="http://tempuri.org/listaReservasPorRutService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rechazarConfirmarReservaService">
+      <soap12:operation soapAction="http://tempuri.org/rechazarConfirmarReservaService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceCliente">
+    <wsdl:port name="WebServiceClienteSoap" binding="tns:WebServiceClienteSoap">
+      <soap:address location="https://localhost:44384/WebServiceCliente.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceClienteSoap12" binding="tns:WebServiceClienteSoap12">
+      <soap12:address location="https://localhost:44384/WebServiceCliente.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
