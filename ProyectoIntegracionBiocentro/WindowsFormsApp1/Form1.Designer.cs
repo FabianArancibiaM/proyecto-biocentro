@@ -47,12 +47,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cmbTerapeuta = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.rutMisReservas = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnConfirmar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(209, 197);
+            this.button1.Location = new System.Drawing.Point(153, 173);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -91,7 +95,7 @@
             // Rut
             // 
             this.Rut.AutoSize = true;
-            this.Rut.Location = new System.Drawing.Point(150, 57);
+            this.Rut.Location = new System.Drawing.Point(179, 54);
             this.Rut.Name = "Rut";
             this.Rut.Size = new System.Drawing.Size(24, 13);
             this.Rut.TabIndex = 5;
@@ -100,7 +104,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(150, 80);
+            this.label1.Location = new System.Drawing.Point(161, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 6;
@@ -164,7 +168,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(392, 145);
+            this.dataGridView1.Size = new System.Drawing.Size(452, 270);
             this.dataGridView1.TabIndex = 14;
             // 
             // dateTimePicker1
@@ -185,11 +189,11 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(336, 296);
+            this.button2.Location = new System.Drawing.Point(197, 231);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(112, 23);
             this.button2.TabIndex = 17;
-            this.button2.Text = "Seleccionar";
+            this.button2.Text = "Mis Reservas";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
@@ -219,12 +223,53 @@
             this.button3.TabIndex = 20;
             this.button3.Text = "Buscar RUT";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Button3_Click);
+            // 
+            // rutMisReservas
+            // 
+            this.rutMisReservas.Location = new System.Drawing.Point(74, 231);
+            this.rutMisReservas.Name = "rutMisReservas";
+            this.rutMisReservas.Size = new System.Drawing.Size(100, 20);
+            this.rutMisReservas.TabIndex = 21;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(38, 234);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(30, 13);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "RUT";
+            // 
+            // btnConfirmar
+            // 
+            this.btnConfirmar.Location = new System.Drawing.Point(197, 289);
+            this.btnConfirmar.Name = "btnConfirmar";
+            this.btnConfirmar.Size = new System.Drawing.Size(112, 23);
+            this.btnConfirmar.TabIndex = 23;
+            this.btnConfirmar.Text = "Confirmar";
+            this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.BtnConfirmar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(197, 260);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(112, 23);
+            this.btnCancelar.TabIndex = 24;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnConfirmar);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.rutMisReservas);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cmbTerapeuta);
@@ -273,6 +318,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbTerapeuta;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox rutMisReservas;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnConfirmar;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }
 

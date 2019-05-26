@@ -14,7 +14,6 @@ namespace CapaNegocio
         private Conexion conexion;
 
         private Conexion Conexion { get => conexion; set => conexion = value; }
-
         private void configurarConexion()
         {
             this.conexion = new Conexion();
@@ -25,7 +24,7 @@ namespace CapaNegocio
             //this.conexion.CadenaConexion = "Data Source=SAN-51KT2M2\\SQLEXPRESS;Initial Catalog=BIOCENTRO_DB;Integrated Security=True";
         }
 
-        public int guardarObjeto(String sqlInsert,Boolean esInsert)
+        public int? guardarEliminarActualizarObjeto(String sqlInsert,Boolean esInsert)
         {
             this.configurarConexion();
             this.conexion.CadenaSQL = sqlInsert;
@@ -34,7 +33,7 @@ namespace CapaNegocio
             this.conexion.conectar();
             return this.conexion.IdAsignado;
         }
-        public DataSet listarObjectConTablaEspecifica(String sqlSelect,String nombreTabla)
+        public DataSet listarObjetoConTablaEspecifica(String sqlSelect,String nombreTabla)
         {
             this.configurarConexion();
             this.conexion.NombreTabla = nombreTabla;
@@ -44,11 +43,11 @@ namespace CapaNegocio
             return this.conexion.DbDataSet;
         }
 
-        public DataSet listarObjectMultiTabla(String sqlSelect)
+        public DataSet listarObjetoMultiTabla(String sqlSelect)
         {
             this.configurarConexion();
             this.conexion.CadenaSQL = sqlSelect;
-            this.conexion.EsDataReader = true;
+            this.conexion.EsMasiva = true;
             this.conexion.conectar();
             return this.conexion.DbDataSet;
         }

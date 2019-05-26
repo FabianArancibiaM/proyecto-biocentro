@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 using System.Data;
 
 
@@ -91,11 +90,11 @@ namespace CapaConexion
             set { idAsignado = value; }
         }
 
-        private Boolean esDataReader;
-        public Boolean EsDataReader
+        private Boolean esMasiva;
+        public Boolean EsMasiva
         {
-            get { return esDataReader; }
-            set { esDataReader = value; }
+            get { return esMasiva; }
+            set { esMasiva = value; }
         }
 
         //Abrir la conexion
@@ -108,8 +107,7 @@ namespace CapaConexion
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Mensaje Sistema", "Error al abrir la conexion " + ex.Message);
-                return;
+                throw new CustomException("Error al abrir la conexion ", ex);
             } //Fin try abrir
         } // Fin Abrir
           
@@ -124,8 +122,7 @@ namespace CapaConexion
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Mensaje Sistema", "Error al cerrar la conexion " + ex.Message);
-                return;
+                throw new CustomException("Error al cerrar la conexion", ex);
             } //Fin try cerrar
            
         }//Fin cerrar
@@ -137,8 +134,7 @@ namespace CapaConexion
             //Se validan variables de instancia
             if (this.NombreBaseDeDatos.Length == 0)
             {
-                MessageBox.Show("Mensaje Sistema", "Falta Nombre Base de Datos");
-                return;
+                throw new CustomException("Falta Nombre Base de Datos");
             }
 
             /*if (this.NombreTabla.Length == 0)
@@ -149,14 +145,12 @@ namespace CapaConexion
 
             if (this.CadenaConexion.Length == 0)
             {
-                MessageBox.Show("Mensaje Sistema", "Falta Cadena Conexion");
-                return;
+                throw new CustomException("Falta cadena Conexion");
             }
 
             if (this.CadenaSQL.Length == 0)
             {
-                MessageBox.Show("Mensaje Sistema", "Falta cadena SQL");
-                return;
+                throw new CustomException("Falta cadena SQL");
             }
 
             //Se instancia la conexion
@@ -167,20 +161,25 @@ namespace CapaConexion
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Mensaje Sistema", "Error de conexion " + ex.Message);
-                return;
+                throw new CustomException("Error de conexion : ", ex);
 
             } //Fin try conexion
 
             this.abrir();
 
             // Preguntar si es Select o no. Si es select se pregunta si se necesita extraer mas de una tabla
-            if (esDataReader)
+            if (esMasiva)
             {
-                this.DbDataSet = new DataSet();
-                this.DbDataAdapter = new SqlDataAdapter(this.CadenaSQL, this.DbConnection);
-                this.DbDataAdapter.Fill(DbDataSet);
-
+                try
+                {
+                    this.DbDataSet = new DataSet();
+                    this.DbDataAdapter = new SqlDataAdapter(this.CadenaSQL, this.DbConnection);
+                    this.DbDataAdapter.Fill(DbDataSet);
+                }
+                catch(Exception ex)
+                {
+                    throw new CustomException("Error al cargar el DataSet : ", ex);
+                }
             }
             else if(this.EsSelect)
             {
@@ -193,8 +192,7 @@ namespace CapaConexion
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Mensaje Sistema", "Error al cargar el DataSet " + ex.Message);
-                    return;
+                    throw new CustomException("Error al cargar el DataSet : ", ex);
                 }
 
             }
@@ -215,11 +213,8 @@ namespace CapaConexion
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Mensaje Sistema", "Error SQL " + ex.Message);
-                    return;
+                    throw new Exception("Error SQL : ",ex);
                 }
-
-
             } //Fin if es select
             this.cerrar();
 
