@@ -28,11 +28,25 @@
           <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="ApellidoPaterno" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="ApellidoMaterno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaNacimiento" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sexo" type="s1:char" />
+          <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="registrarPacienteServiceResponse">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="registrarPacienteServiceResult" type="tns:StatusResponce" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
+      <s:complexType name="StatusResponce">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="buscarHorasDisponiblesService">
         <s:complexType>
           <s:sequence>
@@ -46,6 +60,7 @@
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="IdEspecialidad" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Valor" type="s:int" />
         </s:sequence>
       </s:complexType>
       <s:element name="buscarHorasDisponiblesServiceResponse">
@@ -81,6 +96,8 @@
           <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="IdRol" type="tns:RolUsuario" />
           <s:element minOccurs="0" maxOccurs="1" name="IdPersona" type="tns:Persona" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contraseña" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreUsuario" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="RolUsuario">
@@ -136,7 +153,7 @@
       <s:element name="buscarPacienteServiceResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="buscarPacienteServiceResult" type="tns:Usuario" />
+            <s:element minOccurs="0" maxOccurs="1" name="buscarPacienteServiceResult" type="tns:Persona" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -163,7 +180,7 @@
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="IdReserva" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="IdHora" type="tns:HoraAtencion" />
-          <s:element minOccurs="0" maxOccurs="1" name="IdPaciente" type="tns:Usuario" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdPaciente" type="tns:Persona" />
           <s:element minOccurs="0" maxOccurs="1" name="IdEstado" type="tns:EstadoReserva" />
         </s:sequence>
       </s:complexType>
@@ -182,7 +199,11 @@
         </s:complexType>
       </s:element>
       <s:element name="rechazarConfirmarReservaServiceResponse">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rechazarConfirmarReservaServiceResult" type="tns:StatusResponce" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">

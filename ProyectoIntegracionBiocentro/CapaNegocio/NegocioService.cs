@@ -20,46 +20,44 @@ namespace CapaNegocio
             this.utilMethods = new UtilMethods();
         }
         //Guarda las reservas
-        public void registrarPaciente(Persona persona,int idHoraAtencion)
+        public StatusResponce registrarPaciente(Persona persona,int idHoraAtencion)
         {
             int? idPersona = null;
-            int? idUsuario = null;
             int? idReserva = null;
+            Boolean esNuevo = false;
+            if (validarSiRecervaFueTomada(idHoraAtencion))
+            {
+                return generarObjetoStatusResponce("error", "Esta reserva ya esta tomada, favor seleccionar otra");
+            }
             try
             {
                 String query = "";
-                Usuario usuario = null;
-                List<Usuario> listUsuario = generarListaUsuarios(persona.Rut);
-                if (listUsuario== null)
+                Persona per = buscarPersonaPorRut(persona.Rut);
+                if (per == null)
                 {
-                    query = "INSERT INTO BIOCENTRO_DB.dbo.PERSONA (RUT,NOMBRE,APELLIDO_PATERNO,APELLIDO_MATERNO) OUTPUT INSERTED.ID_PERSONA VALUES " +
-                            " ('" + persona.Rut + "','" + persona.Nombre + "','" + persona.ApellidoPaterno + "','" + persona.ApellidoMaterno + "');";
+                    query = "INSERT INTO BIOCENTRO_DB.dbo.PERSONA (RUT,NOMBRE,APELLIDO_PATERNO,APELLIDO_MATERNO,TELEFONO,FECHA_NACIMIENTO,SEXO,CORREO) OUTPUT INSERTED.ID_PERSONA VALUES " +
+                            " ('" + persona.Rut + "','" + persona.Nombre + "','" + persona.ApellidoPaterno + "','" + persona.ApellidoMaterno + "',"
+                            + persona.Telefono + ",'"+persona.FechaNacimiento +"','"+persona.Sexo+"','"+ persona.Correo+"');";
                     idPersona =  this.utilMethods.guardarEliminarActualizarObjeto(query, true);
+                    esNuevo = true;
                 }
                 else
                 {
-                    idPersona = listUsuario[0].IdPersona.IdPersona;
-                    usuario = listUsuario.FirstOrDefault(u=>u.IdRol.IdRol==4);
+                    idPersona = per.IdPersona;
                 }
-                if (listUsuario==null || usuario==null)
-                {
-                    query = "INSERT INTO BIOCENTRO_DB.dbo.USUARIO (ESTADO,ID_ROL,ID_PERSONA) OUTPUT INSERTED.ID_USUARIO VALUES(1, 4, " + idPersona + "); ";
-                    idUsuario = this.utilMethods.guardarEliminarActualizarObjeto(query, true);
-                }
-                else
-                {
-                    idUsuario = usuario.IdUsuario;
-                }
-                query = "INSERT INTO BIOCENTRO_DB.dbo.RESERVA (ID_HORA,ID_PACIENTE,ID_ESTADO) OUTPUT INSERTED.ID_RESERVA VALUES (" + idHoraAtencion+ "," + idUsuario + ", 1); ";
+                query = "INSERT INTO BIOCENTRO_DB.dbo.RESERVA (ID_HORA,ID_PACIENTE,ID_ESTADO) OUTPUT INSERTED.ID_RESERVA VALUES (" + idHoraAtencion+ "," + idPersona + ", 1); ";
                 idReserva = this.utilMethods.guardarEliminarActualizarObjeto(query, true);
+                return generarObjetoStatusResponce(String.Empty, "Su reserva se realizo correctamente");
             }
             catch (Exception ex)
             {
-                eliminar("PERSONA", "ID_PERSONA", idPersona);
-                eliminar("USUARIO", "ID_USUARIO", idUsuario);
+                if (esNuevo)
+                {
+                    eliminar("PERSONA", "ID_PERSONA", idPersona);
+                }                
                 eliminar("RESERVA", "ID_RESERVA", idReserva);
                 verErrorEnConsola(ex, "guardarPaciente");
-                throw new Exception("Ocurrio un error al realizar la operacion ", ex);
+                return generarObjetoStatusResponce("error", ex.Message);
             }
         }
         //Retorna el listado completo o filtrado de las Horas de atencion disponibles
@@ -84,7 +82,7 @@ namespace CapaNegocio
             catch(Exception ex)
             {
                 verErrorEnConsola(ex, "buscarHorasDisponibles");
-                throw new Exception("Ocurrio un error al realizar la operacion ", ex);
+                return null;
             }
         }
         //Retorna todas las especialidades registradas
@@ -109,7 +107,7 @@ namespace CapaNegocio
             catch (Exception ex)
             {
                 verErrorEnConsola(ex, "generarListaEspecialidad");
-                throw new Exception("Ocurrio un error al realizar la operacion ", ex);
+                return null;
             }
         }
         //Retorna la data de todos los especialistas disponibles
@@ -142,25 +140,25 @@ namespace CapaNegocio
             catch (Exception ex)
             {
                 verErrorEnConsola(ex, "generarListaEspecialista");
-                throw new Exception("Ocurrio un error al realizar la operacion ", ex);
+                return null;
             }
         }
         //Retorna un unico Usuario
-        public Usuario buscarPaciente(String rut)
+        public Persona buscarPaciente(String rut)
         {
             try
             {
-                List<Usuario> list = generarListaUsuarios(rut);
-                if (list == null)
+                Persona persona = buscarPersonaPorRut(rut);
+                if (persona == null)
                 {
                     return null;
                 }
-                return list[0];
+                return persona;
             }
             catch (Exception ex)
             {
                 verErrorEnConsola(ex, "buscarPaciente");
-                throw new Exception("Ocurrio un error al realizar la operacion ", ex);
+                return null;
             }
         }
         //Retorna la data de pacientes y reservas
@@ -169,15 +167,13 @@ namespace CapaNegocio
             try
             {
                 //Query entrega los datos del Paciente y la reserva realizada
-                String query = "SELECT estRes.DESCRIPCION,estRes.ID_ESTADO ,usu.ID_USUARIO,usu.ID_ROL, usuRol.NOMBRE as nombreRol,"
+                String query = "SELECT estRes.DESCRIPCION,estRes.ID_ESTADO,"
                     + " per.ID_PERSONA,per.RUT,per.NOMBRE,per.APELLIDO_PATERNO,per.APELLIDO_MATERNO,res.ID_RESERVA,res.ID_HORA,hAtencion.FECHA "
                     + "FROM BIOCENTRO_DB.dbo.PERSONA as per"
-                    + " JOIN BIOCENTRO_DB.dbo.USUARIO as usu ON usu.ID_PERSONA = per.ID_PERSONA" 
-                    + " JOIN BIOCENTRO_DB.dbo.RESERVA as res ON res.ID_PACIENTE = usu.ID_USUARIO" 
+                    + " JOIN BIOCENTRO_DB.dbo.RESERVA as res ON res.ID_PACIENTE = per.ID_PERSONA"
                     + " JOIN BIOCENTRO_DB.dbo.ESTADO_RESERVA as estRes ON estRes.ID_ESTADO = res.ID_ESTADO" 
-                    + " JOIN BIOCENTRO_DB.dbo.ROL_USUARIO as usuRol ON usuRol.ID_ROL = usu.ID_ROL" 
                     + " JOIN BIOCENTRO_DB.dbo.HORA_ATENCION as hAtencion ON hAtencion.ID_HORA = res.ID_HORA"
-                    + " WHERE per.RUT = '"+ rut + "' and estRes.ID_ESTADO = 1; ";
+                    + " WHERE per.RUT = '"+ rut + "' and estRes.ID_ESTADO <> 3; ";
                 DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
                 if (dataTable.Tables[0].Rows.Count == 0)
                 {
@@ -198,11 +194,11 @@ namespace CapaNegocio
             catch (Exception ex)
             {
                 verErrorEnConsola(ex, "buscarReservasPorRut");
-                throw new Exception("Ocurrio un error al realizar la operacion ", ex);
+                return null;
             }
         }
         //cambioEstado de la reserva debe ser  1 = Confirmar(id = 2) y 0 = Rechazar(id = 3)
-        public void rechazarConfirmarReserva(Char cambioEstado,int idReserva)
+        public StatusResponce rechazarConfirmarReserva(Char cambioEstado,int idReserva)
         {
             try
             {
@@ -211,20 +207,24 @@ namespace CapaNegocio
                     throw new Exception(" Data ingresada incorrecta ",new Exception());
                 }
                 String estado = String.Empty;
+                String codigo = String.Empty;
                 if (cambioEstado.CompareTo('0')==0)
                 {
-                    estado = "3";
+                    codigo = "3";
+                    estado = "Anulada";
                 }
                 else if (cambioEstado.CompareTo('1') == 0)
                 {
-                    estado = "2";
+                    codigo = "2";
+                    estado = "Confirmada";
                 }
-                actualizar("RESERVA", "ID_ESTADO", estado, "ID_RESERVA", Convert.ToString(idReserva));
+                actualizar("RESERVA", "ID_ESTADO", codigo, "ID_RESERVA", Convert.ToString(idReserva));
+                return generarObjetoStatusResponce(String.Empty, "La hora fue "+ estado + " con éxito");
             }
             catch (Exception ex)
             {
                 verErrorEnConsola(ex, "rechazarConfirmarReserva");
-                throw new Exception("Ocurrio un error al realizar la operacion ", ex);
+                return generarObjetoStatusResponce("error", ex.Message);
             }
         }
         // Fin Metodos Publicos
@@ -264,7 +264,31 @@ namespace CapaNegocio
             }
             return false;
         }
-        
+        private Persona buscarPersonaPorRut(String rut)
+        {
+            try
+            {
+                String query = "SELECT ID_PERSONA,RUT,NOMBRE,APELLIDO_PATERNO,APELLIDO_MATERNO,TELEFONO,FECHA_NACIMIENTO,SEXO,CORREO"
+                    + " FROM BIOCENTRO_DB.dbo.PERSONA "
+                    + " WHERE RUT='" + rut + "';";
+                DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
+                if (dataTable.Tables[0].Rows.Count == 0)
+                {
+                    return null;
+                }
+                Persona persona = null;
+                foreach (DataRow row in dataTable.Tables[0].Rows)
+                {
+                    persona = generarObjetoPersona(row);
+                }
+                return persona;
+            }
+            catch (Exception ex)
+            {
+                verErrorEnConsola(ex, "generarListaUsuarios");
+                throw new Exception("Ocurrio un error al generar la lista de usuarios ", new Exception());
+            }
+        }
         private List<Usuario> generarListaUsuarios(String rut)
         {
             try
@@ -303,6 +327,24 @@ namespace CapaNegocio
             int idEstado = listMismoId.SingleOrDefault(r => r.IdReserva == maxId).IdEstado.IdEstado;
             return idEstado == 3;
         }
+        private Boolean validarSiRecervaFueTomada(int idHora)
+        {
+            try
+            {
+                String query = "SELECT ID_RESERVA FROM BIOCENTRO_DB.dbo.RESERVA where ID_HORA = "+ idHora + ";";
+                DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
+                if (dataTable.Tables[0].Rows.Count == 0)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                verErrorEnConsola(ex, "validarSiRecervaFueTomada");
+                throw new Exception("Ocurrio un error al validar recerva", new Exception());
+            }
+        }
         //Busca la data de las Reservas y Estados
         private List<Reserva> buscarReservaAndEstado()
         {
@@ -328,6 +370,7 @@ namespace CapaNegocio
                 throw new Exception("Ocurrio un error al buscar reservas y estado ", new Exception());
             }
         }
+
         //Retorna el listado de las horas, los bloques, los especialistas y persona, sin parametros
         // O Filtro por id de la HoraAtencion
         private List<HoraAtencion> buscarInfoHorasEspecialistas(List<int> listIdHoraAtencion)
@@ -337,7 +380,7 @@ namespace CapaNegocio
                 //Query retorna el listado de las horas, los bloques, los especialistas y persona
                 String query = "SELECT usu.ID_USUARIO,usu.ID_ROL,"
                 + " per.ID_PERSONA,per.RUT,per.NOMBRE,per.APELLIDO_PATERNO,per.APELLIDO_MATERNO,"
-                + " esp.NOMBRE as nombreEspecialidad, esp.ID_ESPECIALIDAD," 
+                + " esp.NOMBRE as nombreEspecialidad, esp.ID_ESPECIALIDAD,esp.VALOR,"
                 + " hAtencion.ID_HORA,hAtencion.FECHA,"
                 + " bloq.HORA_INICIO,bloq.HORA_FIN"
                 + " FROM BIOCENTRO_DB.dbo.USUARIO as usu " 
@@ -398,7 +441,7 @@ namespace CapaNegocio
             reserva.IdEstado = generarObjetoEstadoReserva(row);
             if (setUsuario)
             {
-                reserva.IdPaciente = generarObjetoUsuario(row);
+                reserva.IdPaciente = generarObjetoPersona(row);
             }
             return reserva;
         }
@@ -433,6 +476,14 @@ namespace CapaNegocio
             usuario.IdUsuario = Convert.ToInt32(row["ID_USUARIO"]);
             usuario.IdPersona = generarObjetoPersona(row);
             usuario.IdRol = generarObjetoRolUsuario(row);
+            if (validarSiRowTieneCampo(row, "CONTRASEÑA"))
+            {
+                usuario.Contraseña = Convert.ToString(row["CONTRASEÑA"]);
+            }
+            if (validarSiRowTieneCampo(row, "NOMBRE_USUARIO"))
+            {
+                usuario.Contraseña = Convert.ToString(row["NOMBRE_USUARIO"]);
+            }
             return usuario;
         }
         //Crea un objeto de tipo RolUsuario
@@ -451,6 +502,22 @@ namespace CapaNegocio
             persona.Nombre = Convert.ToString(row["NOMBRE"]);
             persona.ApellidoPaterno = Convert.ToString(row["APELLIDO_PATERNO"]);
             persona.ApellidoMaterno = Convert.ToString(row["APELLIDO_MATERNO"]);
+            if (validarSiRowTieneCampo(row, "TELEFONO"))
+            {
+                persona.Telefono = Convert.ToString(row["TELEFONO"]);
+            }
+            if (validarSiRowTieneCampo(row, "FECHA_NACIMIENTO"))
+            {
+                persona.FechaNacimiento = Convert.ToDateTime(row["FECHA_NACIMIENTO"]);
+            }
+            if (validarSiRowTieneCampo(row, "SEXO"))
+            {
+                persona.Sexo = Convert.ToChar(row["SEXO"]);
+            }
+            if (validarSiRowTieneCampo(row, "CORREO"))
+            {
+                persona.Correo = Convert.ToString(row["CORREO"]); ;
+            }
             return persona;
         }
         //Crea un objeto de tipo Especialidad
@@ -459,6 +526,10 @@ namespace CapaNegocio
             Especialidad especialidad = new Especialidad();
             especialidad.IdEspecialidad = Convert.ToInt32(row["ID_ESPECIALIDAD"]);
             especialidad.Nombre = Convert.ToString(row["nombreEspecialidad"]);
+            if (validarSiRowTieneCampo(row, "VALOR"))
+            {
+                especialidad.Valor = Convert.ToInt32(row["VALOR"]);
+            }
             return especialidad;
         }
         //Borra un objeto de una tabla x
@@ -489,6 +560,30 @@ namespace CapaNegocio
             {
                 Console.WriteLine("***Se produjo un error en el metodo " + metodo + "=>" + exception.Message);
             }
+        }
+        private Boolean validarSiRowTieneCampo(DataRow row,String campo)
+        {
+            try
+            {
+                String st = Convert.ToString(row[campo]);
+                if (st.Length==0)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            
+        }
+        private StatusResponce generarObjetoStatusResponce(String estado,String msj)
+        {
+            StatusResponce statusResponce = new StatusResponce();
+            statusResponce.Estado = estado;
+            statusResponce.Mensaje = msj;
+            return statusResponce;
         }
     }
 }

@@ -51,12 +51,22 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.fechaNacimeinto = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.ButonMasculino = new System.Windows.Forms.RadioButton();
+            this.radioFemenino = new System.Windows.Forms.RadioButton();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.radioIndefinido = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(153, 173);
+            this.button1.Location = new System.Drawing.Point(209, 290);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -189,7 +199,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(197, 231);
+            this.button2.Location = new System.Drawing.Point(197, 334);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(112, 23);
             this.button2.TabIndex = 17;
@@ -227,7 +237,7 @@
             // 
             // rutMisReservas
             // 
-            this.rutMisReservas.Location = new System.Drawing.Point(74, 231);
+            this.rutMisReservas.Location = new System.Drawing.Point(74, 334);
             this.rutMisReservas.Name = "rutMisReservas";
             this.rutMisReservas.Size = new System.Drawing.Size(100, 20);
             this.rutMisReservas.TabIndex = 21;
@@ -235,7 +245,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(38, 234);
+            this.label7.Location = new System.Drawing.Point(38, 337);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(30, 13);
             this.label7.TabIndex = 22;
@@ -243,7 +253,7 @@
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.Location = new System.Drawing.Point(197, 289);
+            this.btnConfirmar.Location = new System.Drawing.Point(197, 392);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(112, 23);
             this.btnConfirmar.TabIndex = 23;
@@ -253,7 +263,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(197, 260);
+            this.btnCancelar.Location = new System.Drawing.Point(197, 363);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(112, 23);
             this.btnCancelar.TabIndex = 24;
@@ -261,11 +271,112 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(119, 162);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 13);
+            this.label8.TabIndex = 26;
+            this.label8.Text = "Telefono";
+            this.label8.Click += new System.EventHandler(this.Label8_Click);
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Location = new System.Drawing.Point(209, 155);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(100, 20);
+            this.txtTelefono.TabIndex = 25;
+            this.txtTelefono.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
+            // 
+            // fechaNacimeinto
+            // 
+            this.fechaNacimeinto.Location = new System.Drawing.Point(109, 203);
+            this.fechaNacimeinto.Name = "fechaNacimeinto";
+            this.fechaNacimeinto.Size = new System.Drawing.Size(200, 20);
+            this.fechaNacimeinto.TabIndex = 27;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(179, 187);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(93, 13);
+            this.label9.TabIndex = 28;
+            this.label9.Text = "Fecha Nacimiento";
+            // 
+            // ButonMasculino
+            // 
+            this.ButonMasculino.AutoSize = true;
+            this.ButonMasculino.Checked = true;
+            this.ButonMasculino.Location = new System.Drawing.Point(109, 229);
+            this.ButonMasculino.Name = "ButonMasculino";
+            this.ButonMasculino.Size = new System.Drawing.Size(73, 17);
+            this.ButonMasculino.TabIndex = 29;
+            this.ButonMasculino.TabStop = true;
+            this.ButonMasculino.Text = "Masculino";
+            this.ButonMasculino.UseVisualStyleBackColor = true;
+            // 
+            // radioFemenino
+            // 
+            this.radioFemenino.AutoSize = true;
+            this.radioFemenino.Location = new System.Drawing.Point(182, 229);
+            this.radioFemenino.Name = "radioFemenino";
+            this.radioFemenino.Size = new System.Drawing.Size(71, 17);
+            this.radioFemenino.TabIndex = 30;
+            this.radioFemenino.Text = "Femenino";
+            this.radioFemenino.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(71, 231);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(31, 13);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "Sexo";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(119, 259);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(38, 13);
+            this.label11.TabIndex = 33;
+            this.label11.Text = "Correo";
+            // 
+            // txtCorreo
+            // 
+            this.txtCorreo.Location = new System.Drawing.Point(209, 252);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(100, 20);
+            this.txtCorreo.TabIndex = 32;
+            // 
+            // radioIndefinido
+            // 
+            this.radioIndefinido.AutoSize = true;
+            this.radioIndefinido.Location = new System.Drawing.Point(259, 231);
+            this.radioIndefinido.Name = "radioIndefinido";
+            this.radioIndefinido.Size = new System.Drawing.Size(45, 17);
+            this.radioIndefinido.TabIndex = 34;
+            this.radioIndefinido.Text = "N/A";
+            this.radioIndefinido.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.radioIndefinido);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txtCorreo);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.radioFemenino);
+            this.Controls.Add(this.ButonMasculino);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.fechaNacimeinto);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.label7);
@@ -322,6 +433,16 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnConfirmar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.DateTimePicker fechaNacimeinto;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.RadioButton ButonMasculino;
+        private System.Windows.Forms.RadioButton radioFemenino;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtCorreo;
+        private System.Windows.Forms.RadioButton radioIndefinido;
     }
 }
 

@@ -24,95 +24,46 @@ namespace CapaServicio
         }
 
         [WebMethod]
-        public void registrarPacienteService(Persona persona, int idHoraAtencion)
+        public StatusResponce registrarPacienteService(Persona persona, int idHoraAtencion)
         {
-            try
-            {
-                NegocioService negocio = new NegocioService();
-                negocio.registrarPaciente(persona, idHoraAtencion);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocurrio un error al realizar la operacion ", ex);
-            }
+            NegocioService negocio = new NegocioService();
+            return negocio.registrarPaciente(persona, idHoraAtencion);
         }
         [WebMethod]
         public List<HoraAtencion> buscarHorasDisponiblesService(Especialidad especialidad, DateTime? fecha, Persona persona)
         {
-            try
-            {
-                NegocioService negocio = new NegocioService();
-                return negocio.buscarHorasDisponibles(especialidad, fecha, persona);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocurrio un error al realizar la operacion ", ex);
-            }
+            NegocioService negocio = new NegocioService();
+            return negocio.buscarHorasDisponibles(especialidad, fecha, persona);
         }
         [WebMethod]
         public List<Especialidad> generarListaEspecialidadService()
         {
-            try
-            {
-                NegocioService negocio = new NegocioService();
-                return negocio.generarListaEspecialidad();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocurrio un error al realizar la operacion ", ex);
-            }
+            NegocioService negocio = new NegocioService();
+            return negocio.generarListaEspecialidad();
         }
         [WebMethod]
         public List<Terapeuta> generarListaEspecialistaService()
         {
-            try
-            {
-                NegocioService negocio = new NegocioService();
-                return negocio.generarListaEspecialista();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocurrio un error al realizar la operacion ", ex);
-            }
+            NegocioService negocio = new NegocioService();
+            return negocio.generarListaEspecialista();
         }
         [WebMethod]
-        public Usuario buscarPacienteService(String rut)
+        public Persona buscarPacienteService(String rut)
         {
-            try
-            {
-                NegocioService negocio = new NegocioService();
-                return negocio.buscarPaciente(rut);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocurrio un error al realizar la operacion ", ex);
-            }
+            NegocioService negocio = new NegocioService();
+            return negocio.buscarPaciente(rut);
         }
         [WebMethod]
         public List<Reserva> listaReservasPorRutService(String rut)
         {
-            try
-            {
-                NegocioService negocio = new NegocioService();
-                return negocio.listaReservasPorRut(rut);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocurrio un error al realizar la operacion ", ex);
-            }
+            NegocioService negocio = new NegocioService();
+            return negocio.listaReservasPorRut(rut);
         }
         [WebMethod]
-        public void rechazarConfirmarReservaService(Char cambioEstado, int idReserva)
+        public StatusResponce rechazarConfirmarReservaService(Char cambioEstado, int idReserva)
         {
-            try
-            {
-                NegocioService negocio = new NegocioService();
-                negocio.rechazarConfirmarReserva(cambioEstado, idReserva);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Ocurrio un error al realizar la operacion ", ex);
-            }
+            NegocioService negocio = new NegocioService();
+            return negocio.rechazarConfirmarReserva(cambioEstado, idReserva);
         }
     }
 }

@@ -98,16 +98,22 @@
     <None Include="Connected Services\ServiceCliente\WindowsFormsApp1.ServiceCliente.listaReservasPorRutServiceResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceCliente\WindowsFormsApp1.ServiceCliente.Persona.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceCliente\WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceCliente\WindowsFormsApp1.ServiceCliente.registrarPacienteServiceResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceCliente\WindowsFormsApp1.ServiceCliente.Reserva.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceCliente\WindowsFormsApp1.ServiceCliente.Terapeuta.datasource">
+    <None Include="Connected Services\ServiceCliente\WindowsFormsApp1.ServiceCliente.StatusResponce.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ServiceCliente\WindowsFormsApp1.ServiceCliente.Usuario.datasource">
+    <None Include="Connected Services\ServiceCliente\WindowsFormsApp1.ServiceCliente.Terapeuta.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">

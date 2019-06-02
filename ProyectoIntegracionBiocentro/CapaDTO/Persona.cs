@@ -13,6 +13,10 @@ namespace CapaDTO
         private string nombre;
         private string apellidoPaterno;
         private string apellidoMaterno;
+        private String telefono;
+        private DateTime fechaNacimiento;
+        private Char sexo;
+        private String correo;
 
         public int IdPersona
         {
@@ -78,5 +82,10 @@ namespace CapaDTO
                 apellidoMaterno = value;
             }
         }
+
+        public String Telefono { get => telefono; set => telefono = value; }
+        public DateTime FechaNacimiento { get => fechaNacimiento; set => fechaNacimiento = value; }
+        public char Sexo { get => sexo; set => sexo = value; }
+        public string Correo { get => correo; set => correo = value; }
     }
 }

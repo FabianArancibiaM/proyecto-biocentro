@@ -10,7 +10,7 @@ namespace CapaDTO
     {
         private int idReserva;
         private HoraAtencion idHora;
-        private Usuario idPaciente;
+        private Persona idPaciente;
         private EstadoReserva idEstado;
 
         public int IdReserva
@@ -39,7 +39,7 @@ namespace CapaDTO
             }
         }
 
-        public Usuario IdPaciente
+        public Persona IdPaciente
         {
             get
             {

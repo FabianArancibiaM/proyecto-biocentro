@@ -27,10 +27,30 @@ namespace WindowsFormsApp1
                 if (validarCampoEsVacio(this.txtRut.Text) 
                     || validarCampoEsVacio(this.txtNombre.Text) 
                     || validarCampoEsVacio(this.txtPaterno.Text) 
-                    || validarCampoEsVacio(this.txtMaterno.Text))
+                    || validarCampoEsVacio(this.txtMaterno.Text)
+                    || validarCampoEsVacio(this.txtTelefono.Text)
+                    || validarCampoEsVacio(this.txtCorreo.Text))
                 {
                     MessageBox.Show("Debe llenar todos los campos");
                     return;
+                }
+                if (!this.fechaNacimeinto.Checked)
+                {
+                    MessageBox.Show("Debe ingresar su fecha de nacimiento");
+                    return;
+                }
+                char sexo = 'F';
+                if (this.radioFemenino.Checked)
+                {
+                    sexo = 'F';
+                }
+                if (this.ButonMasculino.Checked)
+                {
+                    sexo = 'M';
+                }
+                if (this.radioIndefinido.Checked)
+                {
+                    sexo = 'x';
                 }
                 int idHoraSeleccionada = Convert.ToInt32(this.dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
@@ -39,16 +59,29 @@ namespace WindowsFormsApp1
                 persona.Nombre = this.txtNombre.Text;
                 persona.ApellidoPaterno = this.txtPaterno.Text;
                 persona.ApellidoMaterno = this.txtMaterno.Text;
-                soapClient.registrarPacienteService(persona, idHoraSeleccionada);
+                persona.Correo = this.txtCorreo.Text;
+                persona.Sexo = sexo;
+                persona.FechaNacimiento = this.fechaNacimeinto.Value;
+                persona.Telefono = this.txtTelefono.Text;
+                ServiceCliente.StatusResponce statusResponce = soapClient.registrarPacienteService(persona, idHoraSeleccionada);
+                if (statusResponce.Estado.Equals("error"))
+                {
+                    MessageBox.Show(statusResponce.Mensaje, "Error");
+                    return;
+                }
                 this.txtRut.Text = String.Empty;
                 this.txtNombre.Text = String.Empty;
                 this.txtPaterno.Text = String.Empty;
                 this.txtMaterno.Text = String.Empty;
+                this.txtCorreo.Text = String.Empty;
+                this.txtTelefono.Text = String.Empty;
+                this.ButonMasculino.Checked=true;
+                this.fechaNacimeinto.Value = DateTime.Now;
                 this.dataGridView1.Columns.Clear();
                 this.selectEspecialidad.SelectedIndex = 0;
                 this.cmbTerapeuta.SelectedIndex = 0;
                 this.dateTimePicker1.Value = DateTime.Now;
-                MessageBox.Show("Guardado Correctamente");
+                MessageBox.Show(statusResponce.Mensaje);
 
             }
             catch(Exception ex)
@@ -208,13 +241,13 @@ namespace WindowsFormsApp1
                 }
                 foreach (ServiceCliente.Reserva res in listReserva)
                 {
-                    String nombrePaciente = res.IdPaciente.IdPersona.Nombre + " " + res.IdPaciente.IdPersona.ApellidoPaterno
-                        + " " + res.IdPaciente.IdPersona.ApellidoMaterno;
+                    String nombrePaciente = res.IdPaciente.Nombre + " " + res.IdPaciente.ApellidoPaterno
+                        + " " + res.IdPaciente.ApellidoMaterno;
                     String nombreTerapeuta = res.IdHora.IdTerapeuta.IdUsuario.IdPersona.Nombre + " " + res.IdHora.IdTerapeuta.IdUsuario.IdPersona.ApellidoPaterno
                         + " " + res.IdHora.IdTerapeuta.IdUsuario.IdPersona.ApellidoMaterno;
                     String fecha = res.IdHora.Fecha.Day + "/" + res.IdHora.Fecha.Month + "/" + res.IdHora.Fecha.Year;
                     this.dataGridView1.Rows.Add(res.IdReserva, res.IdHora.IdTerapeuta.IdEspecialidad.Nombre,
-                        res.IdPaciente.IdPersona.Rut, nombrePaciente, fecha, res.IdHora.IdBloque.HoraInicio, res.IdHora.IdBloque.HoraFin
+                        res.IdPaciente.Rut, nombrePaciente, fecha, res.IdHora.IdBloque.HoraInicio, res.IdHora.IdBloque.HoraFin
                         , nombreTerapeuta,res.IdEstado.Descripcion);
                 }
                 this.dataGridView1.ClearSelection();
@@ -234,25 +267,48 @@ namespace WindowsFormsApp1
                 this.txtNombre.Text = String.Empty;
                 this.txtPaterno.Text = String.Empty;
                 this.txtMaterno.Text = String.Empty;
+                this.txtCorreo.Text = String.Empty;
+                this.txtTelefono.Text = String.Empty;
+                this.ButonMasculino.Checked = true;
+                this.fechaNacimeinto.Value = DateTime.Now;
                 if (this.txtRut.Text.Length==0)
                 {
                     MessageBox.Show(" Debe ingresar un rut ");
                     return;
                 }
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
-                ServiceCliente.Usuario usuario = soapClient.buscarPacienteService(this.txtRut.Text);
-                if (usuario==null)
+                ServiceCliente.Persona persona = soapClient.buscarPacienteService(this.txtRut.Text);
+                if (persona == null)
                 {
                     this.txtRut.Text = String.Empty;
                     this.txtNombre.Text=String.Empty;
                     this.txtPaterno.Text = String.Empty;
                     this.txtMaterno.Text = String.Empty;
+                    this.txtCorreo.Text = String.Empty;
+                    this.txtTelefono.Text = String.Empty;
+                    this.ButonMasculino.Checked = true;
+                    this.fechaNacimeinto.Value = DateTime.Now;
                     MessageBox.Show(" No se encontro paciente ");
                     return;
                 }
-                this.txtNombre.Text = usuario.IdPersona.Nombre;
-                this.txtPaterno.Text = usuario.IdPersona.ApellidoPaterno;
-                this.txtMaterno.Text = usuario.IdPersona.ApellidoMaterno;
+                this.txtNombre.Text = persona.Nombre;
+                this.txtPaterno.Text = persona.ApellidoPaterno;
+                this.txtMaterno.Text = persona.ApellidoMaterno;
+                this.txtCorreo.Text = persona.Correo;
+                this.txtTelefono.Text = persona.Telefono.ToString();
+                if (persona.Sexo.Equals('F'))
+                {
+                    this.radioFemenino.Checked = true;
+                }
+                else if (persona.Sexo.Equals('M'))
+                {
+                    this.ButonMasculino.Checked = true;
+                }
+                else
+                {
+                    this.radioIndefinido.Checked = true;
+                }
+                this.fechaNacimeinto.Value = persona.FechaNacimiento;
             }
             catch(Exception ex)
             {
@@ -260,6 +316,10 @@ namespace WindowsFormsApp1
                 this.txtNombre.Text = String.Empty;
                 this.txtPaterno.Text = String.Empty;
                 this.txtMaterno.Text = String.Empty;
+                this.txtCorreo.Text = String.Empty;
+                this.txtTelefono.Text = String.Empty;
+                this.ButonMasculino.Checked = true;
+                this.fechaNacimeinto.Value = DateTime.Now;
                 MessageBox.Show(ex.Message," Se produjo un error al buscar el paciente ");
             }
         }
@@ -275,8 +335,13 @@ namespace WindowsFormsApp1
                 }
                 int idReservaSeleccionada = Convert.ToInt32(this.dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
-                soapClient.rechazarConfirmarReservaService('0', idReservaSeleccionada);
-                MessageBox.Show(" Reserva cancelada");
+                ServiceCliente.StatusResponce responce = soapClient.rechazarConfirmarReservaService('0', idReservaSeleccionada);
+                if (responce.Estado.Equals("error"))
+                {
+                    MessageBox.Show(responce.Mensaje,"Error");
+                    return;
+                }
+                MessageBox.Show(responce.Mensaje);
                 Button2_Click(sender, e);
                 return;
             }
@@ -297,7 +362,12 @@ namespace WindowsFormsApp1
                 }
                 int idReservaSeleccionada = Convert.ToInt32(this.dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
-                soapClient.rechazarConfirmarReservaService('1', idReservaSeleccionada);
+                ServiceCliente.StatusResponce responce = soapClient.rechazarConfirmarReservaService('1', idReservaSeleccionada);
+                if (responce.Estado.Equals("error"))
+                {
+                    MessageBox.Show(responce.Mensaje, "Error");
+                    return;
+                }
                 MessageBox.Show(" Reserva Confirmada");
                 Button2_Click(sender, e);
                 return;
@@ -306,6 +376,16 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show(ex.Message, " Error ");
             }
+        }
+
+        private void Label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

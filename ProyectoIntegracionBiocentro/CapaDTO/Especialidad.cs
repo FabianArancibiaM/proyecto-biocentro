@@ -10,6 +10,7 @@ namespace CapaDTO
     {
         private int idEspecialidad;
         private string nombre;
+        private int valor;
 
         public int IdEspecialidad
         {
@@ -36,5 +37,7 @@ namespace CapaDTO
                 nombre = value;
             }
         }
+
+        public int Valor { get => valor; set => valor = value; }
     }
 }
