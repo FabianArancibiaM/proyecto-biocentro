@@ -36,6 +36,16 @@ namespace WindowsFormsApp1.ServiceCliente {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ApellidoMaternoField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TelefonoField;
+        
+        private System.DateTime FechaNacimientoField;
+        
+        private char SexoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CorreoField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -111,6 +121,119 @@ namespace WindowsFormsApp1.ServiceCliente {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string Telefono {
+            get {
+                return this.TelefonoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TelefonoField, value) != true)) {
+                    this.TelefonoField = value;
+                    this.RaisePropertyChanged("Telefono");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public System.DateTime FechaNacimiento {
+            get {
+                return this.FechaNacimientoField;
+            }
+            set {
+                if ((this.FechaNacimientoField.Equals(value) != true)) {
+                    this.FechaNacimientoField = value;
+                    this.RaisePropertyChanged("FechaNacimiento");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        public char Sexo {
+            get {
+                return this.SexoField;
+            }
+            set {
+                if ((this.SexoField.Equals(value) != true)) {
+                    this.SexoField = value;
+                    this.RaisePropertyChanged("Sexo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
+        public string Correo {
+            get {
+                return this.CorreoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CorreoField, value) != true)) {
+                    this.CorreoField = value;
+                    this.RaisePropertyChanged("Correo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StatusResponce", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class StatusResponce : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EstadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MensajeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Estado {
+            get {
+                return this.EstadoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EstadoField, value) != true)) {
+                    this.EstadoField = value;
+                    this.RaisePropertyChanged("Estado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Mensaje {
+            get {
+                return this.MensajeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MensajeField, value) != true)) {
+                    this.MensajeField = value;
+                    this.RaisePropertyChanged("Mensaje");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -134,6 +257,8 @@ namespace WindowsFormsApp1.ServiceCliente {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NombreField;
+        
+        private int ValorField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -167,6 +292,19 @@ namespace WindowsFormsApp1.ServiceCliente {
                 if ((object.ReferenceEquals(this.NombreField, value) != true)) {
                     this.NombreField = value;
                     this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int Valor {
+            get {
+                return this.ValorField;
+            }
+            set {
+                if ((this.ValorField.Equals(value) != true)) {
+                    this.ValorField = value;
+                    this.RaisePropertyChanged("Valor");
                 }
             }
         }
@@ -441,6 +579,12 @@ namespace WindowsFormsApp1.ServiceCliente {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private WindowsFormsApp1.ServiceCliente.Persona IdPersonaField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContraseñaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreUsuarioField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -499,6 +643,32 @@ namespace WindowsFormsApp1.ServiceCliente {
                 if ((object.ReferenceEquals(this.IdPersonaField, value) != true)) {
                     this.IdPersonaField = value;
                     this.RaisePropertyChanged("IdPersona");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string Contraseña {
+            get {
+                return this.ContraseñaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContraseñaField, value) != true)) {
+                    this.ContraseñaField = value;
+                    this.RaisePropertyChanged("Contraseña");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string NombreUsuario {
+            get {
+                return this.NombreUsuarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreUsuarioField, value) != true)) {
+                    this.NombreUsuarioField = value;
+                    this.RaisePropertyChanged("NombreUsuario");
                 }
             }
         }
@@ -588,7 +758,7 @@ namespace WindowsFormsApp1.ServiceCliente {
         private WindowsFormsApp1.ServiceCliente.HoraAtencion IdHoraField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private WindowsFormsApp1.ServiceCliente.Usuario IdPacienteField;
+        private WindowsFormsApp1.ServiceCliente.Persona IdPacienteField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private WindowsFormsApp1.ServiceCliente.EstadoReserva IdEstadoField;
@@ -630,7 +800,7 @@ namespace WindowsFormsApp1.ServiceCliente {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public WindowsFormsApp1.ServiceCliente.Usuario IdPaciente {
+        public WindowsFormsApp1.ServiceCliente.Persona IdPaciente {
             get {
                 return this.IdPacienteField;
             }
@@ -778,11 +948,12 @@ namespace WindowsFormsApp1.ServiceCliente {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/listaReservasPorRutService", ReplyAction="*")]
         System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.listaReservasPorRutServiceResponse> listaReservasPorRutServiceAsync(WindowsFormsApp1.ServiceCliente.listaReservasPorRutServiceRequest request);
         
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento rechazarConfirmarReservaServiceResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/rechazarConfirmarReservaService", ReplyAction="*")]
-        void rechazarConfirmarReservaService(char cambioEstado, int idReserva);
+        WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceResponse rechazarConfirmarReservaService(WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/rechazarConfirmarReservaService", ReplyAction="*")]
-        System.Threading.Tasks.Task rechazarConfirmarReservaServiceAsync(char cambioEstado, int idReserva);
+        System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceResponse> rechazarConfirmarReservaServiceAsync(WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -904,10 +1075,17 @@ namespace WindowsFormsApp1.ServiceCliente {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
     public partial class registrarPacienteServiceResponseBody {
         
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public WindowsFormsApp1.ServiceCliente.StatusResponce registrarPacienteServiceResult;
+        
         public registrarPacienteServiceResponseBody() {
+        }
+        
+        public registrarPacienteServiceResponseBody(WindowsFormsApp1.ServiceCliente.StatusResponce registrarPacienteServiceResult) {
+            this.registrarPacienteServiceResult = registrarPacienteServiceResult;
         }
     }
     
@@ -1167,12 +1345,12 @@ namespace WindowsFormsApp1.ServiceCliente {
     public partial class buscarPacienteServiceResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public WindowsFormsApp1.ServiceCliente.Usuario buscarPacienteServiceResult;
+        public WindowsFormsApp1.ServiceCliente.Persona buscarPacienteServiceResult;
         
         public buscarPacienteServiceResponseBody() {
         }
         
-        public buscarPacienteServiceResponseBody(WindowsFormsApp1.ServiceCliente.Usuario buscarPacienteServiceResult) {
+        public buscarPacienteServiceResponseBody(WindowsFormsApp1.ServiceCliente.Persona buscarPacienteServiceResult) {
             this.buscarPacienteServiceResult = buscarPacienteServiceResult;
         }
     }
@@ -1245,6 +1423,78 @@ namespace WindowsFormsApp1.ServiceCliente {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class rechazarConfirmarReservaServiceRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="rechazarConfirmarReservaService", Namespace="http://tempuri.org/", Order=0)]
+        public WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceRequestBody Body;
+        
+        public rechazarConfirmarReservaServiceRequest() {
+        }
+        
+        public rechazarConfirmarReservaServiceRequest(WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class rechazarConfirmarReservaServiceRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public char cambioEstado;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public int idReserva;
+        
+        public rechazarConfirmarReservaServiceRequestBody() {
+        }
+        
+        public rechazarConfirmarReservaServiceRequestBody(char cambioEstado, int idReserva) {
+            this.cambioEstado = cambioEstado;
+            this.idReserva = idReserva;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class rechazarConfirmarReservaServiceResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="rechazarConfirmarReservaServiceResponse", Namespace="http://tempuri.org/", Order=0)]
+        public WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceResponseBody Body;
+        
+        public rechazarConfirmarReservaServiceResponse() {
+        }
+        
+        public rechazarConfirmarReservaServiceResponse(WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class rechazarConfirmarReservaServiceResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public WindowsFormsApp1.ServiceCliente.StatusResponce rechazarConfirmarReservaServiceResult;
+        
+        public rechazarConfirmarReservaServiceResponseBody() {
+        }
+        
+        public rechazarConfirmarReservaServiceResponseBody(WindowsFormsApp1.ServiceCliente.StatusResponce rechazarConfirmarReservaServiceResult) {
+            this.rechazarConfirmarReservaServiceResult = rechazarConfirmarReservaServiceResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface WebServiceClienteSoapChannel : WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap, System.ServiceModel.IClientChannel {
     }
@@ -1300,12 +1550,13 @@ namespace WindowsFormsApp1.ServiceCliente {
             return base.Channel.registrarPacienteService(request);
         }
         
-        public void registrarPacienteService(WindowsFormsApp1.ServiceCliente.Persona persona, int idHoraAtencion) {
+        public WindowsFormsApp1.ServiceCliente.StatusResponce registrarPacienteService(WindowsFormsApp1.ServiceCliente.Persona persona, int idHoraAtencion) {
             WindowsFormsApp1.ServiceCliente.registrarPacienteServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.registrarPacienteServiceRequest();
             inValue.Body = new WindowsFormsApp1.ServiceCliente.registrarPacienteServiceRequestBody();
             inValue.Body.persona = persona;
             inValue.Body.idHoraAtencion = idHoraAtencion;
             WindowsFormsApp1.ServiceCliente.registrarPacienteServiceResponse retVal = ((WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap)(this)).registrarPacienteService(inValue);
+            return retVal.Body.registrarPacienteServiceResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1401,7 +1652,7 @@ namespace WindowsFormsApp1.ServiceCliente {
             return base.Channel.buscarPacienteService(request);
         }
         
-        public WindowsFormsApp1.ServiceCliente.Usuario buscarPacienteService(string rut) {
+        public WindowsFormsApp1.ServiceCliente.Persona buscarPacienteService(string rut) {
             WindowsFormsApp1.ServiceCliente.buscarPacienteServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.buscarPacienteServiceRequest();
             inValue.Body = new WindowsFormsApp1.ServiceCliente.buscarPacienteServiceRequestBody();
             inValue.Body.rut = rut;
@@ -1446,12 +1697,31 @@ namespace WindowsFormsApp1.ServiceCliente {
             return ((WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap)(this)).listaReservasPorRutServiceAsync(inValue);
         }
         
-        public void rechazarConfirmarReservaService(char cambioEstado, int idReserva) {
-            base.Channel.rechazarConfirmarReservaService(cambioEstado, idReserva);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceResponse WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap.rechazarConfirmarReservaService(WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceRequest request) {
+            return base.Channel.rechazarConfirmarReservaService(request);
         }
         
-        public System.Threading.Tasks.Task rechazarConfirmarReservaServiceAsync(char cambioEstado, int idReserva) {
-            return base.Channel.rechazarConfirmarReservaServiceAsync(cambioEstado, idReserva);
+        public WindowsFormsApp1.ServiceCliente.StatusResponce rechazarConfirmarReservaService(char cambioEstado, int idReserva) {
+            WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceRequest();
+            inValue.Body = new WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceRequestBody();
+            inValue.Body.cambioEstado = cambioEstado;
+            inValue.Body.idReserva = idReserva;
+            WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceResponse retVal = ((WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap)(this)).rechazarConfirmarReservaService(inValue);
+            return retVal.Body.rechazarConfirmarReservaServiceResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceResponse> WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap.rechazarConfirmarReservaServiceAsync(WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceRequest request) {
+            return base.Channel.rechazarConfirmarReservaServiceAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceResponse> rechazarConfirmarReservaServiceAsync(char cambioEstado, int idReserva) {
+            WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceRequest();
+            inValue.Body = new WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceRequestBody();
+            inValue.Body.cambioEstado = cambioEstado;
+            inValue.Body.idReserva = idReserva;
+            return ((WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap)(this)).rechazarConfirmarReservaServiceAsync(inValue);
         }
     }
 }

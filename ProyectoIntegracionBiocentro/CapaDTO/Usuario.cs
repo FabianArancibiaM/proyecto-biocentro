@@ -12,7 +12,8 @@ namespace CapaDTO
         private int estado;
         private RolUsuario idRol;
         private Persona idPersona;
-
+        private String contraseña;
+        private String nombreUsuario;
         public int IdUsuario
         {
             get
@@ -64,5 +65,8 @@ namespace CapaDTO
                 idPersona = value;
             }
         }
+
+        public string Contraseña { get => contraseña; set => contraseña = value; }
+        public string NombreUsuario { get => nombreUsuario; set => nombreUsuario = value; }
     }
 }
