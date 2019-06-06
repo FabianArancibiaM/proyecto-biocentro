@@ -12,18 +12,18 @@ namespace CapaNegocio
     public interface INegocioService
     {
         //[OperationContract]
-        void registrarPaciente(Persona persona, int idHoraAtencion);
+        StatusResponce registrarPaciente(Paciente paciente, int idHoraAtencion);
         //[OperationContract]
-        List<HoraAtencion> buscarHorasDisponibles(EspecialidadClinica especialidad, DateTime? fecha, Persona persona);
+        List<HoraAtencion> buscarHorasDisponibles(EspecialidadClinica especialidad, DateTime? fecha, Empleado empleado);
         //[OperationContract]
         List<EspecialidadClinica> generarListaEspecialidad();
         //[OperationContract]
-        List<Terapeuta> generarListaEspecialista();
-        //[OperationContract]
-        Usuario buscarPaciente(String rut);
-        //[OperationContract]
-        List<Reserva> listaReservasPorRut(String rut);
-        //[OperationContract]
         void rechazarConfirmarReserva(Char cambioEstado, int idReserva);
+        //[OperationContract]
+        List<EspecialidadTerapeuta> generarListaEspecialista();
+        //[OperationContract]
+        Paciente buscarPaciente(String rut);
+        //[OperationContract]
+        List<HoraAtencion> listaReservasPorRut(String rut);
     }
 }

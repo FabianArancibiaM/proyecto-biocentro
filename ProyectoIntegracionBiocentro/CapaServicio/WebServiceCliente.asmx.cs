@@ -13,7 +13,7 @@ namespace CapaServicio
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // Para permitir que se llame a este servicio web desde un script, usando ASP.NET AJAX, quite la marca de comentario de la línea siguiente. 
-    // [System.Web.Script.Services.ScriptService]
+    //[System.Web.Script.Services.ScriptService]
     public class WebServiceCliente : System.Web.Services.WebService
     {
 
@@ -24,13 +24,13 @@ namespace CapaServicio
         }
 
         [WebMethod]
-        public StatusResponce registrarPacienteService(Persona persona, int idHoraAtencion)
+        public StatusResponce registrarPacienteService(Paciente persona, int idHoraAtencion)
         {
             NegocioService negocio = new NegocioService();
             return negocio.registrarPaciente(persona, idHoraAtencion);
         }
         [WebMethod]
-        public List<HoraAtencion> buscarHorasDisponiblesService(EspecialidadClinica especialidad, DateTime? fecha, Persona persona)
+        public List<HoraAtencion> buscarHorasDisponiblesService(EspecialidadClinica especialidad, DateTime? fecha, Empleado persona)
         {
             NegocioService negocio = new NegocioService();
             return negocio.buscarHorasDisponibles(especialidad, fecha, persona);
@@ -42,19 +42,19 @@ namespace CapaServicio
             return negocio.generarListaEspecialidad();
         }
         [WebMethod]
-        public List<Terapeuta> generarListaEspecialistaService()
+        public List<EspecialidadTerapeuta> generarListaEspecialistaService()
         {
             NegocioService negocio = new NegocioService();
             return negocio.generarListaEspecialista();
         }
         [WebMethod]
-        public Persona buscarPacienteService(String rut)
+        public Paciente buscarPacienteService(String rut)
         {
             NegocioService negocio = new NegocioService();
             return negocio.buscarPaciente(rut);
         }
         [WebMethod]
-        public List<Reserva> listaReservasPorRutService(String rut)
+        public List<HoraAtencion> listaReservasPorRutService(String rut)
         {
             NegocioService negocio = new NegocioService();
             return negocio.listaReservasPorRut(rut);
