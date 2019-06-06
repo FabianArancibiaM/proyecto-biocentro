@@ -6,24 +6,13 @@ using System.Threading.Tasks;
 
 namespace CapaDTO
 {
-    public class Especialidad
+    public class EspecialidadClinica
     {
-        private int idEspecialidad;
+        private int idEspecialidadClinica;
         private string nombre;
-        private int valor;
+        private int precio;
 
-        public int IdEspecialidad
-        {
-            get
-            {
-                return idEspecialidad;
-            }
-
-            set
-            {
-                idEspecialidad = value;
-            }
-        }
+        
 
         public string Nombre
         {
@@ -38,6 +27,7 @@ namespace CapaDTO
             }
         }
 
-        public int Valor { get => valor; set => valor = value; }
+        public int Precio { get => precio; set => precio = value; }
+        public int IdEspecialidadClinica { get => idEspecialidadClinica; set => idEspecialidadClinica = value; }
     }
 }

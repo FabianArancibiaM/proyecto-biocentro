@@ -20,10 +20,9 @@ namespace CapaNegocio
             this.utilMethods = new UtilMethods();
         }
         //Guarda las reservas
-        public StatusResponce registrarPaciente(Persona persona,int idHoraAtencion)
+        public StatusResponce registrarPaciente(Paciente paciente,int idHoraAtencion)
         {
             int? idPersona = null;
-            int? idReserva = null;
             Boolean esNuevo = false;
             if (validarSiRecervaFueTomada(idHoraAtencion))
             {
@@ -32,21 +31,21 @@ namespace CapaNegocio
             try
             {
                 String query = "";
-                Persona per = buscarPersonaPorRut(persona.Rut);
+                Paciente per = buscarPersonaPorRut(paciente.Rut);
                 if (per == null)
                 {
-                    query = "INSERT INTO BIOCENTRO_DB.dbo.PERSONA (RUT,NOMBRE,APELLIDO_PATERNO,APELLIDO_MATERNO,TELEFONO,FECHA_NACIMIENTO,SEXO,CORREO) OUTPUT INSERTED.ID_PERSONA VALUES " +
-                            " ('" + persona.Rut + "','" + persona.Nombre + "','" + persona.ApellidoPaterno + "','" + persona.ApellidoMaterno + "',"
-                            + persona.Telefono + ",'"+persona.FechaNacimiento +"','"+persona.Sexo+"','"+ persona.Correo+"');";
+                    query = "INSERT INTO BIOCENTRO_DB.dbo.PACIENTE (RUT,NOMBRE,APELLIDO_PATERNO,APELLIDO_MATERNO,TELEFONO,FECHA_NACIMIENTO,SEXO,CORREO) OUTPUT INSERTED.ID_PACIENTE VALUES " +
+                            " ('" + paciente.Rut + "','" + paciente.Nombre + "','" + paciente.ApellidoPaterno + "','" + paciente.ApellidoMaterno + "',"
+                            + paciente.Telefono + ",'"+ paciente.FechaNacimiento +"','"+ paciente.Sexo+"','"+ paciente.Correo+"');";
                     idPersona =  this.utilMethods.guardarEliminarActualizarObjeto(query, true);
                     esNuevo = true;
                 }
                 else
                 {
-                    idPersona = per.IdPersona;
+                    idPersona = per.IdPaciente;
                 }
-                query = "INSERT INTO BIOCENTRO_DB.dbo.RESERVA (ID_HORA,ID_PACIENTE,ID_ESTADO) OUTPUT INSERTED.ID_RESERVA VALUES (" + idHoraAtencion+ "," + idPersona + ", 1); ";
-                idReserva = this.utilMethods.guardarEliminarActualizarObjeto(query, true);
+                query = "UPDATE BIOCENTRO_DB.dbo.HORA_ATENCION SET ID_ESTADO=1,ID_PACIENTE="+ idPersona+" WHERE ID_HORA="+ idHoraAtencion + "); ";
+                this.utilMethods.guardarEliminarActualizarObjeto(query, false);
                 return generarObjetoStatusResponce(String.Empty, "Su reserva se realizo correctamente");
             }
             catch (Exception ex)
@@ -54,29 +53,22 @@ namespace CapaNegocio
                 if (esNuevo)
                 {
                     eliminar("PERSONA", "ID_PERSONA", idPersona);
-                }                
-                eliminar("RESERVA", "ID_RESERVA", idReserva);
+                }
                 verErrorEnConsola(ex, "guardarPaciente");
                 return generarObjetoStatusResponce("error", ex.Message);
             }
         }
         //Retorna el listado completo o filtrado de las Horas de atencion disponibles
-        public List<HoraAtencion> buscarHorasDisponibles(Especialidad especialidad, DateTime? fecha, Persona persona)
+        public List<HoraAtencion> buscarHorasDisponibles(EspecialidadClinica especialidad, DateTime? fecha, Empleado empleado)
         {
             try
             {
-                List<Reserva> listReserva = buscarReservaAndEstado();
-                if (listReserva == null)
-                {
-                    return null;
-                }
                 List<HoraAtencion> listHoraAtencion = buscarInfoHorasEspecialistas(null);
                 if (listHoraAtencion == null)
                 {
                     return null;
                 }
-                List<HoraAtencion> listaFinal = listHoraAtencion.FindAll(h => 
-                    validarReserva(h, listReserva) && filtrarEspecialidad(h,especialidad) && filtrarFecha(h, fecha) && filtrarTerapeuta(h, persona));
+                List<HoraAtencion> listaFinal = listHoraAtencion.FindAll(h => filtrarEspecialidad(h,especialidad) && filtrarFecha(h, fecha) && filtrarTerapeuta(h, empleado));
                 return listaFinal;
             }
             catch(Exception ex)
@@ -86,21 +78,21 @@ namespace CapaNegocio
             }
         }
         //Retorna todas las especialidades registradas
-        public List<Especialidad> generarListaEspecialidad()
+        public List<EspecialidadClinica> generarListaEspecialidad()
         {
             try
             {
-                String queryTerapeuta = "SELECT ID_ESPECIALIDAD,NOMBRE as nombreEspecialidad FROM BIOCENTRO_DB.dbo.ESPECIALIDAD";
-                DataSet dataTable = this.utilMethods.listarObjetoConTablaEspecifica(queryTerapeuta, "ESPECIALIDAD");
+                String queryTerapeuta = "SELECT ID_ESPECIALIDAD,NOMBRE as nombreEspecialidad ,PRECIO FROM BIOCENTRO_DB.dbo.ESPECIALIDAD_CLINICA;";
+                DataSet dataTable = this.utilMethods.listarObjetoConTablaEspecifica(queryTerapeuta, "ESPECIALIDAD_CLINICA");
                 if (dataTable.Tables[0].Rows.Count == 0)
                 {
                     return null;
                 }
-                List<Especialidad> list = new List<Especialidad>();
+                List<EspecialidadClinica> list = new List<EspecialidadClinica>();
                 foreach (DataRow row in dataTable.Tables[0].Rows)
                 {
 
-                    list.Add(generarObjetEspecialidad(row));
+                    list.Add(generarObjetEspecialidadClinica(row));
                 }
                 return list;
             }
@@ -111,29 +103,26 @@ namespace CapaNegocio
             }
         }
         //Retorna la data de todos los especialistas disponibles
-        public List<Terapeuta> generarListaEspecialista()
+        public List<EspecialidadTerapeuta> generarListaEspecialista()
         {
             try
             {
                 //Query retorna los datos de especialistas, roles, persona, usuario
-                String query = "SELECT usu.ID_USUARIO,usu.ID_ROL,"
-                + " per.ID_PERSONA,per.RUT,per.NOMBRE,per.APELLIDO_PATERNO,per.APELLIDO_MATERNO,"
-                + " esp.NOMBRE as nombreEspecialidad, esp.ID_ESPECIALIDAD"
-                + " FROM BIOCENTRO_DB.dbo.USUARIO as usu JOIN BIOCENTRO_DB.dbo.PERSONA as per on usu.ID_PERSONA = per.ID_PERSONA"
-                + " JOIN BIOCENTRO_DB.dbo.TERAPEUTA as tera ON tera.ID_USUARIO = usu.ID_USUARIO"
-                + " JOIN BIOCENTRO_DB.dbo.ESPECIALIDAD as esp ON esp.ID_ESPECIALIDAD = tera.ID_ESPECIALIDAD WHERE usu.ESTADO = 1; ";
+                String query = "SELECT espTera.ID,"
+                + " emp.ID_EMPLEADO,emp.NOMBRE,emp.APELLIDO_PATERNO,emp.APELLIDO_MATERNO ,"
+                + " espClin.ID_ESPECIALIDAD,espClin.NOMBRE as nombreEspecialidad,espClin.PRECIO"
+                + " FROM BIOCENTRO_DB.dbo.ESPECIALIDAD_TERAPEUTA as espTera"
+                + " JOIN BIOCENTRO_DB.dbo.EMPLEADO as emp on emp.ID_EMPLEADO = espTera.ID_EMPLEADO"
+                + " JOIN BIOCENTRO_DB.dbo.ESPECIALIDAD_CLINICA as espClin on espTera.ID_ESPECIALIDAD=espClin.ID_ESPECIALIDAD ";
                 DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
                 if (dataTable.Tables[0].Rows.Count == 0)
                 {
                     return null;
                 }
-                List<Terapeuta> list = new List<Terapeuta>();
+                List<EspecialidadTerapeuta> list = new List<EspecialidadTerapeuta>();
                 foreach (DataRow row in dataTable.Tables[0].Rows)
                 {
-                    Terapeuta terapeuta = generarObjetoTerapeuta(row);
-                    String nombreCompleto = terapeuta.IdUsuario.IdPersona.Nombre + " " + terapeuta.IdUsuario.IdPersona.ApellidoPaterno + " " + terapeuta.IdUsuario.IdPersona.ApellidoMaterno;
-                    terapeuta.IdUsuario.IdPersona.Nombre = nombreCompleto;
-                    list.Add(terapeuta);
+                    list.Add(generarObjetoEspecialidadTerapeuta(row));
                 }
                 return list;
             }
@@ -144,11 +133,11 @@ namespace CapaNegocio
             }
         }
         //Retorna un unico Usuario
-        public Persona buscarPaciente(String rut)
+        public Paciente buscarPaciente(String rut)
         {
             try
             {
-                Persona persona = buscarPersonaPorRut(rut);
+                Paciente persona = buscarPersonaPorRut(rut);
                 if (persona == null)
                 {
                     return null;
@@ -162,33 +151,40 @@ namespace CapaNegocio
             }
         }
         //Retorna la data de pacientes y reservas
-        public List<Reserva> listaReservasPorRut(String rut)
+        public List<HoraAtencion> listaReservasPorRut(String rut)
         {
             try
             {
                 //Query entrega los datos del Paciente y la reserva realizada
-                String query = "SELECT estRes.DESCRIPCION,estRes.ID_ESTADO,"
-                    + " per.ID_PERSONA,per.RUT,per.NOMBRE,per.APELLIDO_PATERNO,per.APELLIDO_MATERNO,res.ID_RESERVA,res.ID_HORA,hAtencion.FECHA "
-                    + "FROM BIOCENTRO_DB.dbo.PERSONA as per"
-                    + " JOIN BIOCENTRO_DB.dbo.RESERVA as res ON res.ID_PACIENTE = per.ID_PERSONA"
-                    + " JOIN BIOCENTRO_DB.dbo.ESTADO_RESERVA as estRes ON estRes.ID_ESTADO = res.ID_ESTADO" 
-                    + " JOIN BIOCENTRO_DB.dbo.HORA_ATENCION as hAtencion ON hAtencion.ID_HORA = res.ID_HORA"
-                    + " WHERE per.RUT = '"+ rut + "' and estRes.ID_ESTADO <> 3; ";
+                String query =
+                    "SELECT paciente.ID_PACIENTE,paciente.RUT as pRu,paciente.NOMBRE as pNo ,paciente.APELLIDO_PATERNO as pPa, "
+                    +" paciente.APELLIDO_MATERNO as pMa,paciente.TELEFONO as pTe ,paciente.FECHA_NACIMIENTO as pFe,paciente.SEXO as pSe,paciente.CORREO as pCo,"
+                    + " hora.ID_HORA,hora.FECHA,"
+                    + " blo.HORA_FIN,blo.HORA_INICIO,"
+                    + "sala.ID_SALA,sala.NOMBRE as sNo,"
+                    + "espCli.ID_ESPECIALIDAD,espCli.NOMBRE as nombreEspecialidad, espCli.PRECIO,"
+                    + "estRes.ID_ESTADO,estRes.DESCRIPCION,"
+                    + "emp.ID_EMPLEADO,emp.NOMBRE,emp.APELLIDO_PATERNO,emp.APELLIDO_MATERNO "
+                    + " FROM BIOCENTRO_DB.dbo.PACIENTE as paciente "
+                    + "JOIN BIOCENTRO_DB.dbo.HORA_ATENCION as hora on hora.ID_PACIENTE=paciente.ID_PACIENTE "
+                    + "JOIN BIOCENTRO_DB.dbo.BLOQUE as blo on blo.ID_BLOQUE = hora.ID_BLOQUE "
+                    + "JOIN BIOCENTRO_DB.dbo.SALA as sala on sala.ID_SALA = hora.ID_SALA "
+                    + "JOIN BIOCENTRO_DB.dbo.ESPECIALIDAD_CLINICA as espCli on espCli.ID_ESPECIALIDAD = hora.ID_ESPECIALIDAD "
+                    + "JOIN BIOCENTRO_DB.dbo.ESTADO_RESERVA as estRes on estRes.ID_ESTADO=hora.ID_ESTADO "
+                    + "JOIN EMPLEADO as emp on emp.ID_EMPLEADO = hora.ID_TERAPEUTA "
+                    + " WHERE paciente.RUT = '" + rut + "' and estRes.ID_ESTADO <> 3 and hora.ID_VENTA IS NULL; ";
                 DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
                 if (dataTable.Tables[0].Rows.Count == 0)
                 {
                     return null;
                 }
-                List<Reserva> listaReserva = new List<Reserva>();
+                List<HoraAtencion> listaReserva = new List<HoraAtencion>();
                 foreach (DataRow row in dataTable.Tables[0].Rows)
                 {
-                    listaReserva.Add(generarObjetoReserva(row,true));
+                    listaReserva.Add(generarObjetoHoraAtencion(row,true,true,true,true,true,false,true));
                 }
                 List<int> listId = new List<int>();
-                List<Reserva> listaReservasValidas = listaReserva.FindAll(r => r.IdHora.Fecha.CompareTo(DateTime.Today) >= 0);
-                listaReservasValidas.ForEach(res => listId.Add(res.IdHora.IdHora));
-                List<HoraAtencion> listHotaAtencion = buscarInfoHorasEspecialistas(listId);
-                listaReservasValidas.ForEach(res => res.IdHora= listHotaAtencion.FirstOrDefault(h => h.IdHora == res.IdHora.IdHora));
+                List<HoraAtencion> listaReservasValidas = listaReserva.FindAll(r => r.Fecha.CompareTo(DateTime.Today) >= 0);
                 return listaReservasValidas;
             }
             catch (Exception ex)
@@ -218,7 +214,7 @@ namespace CapaNegocio
                     codigo = "2";
                     estado = "Confirmada";
                 }
-                actualizar("RESERVA", "ID_ESTADO", codigo, "ID_RESERVA", Convert.ToString(idReserva));
+                actualizar("HORA_ATENCION", "ID_ESTADO", codigo, "ID_HORA", Convert.ToString(idReserva));
                 return generarObjetoStatusResponce(String.Empty, "La hora fue "+ estado + " con éxito");
             }
             catch (Exception ex)
@@ -228,13 +224,13 @@ namespace CapaNegocio
             }
         }
         // Fin Metodos Publicos
-        private bool filtrarTerapeuta(HoraAtencion h, Persona persona)
+        private bool filtrarTerapeuta(HoraAtencion h, Empleado empleado)
         {
-            if (persona == null)
+            if (empleado == null)
             {
                 return true;
             }
-            if (h.IdTerapeuta.IdUsuario.IdPersona.IdPersona==persona.IdPersona)
+            if (h.Terapeuta.IdEmpleado== empleado.IdEmpleado)
             {
                 return true;
             }
@@ -252,34 +248,34 @@ namespace CapaNegocio
             }
             return false;
         }
-        private bool filtrarEspecialidad(HoraAtencion h, Especialidad especialidad)
+        private bool filtrarEspecialidad(HoraAtencion h, EspecialidadClinica especialidad)
         {
             if (especialidad==null)
             {
                 return true;
             }
-            if (especialidad.IdEspecialidad==h.IdTerapeuta.IdEspecialidad.IdEspecialidad)
+            if (especialidad.IdEspecialidadClinica==h.EspecialidadClinica.IdEspecialidadClinica)
             {
                 return true;
             }
             return false;
         }
-        private Persona buscarPersonaPorRut(String rut)
+        private Paciente buscarPersonaPorRut(String rut)
         {
             try
             {
-                String query = "SELECT ID_PERSONA,RUT,NOMBRE,APELLIDO_PATERNO,APELLIDO_MATERNO,TELEFONO,FECHA_NACIMIENTO,SEXO,CORREO"
-                    + " FROM BIOCENTRO_DB.dbo.PERSONA "
+                String query = "SELECT ID_PACIENTE,RUT,NOMBRE,APELLIDO_PATERNO,APELLIDO_MATERNO,TELEFONO,FECHA_NACIMIENTO,SEXO,CORREO"
+                    + " FROM BIOCENTRO_DB.dbo.PACIENTE "
                     + " WHERE RUT='" + rut + "';";
                 DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
                 if (dataTable.Tables[0].Rows.Count == 0)
                 {
                     return null;
                 }
-                Persona persona = null;
+                Paciente persona = null;
                 foreach (DataRow row in dataTable.Tables[0].Rows)
                 {
-                    persona = generarObjetoPersona(row);
+                    persona = generarObjetoPaciente(row);
                 }
                 return persona;
             }
@@ -378,25 +374,22 @@ namespace CapaNegocio
             try
             {
                 //Query retorna el listado de las horas, los bloques, los especialistas y persona
-                String query = "SELECT usu.ID_USUARIO,usu.ID_ROL,"
-                + " per.ID_PERSONA,per.RUT,per.NOMBRE,per.APELLIDO_PATERNO,per.APELLIDO_MATERNO,"
-                + " esp.NOMBRE as nombreEspecialidad, esp.ID_ESPECIALIDAD,esp.VALOR,"
-                + " hAtencion.ID_HORA,hAtencion.FECHA,"
-                + " bloq.HORA_INICIO,bloq.HORA_FIN"
-                + " FROM BIOCENTRO_DB.dbo.USUARIO as usu " 
-                + " JOIN BIOCENTRO_DB.dbo.PERSONA as per on usu.ID_PERSONA = per.ID_PERSONA"
-                + " JOIN BIOCENTRO_DB.dbo.TERAPEUTA as tera ON tera.ID_USUARIO = usu.ID_USUARIO"
-                + " JOIN BIOCENTRO_DB.dbo.ESPECIALIDAD as esp ON esp.ID_ESPECIALIDAD = tera.ID_ESPECIALIDAD"
-                + " JOIN BIOCENTRO_DB.dbo.HORA_ATENCION as hAtencion ON hAtencion.ID_TERAPEUTA = tera.ID_TERAPEUTA"
-                + " JOIN BIOCENTRO_DB.dbo.BLOQUE as bloq ON bloq.ID_BLOQUE = hAtencion.ID_BLOQUE  ";
+                String query = "select emp.ID_EMPLEADO,emp.NOMBRE,emp.APELLIDO_PATERNO,emp.APELLIDO_MATERNO,"
+                + " hora.ID_HORA,hora.FECHA,"
+                + " blo.HORA_INICIO,blo.HORA_FIN,"
+                + " espClin.ID_ESPECIALIDAD,espClin.NOMBRE as nombreEspecialidad,espClin.PRECIO"
+                + " FROM BIOCENTRO_DB.dbo.HORA_ATENCION as hora "
+                + " JOIN BIOCENTRO_DB.dbo.BLOQUE as blo on hora.ID_BLOQUE=blo.ID_BLOQUE "
+                + " JOIN BIOCENTRO_DB.dbo.ESPECIALIDAD_CLINICA as espClin on espClin.ID_ESPECIALIDAD=hora.ID_ESPECIALIDAD "
+                + "  JOIN BIOCENTRO_DB.dbo.EMPLEADO as emp on emp.ID_EMPLEADO = hora.ID_TERAPEUTA ";
                 if (listIdHoraAtencion!= null && listIdHoraAtencion.Count!=0)
                 {
                     String ids = listIdHoraAtencion.Aggregate(new StringBuilder(), (str, next) => str.Append(str.Length == 0 ? "" : ",").Append(next)).ToString();
-                    query = query + " WHERE hAtencion.ID_HORA IN ("+ ids + ") AND usu.ESTADO = 1 ; ";
+                    query = query + " WHERE hora.ID_HORA IN (" + ids + ") ; ";
                 }
                 else
                 {
-                    query = query + " WHERE usu.ESTADO = 1";
+                    query = query + " WHERE hora.ID_PACIENTE IS NULL OR hora.ID_ESTADO = 3 ;";
                 }
                 DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
                 if (dataTable.Tables[0].Rows.Count == 0)
@@ -406,7 +399,7 @@ namespace CapaNegocio
                 List<HoraAtencion> listaHoras = new List<HoraAtencion>();
                 foreach (DataRow row in dataTable.Tables[0].Rows)
                 {
-                    listaHoras.Add(generarObjetoHoraAtencion(row));
+                    listaHoras.Add(generarObjetoHoraAtencion(row,true,true,false,false,false,false,true));
                 }
                 return listaHoras;
             }
@@ -417,118 +410,278 @@ namespace CapaNegocio
             }
         }
         //Crea un objeto de tipo HoraAtencion
-        private HoraAtencion generarObjetoHoraAtencion(DataRow row)
+        private HoraAtencion generarObjetoHoraAtencion(DataRow row,Boolean bloque, Boolean terapeuta, Boolean paciente, Boolean sala, Boolean estadoRes,
+            Boolean venta, Boolean espeClinica)
         {
             HoraAtencion horaAtencion = new HoraAtencion();
-            horaAtencion.IdHora = Convert.ToInt32(row["ID_HORA"]);
-            horaAtencion.IdBloque = generarObjetoBloque(row);
-            horaAtencion.IdTerapeuta = generarObjetoTerapeuta(row);
-            horaAtencion.Fecha = Convert.ToDateTime(row["FECHA"]);
-            return horaAtencion;
-        }
-        //Crea un objeto de tipo Reserva
-        private Reserva generarObjetoReserva(DataRow row,Boolean setUsuario)
-        {
-            Reserva reserva = new Reserva();
-            reserva.IdReserva = Convert.ToInt32(row["ID_RESERVA"]);
-            HoraAtencion horaAtencion = new HoraAtencion();
-            horaAtencion.IdHora = Convert.ToInt32(row["ID_HORA"]);
-            if (row.Table.Columns.Contains("FECHA"))
+            if (validarSiRowTieneCampo(row, "ID_HORA"))
+            {
+                horaAtencion.IdHora = Convert.ToInt32(row["ID_HORA"]);
+            }
+            if (validarSiRowTieneCampo(row, "FECHA"))
             {
                 horaAtencion.Fecha = Convert.ToDateTime(row["FECHA"]);
-            }            
-            reserva.IdHora = horaAtencion;
-            reserva.IdEstado = generarObjetoEstadoReserva(row);
-            if (setUsuario)
-            {
-                reserva.IdPaciente = generarObjetoPersona(row);
             }
-            return reserva;
+            if (bloque)
+            {
+                horaAtencion.IdBloque = generarObjetoBloque(row);
+            }
+            if (terapeuta)
+            {
+                horaAtencion.Terapeuta = generarObjetoTerapeuta(row);
+            }
+            if (paciente)
+            {
+                horaAtencion.Paciente = generarObjetoPaciente(row);
+            }
+            if (sala)
+            {
+                horaAtencion.Sala = generarObjetoSala(row);
+            }
+            if (estadoRes)
+            {
+                horaAtencion.EstadoReserva = generarObjetoEstadoReserva(row);
+            }
+            if (venta)
+            {
+                horaAtencion.Venta = generarObjetoVenta(row);
+            }
+            if (espeClinica)
+            {
+                horaAtencion.EspecialidadClinica = generarObjetEspecialidadClinica(row);
+            }          
+            return horaAtencion;
         }
+        //Crea un objeto de tipo Venta
+        private Venta generarObjetoVenta(DataRow row)
+        {
+            Venta venta = new Venta();
+
+            if (validarSiRowTieneCampo(row, "ID_VENTA"))
+            {
+                venta.IdVenta = Convert.ToInt32(row["ID_VENTA"]);
+            }
+
+            if (validarSiRowTieneCampo(row, "FECHA_PAGO"))
+            {
+                venta.FechaPago = Convert.ToDateTime(row["FECHA_PAGO"]);
+            }
+
+            if (validarSiRowTieneCampo(row, "MONTO"))
+            {
+                venta.Monto = Convert.ToInt32(row["MONTO"]);
+            }
+            venta.EstadoVenta = generarObjetoEstadoVenta(row);
+            venta.MedioPago = generarObjetoMedioPago(row);
+            return venta;
+        }
+        //Crea un objeto de tipo MedioPago
+        private MedioPago generarObjetoMedioPago(DataRow row)
+        {
+            MedioPago medioPago = new MedioPago();
+            if (validarSiRowTieneCampo(row, "ID_MEDIO_PAGO"))
+            {
+                medioPago.IdMedioPago = Convert.ToInt32(row["ID_MEDIO_PAGO"]);
+            }
+            if (validarSiRowTieneCampo(row, "NOMBRE"))
+            {
+                medioPago.Nombre = Convert.ToString(row["NOMBRE"]);
+            }
+            return medioPago;
+        }
+        //Crea un objeto de tipo EstadoVenta
+        private EstadoVenta generarObjetoEstadoVenta(DataRow row)
+        {
+            EstadoVenta estadoVenta = new EstadoVenta();
+            if (validarSiRowTieneCampo(row, "ID_ESTADO_VENTA"))
+            {
+                estadoVenta.IdEstadoVenta = Convert.ToInt32(row["ID_ESTADO_VENTA"]);
+            }
+            if (validarSiRowTieneCampo(row, "DESCRIPCION"))
+            {
+                estadoVenta.Descripcion = Convert.ToString(row["DESCRIPCION"]);
+            }
+            return estadoVenta;
+        }
+        //Crea un objeto de tipo Sala
+        private Sala generarObjetoSala(DataRow row)
+        {
+            Sala sala = new Sala();
+            if (validarSiRowTieneCampo(row, "ID_SALA"))
+            {
+                sala.IdSala = Convert.ToInt32(row["ID_SALA"]);
+            }
+            if (validarSiRowTieneCampo(row, "NOMBRE", "sNo"))
+            {
+                sala.Nombre = obtenerCampoDobleNombre(row, "NOMBRE", "sNo");
+            }
+            return sala;
+        }
+        //Crea un objeto de tipo Paciente
+        private Paciente generarObjetoPaciente(DataRow row)
+        {
+            Paciente persona = new Paciente();
+            if (validarSiRowTieneCampo(row, "ID_PACIENTE"))
+            {
+                persona.IdPaciente = Convert.ToInt32(row["ID_PACIENTE"]);
+            }
+            if (validarSiRowTieneCampo(row, "RUT", "pRu"))
+            {
+                persona.Rut = obtenerCampoDobleNombre(row, "RUT", "pRu");
+            }
+            if (validarSiRowTieneCampo(row, "NOMBRE", "pNo"))
+            {
+                persona.Nombre = obtenerCampoDobleNombre(row, "NOMBRE", "pNo");
+            }
+            if (validarSiRowTieneCampo(row, "APELLIDO_PATERNO", "pPa"))
+            {
+                persona.ApellidoPaterno = obtenerCampoDobleNombre(row, "APELLIDO_PATERNO", "pPa");
+            }
+            if (validarSiRowTieneCampo(row, "APELLIDO_MATERNO", "pMa"))
+            {
+                persona.ApellidoMaterno = obtenerCampoDobleNombre(row, "APELLIDO_MATERNO", "pMa");
+            }
+            if (validarSiRowTieneCampo(row, "TELEFONO", "pTe"))
+            {
+                persona.Telefono = obtenerCampoDobleNombre(row, "TELEFONO", "pTe");
+            }
+            if (validarSiRowTieneCampo(row, "FECHA_NACIMIENTO", "pFe"))
+            {
+                persona.FechaNacimiento = Convert.ToDateTime(obtenerCampoDobleNombre(row, "FECHA_NACIMIENTO", "pFe"));
+            }
+            if (validarSiRowTieneCampo(row, "SEXO", "pSe"))
+            {
+                persona.Sexo = Convert.ToChar(obtenerCampoDobleNombre(row, "SEXO", "pSe"));
+            }
+            if (validarSiRowTieneCampo(row, "CORREO", "pCo"))
+            {
+                persona.Correo = obtenerCampoDobleNombre(row, "CORREO", "pCo");
+            }
+            return persona;
+        }
+        //Crea un objeto de tipo Empleado
+        private Empleado generarObjetoTerapeuta(DataRow row)
+        {
+            Empleado empleado = new Empleado();
+            if (validarSiRowTieneCampo(row, "ID_EMPLEADO"))
+            {
+                empleado.IdEmpleado = Convert.ToInt32(row["ID_EMPLEADO"]);
+            }
+            if (validarSiRowTieneCampo(row, "USUARIO"))
+            {
+                empleado.Usuario = Convert.ToString(row["USUARIO"]);
+            }
+            if (validarSiRowTieneCampo(row, "CONTRASENA"))
+            {
+                empleado.Contraseña = Convert.ToString(row["CONTRASENA"]);
+            }
+            if (validarSiRowTieneCampo(row, "NOMBRE"))
+            {
+                empleado.Nombre = Convert.ToString(row["NOMBRE"]);
+            }
+            if (validarSiRowTieneCampo(row, "APELLIDO_PATERNO"))
+            {
+                empleado.ApellidoPaterno = Convert.ToString(row["APELLIDO_PATERNO"]);
+            }
+            if (validarSiRowTieneCampo(row, "APELLIDO_MATERNO"))
+            {
+                empleado.ApellidoMaterno = Convert.ToString(row["APELLIDO_MATERNO"]);
+            }
+            if (validarSiRowTieneCampo(row, "TELEFONO"))
+            {
+                empleado.Telefono = Convert.ToInt32(row["TELEFONO"]);
+            }
+            if (validarSiRowTieneCampo(row, "CORREO"))
+            {
+                empleado.Correo = Convert.ToString(row["CORREO"]);
+            }
+            empleado.Cargo = generarObjetoCargo(row);
+            if (validarSiRowTieneCampo(row, "FECHA_NACIMIENTO"))
+            {
+                empleado.FechaNacimiento = Convert.ToString(row["FECHA_NACIMIENTO"]);
+            }
+            return empleado;
+        }
+        //Crea un objeto de tipo Cargo
+        private Cargo generarObjetoCargo(DataRow row)
+        {
+            Cargo cargo = new Cargo();
+            if (validarSiRowTieneCampo(row, "ID_CARGO"))
+            {
+                cargo.IdCargo = Convert.ToInt32(row["ID_CARGO"]);
+            }
+            if (validarSiRowTieneCampo(row, "NOMBRE"))
+            {
+                cargo.Nombre = Convert.ToString(row["NOMBRE"]);
+            }
+            return cargo;
+        }
+
         //Crea un objeto de tipo EstadoReserva
         private EstadoReserva generarObjetoEstadoReserva(DataRow row)
         {
             EstadoReserva estado = new EstadoReserva();
-            estado.IdEstado = Convert.ToInt32(row["ID_ESTADO"]);
-            estado.Descripcion = Convert.ToString(row["DESCRIPCION"]);
+            if (validarSiRowTieneCampo(row, "ID_ESTADO"))
+            {
+                estado.IdEstado = Convert.ToInt32(row["ID_ESTADO"]);
+            }
+            if (validarSiRowTieneCampo(row, "DESCRIPCION"))
+            {
+                estado.Descripcion = Convert.ToString(row["DESCRIPCION"]);
+            }
             return estado;
+        }
+        //Crea un objeto de tipo EspecialidadSala
+        private EspecialidadSala generarObjetoEspecialidadSala(DataRow row)
+        {
+            EspecialidadSala sala = new EspecialidadSala();
+            if (validarSiRowTieneCampo(row, "ID_ESPECALIDAD_SALA"))
+            {
+                sala.IdEspecialidadSala = Convert.ToInt32(row["ID_ESPECALIDAD_SALA"]);
+            }
+            sala.EspecialidadClinica = generarObjetEspecialidadClinica(row);
+            sala.Sala = generarObjetoSala(row);
+            return sala;
+        }
+        //Crea un objeto de tipo EspecialidadTerapeuta
+        private EspecialidadTerapeuta generarObjetoEspecialidadTerapeuta(DataRow row)
+        {
+            EspecialidadTerapeuta especialidadTerapeuta = new EspecialidadTerapeuta();
+            if (validarSiRowTieneCampo(row, "ID"))
+            {
+                especialidadTerapeuta.IdEspecialidadTerapeuta = Convert.ToInt32(row["ID"]);
+            }
+            especialidadTerapeuta.EspecialidadClinica = generarObjetEspecialidadClinica(row);
+            especialidadTerapeuta.Empleado = generarObjetoTerapeuta(row);
+            return especialidadTerapeuta;
         }
         //Crea un objeto de tipo Bloque
         private Bloque generarObjetoBloque(DataRow row)
         {
             Bloque bloque = new Bloque();
+            if (validarSiRowTieneCampo(row, "ID_BLOQUE"))
+            {
+                bloque.IdBloque = Convert.ToInt32(row["ID_BLOQUE"]);
+            }
             bloque.HoraInicio = Convert.ToInt32(row["HORA_INICIO"]);
             bloque.HoraFin = Convert.ToInt32(row["HORA_FIN"]);
             return bloque;
         }
-        //Crea un objeto de tipo Terapeuta
-        private Terapeuta generarObjetoTerapeuta(DataRow row)
+        //Crea un objeto de tipo EspecialidadClinica
+        private EspecialidadClinica generarObjetEspecialidadClinica(DataRow row)
         {
-            Terapeuta terapeuta = new Terapeuta();
-            terapeuta.IdUsuario = generarObjetoUsuario(row);
-            terapeuta.IdEspecialidad = generarObjetEspecialidad(row);
-            return terapeuta;
-        }
-        //Crea un objeto de tipo Usuario
-        private Usuario generarObjetoUsuario(DataRow row)
-        {
-            Usuario usuario = new Usuario();
-            usuario.IdUsuario = Convert.ToInt32(row["ID_USUARIO"]);
-            usuario.IdPersona = generarObjetoPersona(row);
-            usuario.IdRol = generarObjetoRolUsuario(row);
-            if (validarSiRowTieneCampo(row, "CONTRASEÑA"))
+            EspecialidadClinica especialidad = new EspecialidadClinica();
+            if (validarSiRowTieneCampo(row, "ID_ESPECIALIDAD"))
             {
-                usuario.Contraseña = Convert.ToString(row["CONTRASEÑA"]);
+                especialidad.IdEspecialidadClinica = Convert.ToInt32(row["ID_ESPECIALIDAD"]);
             }
-            if (validarSiRowTieneCampo(row, "NOMBRE_USUARIO"))
+            if (validarSiRowTieneCampo(row, "nombreEspecialidad"))
             {
-                usuario.Contraseña = Convert.ToString(row["NOMBRE_USUARIO"]);
+                especialidad.Nombre = Convert.ToString(row["nombreEspecialidad"]);
             }
-            return usuario;
-        }
-        //Crea un objeto de tipo RolUsuario
-        private RolUsuario generarObjetoRolUsuario(DataRow row)
-        {
-            RolUsuario rolUsuario = new RolUsuario();
-            rolUsuario.IdRol = Convert.ToInt32(row["ID_ROL"]);
-            return rolUsuario;
-        }
-        //Crea un objeto de tipo Persona
-        private Persona generarObjetoPersona(DataRow row)
-        {
-            Persona persona = new Persona();
-            persona.IdPersona = Convert.ToInt32(row["ID_PERSONA"]);
-            persona.Rut = Convert.ToString(row["RUT"]);
-            persona.Nombre = Convert.ToString(row["NOMBRE"]);
-            persona.ApellidoPaterno = Convert.ToString(row["APELLIDO_PATERNO"]);
-            persona.ApellidoMaterno = Convert.ToString(row["APELLIDO_MATERNO"]);
-            if (validarSiRowTieneCampo(row, "TELEFONO"))
+            if (validarSiRowTieneCampo(row, "PRECIO"))
             {
-                persona.Telefono = Convert.ToString(row["TELEFONO"]);
-            }
-            if (validarSiRowTieneCampo(row, "FECHA_NACIMIENTO"))
-            {
-                persona.FechaNacimiento = Convert.ToDateTime(row["FECHA_NACIMIENTO"]);
-            }
-            if (validarSiRowTieneCampo(row, "SEXO"))
-            {
-                persona.Sexo = Convert.ToChar(row["SEXO"]);
-            }
-            if (validarSiRowTieneCampo(row, "CORREO"))
-            {
-                persona.Correo = Convert.ToString(row["CORREO"]); ;
-            }
-            return persona;
-        }
-        //Crea un objeto de tipo Especialidad
-        private Especialidad generarObjetEspecialidad(DataRow row)
-        {
-            Especialidad especialidad = new Especialidad();
-            especialidad.IdEspecialidad = Convert.ToInt32(row["ID_ESPECIALIDAD"]);
-            especialidad.Nombre = Convert.ToString(row["nombreEspecialidad"]);
-            if (validarSiRowTieneCampo(row, "VALOR"))
-            {
-                especialidad.Valor = Convert.ToInt32(row["VALOR"]);
+                especialidad.Precio = Convert.ToInt32(row["PRECIO"]);
             }
             return especialidad;
         }
@@ -560,6 +713,30 @@ namespace CapaNegocio
             {
                 Console.WriteLine("***Se produjo un error en el metodo " + metodo + "=>" + exception.Message);
             }
+        }
+        private string obtenerCampoDobleNombre(DataRow row, string nombre1,string nombre2)
+        {
+            if (validarSiRowTieneCampo(row, nombre1))
+            {
+                return Convert.ToString(row[nombre1]);
+            }
+            else if (validarSiRowTieneCampo(row, nombre2))
+            {
+                return Convert.ToString(row[nombre2]);
+            }
+            return null;
+        }
+        private Boolean validarSiRowTieneCampo(DataRow row, String campo1, String campo2)
+        {
+            if (validarSiRowTieneCampo(row, campo1))
+            {
+                return true;
+            }
+            if (validarSiRowTieneCampo(row, campo2))
+            {
+                return true;
+            }
+            return false;
         }
         private Boolean validarSiRowTieneCampo(DataRow row,String campo)
         {

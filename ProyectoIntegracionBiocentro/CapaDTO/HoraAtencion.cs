@@ -11,59 +11,21 @@ namespace CapaDTO
         private int idHora;
         private DateTime fecha;
         private Bloque idBloque;
-        private Terapeuta idTerapeuta;
+        private Empleado terapeuta;
+        private Paciente paciente;
+        private Sala sala;
+        private EstadoReserva estadoReserva;
+        private Venta venta;
+        private EspecialidadClinica especialidadClinica;
 
-        public Terapeuta IdTerapeuta
-        {
-            get
-            {
-                return idTerapeuta;
-            }
-
-            set
-            {
-                idTerapeuta = value;
-            }
-        }
-        public int IdHora
-        {
-            get
-            {
-                return idHora;
-            }
-
-            set
-            {
-                idHora = value;
-            }
-        }
-
-        public DateTime Fecha
-        {
-            get
-            {
-                return fecha;
-            }
-
-            set
-            {
-                fecha = value;
-            }
-        }
-
-        public Bloque IdBloque
-        {
-            get
-            {
-                return idBloque;
-            }
-
-            set
-            {
-                idBloque = value;
-            }
-        }
-
-        
+        public int IdHora { get => idHora; set => idHora = value; }
+        public DateTime Fecha { get => fecha; set => fecha = value; }
+        public Bloque IdBloque { get => idBloque; set => idBloque = value; }
+        public Paciente Paciente { get => paciente; set => paciente = value; }
+        public EstadoReserva EstadoReserva { get => estadoReserva; set => estadoReserva = value; }
+        public EspecialidadClinica EspecialidadClinica { get => especialidadClinica; set => especialidadClinica = value; }
+        public Empleado Terapeuta { get => terapeuta; set => terapeuta = value; }
+        public Sala Sala { get => sala; set => sala = value; }
+        public Venta Venta { get => venta; set => venta = value; }
     }
 }

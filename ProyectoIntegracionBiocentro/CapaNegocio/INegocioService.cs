@@ -14,9 +14,9 @@ namespace CapaNegocio
         //[OperationContract]
         void registrarPaciente(Persona persona, int idHoraAtencion);
         //[OperationContract]
-        List<HoraAtencion> buscarHorasDisponibles(Especialidad especialidad, DateTime? fecha, Persona persona);
+        List<HoraAtencion> buscarHorasDisponibles(EspecialidadClinica especialidad, DateTime? fecha, Persona persona);
         //[OperationContract]
-        List<Especialidad> generarListaEspecialidad();
+        List<EspecialidadClinica> generarListaEspecialidad();
         //[OperationContract]
         List<Terapeuta> generarListaEspecialista();
         //[OperationContract]
