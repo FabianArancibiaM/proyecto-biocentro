@@ -41,18 +41,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bloque.cs" />
-    <Compile Include="Especialidad.cs" />
+    <Compile Include="Cargo.cs" />
+    <Compile Include="Empleado.cs" />
+    <Compile Include="EspecialidadClinica.cs" />
+    <Compile Include="EspecialidadSala.cs" />
+    <Compile Include="EspecialidadTerapeuta.cs" />
     <Compile Include="EstadoReserva.cs" />
+    <Compile Include="EstadoVenta.cs" />
     <Compile Include="HoraAtencion.cs" />
-    <Compile Include="Permiso.cs" />
-    <Compile Include="PermisoRol.cs" />
-    <Compile Include="Persona.cs" />
+    <Compile Include="MedioPago.cs" />
+    <Compile Include="Paciente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reserva.cs" />
-    <Compile Include="RolUsuario.cs" />
+    <Compile Include="Sala.cs" />
     <Compile Include="StatusResponce.cs" />
-    <Compile Include="Terapeuta.cs" />
-    <Compile Include="Usuario.cs" />
+    <Compile Include="Venta.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CapaDTO
 {
-    public class Persona
+    public class Paciente
     {
-        private int idPersona;
+        private int idPaciente;
         private string rut;
         private string nombre;
         private string apellidoPaterno;
@@ -18,18 +18,6 @@ namespace CapaDTO
         private Char sexo;
         private String correo;
 
-        public int IdPersona
-        {
-            get
-            {
-                return idPersona;
-            }
-
-            set
-            {
-                idPersona = value;
-            }
-        }
 
         public string Rut
         {
@@ -87,5 +75,6 @@ namespace CapaDTO
         public DateTime FechaNacimiento { get => fechaNacimiento; set => fechaNacimiento = value; }
         public char Sexo { get => sexo; set => sexo = value; }
         public string Correo { get => correo; set => correo = value; }
+        public int IdPaciente { get => idPaciente; set => idPaciente = value; }
     }
 }

@@ -30,13 +30,13 @@ namespace CapaServicio
             return negocio.registrarPaciente(persona, idHoraAtencion);
         }
         [WebMethod]
-        public List<HoraAtencion> buscarHorasDisponiblesService(Especialidad especialidad, DateTime? fecha, Persona persona)
+        public List<HoraAtencion> buscarHorasDisponiblesService(EspecialidadClinica especialidad, DateTime? fecha, Persona persona)
         {
             NegocioService negocio = new NegocioService();
             return negocio.buscarHorasDisponibles(especialidad, fecha, persona);
         }
         [WebMethod]
-        public List<Especialidad> generarListaEspecialidadService()
+        public List<EspecialidadClinica> generarListaEspecialidadService()
         {
             NegocioService negocio = new NegocioService();
             return negocio.generarListaEspecialidad();
