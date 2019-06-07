@@ -15,14 +15,12 @@ namespace WindowsFormsApp1.ServiceCliente {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Persona", Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Paciente", Namespace="http://tempuri.org/")]
     [System.SerializableAttribute()]
-    public partial class Persona : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Paciente : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IdPersonaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RutField;
@@ -46,6 +44,8 @@ namespace WindowsFormsApp1.ServiceCliente {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CorreoField;
         
+        private int IdPacienteField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -53,19 +53,6 @@ namespace WindowsFormsApp1.ServiceCliente {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int IdPersona {
-            get {
-                return this.IdPersonaField;
-            }
-            set {
-                if ((this.IdPersonaField.Equals(value) != true)) {
-                    this.IdPersonaField = value;
-                    this.RaisePropertyChanged("IdPersona");
-                }
             }
         }
         
@@ -82,7 +69,7 @@ namespace WindowsFormsApp1.ServiceCliente {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
         public string Nombre {
             get {
                 return this.NombreField;
@@ -95,7 +82,7 @@ namespace WindowsFormsApp1.ServiceCliente {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
         public string ApellidoPaterno {
             get {
                 return this.ApellidoPaternoField;
@@ -108,7 +95,7 @@ namespace WindowsFormsApp1.ServiceCliente {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
         public string ApellidoMaterno {
             get {
                 return this.ApellidoMaternoField;
@@ -121,7 +108,7 @@ namespace WindowsFormsApp1.ServiceCliente {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
         public string Telefono {
             get {
                 return this.TelefonoField;
@@ -134,7 +121,7 @@ namespace WindowsFormsApp1.ServiceCliente {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
         public System.DateTime FechaNacimiento {
             get {
                 return this.FechaNacimientoField;
@@ -147,7 +134,7 @@ namespace WindowsFormsApp1.ServiceCliente {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=7)]
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
         public char Sexo {
             get {
                 return this.SexoField;
@@ -160,7 +147,7 @@ namespace WindowsFormsApp1.ServiceCliente {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
         public string Correo {
             get {
                 return this.CorreoField;
@@ -169,6 +156,19 @@ namespace WindowsFormsApp1.ServiceCliente {
                 if ((object.ReferenceEquals(this.CorreoField, value) != true)) {
                     this.CorreoField = value;
                     this.RaisePropertyChanged("Correo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
+        public int IdPaciente {
+            get {
+                return this.IdPacienteField;
+            }
+            set {
+                if ((this.IdPacienteField.Equals(value) != true)) {
+                    this.IdPacienteField = value;
+                    this.RaisePropertyChanged("IdPaciente");
                 }
             }
         }
@@ -246,19 +246,19 @@ namespace WindowsFormsApp1.ServiceCliente {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Especialidad", Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EspecialidadClinica", Namespace="http://tempuri.org/")]
     [System.SerializableAttribute()]
-    public partial class Especialidad : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class EspecialidadClinica : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private int IdEspecialidadField;
-        
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NombreField;
         
-        private int ValorField;
+        private int PrecioField;
+        
+        private int IdEspecialidadClinicaField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -267,19 +267,6 @@ namespace WindowsFormsApp1.ServiceCliente {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int IdEspecialidad {
-            get {
-                return this.IdEspecialidadField;
-            }
-            set {
-                if ((this.IdEspecialidadField.Equals(value) != true)) {
-                    this.IdEspecialidadField = value;
-                    this.RaisePropertyChanged("IdEspecialidad");
-                }
             }
         }
         
@@ -297,14 +284,274 @@ namespace WindowsFormsApp1.ServiceCliente {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int Valor {
+        public int Precio {
             get {
-                return this.ValorField;
+                return this.PrecioField;
             }
             set {
-                if ((this.ValorField.Equals(value) != true)) {
-                    this.ValorField = value;
-                    this.RaisePropertyChanged("Valor");
+                if ((this.PrecioField.Equals(value) != true)) {
+                    this.PrecioField = value;
+                    this.RaisePropertyChanged("Precio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public int IdEspecialidadClinica {
+            get {
+                return this.IdEspecialidadClinicaField;
+            }
+            set {
+                if ((this.IdEspecialidadClinicaField.Equals(value) != true)) {
+                    this.IdEspecialidadClinicaField = value;
+                    this.RaisePropertyChanged("IdEspecialidadClinica");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Empleado", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Empleado : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdEmpleadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsuarioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContraseñaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ApellidoPaternoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ApellidoMaternoField;
+        
+        private int TelefonoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CorreoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FechaNacimientoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WindowsFormsApp1.ServiceCliente.Cargo CargoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int IdEmpleado {
+            get {
+                return this.IdEmpleadoField;
+            }
+            set {
+                if ((this.IdEmpleadoField.Equals(value) != true)) {
+                    this.IdEmpleadoField = value;
+                    this.RaisePropertyChanged("IdEmpleado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Usuario {
+            get {
+                return this.UsuarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsuarioField, value) != true)) {
+                    this.UsuarioField = value;
+                    this.RaisePropertyChanged("Usuario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public string Contraseña {
+            get {
+                return this.ContraseñaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContraseñaField, value) != true)) {
+                    this.ContraseñaField = value;
+                    this.RaisePropertyChanged("Contraseña");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
+                    this.NombreField = value;
+                    this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string ApellidoPaterno {
+            get {
+                return this.ApellidoPaternoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ApellidoPaternoField, value) != true)) {
+                    this.ApellidoPaternoField = value;
+                    this.RaisePropertyChanged("ApellidoPaterno");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string ApellidoMaterno {
+            get {
+                return this.ApellidoMaternoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ApellidoMaternoField, value) != true)) {
+                    this.ApellidoMaternoField = value;
+                    this.RaisePropertyChanged("ApellidoMaterno");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
+        public int Telefono {
+            get {
+                return this.TelefonoField;
+            }
+            set {
+                if ((this.TelefonoField.Equals(value) != true)) {
+                    this.TelefonoField = value;
+                    this.RaisePropertyChanged("Telefono");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
+        public string Correo {
+            get {
+                return this.CorreoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CorreoField, value) != true)) {
+                    this.CorreoField = value;
+                    this.RaisePropertyChanged("Correo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
+        public string FechaNacimiento {
+            get {
+                return this.FechaNacimientoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FechaNacimientoField, value) != true)) {
+                    this.FechaNacimientoField = value;
+                    this.RaisePropertyChanged("FechaNacimiento");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=9)]
+        public WindowsFormsApp1.ServiceCliente.Cargo Cargo {
+            get {
+                return this.CargoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CargoField, value) != true)) {
+                    this.CargoField = value;
+                    this.RaisePropertyChanged("Cargo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Cargo", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Cargo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdCargoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int IdCargo {
+            get {
+                return this.IdCargoField;
+            }
+            set {
+                if ((this.IdCargoField.Equals(value) != true)) {
+                    this.IdCargoField = value;
+                    this.RaisePropertyChanged("IdCargo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
+                    this.NombreField = value;
+                    this.RaisePropertyChanged("Nombre");
                 }
             }
         }
@@ -328,9 +575,6 @@ namespace WindowsFormsApp1.ServiceCliente {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private WindowsFormsApp1.ServiceCliente.Terapeuta IdTerapeutaField;
-        
         private int IdHoraField;
         
         private System.DateTime FechaField;
@@ -338,94 +582,23 @@ namespace WindowsFormsApp1.ServiceCliente {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private WindowsFormsApp1.ServiceCliente.Bloque IdBloqueField;
         
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public WindowsFormsApp1.ServiceCliente.Terapeuta IdTerapeuta {
-            get {
-                return this.IdTerapeutaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IdTerapeutaField, value) != true)) {
-                    this.IdTerapeutaField = value;
-                    this.RaisePropertyChanged("IdTerapeuta");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
-        public int IdHora {
-            get {
-                return this.IdHoraField;
-            }
-            set {
-                if ((this.IdHoraField.Equals(value) != true)) {
-                    this.IdHoraField = value;
-                    this.RaisePropertyChanged("IdHora");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
-        public System.DateTime Fecha {
-            get {
-                return this.FechaField;
-            }
-            set {
-                if ((this.FechaField.Equals(value) != true)) {
-                    this.FechaField = value;
-                    this.RaisePropertyChanged("Fecha");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public WindowsFormsApp1.ServiceCliente.Bloque IdBloque {
-            get {
-                return this.IdBloqueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IdBloqueField, value) != true)) {
-                    this.IdBloqueField = value;
-                    this.RaisePropertyChanged("IdBloque");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Terapeuta", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class Terapeuta : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IdTerapeutaField;
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WindowsFormsApp1.ServiceCliente.Paciente PacienteField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private WindowsFormsApp1.ServiceCliente.Especialidad IdEspecialidadField;
+        private WindowsFormsApp1.ServiceCliente.EstadoReserva EstadoReservaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private WindowsFormsApp1.ServiceCliente.Usuario IdUsuarioField;
+        private WindowsFormsApp1.ServiceCliente.EspecialidadClinica EspecialidadClinicaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WindowsFormsApp1.ServiceCliente.Empleado TerapeutaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WindowsFormsApp1.ServiceCliente.Sala SalaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WindowsFormsApp1.ServiceCliente.Venta VentaField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -438,40 +611,118 @@ namespace WindowsFormsApp1.ServiceCliente {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int IdTerapeuta {
+        public int IdHora {
             get {
-                return this.IdTerapeutaField;
+                return this.IdHoraField;
             }
             set {
-                if ((this.IdTerapeutaField.Equals(value) != true)) {
-                    this.IdTerapeutaField = value;
-                    this.RaisePropertyChanged("IdTerapeuta");
+                if ((this.IdHoraField.Equals(value) != true)) {
+                    this.IdHoraField = value;
+                    this.RaisePropertyChanged("IdHora");
                 }
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public WindowsFormsApp1.ServiceCliente.Especialidad IdEspecialidad {
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
+        public System.DateTime Fecha {
             get {
-                return this.IdEspecialidadField;
+                return this.FechaField;
             }
             set {
-                if ((object.ReferenceEquals(this.IdEspecialidadField, value) != true)) {
-                    this.IdEspecialidadField = value;
-                    this.RaisePropertyChanged("IdEspecialidad");
+                if ((this.FechaField.Equals(value) != true)) {
+                    this.FechaField = value;
+                    this.RaisePropertyChanged("Fecha");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public WindowsFormsApp1.ServiceCliente.Usuario IdUsuario {
+        public WindowsFormsApp1.ServiceCliente.Bloque IdBloque {
             get {
-                return this.IdUsuarioField;
+                return this.IdBloqueField;
             }
             set {
-                if ((object.ReferenceEquals(this.IdUsuarioField, value) != true)) {
-                    this.IdUsuarioField = value;
-                    this.RaisePropertyChanged("IdUsuario");
+                if ((object.ReferenceEquals(this.IdBloqueField, value) != true)) {
+                    this.IdBloqueField = value;
+                    this.RaisePropertyChanged("IdBloque");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public WindowsFormsApp1.ServiceCliente.Paciente Paciente {
+            get {
+                return this.PacienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PacienteField, value) != true)) {
+                    this.PacienteField = value;
+                    this.RaisePropertyChanged("Paciente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public WindowsFormsApp1.ServiceCliente.EstadoReserva EstadoReserva {
+            get {
+                return this.EstadoReservaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EstadoReservaField, value) != true)) {
+                    this.EstadoReservaField = value;
+                    this.RaisePropertyChanged("EstadoReserva");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public WindowsFormsApp1.ServiceCliente.EspecialidadClinica EspecialidadClinica {
+            get {
+                return this.EspecialidadClinicaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EspecialidadClinicaField, value) != true)) {
+                    this.EspecialidadClinicaField = value;
+                    this.RaisePropertyChanged("EspecialidadClinica");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
+        public WindowsFormsApp1.ServiceCliente.Empleado Terapeuta {
+            get {
+                return this.TerapeutaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TerapeutaField, value) != true)) {
+                    this.TerapeutaField = value;
+                    this.RaisePropertyChanged("Terapeuta");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
+        public WindowsFormsApp1.ServiceCliente.Sala Sala {
+            get {
+                return this.SalaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SalaField, value) != true)) {
+                    this.SalaField = value;
+                    this.RaisePropertyChanged("Sala");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
+        public WindowsFormsApp1.ServiceCliente.Venta Venta {
+            get {
+                return this.VentaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VentaField, value) != true)) {
+                    this.VentaField = value;
+                    this.RaisePropertyChanged("Venta");
                 }
             }
         }
@@ -562,281 +813,6 @@ namespace WindowsFormsApp1.ServiceCliente {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Usuario", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class Usuario : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IdUsuarioField;
-        
-        private int EstadoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private WindowsFormsApp1.ServiceCliente.RolUsuario IdRolField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private WindowsFormsApp1.ServiceCliente.Persona IdPersonaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ContraseñaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NombreUsuarioField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int IdUsuario {
-            get {
-                return this.IdUsuarioField;
-            }
-            set {
-                if ((this.IdUsuarioField.Equals(value) != true)) {
-                    this.IdUsuarioField = value;
-                    this.RaisePropertyChanged("IdUsuario");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
-        public int Estado {
-            get {
-                return this.EstadoField;
-            }
-            set {
-                if ((this.EstadoField.Equals(value) != true)) {
-                    this.EstadoField = value;
-                    this.RaisePropertyChanged("Estado");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public WindowsFormsApp1.ServiceCliente.RolUsuario IdRol {
-            get {
-                return this.IdRolField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IdRolField, value) != true)) {
-                    this.IdRolField = value;
-                    this.RaisePropertyChanged("IdRol");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public WindowsFormsApp1.ServiceCliente.Persona IdPersona {
-            get {
-                return this.IdPersonaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IdPersonaField, value) != true)) {
-                    this.IdPersonaField = value;
-                    this.RaisePropertyChanged("IdPersona");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public string Contraseña {
-            get {
-                return this.ContraseñaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ContraseñaField, value) != true)) {
-                    this.ContraseñaField = value;
-                    this.RaisePropertyChanged("Contraseña");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
-        public string NombreUsuario {
-            get {
-                return this.NombreUsuarioField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NombreUsuarioField, value) != true)) {
-                    this.NombreUsuarioField = value;
-                    this.RaisePropertyChanged("NombreUsuario");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="RolUsuario", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class RolUsuario : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IdRolField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NombreField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int IdRol {
-            get {
-                return this.IdRolField;
-            }
-            set {
-                if ((this.IdRolField.Equals(value) != true)) {
-                    this.IdRolField = value;
-                    this.RaisePropertyChanged("IdRol");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Nombre {
-            get {
-                return this.NombreField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
-                    this.NombreField = value;
-                    this.RaisePropertyChanged("Nombre");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Reserva", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class Reserva : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IdReservaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private WindowsFormsApp1.ServiceCliente.HoraAtencion IdHoraField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private WindowsFormsApp1.ServiceCliente.Persona IdPacienteField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private WindowsFormsApp1.ServiceCliente.EstadoReserva IdEstadoField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int IdReserva {
-            get {
-                return this.IdReservaField;
-            }
-            set {
-                if ((this.IdReservaField.Equals(value) != true)) {
-                    this.IdReservaField = value;
-                    this.RaisePropertyChanged("IdReserva");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public WindowsFormsApp1.ServiceCliente.HoraAtencion IdHora {
-            get {
-                return this.IdHoraField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IdHoraField, value) != true)) {
-                    this.IdHoraField = value;
-                    this.RaisePropertyChanged("IdHora");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public WindowsFormsApp1.ServiceCliente.Persona IdPaciente {
-            get {
-                return this.IdPacienteField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IdPacienteField, value) != true)) {
-                    this.IdPacienteField = value;
-                    this.RaisePropertyChanged("IdPaciente");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public WindowsFormsApp1.ServiceCliente.EstadoReserva IdEstado {
-            get {
-                return this.IdEstadoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IdEstadoField, value) != true)) {
-                    this.IdEstadoField = value;
-                    this.RaisePropertyChanged("IdEstado");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="EstadoReserva", Namespace="http://tempuri.org/")]
     [System.SerializableAttribute()]
     public partial class EstadoReserva : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -893,6 +869,375 @@ namespace WindowsFormsApp1.ServiceCliente {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Sala", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Sala : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdSalaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int IdSala {
+            get {
+                return this.IdSalaField;
+            }
+            set {
+                if ((this.IdSalaField.Equals(value) != true)) {
+                    this.IdSalaField = value;
+                    this.RaisePropertyChanged("IdSala");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
+                    this.NombreField = value;
+                    this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Venta", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class Venta : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdVentaField;
+        
+        private System.DateTime FechaPagoField;
+        
+        private int MontoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WindowsFormsApp1.ServiceCliente.EstadoVenta EstadoVentaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WindowsFormsApp1.ServiceCliente.MedioPago MedioPagoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int IdVenta {
+            get {
+                return this.IdVentaField;
+            }
+            set {
+                if ((this.IdVentaField.Equals(value) != true)) {
+                    this.IdVentaField = value;
+                    this.RaisePropertyChanged("IdVenta");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
+        public System.DateTime FechaPago {
+            get {
+                return this.FechaPagoField;
+            }
+            set {
+                if ((this.FechaPagoField.Equals(value) != true)) {
+                    this.FechaPagoField = value;
+                    this.RaisePropertyChanged("FechaPago");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public int Monto {
+            get {
+                return this.MontoField;
+            }
+            set {
+                if ((this.MontoField.Equals(value) != true)) {
+                    this.MontoField = value;
+                    this.RaisePropertyChanged("Monto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public WindowsFormsApp1.ServiceCliente.EstadoVenta EstadoVenta {
+            get {
+                return this.EstadoVentaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EstadoVentaField, value) != true)) {
+                    this.EstadoVentaField = value;
+                    this.RaisePropertyChanged("EstadoVenta");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public WindowsFormsApp1.ServiceCliente.MedioPago MedioPago {
+            get {
+                return this.MedioPagoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MedioPagoField, value) != true)) {
+                    this.MedioPagoField = value;
+                    this.RaisePropertyChanged("MedioPago");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EstadoVenta", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class EstadoVenta : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdEstadoVentaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescripcionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int IdEstadoVenta {
+            get {
+                return this.IdEstadoVentaField;
+            }
+            set {
+                if ((this.IdEstadoVentaField.Equals(value) != true)) {
+                    this.IdEstadoVentaField = value;
+                    this.RaisePropertyChanged("IdEstadoVenta");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string Descripcion {
+            get {
+                return this.DescripcionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescripcionField, value) != true)) {
+                    this.DescripcionField = value;
+                    this.RaisePropertyChanged("Descripcion");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MedioPago", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class MedioPago : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdMedioPagoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int IdMedioPago {
+            get {
+                return this.IdMedioPagoField;
+            }
+            set {
+                if ((this.IdMedioPagoField.Equals(value) != true)) {
+                    this.IdMedioPagoField = value;
+                    this.RaisePropertyChanged("IdMedioPago");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
+                    this.NombreField = value;
+                    this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EspecialidadTerapeuta", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class EspecialidadTerapeuta : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdEspecialidadTerapeutaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WindowsFormsApp1.ServiceCliente.EspecialidadClinica EspecialidadClinicaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WindowsFormsApp1.ServiceCliente.Empleado EmpleadoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int IdEspecialidadTerapeuta {
+            get {
+                return this.IdEspecialidadTerapeutaField;
+            }
+            set {
+                if ((this.IdEspecialidadTerapeutaField.Equals(value) != true)) {
+                    this.IdEspecialidadTerapeutaField = value;
+                    this.RaisePropertyChanged("IdEspecialidadTerapeuta");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public WindowsFormsApp1.ServiceCliente.EspecialidadClinica EspecialidadClinica {
+            get {
+                return this.EspecialidadClinicaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EspecialidadClinicaField, value) != true)) {
+                    this.EspecialidadClinicaField = value;
+                    this.RaisePropertyChanged("EspecialidadClinica");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
+        public WindowsFormsApp1.ServiceCliente.Empleado Empleado {
+            get {
+                return this.EmpleadoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmpleadoField, value) != true)) {
+                    this.EmpleadoField = value;
+                    this.RaisePropertyChanged("Empleado");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfInt", Namespace="http://tempuri.org/", ItemName="int")]
+    [System.SerializableAttribute()]
+    public class ArrayOfInt : System.Collections.Generic.List<int> {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -954,6 +1299,27 @@ namespace WindowsFormsApp1.ServiceCliente {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/rechazarConfirmarReservaService", ReplyAction="*")]
         System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceResponse> rechazarConfirmarReservaServiceAsync(WindowsFormsApp1.ServiceCliente.rechazarConfirmarReservaServiceRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento generarListaMedioPagoServiceResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/generarListaMedioPagoService", ReplyAction="*")]
+        WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceResponse generarListaMedioPagoService(WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/generarListaMedioPagoService", ReplyAction="*")]
+        System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceResponse> generarListaMedioPagoServiceAsync(WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento venta del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/guardarVentaRealizadaService", ReplyAction="*")]
+        WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceResponse guardarVentaRealizadaService(WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/guardarVentaRealizadaService", ReplyAction="*")]
+        System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceResponse> guardarVentaRealizadaServiceAsync(WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento rut del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/horasPorRutPacienteMasVentaService", ReplyAction="*")]
+        WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceResponse horasPorRutPacienteMasVentaService(WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/horasPorRutPacienteMasVentaService", ReplyAction="*")]
+        System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceResponse> horasPorRutPacienteMasVentaServiceAsync(WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1041,7 +1407,7 @@ namespace WindowsFormsApp1.ServiceCliente {
     public partial class registrarPacienteServiceRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public WindowsFormsApp1.ServiceCliente.Persona persona;
+        public WindowsFormsApp1.ServiceCliente.Paciente persona;
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
         public int idHoraAtencion;
@@ -1049,7 +1415,7 @@ namespace WindowsFormsApp1.ServiceCliente {
         public registrarPacienteServiceRequestBody() {
         }
         
-        public registrarPacienteServiceRequestBody(WindowsFormsApp1.ServiceCliente.Persona persona, int idHoraAtencion) {
+        public registrarPacienteServiceRequestBody(WindowsFormsApp1.ServiceCliente.Paciente persona, int idHoraAtencion) {
             this.persona = persona;
             this.idHoraAtencion = idHoraAtencion;
         }
@@ -1113,18 +1479,18 @@ namespace WindowsFormsApp1.ServiceCliente {
     public partial class buscarHorasDisponiblesServiceRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public WindowsFormsApp1.ServiceCliente.Especialidad especialidad;
+        public WindowsFormsApp1.ServiceCliente.EspecialidadClinica especialidad;
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
         public System.Nullable<System.DateTime> fecha;
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public WindowsFormsApp1.ServiceCliente.Persona persona;
+        public WindowsFormsApp1.ServiceCliente.Empleado persona;
         
         public buscarHorasDisponiblesServiceRequestBody() {
         }
         
-        public buscarHorasDisponiblesServiceRequestBody(WindowsFormsApp1.ServiceCliente.Especialidad especialidad, System.Nullable<System.DateTime> fecha, WindowsFormsApp1.ServiceCliente.Persona persona) {
+        public buscarHorasDisponiblesServiceRequestBody(WindowsFormsApp1.ServiceCliente.EspecialidadClinica especialidad, System.Nullable<System.DateTime> fecha, WindowsFormsApp1.ServiceCliente.Empleado persona) {
             this.especialidad = especialidad;
             this.fecha = fecha;
             this.persona = persona;
@@ -1216,12 +1582,12 @@ namespace WindowsFormsApp1.ServiceCliente {
     public partial class generarListaEspecialidadServiceResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public WindowsFormsApp1.ServiceCliente.Especialidad[] generarListaEspecialidadServiceResult;
+        public WindowsFormsApp1.ServiceCliente.EspecialidadClinica[] generarListaEspecialidadServiceResult;
         
         public generarListaEspecialidadServiceResponseBody() {
         }
         
-        public generarListaEspecialidadServiceResponseBody(WindowsFormsApp1.ServiceCliente.Especialidad[] generarListaEspecialidadServiceResult) {
+        public generarListaEspecialidadServiceResponseBody(WindowsFormsApp1.ServiceCliente.EspecialidadClinica[] generarListaEspecialidadServiceResult) {
             this.generarListaEspecialidadServiceResult = generarListaEspecialidadServiceResult;
         }
     }
@@ -1277,12 +1643,12 @@ namespace WindowsFormsApp1.ServiceCliente {
     public partial class generarListaEspecialistaServiceResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public WindowsFormsApp1.ServiceCliente.Terapeuta[] generarListaEspecialistaServiceResult;
+        public WindowsFormsApp1.ServiceCliente.EspecialidadTerapeuta[] generarListaEspecialistaServiceResult;
         
         public generarListaEspecialistaServiceResponseBody() {
         }
         
-        public generarListaEspecialistaServiceResponseBody(WindowsFormsApp1.ServiceCliente.Terapeuta[] generarListaEspecialistaServiceResult) {
+        public generarListaEspecialistaServiceResponseBody(WindowsFormsApp1.ServiceCliente.EspecialidadTerapeuta[] generarListaEspecialistaServiceResult) {
             this.generarListaEspecialistaServiceResult = generarListaEspecialistaServiceResult;
         }
     }
@@ -1345,12 +1711,12 @@ namespace WindowsFormsApp1.ServiceCliente {
     public partial class buscarPacienteServiceResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public WindowsFormsApp1.ServiceCliente.Persona buscarPacienteServiceResult;
+        public WindowsFormsApp1.ServiceCliente.Paciente buscarPacienteServiceResult;
         
         public buscarPacienteServiceResponseBody() {
         }
         
-        public buscarPacienteServiceResponseBody(WindowsFormsApp1.ServiceCliente.Persona buscarPacienteServiceResult) {
+        public buscarPacienteServiceResponseBody(WindowsFormsApp1.ServiceCliente.Paciente buscarPacienteServiceResult) {
             this.buscarPacienteServiceResult = buscarPacienteServiceResult;
         }
     }
@@ -1413,12 +1779,12 @@ namespace WindowsFormsApp1.ServiceCliente {
     public partial class listaReservasPorRutServiceResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public WindowsFormsApp1.ServiceCliente.Reserva[] listaReservasPorRutServiceResult;
+        public WindowsFormsApp1.ServiceCliente.HoraAtencion[] listaReservasPorRutServiceResult;
         
         public listaReservasPorRutServiceResponseBody() {
         }
         
-        public listaReservasPorRutServiceResponseBody(WindowsFormsApp1.ServiceCliente.Reserva[] listaReservasPorRutServiceResult) {
+        public listaReservasPorRutServiceResponseBody(WindowsFormsApp1.ServiceCliente.HoraAtencion[] listaReservasPorRutServiceResult) {
             this.listaReservasPorRutServiceResult = listaReservasPorRutServiceResult;
         }
     }
@@ -1495,6 +1861,207 @@ namespace WindowsFormsApp1.ServiceCliente {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class generarListaMedioPagoServiceRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="generarListaMedioPagoService", Namespace="http://tempuri.org/", Order=0)]
+        public WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceRequestBody Body;
+        
+        public generarListaMedioPagoServiceRequest() {
+        }
+        
+        public generarListaMedioPagoServiceRequest(WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class generarListaMedioPagoServiceRequestBody {
+        
+        public generarListaMedioPagoServiceRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class generarListaMedioPagoServiceResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="generarListaMedioPagoServiceResponse", Namespace="http://tempuri.org/", Order=0)]
+        public WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceResponseBody Body;
+        
+        public generarListaMedioPagoServiceResponse() {
+        }
+        
+        public generarListaMedioPagoServiceResponse(WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class generarListaMedioPagoServiceResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public WindowsFormsApp1.ServiceCliente.MedioPago[] generarListaMedioPagoServiceResult;
+        
+        public generarListaMedioPagoServiceResponseBody() {
+        }
+        
+        public generarListaMedioPagoServiceResponseBody(WindowsFormsApp1.ServiceCliente.MedioPago[] generarListaMedioPagoServiceResult) {
+            this.generarListaMedioPagoServiceResult = generarListaMedioPagoServiceResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class guardarVentaRealizadaServiceRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="guardarVentaRealizadaService", Namespace="http://tempuri.org/", Order=0)]
+        public WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceRequestBody Body;
+        
+        public guardarVentaRealizadaServiceRequest() {
+        }
+        
+        public guardarVentaRealizadaServiceRequest(WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class guardarVentaRealizadaServiceRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public WindowsFormsApp1.ServiceCliente.Venta venta;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public WindowsFormsApp1.ServiceCliente.ArrayOfInt idHora;
+        
+        public guardarVentaRealizadaServiceRequestBody() {
+        }
+        
+        public guardarVentaRealizadaServiceRequestBody(WindowsFormsApp1.ServiceCliente.Venta venta, WindowsFormsApp1.ServiceCliente.ArrayOfInt idHora) {
+            this.venta = venta;
+            this.idHora = idHora;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class guardarVentaRealizadaServiceResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="guardarVentaRealizadaServiceResponse", Namespace="http://tempuri.org/", Order=0)]
+        public WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceResponseBody Body;
+        
+        public guardarVentaRealizadaServiceResponse() {
+        }
+        
+        public guardarVentaRealizadaServiceResponse(WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class guardarVentaRealizadaServiceResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public WindowsFormsApp1.ServiceCliente.StatusResponce guardarVentaRealizadaServiceResult;
+        
+        public guardarVentaRealizadaServiceResponseBody() {
+        }
+        
+        public guardarVentaRealizadaServiceResponseBody(WindowsFormsApp1.ServiceCliente.StatusResponce guardarVentaRealizadaServiceResult) {
+            this.guardarVentaRealizadaServiceResult = guardarVentaRealizadaServiceResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class horasPorRutPacienteMasVentaServiceRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="horasPorRutPacienteMasVentaService", Namespace="http://tempuri.org/", Order=0)]
+        public WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceRequestBody Body;
+        
+        public horasPorRutPacienteMasVentaServiceRequest() {
+        }
+        
+        public horasPorRutPacienteMasVentaServiceRequest(WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class horasPorRutPacienteMasVentaServiceRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string rut;
+        
+        public horasPorRutPacienteMasVentaServiceRequestBody() {
+        }
+        
+        public horasPorRutPacienteMasVentaServiceRequestBody(string rut) {
+            this.rut = rut;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class horasPorRutPacienteMasVentaServiceResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="horasPorRutPacienteMasVentaServiceResponse", Namespace="http://tempuri.org/", Order=0)]
+        public WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceResponseBody Body;
+        
+        public horasPorRutPacienteMasVentaServiceResponse() {
+        }
+        
+        public horasPorRutPacienteMasVentaServiceResponse(WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class horasPorRutPacienteMasVentaServiceResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public WindowsFormsApp1.ServiceCliente.HoraAtencion[] horasPorRutPacienteMasVentaServiceResult;
+        
+        public horasPorRutPacienteMasVentaServiceResponseBody() {
+        }
+        
+        public horasPorRutPacienteMasVentaServiceResponseBody(WindowsFormsApp1.ServiceCliente.HoraAtencion[] horasPorRutPacienteMasVentaServiceResult) {
+            this.horasPorRutPacienteMasVentaServiceResult = horasPorRutPacienteMasVentaServiceResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface WebServiceClienteSoapChannel : WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap, System.ServiceModel.IClientChannel {
     }
@@ -1550,7 +2117,7 @@ namespace WindowsFormsApp1.ServiceCliente {
             return base.Channel.registrarPacienteService(request);
         }
         
-        public WindowsFormsApp1.ServiceCliente.StatusResponce registrarPacienteService(WindowsFormsApp1.ServiceCliente.Persona persona, int idHoraAtencion) {
+        public WindowsFormsApp1.ServiceCliente.StatusResponce registrarPacienteService(WindowsFormsApp1.ServiceCliente.Paciente persona, int idHoraAtencion) {
             WindowsFormsApp1.ServiceCliente.registrarPacienteServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.registrarPacienteServiceRequest();
             inValue.Body = new WindowsFormsApp1.ServiceCliente.registrarPacienteServiceRequestBody();
             inValue.Body.persona = persona;
@@ -1564,7 +2131,7 @@ namespace WindowsFormsApp1.ServiceCliente {
             return base.Channel.registrarPacienteServiceAsync(request);
         }
         
-        public System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.registrarPacienteServiceResponse> registrarPacienteServiceAsync(WindowsFormsApp1.ServiceCliente.Persona persona, int idHoraAtencion) {
+        public System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.registrarPacienteServiceResponse> registrarPacienteServiceAsync(WindowsFormsApp1.ServiceCliente.Paciente persona, int idHoraAtencion) {
             WindowsFormsApp1.ServiceCliente.registrarPacienteServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.registrarPacienteServiceRequest();
             inValue.Body = new WindowsFormsApp1.ServiceCliente.registrarPacienteServiceRequestBody();
             inValue.Body.persona = persona;
@@ -1577,7 +2144,7 @@ namespace WindowsFormsApp1.ServiceCliente {
             return base.Channel.buscarHorasDisponiblesService(request);
         }
         
-        public WindowsFormsApp1.ServiceCliente.HoraAtencion[] buscarHorasDisponiblesService(WindowsFormsApp1.ServiceCliente.Especialidad especialidad, System.Nullable<System.DateTime> fecha, WindowsFormsApp1.ServiceCliente.Persona persona) {
+        public WindowsFormsApp1.ServiceCliente.HoraAtencion[] buscarHorasDisponiblesService(WindowsFormsApp1.ServiceCliente.EspecialidadClinica especialidad, System.Nullable<System.DateTime> fecha, WindowsFormsApp1.ServiceCliente.Empleado persona) {
             WindowsFormsApp1.ServiceCliente.buscarHorasDisponiblesServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.buscarHorasDisponiblesServiceRequest();
             inValue.Body = new WindowsFormsApp1.ServiceCliente.buscarHorasDisponiblesServiceRequestBody();
             inValue.Body.especialidad = especialidad;
@@ -1592,7 +2159,7 @@ namespace WindowsFormsApp1.ServiceCliente {
             return base.Channel.buscarHorasDisponiblesServiceAsync(request);
         }
         
-        public System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.buscarHorasDisponiblesServiceResponse> buscarHorasDisponiblesServiceAsync(WindowsFormsApp1.ServiceCliente.Especialidad especialidad, System.Nullable<System.DateTime> fecha, WindowsFormsApp1.ServiceCliente.Persona persona) {
+        public System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.buscarHorasDisponiblesServiceResponse> buscarHorasDisponiblesServiceAsync(WindowsFormsApp1.ServiceCliente.EspecialidadClinica especialidad, System.Nullable<System.DateTime> fecha, WindowsFormsApp1.ServiceCliente.Empleado persona) {
             WindowsFormsApp1.ServiceCliente.buscarHorasDisponiblesServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.buscarHorasDisponiblesServiceRequest();
             inValue.Body = new WindowsFormsApp1.ServiceCliente.buscarHorasDisponiblesServiceRequestBody();
             inValue.Body.especialidad = especialidad;
@@ -1606,7 +2173,7 @@ namespace WindowsFormsApp1.ServiceCliente {
             return base.Channel.generarListaEspecialidadService(request);
         }
         
-        public WindowsFormsApp1.ServiceCliente.Especialidad[] generarListaEspecialidadService() {
+        public WindowsFormsApp1.ServiceCliente.EspecialidadClinica[] generarListaEspecialidadService() {
             WindowsFormsApp1.ServiceCliente.generarListaEspecialidadServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.generarListaEspecialidadServiceRequest();
             inValue.Body = new WindowsFormsApp1.ServiceCliente.generarListaEspecialidadServiceRequestBody();
             WindowsFormsApp1.ServiceCliente.generarListaEspecialidadServiceResponse retVal = ((WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap)(this)).generarListaEspecialidadService(inValue);
@@ -1629,7 +2196,7 @@ namespace WindowsFormsApp1.ServiceCliente {
             return base.Channel.generarListaEspecialistaService(request);
         }
         
-        public WindowsFormsApp1.ServiceCliente.Terapeuta[] generarListaEspecialistaService() {
+        public WindowsFormsApp1.ServiceCliente.EspecialidadTerapeuta[] generarListaEspecialistaService() {
             WindowsFormsApp1.ServiceCliente.generarListaEspecialistaServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.generarListaEspecialistaServiceRequest();
             inValue.Body = new WindowsFormsApp1.ServiceCliente.generarListaEspecialistaServiceRequestBody();
             WindowsFormsApp1.ServiceCliente.generarListaEspecialistaServiceResponse retVal = ((WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap)(this)).generarListaEspecialistaService(inValue);
@@ -1652,7 +2219,7 @@ namespace WindowsFormsApp1.ServiceCliente {
             return base.Channel.buscarPacienteService(request);
         }
         
-        public WindowsFormsApp1.ServiceCliente.Persona buscarPacienteService(string rut) {
+        public WindowsFormsApp1.ServiceCliente.Paciente buscarPacienteService(string rut) {
             WindowsFormsApp1.ServiceCliente.buscarPacienteServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.buscarPacienteServiceRequest();
             inValue.Body = new WindowsFormsApp1.ServiceCliente.buscarPacienteServiceRequestBody();
             inValue.Body.rut = rut;
@@ -1677,7 +2244,7 @@ namespace WindowsFormsApp1.ServiceCliente {
             return base.Channel.listaReservasPorRutService(request);
         }
         
-        public WindowsFormsApp1.ServiceCliente.Reserva[] listaReservasPorRutService(string rut) {
+        public WindowsFormsApp1.ServiceCliente.HoraAtencion[] listaReservasPorRutService(string rut) {
             WindowsFormsApp1.ServiceCliente.listaReservasPorRutServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.listaReservasPorRutServiceRequest();
             inValue.Body = new WindowsFormsApp1.ServiceCliente.listaReservasPorRutServiceRequestBody();
             inValue.Body.rut = rut;
@@ -1722,6 +2289,81 @@ namespace WindowsFormsApp1.ServiceCliente {
             inValue.Body.cambioEstado = cambioEstado;
             inValue.Body.idReserva = idReserva;
             return ((WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap)(this)).rechazarConfirmarReservaServiceAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceResponse WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap.generarListaMedioPagoService(WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceRequest request) {
+            return base.Channel.generarListaMedioPagoService(request);
+        }
+        
+        public WindowsFormsApp1.ServiceCliente.MedioPago[] generarListaMedioPagoService() {
+            WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceRequest();
+            inValue.Body = new WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceRequestBody();
+            WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceResponse retVal = ((WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap)(this)).generarListaMedioPagoService(inValue);
+            return retVal.Body.generarListaMedioPagoServiceResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceResponse> WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap.generarListaMedioPagoServiceAsync(WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceRequest request) {
+            return base.Channel.generarListaMedioPagoServiceAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceResponse> generarListaMedioPagoServiceAsync() {
+            WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceRequest();
+            inValue.Body = new WindowsFormsApp1.ServiceCliente.generarListaMedioPagoServiceRequestBody();
+            return ((WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap)(this)).generarListaMedioPagoServiceAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceResponse WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap.guardarVentaRealizadaService(WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceRequest request) {
+            return base.Channel.guardarVentaRealizadaService(request);
+        }
+        
+        public WindowsFormsApp1.ServiceCliente.StatusResponce guardarVentaRealizadaService(WindowsFormsApp1.ServiceCliente.Venta venta, WindowsFormsApp1.ServiceCliente.ArrayOfInt idHora) {
+            WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceRequest();
+            inValue.Body = new WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceRequestBody();
+            inValue.Body.venta = venta;
+            inValue.Body.idHora = idHora;
+            WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceResponse retVal = ((WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap)(this)).guardarVentaRealizadaService(inValue);
+            return retVal.Body.guardarVentaRealizadaServiceResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceResponse> WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap.guardarVentaRealizadaServiceAsync(WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceRequest request) {
+            return base.Channel.guardarVentaRealizadaServiceAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceResponse> guardarVentaRealizadaServiceAsync(WindowsFormsApp1.ServiceCliente.Venta venta, WindowsFormsApp1.ServiceCliente.ArrayOfInt idHora) {
+            WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceRequest();
+            inValue.Body = new WindowsFormsApp1.ServiceCliente.guardarVentaRealizadaServiceRequestBody();
+            inValue.Body.venta = venta;
+            inValue.Body.idHora = idHora;
+            return ((WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap)(this)).guardarVentaRealizadaServiceAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceResponse WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap.horasPorRutPacienteMasVentaService(WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceRequest request) {
+            return base.Channel.horasPorRutPacienteMasVentaService(request);
+        }
+        
+        public WindowsFormsApp1.ServiceCliente.HoraAtencion[] horasPorRutPacienteMasVentaService(string rut) {
+            WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceRequest();
+            inValue.Body = new WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceRequestBody();
+            inValue.Body.rut = rut;
+            WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceResponse retVal = ((WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap)(this)).horasPorRutPacienteMasVentaService(inValue);
+            return retVal.Body.horasPorRutPacienteMasVentaServiceResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceResponse> WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap.horasPorRutPacienteMasVentaServiceAsync(WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceRequest request) {
+            return base.Channel.horasPorRutPacienteMasVentaServiceAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceResponse> horasPorRutPacienteMasVentaServiceAsync(string rut) {
+            WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceRequest();
+            inValue.Body = new WindowsFormsApp1.ServiceCliente.horasPorRutPacienteMasVentaServiceRequestBody();
+            inValue.Body.rut = rut;
+            return ((WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap)(this)).horasPorRutPacienteMasVentaServiceAsync(inValue);
         }
     }
 }

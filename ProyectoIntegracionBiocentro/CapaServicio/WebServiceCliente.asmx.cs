@@ -65,5 +65,23 @@ namespace CapaServicio
             NegocioService negocio = new NegocioService();
             return negocio.rechazarConfirmarReserva(cambioEstado, idReserva);
         }
+        [WebMethod]
+        public List<MedioPago> generarListaMedioPagoService()
+        {
+            NegocioService negocio = new NegocioService();
+            return negocio.generarListaMedioPago();
+        }
+        [WebMethod]
+        public StatusResponce guardarVentaRealizadaService(Venta venta,List<int> idHora)
+        {
+            NegocioService negocio = new NegocioService();
+            return negocio.guardarVentaRealizada(venta, idHora);
+        }
+        [WebMethod]
+        public List<HoraAtencion> horasPorRutPacienteMasVentaService(String rut)
+        {
+            NegocioService negocio = new NegocioService();
+            return negocio.horasPorRutPacienteMasVenta(rut);
+        }
     }
 }

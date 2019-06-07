@@ -11,6 +11,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
             cargarEspecialidad();
             cargarEspecialista();
+            cargarMedioPago();
             this.btnCancelar.Enabled = false;
             this.btnConfirmar.Enabled = false;
         }
@@ -54,7 +55,7 @@ namespace WindowsFormsApp1
                 }
                 int idHoraSeleccionada = Convert.ToInt32(this.dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
-                ServiceCliente.Persona persona = new ServiceCliente.Persona();
+                ServiceCliente.Paciente persona = new ServiceCliente.Paciente();
                 persona.Rut = this.txtRut.Text;
                 persona.Nombre = this.txtNombre.Text;
                 persona.ApellidoPaterno = this.txtPaterno.Text;
@@ -103,14 +104,14 @@ namespace WindowsFormsApp1
             {
                 this.selectEspecialidad.Items.Add("Seleccionar");
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
-                List<ServiceCliente.Especialidad> listaEspecialidad = new List<ServiceCliente.Especialidad>();
+                List<ServiceCliente.EspecialidadClinica> listaEspecialidad = new List<ServiceCliente.EspecialidadClinica>();
                 listaEspecialidad.AddRange(soapClient.generarListaEspecialidadService());
                 if (listaEspecialidad == null)
                 {
                     MessageBox.Show("No se encontraron datos");
                     return;
                 }
-                foreach (ServiceCliente.Especialidad var in listaEspecialidad)
+                foreach (ServiceCliente.EspecialidadClinica var in listaEspecialidad)
                 {
                     this.selectEspecialidad.Items.Add(var);
                 }
@@ -128,19 +129,18 @@ namespace WindowsFormsApp1
             {
                 this.cmbTerapeuta.Items.Add("Seleccionar");
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
-                List<ServiceCliente.Terapeuta> listaEspecialidad = new List<ServiceCliente.Terapeuta>();
+                List<ServiceCliente.EspecialidadTerapeuta> listaEspecialidad = new List<ServiceCliente.EspecialidadTerapeuta>();
                 listaEspecialidad.AddRange(soapClient.generarListaEspecialistaService());
                 if (listaEspecialidad == null)
                 {
                     MessageBox.Show("No se encontraron datos");
                     return;
                 }
-                foreach (ServiceCliente.Terapeuta var in listaEspecialidad)
+                foreach (ServiceCliente.EspecialidadTerapeuta var in listaEspecialidad)
                 {
-
-                    this.cmbTerapeuta.Items.Add(var.IdUsuario.IdPersona);
+                    this.cmbTerapeuta.Items.Add(var);
                 }
-                this.cmbTerapeuta.DisplayMember = "nombre";
+                this.cmbTerapeuta.DisplayMember = "var.empleado.nombre";
                 this.cmbTerapeuta.SelectedIndex = 0;
             }
             catch (Exception ex)
@@ -148,20 +148,45 @@ namespace WindowsFormsApp1
                 MessageBox.Show(ex.Message,"Error al guardar: ");
             }
         }
+        private void cargarMedioPago()
+        {
+            try
+            {
+                this.comboMedioPago.Items.Add("Seleccionar");
+                ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
+                List<ServiceCliente.MedioPago> listaMedioPago = new List<ServiceCliente.MedioPago>();
+                listaMedioPago.AddRange(soapClient.generarListaMedioPagoService());
+                if (listaMedioPago == null)
+                {
+                    MessageBox.Show("No se encontraron datos");
+                    return;
+                }
+                foreach (ServiceCliente.MedioPago var in listaMedioPago)
+                {
+                    this.comboMedioPago.Items.Add(var);
+                }
+                this.comboMedioPago.DisplayMember = "nombre";
+                this.comboMedioPago.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al guardar: ");
+            }
+        }
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             try
             {
-                ServiceCliente.Persona persona = null;
+                ServiceCliente.Empleado persona = null;
                 if (this.cmbTerapeuta.SelectedIndex>0)
                 {
-                    persona = (ServiceCliente.Persona)this.cmbTerapeuta.SelectedItem;
+                    persona = (ServiceCliente.Empleado)this.cmbTerapeuta.SelectedItem;
                 }
-                ServiceCliente.Especialidad especialidad=null;
+                ServiceCliente.EspecialidadClinica especialidad =null;
                 if (this.selectEspecialidad.SelectedIndex>0)
                 {
-                    especialidad = (ServiceCliente.Especialidad)this.selectEspecialidad.SelectedItem;
+                    especialidad = (ServiceCliente.EspecialidadClinica)this.selectEspecialidad.SelectedItem;
                 }
                 DateTime? fecha=null;
                 if (this.dateTimePicker1.Value.CompareTo(DateTime.Today)<0)
@@ -177,10 +202,10 @@ namespace WindowsFormsApp1
                 this.dataGridView1.Columns.Clear();
                 this.dataGridView1.Columns.Add("idHora", "IdHora");
                 this.dataGridView1.Columns.Add("especialidad", "Especialidad");
-                this.dataGridView1.Columns.Add("rut", "rut");
                 this.dataGridView1.Columns.Add("nombre", "Nombre Especialista");
                 this.dataGridView1.Columns.Add("horaInicio", "Hora Inicio");
                 this.dataGridView1.Columns.Add("horaFin", "Hora Fin");
+                this.dataGridView1.Columns.Add("sala", "Sala");
                 //this.dataGridView1.Columns["idHora"].Visible = false;
                 if (listHoraAtencion==null || listHoraAtencion.Count==0)
                 {
@@ -191,10 +216,10 @@ namespace WindowsFormsApp1
                 }
                 foreach (ServiceCliente.HoraAtencion hora in listHoraAtencion)
                 {
-                    String nombreCompleto = hora.IdTerapeuta.IdUsuario.IdPersona.Nombre + " " + hora.IdTerapeuta.IdUsuario.IdPersona.ApellidoPaterno 
-                        + " " + hora.IdTerapeuta.IdUsuario.IdPersona.ApellidoMaterno;
-                    this.dataGridView1.Rows.Add(hora.IdHora, hora.IdTerapeuta.IdEspecialidad.Nombre, 
-                        hora.IdTerapeuta.IdUsuario.IdPersona.Rut, nombreCompleto, hora.IdBloque.HoraInicio, hora.IdBloque.HoraFin);
+                    String nombreCompleto = hora.Terapeuta.Nombre + " " + hora.Terapeuta.ApellidoPaterno 
+                        + " " + hora.Terapeuta.ApellidoMaterno;
+                    this.dataGridView1.Rows.Add(hora.IdHora, hora.EspecialidadClinica.Nombre, 
+                         nombreCompleto, hora.IdBloque.HoraInicio, hora.IdBloque.HoraFin, hora.Sala.Nombre);
                 }
                 this.dataGridView1.ClearSelection();
             }
@@ -213,8 +238,8 @@ namespace WindowsFormsApp1
                     return;
                 }
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
-                List<ServiceCliente.Reserva> listReserva = new List<ServiceCliente.Reserva>();
-                ServiceCliente.Reserva[] listaSoap = soapClient.listaReservasPorRutService(this.rutMisReservas.Text);
+                List<ServiceCliente.HoraAtencion> listReserva = new List<ServiceCliente.HoraAtencion>();
+                ServiceCliente.HoraAtencion[] listaSoap = soapClient.listaReservasPorRutService(this.rutMisReservas.Text);
                 if (listaSoap!=null)
                 {
                     for (int i = 0; i<listaSoap.Length;i++)
@@ -232,6 +257,7 @@ namespace WindowsFormsApp1
                 this.dataGridView1.Columns.Add("horaFin", "Hora Fin");
                 this.dataGridView1.Columns.Add("terapeuta", "Nombre Terapeuta");
                 this.dataGridView1.Columns.Add("estadoReserva", "Estado Reserva");
+                this.dataGridView1.Columns.Add("monto", "Valor Consulta");
                 this.dataGridView1.Columns["idReserva"].Visible = false;
                 if (listReserva == null || listReserva.Count == 0)
                 {
@@ -239,16 +265,16 @@ namespace WindowsFormsApp1
                     MessageBox.Show(" No se encontraron reservas para ese rut");
                     return;
                 }
-                foreach (ServiceCliente.Reserva res in listReserva)
+                foreach (ServiceCliente.HoraAtencion res in listReserva)
                 {
-                    String nombrePaciente = res.IdPaciente.Nombre + " " + res.IdPaciente.ApellidoPaterno
-                        + " " + res.IdPaciente.ApellidoMaterno;
-                    String nombreTerapeuta = res.IdHora.IdTerapeuta.IdUsuario.IdPersona.Nombre + " " + res.IdHora.IdTerapeuta.IdUsuario.IdPersona.ApellidoPaterno
-                        + " " + res.IdHora.IdTerapeuta.IdUsuario.IdPersona.ApellidoMaterno;
-                    String fecha = res.IdHora.Fecha.Day + "/" + res.IdHora.Fecha.Month + "/" + res.IdHora.Fecha.Year;
-                    this.dataGridView1.Rows.Add(res.IdReserva, res.IdHora.IdTerapeuta.IdEspecialidad.Nombre,
-                        res.IdPaciente.Rut, nombrePaciente, fecha, res.IdHora.IdBloque.HoraInicio, res.IdHora.IdBloque.HoraFin
-                        , nombreTerapeuta,res.IdEstado.Descripcion);
+                    String nombrePaciente = res.Paciente.Nombre + " " + res.Paciente.ApellidoPaterno
+                        + " " + res.Paciente.ApellidoMaterno;
+                    String nombreTerapeuta = res.Terapeuta.Nombre + " " + res.Terapeuta.ApellidoPaterno
+                        + " " + res.Terapeuta.ApellidoMaterno;
+                    String fecha = res.Fecha.Day + "/" + res.Fecha.Month + "/" + res.Fecha.Year;
+                    this.dataGridView1.Rows.Add(res.IdHora, res.EspecialidadClinica.Nombre,
+                        res.Paciente.Rut, nombrePaciente, fecha, res.IdBloque.HoraInicio, res.IdBloque.HoraFin
+                        , nombreTerapeuta,res.EstadoReserva.Descripcion, res.EspecialidadClinica.Precio);
                 }
                 this.dataGridView1.ClearSelection();
                 this.btnCancelar.Enabled=true;
@@ -277,8 +303,8 @@ namespace WindowsFormsApp1
                     return;
                 }
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
-                ServiceCliente.Persona persona = soapClient.buscarPacienteService(this.txtRut.Text);
-                if (persona == null)
+                ServiceCliente.Paciente paciente = soapClient.buscarPacienteService(this.txtRut.Text);
+                if (paciente == null)
                 {
                     this.txtRut.Text = String.Empty;
                     this.txtNombre.Text=String.Empty;
@@ -291,16 +317,16 @@ namespace WindowsFormsApp1
                     MessageBox.Show(" No se encontro paciente ");
                     return;
                 }
-                this.txtNombre.Text = persona.Nombre;
-                this.txtPaterno.Text = persona.ApellidoPaterno;
-                this.txtMaterno.Text = persona.ApellidoMaterno;
-                this.txtCorreo.Text = persona.Correo;
-                this.txtTelefono.Text = persona.Telefono.ToString();
-                if (persona.Sexo.Equals('F'))
+                this.txtNombre.Text = paciente.Nombre;
+                this.txtPaterno.Text = paciente.ApellidoPaterno;
+                this.txtMaterno.Text = paciente.ApellidoMaterno;
+                this.txtCorreo.Text = paciente.Correo;
+                this.txtTelefono.Text = paciente.Telefono.ToString();
+                if (paciente.Sexo.Equals('F'))
                 {
                     this.radioFemenino.Checked = true;
                 }
-                else if (persona.Sexo.Equals('M'))
+                else if (paciente.Sexo.Equals('M'))
                 {
                     this.ButonMasculino.Checked = true;
                 }
@@ -308,7 +334,7 @@ namespace WindowsFormsApp1
                 {
                     this.radioIndefinido.Checked = true;
                 }
-                this.fechaNacimeinto.Value = persona.FechaNacimiento;
+                this.fechaNacimeinto.Value = paciente.FechaNacimiento;
             }
             catch(Exception ex)
             {
@@ -386,6 +412,148 @@ namespace WindowsFormsApp1
         private void TextBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void SelectEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cambiarPropiedadTabla(object sender, EventArgs e)
+        {
+            if (this.comboMedioPago.SelectedIndex>0)
+            {
+                this.dataGridView1.MultiSelect = true;
+            }
+            else
+            {
+                this.dataGridView1.MultiSelect = false;
+            }
+            this.textBox1.Text = Convert.ToString(0);
+        }
+
+        private void detectarSeleccion(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            
+        }
+
+        private void DataGridView1_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            if (this.comboMedioPago.SelectedIndex > 0)
+            {
+                int total = 0;
+                for (int i = 0; i < this.dataGridView1.SelectedRows.Count; i++)
+                {
+                    total = total + Convert.ToInt32(this.dataGridView1.SelectedRows[i].Cells["monto"].Value.ToString());
+                }
+                this.textBox1.Text = Convert.ToString(total);
+            }
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.dataGridView1.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Debe Seleccionar una Hora");
+                    return;
+                }
+                int idReservaSeleccionada = Convert.ToInt32(this.dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                int total = 0;
+                WindowsFormsApp1.ServiceCliente.ArrayOfInt listaIdHora = new ServiceCliente.ArrayOfInt();
+                for (int i = 0; i < this.dataGridView1.SelectedRows.Count; i++)
+                {
+                    total = total + Convert.ToInt32(this.dataGridView1.SelectedRows[i].Cells["monto"].Value.ToString());
+                    listaIdHora.Add(Convert.ToInt32(this.dataGridView1.SelectedRows[i].Cells["idReserva"].Value.ToString()));
+                }
+                ServiceCliente.Venta venta = new ServiceCliente.Venta();
+                venta.FechaPago = DateTime.Now;
+                venta.MedioPago = (ServiceCliente.MedioPago)this.comboMedioPago.SelectedItem;
+                venta.Monto = total;
+                ServiceCliente.EstadoVenta esVenta = new ServiceCliente.EstadoVenta();
+                esVenta.IdEstadoVenta = 2;
+                venta.EstadoVenta = esVenta;
+                ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
+                ServiceCliente.StatusResponce responce = soapClient.guardarVentaRealizadaService(venta, listaIdHora);
+                if (responce.Estado.Equals("error"))
+                {
+                    MessageBox.Show(responce.Mensaje, "Error");
+                    return;
+                }
+                MessageBox.Show(responce.Mensaje);
+                llenarGridParaVenta();
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, " Error ");
+            }
+        }
+
+        private void llenarGridParaVenta()
+        {
+            try
+            {
+                ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
+                List<ServiceCliente.HoraAtencion> listReserva = new List<ServiceCliente.HoraAtencion>();
+                ServiceCliente.HoraAtencion[] listaSoap = soapClient.horasPorRutPacienteMasVentaService(this.rutMisReservas.Text);
+                if (listaSoap != null)
+                {
+                    for (int i = 0; i < listaSoap.Length; i++)
+                    {
+                        listReserva.Add(listaSoap[i]);
+                    }
+                }
+                this.dataGridView1.Columns.Clear();
+                this.dataGridView1.Columns.Add("idReserva", "IdReserva");
+                this.dataGridView1.Columns.Add("especialidad", "Especialidad");
+                this.dataGridView1.Columns.Add("rut", "rut");
+                this.dataGridView1.Columns.Add("nombre", "Nombre Paciente");
+                this.dataGridView1.Columns.Add("fecha", "Fecha");
+                this.dataGridView1.Columns.Add("horaInicio", "Hora Inicio");
+                this.dataGridView1.Columns.Add("horaFin", "Hora Fin");
+                this.dataGridView1.Columns.Add("terapeuta", "Nombre Terapeuta");
+                this.dataGridView1.Columns.Add("estadoReserva", "Estado Reserva");
+                this.dataGridView1.Columns.Add("monto", "Valor Consulta");
+                this.dataGridView1.Columns.Add("estadoPago", "Estago Pago");
+                this.dataGridView1.Columns.Add("formaPago", "Forma Pago");
+                this.dataGridView1.Columns.Add("idVenta", "IdVenta");
+                this.dataGridView1.Columns["idReserva"].Visible = false;
+                this.dataGridView1.Columns["idVenta"].Visible = false;
+                if (listReserva == null || listReserva.Count == 0)
+                {
+                    this.dataGridView1.Rows.Clear();
+                    MessageBox.Show(" No se encontraron reservas para ese rut");
+                    return;
+                }
+                foreach (ServiceCliente.HoraAtencion res in listReserva)
+                {
+                    String nombrePaciente = res.Paciente.Nombre + " " + res.Paciente.ApellidoPaterno
+                        + " " + res.Paciente.ApellidoMaterno;
+                    String nombreTerapeuta = res.Terapeuta.Nombre + " " + res.Terapeuta.ApellidoPaterno
+                        + " " + res.Terapeuta.ApellidoMaterno;
+                    String fecha = res.Fecha.Day + "/" + res.Fecha.Month + "/" + res.Fecha.Year;
+                    this.dataGridView1.Rows.Add(res.IdHora, res.EspecialidadClinica.Nombre,
+                        res.Paciente.Rut, nombrePaciente, fecha, res.IdBloque.HoraInicio, res.IdBloque.HoraFin
+                        , nombreTerapeuta, res.EstadoReserva.Descripcion, res.EspecialidadClinica.Precio
+                        , res.Venta!=null ? res.Venta.EstadoVenta.Descripcion: null
+                        , res.Venta != null ? res.Venta.MedioPago.Nombre : null
+                        , res.Venta != null ? res.Venta.IdVenta.ToString() :null);
+                }
+                this.dataGridView1.ClearSelection();
+                this.btnCancelar.Enabled = true;
+                this.btnConfirmar.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, " Error ");
+            }
+        }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            llenarGridParaVenta();
         }
     }
 }

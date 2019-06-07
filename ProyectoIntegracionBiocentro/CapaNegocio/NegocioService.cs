@@ -44,8 +44,9 @@ namespace CapaNegocio
                 {
                     idPersona = per.IdPaciente;
                 }
-                query = "UPDATE BIOCENTRO_DB.dbo.HORA_ATENCION SET ID_ESTADO=1,ID_PACIENTE="+ idPersona+" WHERE ID_HORA="+ idHoraAtencion + "); ";
+                query = "UPDATE BIOCENTRO_DB.dbo.HORA_ATENCION SET ID_ESTADO=1,ID_PACIENTE="+ idPersona+ " WHERE ID_HORA=" + idHoraAtencion + " ; ";
                 this.utilMethods.guardarEliminarActualizarObjeto(query, false);
+                
                 return generarObjetoStatusResponce(String.Empty, "Su reserva se realizo correctamente");
             }
             catch (Exception ex)
@@ -156,23 +157,22 @@ namespace CapaNegocio
             try
             {
                 //Query entrega los datos del Paciente y la reserva realizada
-                String query =
-                    "SELECT paciente.ID_PACIENTE,paciente.RUT as pRu,paciente.NOMBRE as pNo ,paciente.APELLIDO_PATERNO as pPa, "
-                    +" paciente.APELLIDO_MATERNO as pMa,paciente.TELEFONO as pTe ,paciente.FECHA_NACIMIENTO as pFe,paciente.SEXO as pSe,paciente.CORREO as pCo,"
+                String query = "SELECT hora.ID_VENTA,paciente.ID_PACIENTE,paciente.RUT as pRu,paciente.NOMBRE as pNo ,paciente.APELLIDO_PATERNO as pPa, "
+                    + " paciente.APELLIDO_MATERNO as pMa,paciente.TELEFONO as pTe ,paciente.FECHA_NACIMIENTO as pFe,paciente.SEXO as pSe,paciente.CORREO as pCo,"
                     + " hora.ID_HORA,hora.FECHA,"
                     + " blo.HORA_FIN,blo.HORA_INICIO,"
                     + "sala.ID_SALA,sala.NOMBRE as sNo,"
                     + "espCli.ID_ESPECIALIDAD,espCli.NOMBRE as nombreEspecialidad, espCli.PRECIO,"
                     + "estRes.ID_ESTADO,estRes.DESCRIPCION,"
-                    + "emp.ID_EMPLEADO,emp.NOMBRE,emp.APELLIDO_PATERNO,emp.APELLIDO_MATERNO "
-                    + " FROM BIOCENTRO_DB.dbo.PACIENTE as paciente "
+                    + "emp.ID_EMPLEADO,emp.NOMBRE,emp.APELLIDO_PATERNO,emp.APELLIDO_MATERNO " +
+                " FROM BIOCENTRO_DB.dbo.PACIENTE as paciente "
                     + "JOIN BIOCENTRO_DB.dbo.HORA_ATENCION as hora on hora.ID_PACIENTE=paciente.ID_PACIENTE "
                     + "JOIN BIOCENTRO_DB.dbo.BLOQUE as blo on blo.ID_BLOQUE = hora.ID_BLOQUE "
                     + "JOIN BIOCENTRO_DB.dbo.SALA as sala on sala.ID_SALA = hora.ID_SALA "
                     + "JOIN BIOCENTRO_DB.dbo.ESPECIALIDAD_CLINICA as espCli on espCli.ID_ESPECIALIDAD = hora.ID_ESPECIALIDAD "
                     + "JOIN BIOCENTRO_DB.dbo.ESTADO_RESERVA as estRes on estRes.ID_ESTADO=hora.ID_ESTADO "
                     + "JOIN EMPLEADO as emp on emp.ID_EMPLEADO = hora.ID_TERAPEUTA "
-                    + " WHERE paciente.RUT = '" + rut + "' and estRes.ID_ESTADO <> 3 and hora.ID_VENTA IS NULL; ";
+                    + " WHERE paciente.RUT = '" + rut + "' and estRes.ID_ESTADO <> 3 ; "; ;
                 DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
                 if (dataTable.Tables[0].Rows.Count == 0)
                 {
@@ -181,7 +181,14 @@ namespace CapaNegocio
                 List<HoraAtencion> listaReserva = new List<HoraAtencion>();
                 foreach (DataRow row in dataTable.Tables[0].Rows)
                 {
-                    listaReserva.Add(generarObjetoHoraAtencion(row,true,true,true,true,true,false,true));
+                    HoraAtencion nuevo = generarObjetoHoraAtencion(row, true, true, true, true, true, false, true);
+                    if (validarSiRowTieneCampo(row, "ID_VENTA"))
+                    {
+                        Venta venta = new Venta();
+                        venta.IdVenta = Convert.ToInt32(row["ID_VENTA"]);
+                        nuevo.Venta = venta;
+                    }
+                    listaReserva.Add(nuevo) ;
                 }
                 List<int> listId = new List<int>();
                 List<HoraAtencion> listaReservasValidas = listaReserva.FindAll(r => r.Fecha.CompareTo(DateTime.Today) >= 0);
@@ -220,6 +227,110 @@ namespace CapaNegocio
             catch (Exception ex)
             {
                 verErrorEnConsola(ex, "rechazarConfirmarReserva");
+                return generarObjetoStatusResponce("error", ex.Message);
+            }
+        }
+        //Retorna los medios de pago disponibles
+        public List<MedioPago> generarListaMedioPago()
+        {
+            try
+            {
+                String queryTerapeuta = "SELECT ID_MEDIO_PAGO,NOMBRE FROM BIOCENTRO_DB.dbo.MEDIO_PAGO ;";
+                DataSet dataTable = this.utilMethods.listarObjetoConTablaEspecifica(queryTerapeuta, "ESPECIALIDAD_CLINICA");
+                if (dataTable.Tables[0].Rows.Count == 0)
+                {
+                    return null;
+                }
+                List<MedioPago> list = new List<MedioPago>();
+                foreach (DataRow row in dataTable.Tables[0].Rows)
+                {
+
+                    list.Add(generarObjetoMedioPago(row));
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                verErrorEnConsola(ex, "generarListaMedioPago");
+                return null;
+            }
+        }
+        //Generar Lista HorasPorRutPacienteMasVenta
+        public List<HoraAtencion> horasPorRutPacienteMasVenta(String rut)
+        {
+            try
+            {
+                List<HoraAtencion> horas = listaReservasPorRut(rut);
+                List<int> ids = new List<int>();
+                horas.ForEach( h => {
+                    if (h.Venta!=null)
+                    {
+                        ids.Add(h.Venta.IdVenta);
+                    }
+                });
+                String idsIn = ids.Aggregate(new StringBuilder(), (str, next) => str.Append(str.Length == 0 ? "" : ",").Append(next)).ToString();
+                String query = "SELECT ven.ID_VENTA,ven.FECHA_PAGO,ven.MONTO, mpag.ID_MEDIO_PAGO,mpag.NOMBRE as mpagNombre," +
+                    "estVenta.ID_ESTADO_VENTA,estVenta.DESCRIPCION as estVentaDescripcion " +
+                    " FROM BIOCENTRO_DB.dbo.VENTA as ven " +
+                    "JOIN BIOCENTRO_DB.dbo.MEDIO_PAGO as mpag on mpag.ID_MEDIO_PAGO = ven.ID_MEDIO_PAGO " +
+                    "JOIN BIOCENTRO_DB.dbo.ESTADO_VENTA as estVenta on estVenta.ID_ESTADO_VENTA = ven.ID_ESTADO_VENTA " +
+                    "WHERE ven.ID_VENTA in ("+ idsIn + "); ";
+                DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
+                if (dataTable.Tables[0].Rows.Count == 0)
+                {
+                    return null;
+                }
+                List<Venta> listaVenta = new List<Venta>();
+                foreach (DataRow row in dataTable.Tables[0].Rows)
+                {
+                    listaVenta.Add(generarObjetoVenta(row));
+                }
+
+                horas.ForEach( h => {
+                    h.Venta = h.Venta!=null?listaVenta.Find(v => v.IdVenta == h.Venta.IdVenta):null;
+                });
+                return horas;
+            }
+            catch (Exception ex)
+            {
+                verErrorEnConsola(ex, "HorasPorRutPacienteMasVenta");
+                return null;
+            }
+        }
+        //Guarda Venta
+        public StatusResponce guardarVentaRealizada(Venta venta,List<int> idHora)
+        {
+            try
+            {
+                String ids = idHora.Aggregate(new StringBuilder(), (str, next) => str.Append(str.Length == 0 ? "" : ",").Append(next)).ToString();
+                String queryTerapeuta = "SELECT  hora.ID_HORA, (SELECT estVenta.DESCRIPCION  " +
+                    " from BIOCENTRO_DB.dbo.VENTA as ven " +
+                    "JOIN BIOCENTRO_DB.dbo.ESTADO_VENTA as estVenta on estVenta.ID_ESTADO_VENTA = ven.ID_ESTADO_VENTA " +
+                    "WHERE ven.ID_VENTA = hora.ID_VENTA ) as estado from BIOCENTRO_DB.dbo.HORA_ATENCION as hora " +
+                    "WHERE hora.ID_HORA in (" + ids + "); ";
+                DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(queryTerapeuta);
+                if (dataTable.Tables[0].Rows.Count == 0)
+                {
+                    return generarObjetoStatusResponce("error", "No se encontraron las horas seleccionadas");
+                }
+                foreach (DataRow row in dataTable.Tables[0].Rows)
+                {
+                    if (validarSiRowTieneCampo(row, "estado"))
+                    {
+                        return generarObjetoStatusResponce("error", "Debe seleccionar una venta que este pendiente de pago");
+                    }
+                }
+                String query = "INSERT INTO BIOCENTRO_DB.dbo.VENTA (ID_ESTADO_VENTA,ID_MEDIO_PAGO,FECHA_PAGO,MONTO) OUTPUT INSERTED.ID_VENTA "
+                    + " VALUES("+ venta.EstadoVenta.IdEstadoVenta+"," + venta.MedioPago.IdMedioPago +
+                     ",'" + venta.FechaPago + "',"+ venta.Monto+")";
+                int? idVenta = this.utilMethods.guardarEliminarActualizarObjeto(query, true);
+                query = "UPDATE BIOCENTRO_DB.dbo.HORA_ATENCION SET ID_ESTADO=2,ID_VENTA=" + idVenta + " WHERE ID_HORA in (" + ids + ") ; ";
+                this.utilMethods.guardarEliminarActualizarObjeto(query, false);
+                return generarObjetoStatusResponce(String.Empty, "La venta se realizo correctamente");
+            }
+            catch (Exception ex)
+            {
+                verErrorEnConsola(ex, "guardarVentaRealizada");
                 return generarObjetoStatusResponce("error", ex.Message);
             }
         }
@@ -290,7 +401,7 @@ namespace CapaNegocio
         {
             try
             {
-                String query = "SELECT ID_RESERVA FROM BIOCENTRO_DB.dbo.RESERVA where ID_HORA = "+ idHora + ";";
+                String query = "SELECT ID_HORA FROM BIOCENTRO_DB.dbo.HORA_ATENCION where ID_HORA = " + idHora + " AND (ID_ESTADO <> 3);";
                 DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
                 if (dataTable.Tables[0].Rows.Count == 0)
                 {
@@ -301,7 +412,7 @@ namespace CapaNegocio
             catch (Exception ex)
             {
                 verErrorEnConsola(ex, "validarSiRecervaFueTomada");
-                throw new Exception("Ocurrio un error al validar recerva", new Exception());
+                throw new Exception("Ocurrio un error al validar la hora ", new Exception());
             }
         }
 
@@ -315,10 +426,12 @@ namespace CapaNegocio
                 String query = "select emp.ID_EMPLEADO,emp.NOMBRE,emp.APELLIDO_PATERNO,emp.APELLIDO_MATERNO,"
                 + " hora.ID_HORA,hora.FECHA,"
                 + " blo.HORA_INICIO,blo.HORA_FIN,"
+                + " sal.ID_SALA,sal.NOMBRE as sNo, "
                 + " espClin.ID_ESPECIALIDAD,espClin.NOMBRE as nombreEspecialidad,espClin.PRECIO"
                 + " FROM BIOCENTRO_DB.dbo.HORA_ATENCION as hora "
                 + " JOIN BIOCENTRO_DB.dbo.BLOQUE as blo on hora.ID_BLOQUE=blo.ID_BLOQUE "
                 + " JOIN BIOCENTRO_DB.dbo.ESPECIALIDAD_CLINICA as espClin on espClin.ID_ESPECIALIDAD=hora.ID_ESPECIALIDAD "
+                + " JOIN BIOCENTRO_DB.dbo.SALA as sal on sal.ID_SALA = hora.ID_SALA "
                 + "  JOIN BIOCENTRO_DB.dbo.EMPLEADO as emp on emp.ID_EMPLEADO = hora.ID_TERAPEUTA ";
                 if (listIdHoraAtencion!= null && listIdHoraAtencion.Count!=0)
                 {
@@ -327,7 +440,7 @@ namespace CapaNegocio
                 }
                 else
                 {
-                    query = query + " WHERE hora.ID_PACIENTE IS NULL OR hora.ID_ESTADO = 3 ;";
+                    query = query + " WHERE ( hora.ID_PACIENTE IS NULL OR hora.ID_ESTADO = 3) ";
                 }
                 DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
                 if (dataTable.Tables[0].Rows.Count == 0)
@@ -337,7 +450,7 @@ namespace CapaNegocio
                 List<HoraAtencion> listaHoras = new List<HoraAtencion>();
                 foreach (DataRow row in dataTable.Tables[0].Rows)
                 {
-                    listaHoras.Add(generarObjetoHoraAtencion(row,true,true,false,false,false,false,true));
+                    listaHoras.Add(generarObjetoHoraAtencion(row,true,true,false,true,false,false,true));
                 }
                 return listaHoras;
             }
@@ -421,9 +534,9 @@ namespace CapaNegocio
             {
                 medioPago.IdMedioPago = Convert.ToInt32(row["ID_MEDIO_PAGO"]);
             }
-            if (validarSiRowTieneCampo(row, "NOMBRE"))
+            if (validarSiRowTieneCampo(row, "NOMBRE", "mpagNombre"))
             {
-                medioPago.Nombre = Convert.ToString(row["NOMBRE"]);
+                medioPago.Nombre = obtenerCampoDobleNombre(row, "NOMBRE", "mpagNombre");
             }
             return medioPago;
         }
@@ -435,9 +548,9 @@ namespace CapaNegocio
             {
                 estadoVenta.IdEstadoVenta = Convert.ToInt32(row["ID_ESTADO_VENTA"]);
             }
-            if (validarSiRowTieneCampo(row, "DESCRIPCION"))
+            if (validarSiRowTieneCampo(row, "DESCRIPCION", "estVentaDescripcion"))
             {
-                estadoVenta.Descripcion = Convert.ToString(row["DESCRIPCION"]);
+                estadoVenta.Descripcion = obtenerCampoDobleNombre(row, "DESCRIPCION", "estVentaDescripcion");
             }
             return estadoVenta;
         }
@@ -636,8 +749,12 @@ namespace CapaNegocio
         private void actualizar(String tabla, String columnaSet, String valorSet, String columnaWhere,  String valorWhere)
         {
             String query = "UPDATE BIOCENTRO_DB.dbo." + tabla
-                + " SET "+ columnaSet + " = " + valorSet
-                + " WHERE " + columnaWhere + " = " + valorWhere + ";";
+                + " SET "+ columnaSet + " = " + valorSet;
+            if (valorSet.Equals("3"))
+            {
+                query = query + " ,SET ID_VENTA=NULL";
+            }
+            query = query + " WHERE " + columnaWhere + " = " + valorWhere;
             this.utilMethods.guardarEliminarActualizarObjeto(query, false);
         }
         //Retorna las exepciones por consola
@@ -654,23 +771,23 @@ namespace CapaNegocio
         }
         private string obtenerCampoDobleNombre(DataRow row, string nombre1,string nombre2)
         {
-            if (validarSiRowTieneCampo(row, nombre1))
-            {
-                return Convert.ToString(row[nombre1]);
-            }
-            else if (validarSiRowTieneCampo(row, nombre2))
+            if (validarSiRowTieneCampo(row, nombre2))
             {
                 return Convert.ToString(row[nombre2]);
+            }
+            else if (validarSiRowTieneCampo(row, nombre1))
+            {
+                return Convert.ToString(row[nombre1]);
             }
             return null;
         }
         private Boolean validarSiRowTieneCampo(DataRow row, String campo1, String campo2)
         {
-            if (validarSiRowTieneCampo(row, campo1))
+            if (validarSiRowTieneCampo(row, campo2))
             {
                 return true;
             }
-            if (validarSiRowTieneCampo(row, campo2))
+            if (validarSiRowTieneCampo(row, campo1))
             {
                 return true;
             }

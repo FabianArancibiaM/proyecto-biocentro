@@ -16,14 +16,13 @@
       <s:element name="registrarPacienteService">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="persona" type="tns:Persona" />
+            <s:element minOccurs="0" maxOccurs="1" name="persona" type="tns:Paciente" />
             <s:element minOccurs="1" maxOccurs="1" name="idHoraAtencion" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="Persona">
+      <s:complexType name="Paciente">
         <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="IdPersona" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Rut" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="ApellidoPaterno" type="s:string" />
@@ -32,6 +31,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="FechaNacimiento" type="s:dateTime" />
           <s:element minOccurs="1" maxOccurs="1" name="Sexo" type="s1:char" />
           <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdPaciente" type="s:int" />
         </s:sequence>
       </s:complexType>
       <s:element name="registrarPacienteServiceResponse">
@@ -50,17 +50,37 @@
       <s:element name="buscarHorasDisponiblesService">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="especialidad" type="tns:Especialidad" />
+            <s:element minOccurs="0" maxOccurs="1" name="especialidad" type="tns:EspecialidadClinica" />
             <s:element minOccurs="1" maxOccurs="1" name="fecha" nillable="true" type="s:dateTime" />
-            <s:element minOccurs="0" maxOccurs="1" name="persona" type="tns:Persona" />
+            <s:element minOccurs="0" maxOccurs="1" name="persona" type="tns:Empleado" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="Especialidad">
+      <s:complexType name="EspecialidadClinica">
         <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="IdEspecialidad" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Valor" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Precio" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdEspecialidadClinica" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Empleado">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdEmpleado" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contraseña" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoPaterno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoMaterno" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Telefono" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Correo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FechaNacimiento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cargo" type="tns:Cargo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Cargo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCargo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="buscarHorasDisponiblesServiceResponse">
@@ -77,33 +97,15 @@
       </s:complexType>
       <s:complexType name="HoraAtencion">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="IdTerapeuta" type="tns:Terapeuta" />
           <s:element minOccurs="1" maxOccurs="1" name="IdHora" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
           <s:element minOccurs="0" maxOccurs="1" name="IdBloque" type="tns:Bloque" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Terapeuta">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="IdTerapeuta" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="IdEspecialidad" type="tns:Especialidad" />
-          <s:element minOccurs="0" maxOccurs="1" name="IdUsuario" type="tns:Usuario" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Usuario">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="IdRol" type="tns:RolUsuario" />
-          <s:element minOccurs="0" maxOccurs="1" name="IdPersona" type="tns:Persona" />
-          <s:element minOccurs="0" maxOccurs="1" name="Contraseña" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="NombreUsuario" type="s:string" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="RolUsuario">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="IdRol" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Paciente" type="tns:Paciente" />
+          <s:element minOccurs="0" maxOccurs="1" name="EstadoReserva" type="tns:EstadoReserva" />
+          <s:element minOccurs="0" maxOccurs="1" name="EspecialidadClinica" type="tns:EspecialidadClinica" />
+          <s:element minOccurs="0" maxOccurs="1" name="Terapeuta" type="tns:Empleado" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sala" type="tns:Sala" />
+          <s:element minOccurs="0" maxOccurs="1" name="Venta" type="tns:Venta" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="Bloque">
@@ -113,19 +115,52 @@
           <s:element minOccurs="1" maxOccurs="1" name="HoraFin" type="s:int" />
         </s:sequence>
       </s:complexType>
+      <s:complexType name="EstadoReserva">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdEstado" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Sala">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdSala" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Venta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdVenta" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaPago" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Monto" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EstadoVenta" type="tns:EstadoVenta" />
+          <s:element minOccurs="0" maxOccurs="1" name="MedioPago" type="tns:MedioPago" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EstadoVenta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdEstadoVenta" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MedioPago">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdMedioPago" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="generarListaEspecialidadService">
         <s:complexType />
       </s:element>
       <s:element name="generarListaEspecialidadServiceResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="generarListaEspecialidadServiceResult" type="tns:ArrayOfEspecialidad" />
+            <s:element minOccurs="0" maxOccurs="1" name="generarListaEspecialidadServiceResult" type="tns:ArrayOfEspecialidadClinica" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfEspecialidad">
+      <s:complexType name="ArrayOfEspecialidadClinica">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Especialidad" nillable="true" type="tns:Especialidad" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EspecialidadClinica" nillable="true" type="tns:EspecialidadClinica" />
         </s:sequence>
       </s:complexType>
       <s:element name="generarListaEspecialistaService">
@@ -134,13 +169,20 @@
       <s:element name="generarListaEspecialistaServiceResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="generarListaEspecialistaServiceResult" type="tns:ArrayOfTerapeuta" />
+            <s:element minOccurs="0" maxOccurs="1" name="generarListaEspecialistaServiceResult" type="tns:ArrayOfEspecialidadTerapeuta" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfTerapeuta">
+      <s:complexType name="ArrayOfEspecialidadTerapeuta">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Terapeuta" nillable="true" type="tns:Terapeuta" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EspecialidadTerapeuta" nillable="true" type="tns:EspecialidadTerapeuta" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EspecialidadTerapeuta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdEspecialidadTerapeuta" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EspecialidadClinica" type="tns:EspecialidadClinica" />
+          <s:element minOccurs="0" maxOccurs="1" name="Empleado" type="tns:Empleado" />
         </s:sequence>
       </s:complexType>
       <s:element name="buscarPacienteService">
@@ -153,7 +195,7 @@
       <s:element name="buscarPacienteServiceResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="buscarPacienteServiceResult" type="tns:Persona" />
+            <s:element minOccurs="0" maxOccurs="1" name="buscarPacienteServiceResult" type="tns:Paciente" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -167,29 +209,10 @@
       <s:element name="listaReservasPorRutServiceResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="listaReservasPorRutServiceResult" type="tns:ArrayOfReserva" />
+            <s:element minOccurs="0" maxOccurs="1" name="listaReservasPorRutServiceResult" type="tns:ArrayOfHoraAtencion" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfReserva">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="Reserva" nillable="true" type="tns:Reserva" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="Reserva">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="IdReserva" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="IdHora" type="tns:HoraAtencion" />
-          <s:element minOccurs="0" maxOccurs="1" name="IdPaciente" type="tns:Persona" />
-          <s:element minOccurs="0" maxOccurs="1" name="IdEstado" type="tns:EstadoReserva" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="EstadoReserva">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="IdEstado" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
-        </s:sequence>
-      </s:complexType>
       <s:element name="rechazarConfirmarReservaService">
         <s:complexType>
           <s:sequence>
@@ -202,6 +225,55 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="rechazarConfirmarReservaServiceResult" type="tns:StatusResponce" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="generarListaMedioPagoService">
+        <s:complexType />
+      </s:element>
+      <s:element name="generarListaMedioPagoServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="generarListaMedioPagoServiceResult" type="tns:ArrayOfMedioPago" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMedioPago">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MedioPago" nillable="true" type="tns:MedioPago" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarVentaRealizadaService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="venta" type="tns:Venta" />
+            <s:element minOccurs="0" maxOccurs="1" name="idHora" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="guardarVentaRealizadaServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="guardarVentaRealizadaServiceResult" type="tns:StatusResponce" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="horasPorRutPacienteMasVentaService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rut" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="horasPorRutPacienteMasVentaServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="horasPorRutPacienteMasVentaServiceResult" type="tns:ArrayOfHoraAtencion" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -260,6 +332,24 @@
   <wsdl:message name="rechazarConfirmarReservaServiceSoapOut">
     <wsdl:part name="parameters" element="tns:rechazarConfirmarReservaServiceResponse" />
   </wsdl:message>
+  <wsdl:message name="generarListaMedioPagoServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:generarListaMedioPagoService" />
+  </wsdl:message>
+  <wsdl:message name="generarListaMedioPagoServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:generarListaMedioPagoServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="guardarVentaRealizadaServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:guardarVentaRealizadaService" />
+  </wsdl:message>
+  <wsdl:message name="guardarVentaRealizadaServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:guardarVentaRealizadaServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="horasPorRutPacienteMasVentaServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:horasPorRutPacienteMasVentaService" />
+  </wsdl:message>
+  <wsdl:message name="horasPorRutPacienteMasVentaServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:horasPorRutPacienteMasVentaServiceResponse" />
+  </wsdl:message>
   <wsdl:portType name="WebServiceClienteSoap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -292,6 +382,18 @@
     <wsdl:operation name="rechazarConfirmarReservaService">
       <wsdl:input message="tns:rechazarConfirmarReservaServiceSoapIn" />
       <wsdl:output message="tns:rechazarConfirmarReservaServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="generarListaMedioPagoService">
+      <wsdl:input message="tns:generarListaMedioPagoServiceSoapIn" />
+      <wsdl:output message="tns:generarListaMedioPagoServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="guardarVentaRealizadaService">
+      <wsdl:input message="tns:guardarVentaRealizadaServiceSoapIn" />
+      <wsdl:output message="tns:guardarVentaRealizadaServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="horasPorRutPacienteMasVentaService">
+      <wsdl:input message="tns:horasPorRutPacienteMasVentaServiceSoapIn" />
+      <wsdl:output message="tns:horasPorRutPacienteMasVentaServiceSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebServiceClienteSoap" type="tns:WebServiceClienteSoap">
@@ -368,6 +470,33 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="generarListaMedioPagoService">
+      <soap:operation soapAction="http://tempuri.org/generarListaMedioPagoService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarVentaRealizadaService">
+      <soap:operation soapAction="http://tempuri.org/guardarVentaRealizadaService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="horasPorRutPacienteMasVentaService">
+      <soap:operation soapAction="http://tempuri.org/horasPorRutPacienteMasVentaService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WebServiceClienteSoap12" type="tns:WebServiceClienteSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -436,6 +565,33 @@
     </wsdl:operation>
     <wsdl:operation name="rechazarConfirmarReservaService">
       <soap12:operation soapAction="http://tempuri.org/rechazarConfirmarReservaService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generarListaMedioPagoService">
+      <soap12:operation soapAction="http://tempuri.org/generarListaMedioPagoService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardarVentaRealizadaService">
+      <soap12:operation soapAction="http://tempuri.org/guardarVentaRealizadaService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="horasPorRutPacienteMasVentaService">
+      <soap12:operation soapAction="http://tempuri.org/horasPorRutPacienteMasVentaService" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
