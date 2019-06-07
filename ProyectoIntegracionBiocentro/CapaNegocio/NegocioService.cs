@@ -285,44 +285,7 @@ namespace CapaNegocio
                 throw new Exception("Ocurrio un error al generar la lista de usuarios ", new Exception());
             }
         }
-        private List<Usuario> generarListaUsuarios(String rut)
-        {
-            try
-            {
-                String query = "SELECT usu.ID_USUARIO,usu.ID_ROL, per.ID_PERSONA,per.RUT,per.NOMBRE,per.APELLIDO_PATERNO,per.APELLIDO_MATERNO"
-                    + " FROM BIOCENTRO_DB.dbo.PERSONA as per "
-                    + " JOIN BIOCENTRO_DB.dbo.USUARIO as usu ON usu.ID_PERSONA = per.ID_PERSONA "
-                    + " WHERE per.RUT='" + rut + "';";
-                DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
-                if (dataTable.Tables[0].Rows.Count == 0)
-                {
-                    return null;
-                }
-                List<Usuario> listUsuario = new List<Usuario>();
-                foreach (DataRow row in dataTable.Tables[0].Rows)
-                {
-                    listUsuario.Add(generarObjetoUsuario(row));
-                }
-                return listUsuario;
-            }
-            catch (Exception ex)
-            {
-                verErrorEnConsola(ex, "generarListaUsuarios");
-                throw new Exception("Ocurrio un error al generar la lista de usuarios ", new Exception());
-            }
-        }
         //Valida si las Horas de atencion se encuentran Reservadas y con que estado
-        private bool validarReserva(HoraAtencion h, List<Reserva> listReserva)
-        {
-            List<Reserva> listMismoId = listReserva.FindAll(r => r.IdHora.IdHora == h.IdHora);
-            if (listMismoId == null || listMismoId.Count==0)
-            {
-                return true;
-            }
-            int maxId = listMismoId.Max(r => r.IdReserva);
-            int idEstado = listMismoId.SingleOrDefault(r => r.IdReserva == maxId).IdEstado.IdEstado;
-            return idEstado == 3;
-        }
         private Boolean validarSiRecervaFueTomada(int idHora)
         {
             try
@@ -339,31 +302,6 @@ namespace CapaNegocio
             {
                 verErrorEnConsola(ex, "validarSiRecervaFueTomada");
                 throw new Exception("Ocurrio un error al validar recerva", new Exception());
-            }
-        }
-        //Busca la data de las Reservas y Estados
-        private List<Reserva> buscarReservaAndEstado()
-        {
-            try
-            {
-                String query = "SELECT res.ID_RESERVA,res.ID_HORA,est.ID_ESTADO,est.DESCRIPCION"
-                + " FROM BIOCENTRO_DB.dbo.RESERVA as res JOIN BIOCENTRO_DB.dbo.ESTADO_RESERVA as est ON res.ID_ESTADO = est.ID_ESTADO;";
-                DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
-                if (dataTable.Tables[0].Rows.Count == 0)
-                {
-                    return null;
-                }
-                List<Reserva> listaReserva = new List<Reserva>();
-                foreach (DataRow row in dataTable.Tables[0].Rows)
-                {
-                    listaReserva.Add(generarObjetoReserva(row,false));
-                }
-                return listaReserva;
-            }
-            catch (Exception ex)
-            {
-                verErrorEnConsola(ex, "buscarReservaAndEstado");
-                throw new Exception("Ocurrio un error al buscar reservas y estado ", new Exception());
             }
         }
 
