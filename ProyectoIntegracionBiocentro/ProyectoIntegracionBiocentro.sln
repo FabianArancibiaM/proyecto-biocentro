@@ -19,6 +19,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaServicio", "CapaServicio\CapaServicio.csproj", "{84E7D915-2642-4779-B2F9-507F91CC024B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumidorAppWeb", "AplicacionWeb\ConsumidorAppWeb.csproj", "{D4F3252E-1C60-4258-B57E-9391E38E6EE2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{84E7D915-2642-4779-B2F9-507F91CC024B} = {84E7D915-2642-4779-B2F9-507F91CC024B}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

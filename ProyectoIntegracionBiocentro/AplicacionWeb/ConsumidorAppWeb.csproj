@@ -40,6 +40,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -58,6 +60,25 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Connected Services\ServiceCliente\AplicacionWeb.ServiceCliente.EspecialidadClinica.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServiceCliente\AplicacionWeb.ServiceCliente.EspecialidadTerapeuta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServiceCliente\AplicacionWeb.ServiceCliente.HoraAtencion.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServiceCliente\AplicacionWeb.ServiceCliente.MedioPago.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServiceCliente\AplicacionWeb.ServiceCliente.Paciente.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServiceCliente\AplicacionWeb.ServiceCliente.StatusResponce.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\ServiceCliente\WebServiceCliente.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -66,10 +87,30 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\ServiceCliente\WebServiceCliente.disco" />
+    <None Include="Connected Services\ServiceCliente\configuration91.svcinfo" />
+    <None Include="Connected Services\ServiceCliente\configuration.svcinfo" />
+    <None Include="Connected Services\ServiceCliente\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="PantallaGestionarVenta.aspx" />
     <Content Include="RealizarReserva.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\ServiceCliente\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="PantallaGestionarVenta.aspx.cs">
+      <DependentUpon>PantallaGestionarVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PantallaGestionarVenta.aspx.designer.cs">
+      <DependentUpon>PantallaGestionarVenta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RealizarReserva.aspx.cs">
       <DependentUpon>RealizarReserva.aspx</DependentUpon>
@@ -78,6 +119,12 @@
     <Compile Include="RealizarReserva.aspx.designer.cs">
       <DependentUpon>RealizarReserva.aspx</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceCliente\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
