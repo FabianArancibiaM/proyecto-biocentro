@@ -78,6 +78,7 @@
     <Content Include="Connected Services\ServiceCliente\AplicacionWeb.ServiceCliente.StatusResponce.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="RecibirPago.aspx" />
     <None Include="Connected Services\ServiceCliente\WebServiceCliente.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -94,8 +95,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="PantallaGestionarVenta.aspx" />
-    <Content Include="RealizarReserva.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -104,20 +103,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="PantallaGestionarVenta.aspx.cs">
-      <DependentUpon>PantallaGestionarVenta.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PantallaGestionarVenta.aspx.designer.cs">
-      <DependentUpon>PantallaGestionarVenta.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RealizarReserva.aspx.cs">
-      <DependentUpon>RealizarReserva.aspx</DependentUpon>
+    <Compile Include="RecibirPago.aspx.cs">
+      <DependentUpon>RecibirPago.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="RealizarReserva.aspx.designer.cs">
-      <DependentUpon>RealizarReserva.aspx</DependentUpon>
+    <Compile Include="RecibirPago.aspx.designer.cs">
+      <DependentUpon>RecibirPago.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
