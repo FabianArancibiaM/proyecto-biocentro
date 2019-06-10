@@ -26,16 +26,16 @@ namespace CapaPresentacion.Biocentro.paginas.reservar_hora
 
                 List<EspecialidadTerapeuta> terapeutas = negocioService.generarListaEspecialista();
                 var terapeutas_filtrado = (from t in terapeutas
-                                 select new
-                                 {
-                                     t.Empleado.IdEmpleado,
-                                     t.Empleado.Nombre,
-                                     t.Empleado.ApellidoPaterno,
-                                     t.Empleado.ApellidoMaterno,
-                                     IdTerapeuta = String.Format("{0}", t.Empleado.IdEmpleado),
-                                     NombreTerapeuta = String.Format("{0} {1} {1}", t.Empleado.Nombre,
-                                                    t.Empleado.ApellidoPaterno, t.Empleado.ApellidoMaterno)
-                                 }).Distinct();
+                    select new
+                    {
+                        t.Empleado.IdEmpleado,
+                        t.Empleado.Nombre,
+                        t.Empleado.ApellidoPaterno,
+                        t.Empleado.ApellidoMaterno,
+                        IdTerapeuta = String.Format("{0}", t.Empleado.IdEmpleado),
+                        NombreTerapeuta = String.Format("{0} {1} {1}", t.Empleado.Nombre,
+                                    t.Empleado.ApellidoPaterno, t.Empleado.ApellidoMaterno)
+                    }).Distinct();
                               
                 ddlTerapeuta.DataSource = terapeutas_filtrado;
                 ddlTerapeuta.DataTextField = "NombreTerapeuta";
@@ -53,8 +53,11 @@ namespace CapaPresentacion.Biocentro.paginas.reservar_hora
 
             if(claseEspecialidad.IndexOf("hidden")==-1)
             {
-                string idEspecialidad = ddlEspecialidad.SelectedValue;
-                //negocioService.buscarHorasDisponibles();
+                int idEspecialidad = Convert.ToInt32(ddlEspecialidad.SelectedValue);
+                List<HoraAtencion> horasEspecialidad = negocioService.buscarHorasEspecialidad(idEspecialidad);
+                Session["horas"] = horasEspecialidad;
+                Response.Write("<script language='javascript'>window.location='horas_disponibles.aspx';</script>");
+
             }
             if (claseTerapeuta.IndexOf("hidden") == -1)
             {

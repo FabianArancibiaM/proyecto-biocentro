@@ -4,10 +4,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script>
         $(document).on('click', 'btnEspecialidad', function () {
+            alert('btnEspecialidad');
             $('#ddlEspecialidad').removeClass('hidden');
             $('#ddlTerapeuta').addClass('hidden');
         });
         $(document).on('click', 'btnTerapeuta', function () {
+            alert('btnTerapeuta');
             $('#ddlTerapeuta').removeClass('hidden');
             $('#ddlEspecialidad').addClass('hidden');
         });
@@ -24,7 +26,7 @@
                 Por Terapeuta</span>
             </div>
         </div>
-        <div class="row text-center form-group" style="width:100%">
+        <div class="row text-center form-group">
             <asp:DropDownList ID="ddlEspecialidad" CssClass="form-control" runat="server" ClientIDMode="Static"></asp:DropDownList>
             <asp:DropDownList ID="ddlTerapeuta" CssClass="hidden form-control" runat="server" ClientIDMode="Static"></asp:DropDownList>
         </div>
