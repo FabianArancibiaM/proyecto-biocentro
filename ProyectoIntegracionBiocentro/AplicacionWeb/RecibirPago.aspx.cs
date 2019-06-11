@@ -15,6 +15,7 @@ namespace AplicacionWeb
         }
         protected void btnBuscarPaciente_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 if (this.txtBuscarPaciente.Text.Length == 0)
@@ -82,6 +83,7 @@ namespace AplicacionWeb
 
         protected void guardarPago(object sender, EventArgs e)
         {
+            
             try
             {
                 List<ServiceCliente.HoraAtencion> listReserva = new List<ServiceCliente.HoraAtencion>();
@@ -108,7 +110,7 @@ namespace AplicacionWeb
                 }
                 ServiceCliente.Venta venta = new ServiceCliente.Venta();
                 venta.FechaPago = DateTime.Now;
-                //venta.MedioPago = (ServiceCliente.MedioPago)this.comboMedioPago.SelectedItem;
+                venta.MedioPago = (ServiceCliente.MedioPago)this.comboMedioPago.SelectedItem;
                 venta.Monto = total;
                 ServiceCliente.EstadoVenta esVenta = new ServiceCliente.EstadoVenta();
                 esVenta.IdEstadoVenta = 2;
