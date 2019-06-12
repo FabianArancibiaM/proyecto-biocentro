@@ -24,7 +24,7 @@ namespace CapaNegocio
         {
             int? idPersona = null;
             Boolean esNuevo = false;
-            if (validarSiReservaFueTomada(idHoraAtencion))
+            if (validarSiRecervaFueTomada(idHoraAtencion))
             {
                 return generarObjetoStatusResponce("error", "Esta reserva ya esta tomada, favor seleccionar otra");
             }
@@ -268,7 +268,7 @@ namespace CapaNegocio
                         ids.Add(h.Venta.IdVenta);
                     }
                 });
-                if (ids.Count == 0)
+                if (ids.Count==0)
                 {
                     return horas;
                 }
@@ -401,7 +401,7 @@ namespace CapaNegocio
             }
         }
         //Valida si las Horas de atencion se encuentran Reservadas y con que estado
-        private Boolean validarSiReservaFueTomada(int idHora)
+        private Boolean validarSiRecervaFueTomada(int idHora)
         {
             try
             {
@@ -415,7 +415,7 @@ namespace CapaNegocio
             }
             catch (Exception ex)
             {
-                verErrorEnConsola(ex, "validarSiReservaFueTomada");
+                verErrorEnConsola(ex, "validarSiRecervaFueTomada");
                 throw new Exception("Ocurrio un error al validar la hora ", new Exception());
             }
         }
@@ -464,45 +464,6 @@ namespace CapaNegocio
                 throw new Exception("Ocurrio un error al buscar las horas de los especialistas ", new Exception());
             }
         }
-
-        //Retorna el listado de las horas, los bloques, los especialistas y persona, sin parametros
-        // O Filtro por id de la HoraAtencion
-        public List<HoraAtencion> buscarHorasEspecialidad(int idEspecialidad) //DateTime fechaActual
-        {
-            try
-            {
-                //Query retorna el listado de las horas, los bloques, los especialistas y persona
-                String query = "select emp.ID_EMPLEADO,emp.NOMBRE,emp.APELLIDO_PATERNO,emp.APELLIDO_MATERNO,"
-                + " hora.ID_HORA,hora.FECHA,"
-                + " blo.HORA_INICIO,blo.HORA_FIN,"
-                + " sal.ID_SALA,sal.NOMBRE as sNo, "
-                + " espClin.ID_ESPECIALIDAD,espClin.NOMBRE as nombreEspecialidad,espClin.PRECIO"
-                + " FROM BIOCENTRO_DB.dbo.HORA_ATENCION as hora "
-                + " JOIN BIOCENTRO_DB.dbo.BLOQUE as blo on hora.ID_BLOQUE=blo.ID_BLOQUE "
-                + " JOIN BIOCENTRO_DB.dbo.ESPECIALIDAD_CLINICA as espClin on espClin.ID_ESPECIALIDAD=hora.ID_ESPECIALIDAD "
-                + " JOIN BIOCENTRO_DB.dbo.SALA as sal on sal.ID_SALA = hora.ID_SALA "
-                + " JOIN BIOCENTRO_DB.dbo.EMPLEADO as emp on emp.ID_EMPLEADO = hora.ID_TERAPEUTA "               
-                + " WHERE ( espClin.ID_ESPECIALIDAD = " + idEspecialidad + " ) ";
-                
-                DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
-                if (dataTable.Tables[0].Rows.Count == 0)
-                {
-                    return null;
-                }
-                List<HoraAtencion> listaHoras = new List<HoraAtencion>();
-                foreach (DataRow row in dataTable.Tables[0].Rows)
-                {
-                    listaHoras.Add(generarObjetoHoraAtencion(row, true, true, false, true, true, false, true));
-                }
-                return listaHoras;
-            }
-            catch (Exception ex)
-            {
-                verErrorEnConsola(ex, "buscarHorasEspecialidad");
-                throw new Exception("Ocurrio un error al buscar las horas de los especialistas ", new Exception());
-            }
-        }
-
         //Crea un objeto de tipo HoraAtencion
         private HoraAtencion generarObjetoHoraAtencion(DataRow row,Boolean bloque, Boolean terapeuta, Boolean paciente, Boolean sala, Boolean estadoRes,
             Boolean venta, Boolean espeClinica)
