@@ -20,6 +20,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaServicio", "CapaServici
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumidorAppWeb", "AplicacionWeb\ConsumidorAppWeb.csproj", "{D4F3252E-1C60-4258-B57E-9391E38E6EE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaServicioPresentacionWeb", "CapaServicioPresentacionWeb\CapaServicioPresentacionWeb.csproj", "{C1247D08-BA98-406B-8049-65642938578A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{84E7D915-2642-4779-B2F9-507F91CC024B} = {84E7D915-2642-4779-B2F9-507F91CC024B}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +59,10 @@ Global
 		{D4F3252E-1C60-4258-B57E-9391E38E6EE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4F3252E-1C60-4258-B57E-9391E38E6EE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4F3252E-1C60-4258-B57E-9391E38E6EE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1247D08-BA98-406B-8049-65642938578A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1247D08-BA98-406B-8049-65642938578A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1247D08-BA98-406B-8049-65642938578A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1247D08-BA98-406B-8049-65642938578A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

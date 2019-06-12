@@ -268,6 +268,10 @@ namespace CapaNegocio
                         ids.Add(h.Venta.IdVenta);
                     }
                 });
+                if (ids.Count == 0)
+                {
+                    return horas;
+                }
                 String idsIn = ids.Aggregate(new StringBuilder(), (str, next) => str.Append(str.Length == 0 ? "" : ",").Append(next)).ToString();
                 String query = "SELECT ven.ID_VENTA,ven.FECHA_PAGO,ven.MONTO, mpag.ID_MEDIO_PAGO,mpag.NOMBRE as mpagNombre," +
                     "estVenta.ID_ESTADO_VENTA,estVenta.DESCRIPCION as estVentaDescripcion " +
