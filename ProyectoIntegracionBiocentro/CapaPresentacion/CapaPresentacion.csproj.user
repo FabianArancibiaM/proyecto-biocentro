@@ -14,7 +14,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <StartPageUrl>Biocentro/paginas/reservar_hora/inicio_reservar.aspx</StartPageUrl>
+          <StartPageUrl>Biocentro/paginas/reservar_hora/buscar_hora.aspx</StartPageUrl>
           <StartAction>SpecificPage</StartAction>
           <AspNetDebugging>True</AspNetDebugging>
           <SilverlightDebugging>False</SilverlightDebugging>
