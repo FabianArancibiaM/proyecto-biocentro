@@ -35,38 +35,38 @@
                     <asp:TextBox CssClass="col-md-4" ID="txtRutPaciente1" runat="server" Enabled="False"></asp:TextBox>
                 </div>
             </div>
-            <div class="float-left row">
+            <div class="row">
                 <div style="border:1px solid black; height:100px; width:400px;" class="container-fluid col-md-7">
-                    <asp:GridView ID="tablaResumen" runat="server" AutoGenerateColumns="false" CssClass="table table-striped">
-                <Columns>
-                    <asp:TemplateField HeaderText="TERAPEUTA" >
-                        <ItemTemplate>
-                            <asp:Label ID="lblTerapeuta" runat="server" Enabled="false" Text='<%#Eval("Terapeuta.Nombre")+ " " + Eval("Terapeuta.ApellidoPaterno")+ " " + Eval("Terapeuta.ApellidoMaterno")%>'/>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:BoundField DataField="EspecialidadClinica.Nombre" HeaderText="ESPECIALIDAD" />
-                    <asp:BoundField DataField="Fecha" HeaderText="FECHA" />
-                    <asp:TemplateField HeaderText="HORA" >
-                        <ItemTemplate>
-                            <asp:Label ID="lblHora" runat="server" Enabled="false" Text='<%#Eval("IdBloque.HoraInicio")+ " - " + Eval("IdBloque.HoraFin") + " Hrs" %>'/>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="VALOR" >
-                        <ItemTemplate>
-                            <asp:Label ID="lblValor" runat="server" Enabled="false" Text='<%# "$ "+Eval("EspecialidadClinica.Precio")%>'/>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Pagar" >
-                        <ItemTemplate>
-                            <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="true" OnCheckedChanged="sumarHorasSeleccionadas" Enabled="true"/>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-                <emptydatatemplate>
-                  <asp:image id="NoDataImage" runat="server" HeaderText="Pagar"/>                       
-                    Sin Datos Para Mostrar.
-                </emptydatatemplate> 
-            </asp:GridView>
+                    <asp:GridView ID="tablaResumen" runat="server" AutoGenerateColumns="false" CssClass="table table-striped col-5">
+                        <Columns>
+                            <asp:TemplateField HeaderText="TERAPEUTA" >
+                                <ItemTemplate>
+                                    <asp:Label ID="lblTerapeuta" runat="server" Enabled="false" Text='<%#Eval("Terapeuta.Nombre")+ " " + Eval("Terapeuta.ApellidoPaterno")+ " " + Eval("Terapeuta.ApellidoMaterno")%>'/>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="EspecialidadClinica.Nombre" HeaderText="ESPECIALIDAD" />
+                            <asp:BoundField DataField="Fecha" HeaderText="FECHA" />
+                            <asp:TemplateField HeaderText="HORA" >
+                                <ItemTemplate>
+                                    <asp:Label ID="lblHora" runat="server" Enabled="false" Text='<%#Eval("IdBloque.HoraInicio")+ " - " + Eval("IdBloque.HoraFin") + " Hrs" %>'/>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="VALOR" >
+                                <ItemTemplate>
+                                    <asp:Label ID="lblValor" runat="server" Enabled="false" Text='<%# "$ "+Eval("EspecialidadClinica.Precio")%>'/>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Pagar" >
+                                <ItemTemplate>
+                                    <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="true" OnCheckedChanged="sumarHorasSeleccionadas" Enabled="true"/>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                        <emptydatatemplate>
+                          <asp:image id="NoDataImage" runat="server" HeaderText="Pagar"/>                       
+                            Sin Datos Para Mostrar.
+                        </emptydatatemplate> 
+                    </asp:GridView>
                 </div>
                 <div class="col-4 col-md-4">
                     <div >

@@ -19,9 +19,9 @@ namespace CapaNegocio
             this.conexion = new Conexion();
             this.conexion.NombreBaseDeDatos = "BIOCENTRO_DB";
             //Conex casa
-            //this.conexion.CadenaConexion = "Data Source=lfdbserver.database.windows.net;Initial Catalog=BIOCENTRO_DB;User ID=us_lfloresl;Password=PA$$W0RD;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            this.conexion.CadenaConexion = "Data Source=lfdbserver.database.windows.net;Initial Catalog=BIOCENTRO_DB;User ID=us_lfloresl;Password=PA$$W0RD;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             //Conex pega
-            this.conexion.CadenaConexion = "Data Source=DESKTOP-E5RAPBM\\SQLSERVER;Initial Catalog=BIOCENTRO_DB;Integrated Security=True";
+            //this.conexion.CadenaConexion = "Data Source=DESKTOP-E5RAPBM\\SQLSERVER;Initial Catalog=BIOCENTRO_DB;Integrated Security=True";
         }
 
         public int? guardarEliminarActualizarObjeto(String sqlInsert,Boolean esInsert)

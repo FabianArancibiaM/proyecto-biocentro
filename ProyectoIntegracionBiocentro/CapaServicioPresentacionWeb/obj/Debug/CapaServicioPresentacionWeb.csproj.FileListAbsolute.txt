@@ -1,0 +1,7 @@
+E:\Duoc\Integracion\git\Bio_V2\proyecto-biocentro\ProyectoIntegracionBiocentro\CapaServicioPresentacionWeb\bin\CapaServicioPresentacionWeb.dll.config
+E:\Duoc\Integracion\git\Bio_V2\proyecto-biocentro\ProyectoIntegracionBiocentro\CapaServicioPresentacionWeb\bin\CapaServicioPresentacionWeb.dll
+E:\Duoc\Integracion\git\Bio_V2\proyecto-biocentro\ProyectoIntegracionBiocentro\CapaServicioPresentacionWeb\bin\CapaServicioPresentacionWeb.pdb
+E:\Duoc\Integracion\git\Bio_V2\proyecto-biocentro\ProyectoIntegracionBiocentro\CapaServicioPresentacionWeb\obj\Debug\CapaServicioPresentacionWeb.csprojAssemblyReference.cache
+E:\Duoc\Integracion\git\Bio_V2\proyecto-biocentro\ProyectoIntegracionBiocentro\CapaServicioPresentacionWeb\obj\Debug\CapaServicioPresentacionWeb.csproj.CoreCompileInputs.cache
+E:\Duoc\Integracion\git\Bio_V2\proyecto-biocentro\ProyectoIntegracionBiocentro\CapaServicioPresentacionWeb\obj\Debug\CapaServicioPresentacionWeb.dll
+E:\Duoc\Integracion\git\Bio_V2\proyecto-biocentro\ProyectoIntegracionBiocentro\CapaServicioPresentacionWeb\obj\Debug\CapaServicioPresentacionWeb.pdb
