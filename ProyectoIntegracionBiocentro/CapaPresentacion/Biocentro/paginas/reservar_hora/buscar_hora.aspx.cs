@@ -54,8 +54,8 @@ namespace CapaPresentacion.Biocentro.paginas.reservar_hora
             if(claseEspecialidad.IndexOf("hidden")==-1)
             {
                 int idEspecialidad = Convert.ToInt32(ddlEspecialidad.SelectedValue);
-                List<HoraAtencion> horasEspecialidad = negocioService.buscarHorasEspecialidad(idEspecialidad);
-                Session["horas"] = horasEspecialidad;
+                //List<HoraAtencion> horasEspecialidad = negocioService.buscarHorasEspecialidad(idEspecialidad);
+                //Session["horas"] = horasEspecialidad;
                 Response.Write("<script language='javascript'>window.location='horas_disponibles.aspx';</script>");
             }
             if (claseTerapeuta.IndexOf("hidden") == -1)
