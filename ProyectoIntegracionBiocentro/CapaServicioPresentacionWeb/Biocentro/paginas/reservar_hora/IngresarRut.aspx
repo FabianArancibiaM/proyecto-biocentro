@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Biocentro/paginas/master_page.Master" AutoEventWireup="true" CodeBehind="ingresar_rut.aspx.cs" Inherits="CapaPresentacion.Biocentro.paginas.reservar_hora.ingresar_rut" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Biocentro/paginas/MasterPage.Master" AutoEventWireup="true" CodeBehind="IngresarRut.aspx.cs" Inherits="CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora.IngresarRut" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

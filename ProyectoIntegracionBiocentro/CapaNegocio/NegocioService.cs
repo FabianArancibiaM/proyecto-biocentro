@@ -324,9 +324,10 @@ namespace CapaNegocio
                         return generarObjetoStatusResponce("error", "Debe seleccionar una venta que este pendiente de pago");
                     }
                 }
+                String fecha = venta.FechaPago.Year+"-"+ venta.FechaPago.Month+"-"+ venta.FechaPago.Day+" "+ venta.FechaPago.Hour+":"+ venta.FechaPago.Minute+":"+ venta.FechaPago.Second;
                 String query = "INSERT INTO BIOCENTRO_DB.dbo.VENTA (ID_ESTADO_VENTA,ID_MEDIO_PAGO,FECHA_PAGO,MONTO) OUTPUT INSERTED.ID_VENTA "
                     + " VALUES("+ venta.EstadoVenta.IdEstadoVenta+"," + venta.MedioPago.IdMedioPago +
-                     ",'" + venta.FechaPago + "',"+ venta.Monto+")";
+                     ",'" + fecha + "',"+ venta.Monto+")";
                 int? idVenta = this.utilMethods.guardarEliminarActualizarObjeto(query, true);
                 query = "UPDATE BIOCENTRO_DB.dbo.HORA_ATENCION SET ID_ESTADO=2,ID_VENTA=" + idVenta + " WHERE ID_HORA in (" + ids + ") ; ";
                 this.utilMethods.guardarEliminarActualizarObjeto(query, false);

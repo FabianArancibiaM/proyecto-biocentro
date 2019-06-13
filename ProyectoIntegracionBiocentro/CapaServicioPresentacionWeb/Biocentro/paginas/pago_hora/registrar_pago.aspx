@@ -49,6 +49,7 @@
                         <Columns>
                             <asp:TemplateField HeaderText="TERAPEUTA" >
                                 <ItemTemplate>
+                                    <asp:Label ID="lblIdHora" runat="server" Enabled="false" Text='<%#Eval("IdHora")%>' Visible="false"/>
                                     <asp:Label ID="lblTerapeuta" runat="server" Enabled="false" Text='<%#Eval("Terapeuta.Nombre")+ " " + Eval("Terapeuta.ApellidoPaterno")+ " " + Eval("Terapeuta.ApellidoMaterno")%>'/>
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -66,7 +67,8 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Pagar" >
                                 <ItemTemplate>
-                                    <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="true" OnCheckedChanged="sumarHorasSeleccionadas" Enabled="true"/>
+                                    <asp:CheckBox ID='CheckBox1' runat='server' AutoPostBack='true' OnCheckedChanged='sumarHorasSeleccionadas' Enabled='true'/>
+                                    <asp:Label ID="lblEstado" runat="server" Enabled="false" Text='<%# (Eval("Venta") != null)? Eval("Venta.EstadoVenta.Descripcion"):null%>'/>                                    
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

@@ -5,13 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace CapaPresentacion.Biocentro.paginas.reservar_hora
+namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
 {
-    public partial class horas_disponibles : System.Web.UI.Page
+    public partial class HorasDisponibles : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {/*
-            List<HoraAtencion> horas = (List <HoraAtencion>)  Session["horas"];
+        {
+            List<ServiceCliente.HoraAtencion> horas = (List<ServiceCliente.HoraAtencion>)Session["horas"];
             var horas_disponibles = from h in horas
                                     select new
                                     {
@@ -24,11 +24,7 @@ namespace CapaPresentacion.Biocentro.paginas.reservar_hora
                                                           h.Terapeuta.ApellidoPaterno, h.Terapeuta.ApellidoMaterno)
                                     };
             gvHorasDisponibles.DataSource = horas_disponibles;
-            gvHorasDisponibles.DataBind();*/
+            gvHorasDisponibles.DataBind();
         }
-        protected void btnSeleccionar_Click(object sender, EventArgs e)
-        {
-
-        }        
     }
 }

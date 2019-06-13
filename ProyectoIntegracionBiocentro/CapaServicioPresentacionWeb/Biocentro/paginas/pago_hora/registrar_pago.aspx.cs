@@ -11,9 +11,32 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            validarTabla();
             if (!IsPostBack)
             {
                 cargarMedioPago();
+            }
+        }
+
+        private void validarTabla()
+        {
+            if (this.tablaResumen!=null)
+            {
+                for (int i = 0; i < this.tablaResumen.Rows.Count; i++)
+                {
+                    GridViewRow row = this.tablaResumen.Rows[i];
+                    if (((Label)row.FindControl("lblEstado")).Text.Length>0)
+                    {
+                        ((Label)row.FindControl("lblEstado")).Visible = true;
+                        ((CheckBox)row.FindControl("CheckBox1")).Visible = false;
+                    }
+                    else
+                    {
+                        ((CheckBox)row.FindControl("CheckBox1")).Visible = true;
+                        ((Label)row.FindControl("lblEstado")).Visible = false;
+                    }
+                    
+                }
             }
         }
 
@@ -27,7 +50,6 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora
                 listaMedioPago.AddRange(soapClient.generarListaMedioPagoService());
                 if (listaMedioPago == null)
                 {
-                    ShowMessage("No se encontraron datos");
                     return;
                 }
                 this.comboMedioPago.Items.Add(new ListItem("Seleccionar", "0"));
@@ -73,6 +95,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora
                 this.txtNombrePaciente.Text = listReserva.First().Paciente.Nombre + " " + listReserva.First().Paciente.ApellidoPaterno + " " + listReserva.First().Paciente.ApellidoMaterno;
                 this.tablaResumen.DataSource = listReserva;
                 this.tablaResumen.DataBind();
+                validarTabla();
             }
             catch (Exception ex)
             {
@@ -121,6 +144,11 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora
 
             try
             {
+                if (this.comboMedioPago.SelectedItem.Value.Equals("0"))
+                {
+                    ShowMessage("Debe seleccionar un medio de pago");
+                    return;
+                }
                 List<ServiceCliente.HoraAtencion> listReserva = new List<ServiceCliente.HoraAtencion>();
                 for (int i = 0; i < this.tablaResumen.Rows.Count; i++)
                 {
@@ -128,7 +156,11 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora
                     bool isChecked2 = ((CheckBox)row.FindControl("CheckBox1")).Checked;
                     if (isChecked2)
                     {
-                        listReserva.Add((ServiceCliente.HoraAtencion)this.tablaResumen.Rows[i].DataItem);
+                        ServiceCliente.HoraAtencion hora = new ServiceCliente.HoraAtencion();
+                        hora.IdHora = Convert.ToInt32(((Label)row.FindControl("lblIdHora")).Text);
+                        hora.EspecialidadClinica = new ServiceCliente.EspecialidadClinica();
+                        hora.EspecialidadClinica.Precio = Convert.ToInt32(((Label)row.FindControl("lblValor")).Text.Replace("$ ", ""));
+                        listReserva.Add(hora);
                     }
                 }
                 if (listReserva.Count <= 0)
@@ -145,7 +177,9 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora
                 }
                 ServiceCliente.Venta venta = new ServiceCliente.Venta();
                 venta.FechaPago = DateTime.Now;
-                //venta.MedioPago = (ServiceCliente.MedioPago)this.comboMedioPago.SelectedItem;
+                ServiceCliente.MedioPago medio = new ServiceCliente.MedioPago();
+                medio.IdMedioPago = Convert.ToInt32(this.comboMedioPago.SelectedItem.Value);
+                venta.MedioPago = medio;
                 venta.Monto = total;
                 ServiceCliente.EstadoVenta esVenta = new ServiceCliente.EstadoVenta();
                 esVenta.IdEstadoVenta = 2;
@@ -158,6 +192,9 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora
                     return;
                 }
                 ShowMessage(responce.Mensaje);
+                this.comboMedioPago.SelectedIndex = 0;
+                this.txtTotal.Text = "0";
+                btnBuscarPaciente_Click(sender,e);
                 return;
             }
             catch (Exception ex)

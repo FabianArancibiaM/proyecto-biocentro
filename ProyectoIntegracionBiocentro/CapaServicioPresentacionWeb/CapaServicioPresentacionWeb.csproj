@@ -124,8 +124,12 @@
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Biocentro\paginas\master_page.Master" />
+    <Content Include="Biocentro\paginas\MasterPage.Master" />
     <None Include="Connected Services\ServiceCliente\WebServiceCliente.wsdl" />
+    <Content Include="Biocentro\paginas\reservar_hora\BuscarHora.aspx" />
+    <Content Include="Biocentro\paginas\reservar_hora\HorasDisponibles.aspx" />
+    <Content Include="Biocentro\paginas\reservar_hora\IngresarRut.aspx" />
+    <Content Include="Biocentro\paginas\reservar_hora\InicioReserva.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -1749,10 +1753,6 @@
     <Content Include="Biocentro\assets\js\bootstrap.min.js" />
     <Content Include="Biocentro\assets\js\npm.js" />
     <Content Include="Biocentro\paginas\pago_hora\registrar_pago.aspx" />
-    <Content Include="Biocentro\paginas\reservar_hora\buscar_hora.aspx" />
-    <Content Include="Biocentro\paginas\reservar_hora\horas_disponibles.aspx" />
-    <Content Include="Biocentro\paginas\reservar_hora\ingresar_rut.aspx" />
-    <Content Include="Biocentro\paginas\reservar_hora\inicio_reservar.aspx" />
     <Content Include="Connected Services\ServiceCliente\CapaServicioPresentacionWeb.ServiceCliente.EspecialidadClinica.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -1781,9 +1781,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Biocentro\paginas\master_page.Master.cs">
-      <DependentUpon>master_page.Master</DependentUpon>
+    <Compile Include="Biocentro\paginas\MasterPage.Master.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Biocentro\paginas\MasterPage.Master.designer.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
     <Compile Include="Biocentro\paginas\pago_hora\registrar_pago.aspx.cs">
       <DependentUpon>registrar_pago.aspx</DependentUpon>
@@ -1792,21 +1795,33 @@
     <Compile Include="Biocentro\paginas\pago_hora\registrar_pago.aspx.designer.cs">
       <DependentUpon>registrar_pago.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Biocentro\paginas\reservar_hora\buscar_hora.aspx.cs">
-      <DependentUpon>buscar_hora.aspx</DependentUpon>
+    <Compile Include="Biocentro\paginas\reservar_hora\BuscarHora.aspx.cs">
+      <DependentUpon>BuscarHora.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Biocentro\paginas\reservar_hora\horas_disponibles.aspx.cs">
-      <DependentUpon>horas_disponibles.aspx</DependentUpon>
+    <Compile Include="Biocentro\paginas\reservar_hora\BuscarHora.aspx.designer.cs">
+      <DependentUpon>BuscarHora.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\HorasDisponibles.aspx.cs">
+      <DependentUpon>HorasDisponibles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Biocentro\paginas\reservar_hora\ingresar_rut.aspx.cs">
-      <DependentUpon>ingresar_rut.aspx</DependentUpon>
+    <Compile Include="Biocentro\paginas\reservar_hora\HorasDisponibles.aspx.designer.cs">
+      <DependentUpon>HorasDisponibles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\IngresarRut.aspx.cs">
+      <DependentUpon>IngresarRut.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Biocentro\paginas\reservar_hora\inicio_reservar.aspx.cs">
-      <DependentUpon>inicio_reservar.aspx</DependentUpon>
+    <Compile Include="Biocentro\paginas\reservar_hora\IngresarRut.aspx.designer.cs">
+      <DependentUpon>IngresarRut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\InicioReserva.aspx.cs">
+      <DependentUpon>InicioReserva.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\InicioReserva.aspx.designer.cs">
+      <DependentUpon>InicioReserva.aspx</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\ServiceCliente\Reference.cs">
       <AutoGen>True</AutoGen>
