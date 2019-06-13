@@ -11,12 +11,39 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
+            if (!IsPostBack)
             {
                 cargarMedioPago();
             }
-            
         }
+
+        private void cargarMedioPago()
+        {
+            try
+            {
+                this.comboMedioPago.Items.Clear();
+                ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
+                List<ServiceCliente.MedioPago> listaMedioPago = new List<ServiceCliente.MedioPago>();
+                listaMedioPago.AddRange(soapClient.generarListaMedioPagoService());
+                if (listaMedioPago == null)
+                {
+                    ShowMessage("No se encontraron datos");
+                    return;
+                }
+                this.comboMedioPago.Items.Add(new ListItem("Seleccionar", "0"));
+                foreach (ServiceCliente.MedioPago var in listaMedioPago)
+                {
+                    this.comboMedioPago.Items.Add(new ListItem(var.Nombre, var.IdMedioPago.ToString()));
+                }
+                this.comboMedioPago.DataBind();
+                this.comboMedioPago.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Se produjo un error: " + ex.Message);
+            }
+        }
+
         protected void btnBuscarPaciente_Click(object sender, EventArgs e)
         {
 
@@ -31,6 +58,10 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora
                 this.tablaResumen.DataBind();
                 List<ServiceCliente.HoraAtencion> listReserva = new List<ServiceCliente.HoraAtencion>();
                 ServiceCliente.HoraAtencion[] listaSoap = soapClient.horasPorRutPacienteMasVentaService(this.txtBuscarPaciente.Text);
+                if (listaSoap == null)
+                {
+                    return;
+                }
                 if (listaSoap != null)
                 {
                     for (int i = 0; i < listaSoap.Length; i++)
@@ -128,35 +159,6 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora
                 }
                 ShowMessage(responce.Mensaje);
                 return;
-            }
-            catch (Exception ex)
-            {
-                ShowMessage("Se produjo un error: " + ex.Message);
-            }
-        }
-
-        private void cargarMedioPago()
-        {
-            try
-            {
-                this.comboMedioPago.Items.Clear();
-                ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
-                List<ServiceCliente.MedioPago> listaMedioPago = new List<ServiceCliente.MedioPago>();
-                listaMedioPago.AddRange(soapClient.generarListaMedioPagoService());
-                if (listaMedioPago == null)
-                {
-                    ShowMessage("No se encontraron datos");
-                    return;
-                }
-                
-                this.comboMedioPago.Items.Add(new ListItem("Seleccione", "0"));
-                ListItem i;
-                foreach (ServiceCliente.MedioPago medio in listaMedioPago)
-                {
-                    i = new ListItem(medio.Nombre , medio.IdMedioPago.ToString());
-                    this.comboMedioPago.Items.Add(i);
-                }
-
             }
             catch (Exception ex)
             {
