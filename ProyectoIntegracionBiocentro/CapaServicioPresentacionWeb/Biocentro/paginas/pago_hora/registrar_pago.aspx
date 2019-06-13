@@ -76,11 +76,7 @@
                     <asp:DropDownList id="comboMedioPago"
                         AutoPostBack="True"
                         runat="server" CssClass="btn-group btn btn-secondary dropdown-toggle select" >
-                        <asp:ListItem Selected="True" Value="White"> White </asp:ListItem>
-                        <asp:ListItem Value="Silver"> Silver </asp:ListItem>
-                        <asp:ListItem Value="DarkGray"> Dark Gray </asp:ListItem>
-                        <asp:ListItem Value="Khaki"> Khaki </asp:ListItem>
-                        <asp:ListItem Value="DarkKhaki"> Dark Khaki </asp:ListItem>
+                        <asp:ListItem Selected="True" Value="0"> Seleccione </asp:ListItem>
                     </asp:DropDownList>
                     <asp:Button ID="Button2" runat="server" OnClick="guardarPago" Text="Registrar Pago" CssClass="btn btn-primary " />
                 </div>
