@@ -18,15 +18,15 @@
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <asp:Button id="btnEspecialidad" OnClick="mensaje2" runat="server" class="btn btn-md btn-primary btn-block form-group" Text="Por Especialidad"></asp:Button>
+                <asp:Button id="btnEspecialidad" OnClick="botonEspecialidadClick" runat="server" class="btn btn-md btn-primary btn-block form-group" Text="Por Especialidad"></asp:Button>
              </div>
              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <asp:Button id="btnTerapeuta" OnClick="mensaje2" runat="server" class="btn btn-md btn-primary btn-block form-group" Text="Por Especialista"></asp:Button>
+                <asp:Button id="btnTerapeuta" OnClick="botonEspecialistaClick" runat="server" class="btn btn-md btn-primary btn-block form-group" Text="Por Especialista"></asp:Button>
             </div>
         </div>
         <div class="row text-center form-group">
             <asp:DropDownList ID="ddlEspecialidad" CssClass="form-control" runat="server" ClientIDMode="Static"></asp:DropDownList>
-            <asp:DropDownList ID="ddlTerapeuta" CssClass="hidden form-control" runat="server" ClientIDMode="Static"></asp:DropDownList>
+            <asp:DropDownList ID="ddlTerapeuta" CssClass="form-control" runat="server" ClientIDMode="Static"></asp:DropDownList>
         </div>
         <div class="row text-center form-group">
             <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click"/>

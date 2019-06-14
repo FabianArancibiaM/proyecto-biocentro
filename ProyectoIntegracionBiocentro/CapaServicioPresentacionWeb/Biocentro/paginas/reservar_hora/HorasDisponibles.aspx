@@ -2,8 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    Horas disponibles para/con juan perez
-    <asp:GridView ID="gvHorasDisponibles" class="table" runat="server"  AutoGenerateColumns="False" DataKeyNames="Id"  AutoPostBack="true">
+    <asp:GridView ID="gvHorasDisponibles" class="table" CssClass="table table-striped table-bordered table-sm" runat="server"  AutoGenerateColumns="false" DataKeyNames="Id"  AutoPostBack="false" onrowcommand="gvHorasDisponibles_SelectedIndexChanged">
         <Columns>
             <asp:BoundField DataField="Id" HeaderText="Id" />
             <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
@@ -11,13 +10,14 @@
             <asp:BoundField DataField="HoraFin" HeaderText="Hora Fin" />
             <asp:BoundField DataField="Especialidad" HeaderText="Especialidad" />
             <asp:BoundField DataField="NombreTerapeuta" HeaderText="Terapeuta" />
+            <asp:ButtonField CommandName="seleccionarBtn" runat="server" Text="S" HeaderText="Secelcionar"/>
             <asp:TemplateField>
-                <ItemTemplate>                
-                    <asp:Button ID="btnSeleccionar" runat="server" CssClass="btn btn-sm" OnClick="btnSeleccionar_Click" Text="S" />
+                <ItemTemplate>              
+                    
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="footer"  runat="server">
 </asp:Content>

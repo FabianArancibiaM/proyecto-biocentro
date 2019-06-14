@@ -13,15 +13,28 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
         {
             if (!IsPostBack)
             {
-                ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
-                ServiceCliente.EspecialidadClinica[] especialidades = soapClient.generarListaEspecialidadService();
-                this.ddlEspecialidad.DataSource = especialidades;
-                this.ddlEspecialidad.DataTextField = "Nombre";
-                this.ddlEspecialidad.DataValueField = "IdEspecialidadClinica";
-                this.ddlEspecialidad.DataBind();
-                this.ddlEspecialidad.Items.Insert(0, new ListItem("Seleccionar Especialidad", ""));
-                this.ddlEspecialidad.SelectedIndex = 0;
+                cargarEspecialista();
+                cargarEspecialidades();
+                this.ddlEspecialidad.Visible = false;
+                this.ddlTerapeuta.Visible = false;
+            }
 
+        }
+        protected void botonEspecialidadClick(object sender, EventArgs e)
+        {
+            this.ddlEspecialidad.Visible = true;
+            this.ddlTerapeuta.Visible = false;
+        }
+        protected void botonEspecialistaClick(object sender, EventArgs e)
+        {
+            this.ddlEspecialidad.Visible = false;
+            this.ddlTerapeuta.Visible = true;
+        }
+        private void cargarEspecialista()
+        {
+            try
+            {
+                ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
                 ServiceCliente.EspecialidadTerapeuta[] terapeutas = soapClient.generarListaEspecialistaService();
                 var terapeutas_filtrado = (from t in terapeutas
                                            select new
@@ -42,7 +55,28 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                 this.ddlTerapeuta.Items.Insert(0, new ListItem("Seleccionar Terapeuta", ""));
                 this.ddlTerapeuta.SelectedIndex = 0;
             }
-
+            catch (Exception ex)
+            {
+                ShowMessage("Error al cargar las Especialidades : " + ex.Message);
+            }
+        }
+        private void cargarEspecialidades()
+        {
+            try
+            {
+                ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
+                ServiceCliente.EspecialidadClinica[] especialidades = soapClient.generarListaEspecialidadService();
+                this.ddlEspecialidad.DataSource = especialidades;
+                this.ddlEspecialidad.DataTextField = "Nombre";
+                this.ddlEspecialidad.DataValueField = "IdEspecialidadClinica";
+                this.ddlEspecialidad.DataBind();
+                this.ddlEspecialidad.Items.Insert(0, new ListItem("Seleccionar Especialidad", ""));
+                this.ddlEspecialidad.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Error al cargar las Especialidades : " + ex.Message);
+            }
         }
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -81,14 +115,6 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             {
                 ShowMessage("Error al guardar: "+ ex.Message);
             }
-        }
-        public void mensaje()
-        {
-            ShowMessage("Funciona");
-        }
-        public void mensaje2(object sender, EventArgs e)
-        {
-            ShowMessage("Funciona");
         }
         public void ShowMessage(string message)
         {
