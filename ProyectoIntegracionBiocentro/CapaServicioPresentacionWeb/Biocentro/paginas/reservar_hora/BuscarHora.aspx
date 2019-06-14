@@ -6,17 +6,17 @@
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
         <div class="row m-b-md">
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <span id="btnEspecialidad"  class="btn btn-md btn-primary btn-block form-group">
-                Por Especialidad</span>
+                <asp:button id="btnEspecialidad" runat="server" OnClick="botonEspecialidadClick" class="btn btn-md btn-primary btn-block form-group" Text="Por Especialidad">
+                </asp:button>
              </div>
              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                  <span id="btnTerapeuta" class="btn btn-md btn-primary btn-block form-group">
-                Por Terapeuta</span>
+                  <asp:button id="btnTerapeuta" runat="server" OnClick="botonEspecialistaClick" class="btn btn-md btn-primary btn-block form-group" Text="Por Terapeuta">
+                </asp:button>
             </div>
         </div>
         <div class="row text-center form-group">
             <asp:DropDownList ID="ddlEspecialidad" CssClass="form-control" runat="server" ClientIDMode="Static"></asp:DropDownList>
-            <asp:DropDownList ID="ddlTerapeuta" CssClass="hidden form-control" runat="server" ClientIDMode="Static"></asp:DropDownList>
+            <asp:DropDownList ID="ddlTerapeuta" CssClass="form-control" runat="server" ClientIDMode="Static"></asp:DropDownList>
         </div>
         <div class="row text-center form-group">
             <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click"  class="btn btn-md btn-primary form-group" />

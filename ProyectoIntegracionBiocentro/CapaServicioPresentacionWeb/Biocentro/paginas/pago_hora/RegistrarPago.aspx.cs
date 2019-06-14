@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora
 {
-    public partial class registrar_pago : System.Web.UI.Page
+    public partial class RegistrarPago : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,12 +20,12 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora
 
         private void validarTabla()
         {
-            if (this.tablaResumen!=null)
+            if (this.tablaResumen != null)
             {
                 for (int i = 0; i < this.tablaResumen.Rows.Count; i++)
                 {
                     GridViewRow row = this.tablaResumen.Rows[i];
-                    if (((Label)row.FindControl("lblEstado")).Text.Length>0)
+                    if (((Label)row.FindControl("lblEstado")).Text.Length > 0)
                     {
                         ((Label)row.FindControl("lblEstado")).Visible = true;
                         ((CheckBox)row.FindControl("CheckBox1")).Visible = false;
@@ -35,7 +35,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora
                         ((CheckBox)row.FindControl("CheckBox1")).Visible = true;
                         ((Label)row.FindControl("lblEstado")).Visible = false;
                     }
-                    
+
                 }
             }
         }
@@ -194,7 +194,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora
                 ShowMessage(responce.Mensaje);
                 this.comboMedioPago.SelectedIndex = 0;
                 this.txtTotal.Text = "0";
-                btnBuscarPaciente_Click(sender,e);
+                btnBuscarPaciente_Click(sender, e);
                 return;
             }
             catch (Exception ex)

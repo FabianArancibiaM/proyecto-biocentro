@@ -127,6 +127,7 @@
     <Content Include="Biocentro\assets\js\custom.js" />
     <Content Include="Biocentro\paginas\MasterPage.Master" />
     <None Include="Connected Services\ServiceCliente\WebServiceCliente.wsdl" />
+    <Content Include="Biocentro\paginas\pago_hora\RegistrarPago.aspx" />
     <Content Include="Biocentro\paginas\reservar_hora\BuscarHora.aspx" />
     <Content Include="Biocentro\paginas\reservar_hora\DatosPaciente.aspx" />
     <Content Include="Biocentro\paginas\reservar_hora\HorasDisponibles.aspx" />
@@ -1754,7 +1755,6 @@
     <Content Include="Biocentro\assets\js\bootstrap.js" />
     <Content Include="Biocentro\assets\js\bootstrap.min.js" />
     <Content Include="Biocentro\assets\js\npm.js" />
-    <Content Include="Biocentro\paginas\pago_hora\registrar_pago.aspx" />
     <Content Include="Connected Services\ServiceCliente\CapaServicioPresentacionWeb.ServiceCliente.EspecialidadClinica.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -1790,12 +1790,12 @@
     <Compile Include="Biocentro\paginas\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
-    <Compile Include="Biocentro\paginas\pago_hora\registrar_pago.aspx.cs">
-      <DependentUpon>registrar_pago.aspx</DependentUpon>
+    <Compile Include="Biocentro\paginas\pago_hora\RegistrarPago.aspx.cs">
+      <DependentUpon>RegistrarPago.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Biocentro\paginas\pago_hora\registrar_pago.aspx.designer.cs">
-      <DependentUpon>registrar_pago.aspx</DependentUpon>
+    <Compile Include="Biocentro\paginas\pago_hora\RegistrarPago.aspx.designer.cs">
+      <DependentUpon>RegistrarPago.aspx</DependentUpon>
     </Compile>
     <Compile Include="Biocentro\paginas\reservar_hora\BuscarHora.aspx.cs">
       <DependentUpon>BuscarHora.aspx</DependentUpon>
