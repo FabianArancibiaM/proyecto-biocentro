@@ -4,3 +4,10 @@ C:\Users\farancib\Desktop\Universidad\proyecto-biocentroV1\ProyectoIntegracionBi
 C:\Users\farancib\Desktop\Universidad\proyecto-biocentroV1\ProyectoIntegracionBiocentro\CapaServicioPresentacionWeb\obj\Debug\CapaServicioPresentacionWeb.csproj.CoreCompileInputs.cache
 C:\Users\farancib\Desktop\Universidad\proyecto-biocentroV1\ProyectoIntegracionBiocentro\CapaServicioPresentacionWeb\obj\Debug\CapaServicioPresentacionWeb.dll
 C:\Users\farancib\Desktop\Universidad\proyecto-biocentroV1\ProyectoIntegracionBiocentro\CapaServicioPresentacionWeb\obj\Debug\CapaServicioPresentacionWeb.pdb
+C:\Users\Cony\source\repos\proyecto-biocentro\ProyectoIntegracionBiocentro\CapaServicioPresentacionWeb\bin\CapaServicioPresentacionWeb.dll.config
+C:\Users\Cony\source\repos\proyecto-biocentro\ProyectoIntegracionBiocentro\CapaServicioPresentacionWeb\bin\CapaServicioPresentacionWeb.dll
+C:\Users\Cony\source\repos\proyecto-biocentro\ProyectoIntegracionBiocentro\CapaServicioPresentacionWeb\bin\CapaServicioPresentacionWeb.pdb
+C:\Users\Cony\source\repos\proyecto-biocentro\ProyectoIntegracionBiocentro\CapaServicioPresentacionWeb\obj\Debug\CapaServicioPresentacionWeb.csprojAssemblyReference.cache
+C:\Users\Cony\source\repos\proyecto-biocentro\ProyectoIntegracionBiocentro\CapaServicioPresentacionWeb\obj\Debug\CapaServicioPresentacionWeb.csproj.CoreCompileInputs.cache
+C:\Users\Cony\source\repos\proyecto-biocentro\ProyectoIntegracionBiocentro\CapaServicioPresentacionWeb\obj\Debug\CapaServicioPresentacionWeb.dll
+C:\Users\Cony\source\repos\proyecto-biocentro\ProyectoIntegracionBiocentro\CapaServicioPresentacionWeb\obj\Debug\CapaServicioPresentacionWeb.pdb

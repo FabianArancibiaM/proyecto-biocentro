@@ -124,10 +124,12 @@
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Biocentro\assets\js\custom.js" />
     <Content Include="Biocentro\paginas\MasterPage.Master" />
     <None Include="Connected Services\ServiceCliente\WebServiceCliente.wsdl" />
     <Content Include="Biocentro\paginas\pago_hora\RegistrarPago.aspx" />
     <Content Include="Biocentro\paginas\reservar_hora\BuscarHora.aspx" />
+    <Content Include="Biocentro\paginas\reservar_hora\DatosPaciente.aspx" />
     <Content Include="Biocentro\paginas\reservar_hora\HorasDisponibles.aspx" />
     <Content Include="Biocentro\paginas\reservar_hora\IngresarRut.aspx" />
     <Content Include="Biocentro\paginas\reservar_hora\InicioReserva.aspx" />
@@ -1801,6 +1803,13 @@
     </Compile>
     <Compile Include="Biocentro\paginas\reservar_hora\BuscarHora.aspx.designer.cs">
       <DependentUpon>BuscarHora.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\DatosPaciente.aspx.cs">
+      <DependentUpon>DatosPaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\DatosPaciente.aspx.designer.cs">
+      <DependentUpon>DatosPaciente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Biocentro\paginas\reservar_hora\HorasDisponibles.aspx.cs">
       <DependentUpon>HorasDisponibles.aspx</DependentUpon>

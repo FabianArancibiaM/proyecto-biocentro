@@ -36,6 +36,12 @@ namespace CapaServicio
             return negocio.buscarHorasDisponibles(especialidad, fecha, persona);
         }
         [WebMethod]
+        public HoraAtencion buscarDetalleHoraService(int idHoraAtencion)
+        {
+            NegocioService negocio = new NegocioService();
+            return negocio.buscarDetalleHora(idHoraAtencion);
+        }
+        [WebMethod]
         public List<EspecialidadClinica> generarListaEspecialidadService()
         {
             NegocioService negocio = new NegocioService();

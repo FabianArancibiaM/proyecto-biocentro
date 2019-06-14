@@ -1,8 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Biocentro/paginas/MasterPage.Master" AutoEventWireup="true" CodeBehind="HorasDisponibles.aspx.cs" Inherits="CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora.HorasDisponibles" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Biocentro/paginas/MasterPage.Master" AutoEventWireup="true" CodeBehind="HorasDisponibles.aspx.cs" Inherits="CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora.HorasDisponibles" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:GridView ID="gvHorasDisponibles" class="table" CssClass="table table-striped table-bordered table-sm" runat="server"  AutoGenerateColumns="false" DataKeyNames="Id"  AutoPostBack="false" onrowcommand="gvHorasDisponibles_SelectedIndexChanged">
+    Horas disponibles para/con juan perez
+    <asp:GridView ID="gvHorasDisponibles" class="table" runat="server"  AutoGenerateColumns="False" DataKeyNames="Id"  AutoPostBack="true">
         <Columns>
             <asp:BoundField DataField="Id" HeaderText="Id" />
             <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
@@ -10,14 +11,16 @@
             <asp:BoundField DataField="HoraFin" HeaderText="Hora Fin" />
             <asp:BoundField DataField="Especialidad" HeaderText="Especialidad" />
             <asp:BoundField DataField="NombreTerapeuta" HeaderText="Terapeuta" />
-            <asp:ButtonField CommandName="seleccionarBtn" runat="server" Text="S" HeaderText="Secelcionar"/>
             <asp:TemplateField>
-                <ItemTemplate>              
-                    
+                <ItemTemplate> 
+                    <span>    <i class="fa fa-check-square-o"></i>
+                        <asp:Button ID="btnSeleccionar" runat="server" CssClass="btn btn-sm" 
+                        OnClick="btnSeleccionar_Click" Text=""/> 
+                    </span>                    
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="footer"  runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
 </asp:Content>
