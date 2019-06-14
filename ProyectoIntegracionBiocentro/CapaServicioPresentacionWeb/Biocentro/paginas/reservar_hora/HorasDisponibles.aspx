@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Biocentro/paginas/MasterPage.Master" AutoEventWireup="true" CodeBehind="HorasDisponibles.aspx.cs" Inherits="CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora.HorasDisponibles" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Biocentro/paginas/MasterPage.Master" AutoEventWireup="true" CodeBehind="HorasDisponibles.aspx.cs" Inherits="CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora.HorasDisponibles" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -12,8 +12,11 @@
             <asp:BoundField DataField="Especialidad" HeaderText="Especialidad" />
             <asp:BoundField DataField="NombreTerapeuta" HeaderText="Terapeuta" />
             <asp:TemplateField>
-                <ItemTemplate>                
-                    <asp:Button ID="btnSeleccionar" runat="server" CssClass="btn btn-sm" OnClick="btnSeleccionar_Click" Text="S" />
+                <ItemTemplate> 
+                    <span>    <i class="fa fa-check-square-o"></i>
+                        <asp:Button ID="btnSeleccionar" runat="server" CssClass="btn btn-sm" 
+                        OnClick="btnSeleccionar_Click" Text=""/> 
+                    </span>                    
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

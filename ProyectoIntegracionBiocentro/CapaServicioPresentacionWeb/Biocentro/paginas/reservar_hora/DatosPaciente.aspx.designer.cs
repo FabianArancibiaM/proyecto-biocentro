@@ -10,7 +10,7 @@
 namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora {
     
     
-    public partial class IngresarRut {
+    public partial class DatosPaciente {
         
         /// <summary>
         /// txtRut control.
@@ -22,57 +22,93 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora {
         protected global::System.Web.UI.WebControls.TextBox txtRut;
         
         /// <summary>
-        /// btn_buscar_rut control.
+        /// txtNombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_buscar_rut;
+        protected global::System.Web.UI.WebControls.TextBox txtNombre;
         
         /// <summary>
-        /// lblFechaHora control.
+        /// txtApPaterno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFechaHora;
+        protected global::System.Web.UI.WebControls.TextBox txtApPaterno;
         
         /// <summary>
-        /// lblLugar control.
+        /// txtApMaterno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLugar;
+        protected global::System.Web.UI.WebControls.TextBox txtApMaterno;
         
         /// <summary>
-        /// lblEspecialidad control.
+        /// fechaNac control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEspecialidad;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText fechaNac;
         
         /// <summary>
-        /// lblTerapeuta control.
+        /// radioHombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTerapeuta;
+        protected global::System.Web.UI.WebControls.RadioButton radioHombre;
         
         /// <summary>
-        /// volver control.
+        /// radioMujer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button volver;
+        protected global::System.Web.UI.WebControls.RadioButton radioMujer;
+        
+        /// <summary>
+        /// radioOtro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton radioOtro;
+        
+        /// <summary>
+        /// txtCorreo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCorreo;
+        
+        /// <summary>
+        /// txtTelefono control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTelefono;
+        
+        /// <summary>
+        /// btnReservar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReservar;
     }
 }

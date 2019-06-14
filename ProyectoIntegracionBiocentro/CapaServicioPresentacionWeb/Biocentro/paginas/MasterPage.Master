@@ -15,6 +15,7 @@
         <link href="/Biocentro/assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen" runat="server"/>
         <link href="/Biocentro/assets/fontawesome/css/all.css" rel="stylesheet" type="text/css" media="screen" runat="server"/>    
         <script src="/Biocentro/assets/js/bootstrap.js"></script>
+        <script src="/Biocentro/assets/js/custom.js"></script>
         <link href="/Biocentro/assets/css/custom.css" rel="stylesheet" type="text/css" media="screen" runat="server"/>       
         <div class="container">
           <nav class="navbar navbar-default">

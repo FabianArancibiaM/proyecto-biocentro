@@ -26,5 +26,19 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             gvHorasDisponibles.DataSource = horas_disponibles;
             gvHorasDisponibles.DataBind();
         }
+
+        protected void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            //Obtener el boton que envió la solicitud
+            Button btn = (Button)sender;
+            //Obtener la fila del boton
+            GridViewRow row = (GridViewRow)btn.NamingContainer;
+            //Obtener la id del detalle a eliminar
+            int id = int.Parse(gvHorasDisponibles.DataKeys[row.RowIndex].Value.ToString());
+            //Redirecciona a página con detalle del nº de la orden
+            //Response.Redirect("~/Biocentro/paginas/reservar_hora/IngresarRut.aspx?id_hora=" + id);
+            Session["id_hora"] = id;
+            Response.Write("<script language='javascript'>window.location='IngresarRut.aspx';</script>");
+        }
     }
 }

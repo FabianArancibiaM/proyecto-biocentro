@@ -148,6 +148,20 @@
           <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="buscarDetalleHoraService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idHoraAtencion" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscarDetalleHoraServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscarDetalleHoraServiceResult" type="tns:HoraAtencion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="generarListaEspecialidadService">
         <s:complexType />
       </s:element>
@@ -302,6 +316,12 @@
   <wsdl:message name="buscarHorasDisponiblesServiceSoapOut">
     <wsdl:part name="parameters" element="tns:buscarHorasDisponiblesServiceResponse" />
   </wsdl:message>
+  <wsdl:message name="buscarDetalleHoraServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:buscarDetalleHoraService" />
+  </wsdl:message>
+  <wsdl:message name="buscarDetalleHoraServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:buscarDetalleHoraServiceResponse" />
+  </wsdl:message>
   <wsdl:message name="generarListaEspecialidadServiceSoapIn">
     <wsdl:part name="parameters" element="tns:generarListaEspecialidadService" />
   </wsdl:message>
@@ -363,6 +383,10 @@
       <wsdl:input message="tns:buscarHorasDisponiblesServiceSoapIn" />
       <wsdl:output message="tns:buscarHorasDisponiblesServiceSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="buscarDetalleHoraService">
+      <wsdl:input message="tns:buscarDetalleHoraServiceSoapIn" />
+      <wsdl:output message="tns:buscarDetalleHoraServiceSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="generarListaEspecialidadService">
       <wsdl:input message="tns:generarListaEspecialidadServiceSoapIn" />
       <wsdl:output message="tns:generarListaEspecialidadServiceSoapOut" />
@@ -418,6 +442,15 @@
     </wsdl:operation>
     <wsdl:operation name="buscarHorasDisponiblesService">
       <soap:operation soapAction="http://tempuri.org/buscarHorasDisponiblesService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarDetalleHoraService">
+      <soap:operation soapAction="http://tempuri.org/buscarDetalleHoraService" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -520,6 +553,15 @@
     </wsdl:operation>
     <wsdl:operation name="buscarHorasDisponiblesService">
       <soap12:operation soapAction="http://tempuri.org/buscarHorasDisponiblesService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarDetalleHoraService">
+      <soap12:operation soapAction="http://tempuri.org/buscarDetalleHoraService" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
