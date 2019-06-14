@@ -1,16 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="registrar_pago.aspx.cs" Inherits="CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora.registrar_pago" %>
-
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-    <link rel="stylesheet" href="../../../Content/bootstrap.min.css" >
-    <script src="../../../Scripts/bootstrap.min.js" ></script>
-    <script src="../../../Scripts/jquery-3.0.0.slim.js" ></script>
-    <script src="../../../Scripts/popper.min.js" ></script>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Biocentro/paginas/MasterPage.Master" AutoEventWireup="true" CodeBehind="RegistrarPago.aspx.cs" Inherits="CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora.RegistrarPago" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .table th{
             background-color:khaki;
@@ -24,10 +13,9 @@
             margin: 10px 0px;
         }
     </style>
-</head>
-<body>
-    <form id="form1" runat="server" >
-        <div class="container-fluid">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="container-fluid">
             <div class="card" >
                 <h1 class="display-4 mx-auto" >Recibir Pago</h1>
                 <div class="card-header form-row">
@@ -91,6 +79,7 @@
                 </div>
             </div>  
         </div>
-    </form>
-</body>
-</html>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
+    
+</asp:Content>

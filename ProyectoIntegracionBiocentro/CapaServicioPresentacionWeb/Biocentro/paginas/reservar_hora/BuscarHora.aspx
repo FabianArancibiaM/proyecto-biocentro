@@ -18,12 +18,10 @@
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
         <div class="row">
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <span id="btnEspecialidad"  class="btn btn-md btn-primary btn-block form-group">
-                Por Especialidad</span>
+                <asp:Button id="btnEspecialidad" OnClick="mensaje2" runat="server" class="btn btn-md btn-primary btn-block form-group" Text="Por Especialidad"></asp:Button>
              </div>
              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <span id="btnTerapeuta"  class="btn btn-md btn-primary btn-block form-group">
-                Por Terapeuta</span>
+                <asp:Button id="btnTerapeuta" OnClick="mensaje2" runat="server" class="btn btn-md btn-primary btn-block form-group" Text="Por Especialista"></asp:Button>
             </div>
         </div>
         <div class="row text-center form-group">

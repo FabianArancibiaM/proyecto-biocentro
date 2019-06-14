@@ -13,6 +13,24 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora {
     public partial class BuscarHora {
         
         /// <summary>
+        /// Control btnEspecialidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEspecialidad;
+        
+        /// <summary>
+        /// Control btnTerapeuta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTerapeuta;
+        
+        /// <summary>
         /// Control ddlEspecialidad.
         /// </summary>
         /// <remarks>

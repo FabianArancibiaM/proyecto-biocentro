@@ -82,6 +82,14 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                 ShowMessage("Error al guardar: "+ ex.Message);
             }
         }
+        public void mensaje()
+        {
+            ShowMessage("Funciona");
+        }
+        public void mensaje2(object sender, EventArgs e)
+        {
+            ShowMessage("Funciona");
+        }
         public void ShowMessage(string message)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();

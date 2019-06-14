@@ -10,16 +10,7 @@
 namespace CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora {
     
     
-    public partial class registrar_pago {
-        
-        /// <summary>
-        /// Control form1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+    public partial class RegistrarPago {
         
         /// <summary>
         /// Control txtBuscarPaciente.
