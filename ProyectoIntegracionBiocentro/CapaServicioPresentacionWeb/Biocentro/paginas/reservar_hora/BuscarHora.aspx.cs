@@ -18,6 +18,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                 this.ddlEspecialidad.Visible = false;
                 this.ddlTerapeuta.Visible = false;
             }
+            
 
         }
         protected void botonEspecialidadClick(object sender, EventArgs e)

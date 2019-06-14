@@ -41,31 +41,6 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                 ShowMessage("Error al cargar las horas : " + ex.Message);
             }
         }
-
-        protected void seleccionarHora(object sender, EventArgs e)
-        {
-            try
-            {
-                ServiceCliente.HoraAtencion hora = new ServiceCliente.HoraAtencion();
-                for (int i = 0; i < this.gvHorasDisponibles.Rows.Count; i++)
-                {
-                    GridViewRow row = this.gvHorasDisponibles.Rows[i];
-                    bool isChecked2 = ((CheckBox)row.FindControl("CheckBox1")).Checked;
-                    if (isChecked2)
-                    {
-                        hora.IdHora = Convert.ToInt32(((Label)row.FindControl("lblIdHora")).Text);
-                        hora.EspecialidadClinica = new ServiceCliente.EspecialidadClinica();
-                        hora.EspecialidadClinica.Precio = Convert.ToInt32(((Label)row.FindControl("lblValor")).Text.Replace("$ ", ""));
-                    }
-                }
-                //Session["horas"] = listHoraAtencion;
-                Response.Write("<script language='javascript'>window.location='HorasDisponibles.aspx';</script>");
-            }
-            catch(Exception ex)
-            {
-                ShowMessage("Error al seleccionar la hora : " + ex.Message);
-            }
-        }
         public void ShowMessage(string message)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -78,40 +53,27 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
         }
 
-        protected void gvHorasDisponibles_SelectedIndexChanged(object sender, GridViewCommandEventArgs e)
-        {
-            
-            try
-            {
-                if (e.CommandName == "seleccionarBtn")
-                {
-                    int index = Convert.ToInt32(e.CommandArgument);
-
-                    GridViewRow selectedRow = this.gvHorasDisponibles.Rows[index];
-                    TableCell contactName = selectedRow.Cells[0];
-                    string idHoraSeleccionada = contactName.Text;
-                    Session["idHoraSeleccionada"] = idHoraSeleccionada;
-                    Response.Write("<script language='javascript'>window.location='HorasDisponibles.aspx';</script>");
-                }
-            }
-            catch (Exception ex)
-            {
-                ShowMessage("Error al seleccionar la hora : " + ex.Message);
-            }
-        }
 
         protected void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            //Obtener el boton que envió la solicitud
-            Button btn = (Button)sender;
-            //Obtener la fila del boton
-            GridViewRow row = (GridViewRow)btn.NamingContainer;
-            //Obtener la id del detalle a eliminar
-            int id = int.Parse(gvHorasDisponibles.DataKeys[row.RowIndex].Value.ToString());
-            //Redirecciona a página con detalle del nº de la orden
-            //Response.Redirect("~/Biocentro/paginas/reservar_hora/IngresarRut.aspx?id_hora=" + id);
-            Session["id_hora"] = id;
-            Response.Write("<script language='javascript'>window.location='IngresarRut.aspx';</script>");
+            try
+            {
+                //Obtener el boton que envió la solicitud
+                Button btn = (Button)sender;
+                //Obtener la fila del boton
+                GridViewRow row = (GridViewRow)btn.NamingContainer;
+                //Obtener la id del detalle a eliminar
+                int id = int.Parse(gvHorasDisponibles.DataKeys[row.RowIndex].Value.ToString());
+                //Redirecciona a página con detalle del nº de la orden
+                //Response.Redirect("~/Biocentro/paginas/reservar_hora/IngresarRut.aspx?id_hora=" + id);
+                Session["id_hora"] = id;
+                Response.Write("<script language='javascript'>window.location='IngresarRut.aspx';</script>");
+            }
+            catch(Exception ex)
+            {
+                ShowMessage("Error al seleccionar hora horas : " + ex.Message);
+            }
+            
         }
     }
 }
