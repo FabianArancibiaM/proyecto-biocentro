@@ -237,9 +237,14 @@ namespace WindowsFormsApp1
                     MessageBox.Show(" Debe ingresar un rut");
                     return;
                 }
+                if (String.IsNullOrEmpty(this.textBox2.Text))
+                {
+                    MessageBox.Show(" Debe ingresar un correo");
+                    return;
+                }
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
                 List<ServiceCliente.HoraAtencion> listReserva = new List<ServiceCliente.HoraAtencion>();
-                ServiceCliente.HoraAtencion[] listaSoap = soapClient.listaReservasPorRutService(this.rutMisReservas.Text);
+                ServiceCliente.HoraAtencion[] listaSoap = soapClient.listaReservasPorRutService(this.rutMisReservas.Text, this.textBox2.Text);
                 if (listaSoap!=null)
                 {
                     for (int i = 0; i<listaSoap.Length;i++)
@@ -262,7 +267,7 @@ namespace WindowsFormsApp1
                 if (listReserva == null || listReserva.Count == 0)
                 {
                     this.dataGridView1.Rows.Clear();
-                    MessageBox.Show(" No se encontraron reservas para ese rut");
+                    MessageBox.Show(" No se encontraron reservas del paciente consultado, vuelva a ingresar los datos");
                     return;
                 }
                 foreach (ServiceCliente.HoraAtencion res in listReserva)
@@ -554,6 +559,11 @@ namespace WindowsFormsApp1
         private void Button5_Click(object sender, EventArgs e)
         {
             llenarGridParaVenta();
+        }
+
+        private void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

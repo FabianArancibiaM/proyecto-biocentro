@@ -152,7 +152,7 @@ namespace CapaNegocio
             }
         }
         //Retorna la data de pacientes y reservas
-        public List<HoraAtencion> listaReservasPorRut(String rut)
+        public List<HoraAtencion> listaReservasPorRut(String rut,String correo)
         {
             try
             {
@@ -172,7 +172,12 @@ namespace CapaNegocio
                     + "JOIN BIOCENTRO_DB.dbo.ESPECIALIDAD_CLINICA as espCli on espCli.ID_ESPECIALIDAD = hora.ID_ESPECIALIDAD "
                     + "JOIN BIOCENTRO_DB.dbo.ESTADO_RESERVA as estRes on estRes.ID_ESTADO=hora.ID_ESTADO "
                     + "JOIN EMPLEADO as emp on emp.ID_EMPLEADO = hora.ID_TERAPEUTA "
-                    + " WHERE paciente.RUT = '" + rut + "' and estRes.ID_ESTADO <> 3 ; "; ;
+                    + " WHERE paciente.RUT = '" + rut +"' and estRes.ID_ESTADO <> 3 ";
+                if (correo!=null)
+                {
+                    query = query + " and paciente.CORREO = '" + correo + "'";
+                }
+                query = query + " ;";
                 DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
                 if (dataTable.Tables[0].Rows.Count == 0)
                 {
@@ -260,7 +265,7 @@ namespace CapaNegocio
         {
             try
             {
-                List<HoraAtencion> horas = listaReservasPorRut(rut);
+                List<HoraAtencion> horas = listaReservasPorRut(rut,null);
                 List<int> ids = new List<int>();
                 horas.ForEach( h => {
                     if (h.Venta!=null)

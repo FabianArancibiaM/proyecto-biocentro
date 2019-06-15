@@ -60,10 +60,10 @@ namespace CapaServicio
             return negocio.buscarPaciente(rut);
         }
         [WebMethod]
-        public List<HoraAtencion> listaReservasPorRutService(String rut)
+        public List<HoraAtencion> listaReservasPorRutService(String rut,String correo)
         {
             NegocioService negocio = new NegocioService();
-            return negocio.listaReservasPorRut(rut);
+            return negocio.listaReservasPorRut(rut,correo);
         }
         [WebMethod]
         public StatusResponce rechazarConfirmarReservaService(Char cambioEstado, int idReserva)

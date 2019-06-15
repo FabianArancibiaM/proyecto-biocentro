@@ -1265,6 +1265,13 @@ namespace WindowsFormsApp1.ServiceCliente {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/buscarHorasDisponiblesService", ReplyAction="*")]
         System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.buscarHorasDisponiblesServiceResponse> buscarHorasDisponiblesServiceAsync(WindowsFormsApp1.ServiceCliente.buscarHorasDisponiblesServiceRequest request);
         
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento buscarDetalleHoraServiceResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/buscarDetalleHoraService", ReplyAction="*")]
+        WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceResponse buscarDetalleHoraService(WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/buscarDetalleHoraService", ReplyAction="*")]
+        System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceResponse> buscarDetalleHoraServiceAsync(WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceRequest request);
+        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento generarListaEspecialidadServiceResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/generarListaEspecialidadService", ReplyAction="*")]
         WindowsFormsApp1.ServiceCliente.generarListaEspecialidadServiceResponse generarListaEspecialidadService(WindowsFormsApp1.ServiceCliente.generarListaEspecialidadServiceRequest request);
@@ -1535,6 +1542,74 @@ namespace WindowsFormsApp1.ServiceCliente {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class buscarDetalleHoraServiceRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="buscarDetalleHoraService", Namespace="http://tempuri.org/", Order=0)]
+        public WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceRequestBody Body;
+        
+        public buscarDetalleHoraServiceRequest() {
+        }
+        
+        public buscarDetalleHoraServiceRequest(WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class buscarDetalleHoraServiceRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int idHoraAtencion;
+        
+        public buscarDetalleHoraServiceRequestBody() {
+        }
+        
+        public buscarDetalleHoraServiceRequestBody(int idHoraAtencion) {
+            this.idHoraAtencion = idHoraAtencion;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class buscarDetalleHoraServiceResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="buscarDetalleHoraServiceResponse", Namespace="http://tempuri.org/", Order=0)]
+        public WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceResponseBody Body;
+        
+        public buscarDetalleHoraServiceResponse() {
+        }
+        
+        public buscarDetalleHoraServiceResponse(WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class buscarDetalleHoraServiceResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public WindowsFormsApp1.ServiceCliente.HoraAtencion buscarDetalleHoraServiceResult;
+        
+        public buscarDetalleHoraServiceResponseBody() {
+        }
+        
+        public buscarDetalleHoraServiceResponseBody(WindowsFormsApp1.ServiceCliente.HoraAtencion buscarDetalleHoraServiceResult) {
+            this.buscarDetalleHoraServiceResult = buscarDetalleHoraServiceResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class generarListaEspecialidadServiceRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="generarListaEspecialidadService", Namespace="http://tempuri.org/", Order=0)]
@@ -1747,11 +1822,15 @@ namespace WindowsFormsApp1.ServiceCliente {
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public string rut;
         
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string correo;
+        
         public listaReservasPorRutServiceRequestBody() {
         }
         
-        public listaReservasPorRutServiceRequestBody(string rut) {
+        public listaReservasPorRutServiceRequestBody(string rut, string correo) {
             this.rut = rut;
+            this.correo = correo;
         }
     }
     
@@ -2169,6 +2248,31 @@ namespace WindowsFormsApp1.ServiceCliente {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceResponse WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap.buscarDetalleHoraService(WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceRequest request) {
+            return base.Channel.buscarDetalleHoraService(request);
+        }
+        
+        public WindowsFormsApp1.ServiceCliente.HoraAtencion buscarDetalleHoraService(int idHoraAtencion) {
+            WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceRequest();
+            inValue.Body = new WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceRequestBody();
+            inValue.Body.idHoraAtencion = idHoraAtencion;
+            WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceResponse retVal = ((WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap)(this)).buscarDetalleHoraService(inValue);
+            return retVal.Body.buscarDetalleHoraServiceResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceResponse> WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap.buscarDetalleHoraServiceAsync(WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceRequest request) {
+            return base.Channel.buscarDetalleHoraServiceAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceResponse> buscarDetalleHoraServiceAsync(int idHoraAtencion) {
+            WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceRequest();
+            inValue.Body = new WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceRequestBody();
+            inValue.Body.idHoraAtencion = idHoraAtencion;
+            return ((WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap)(this)).buscarDetalleHoraServiceAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         WindowsFormsApp1.ServiceCliente.generarListaEspecialidadServiceResponse WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap.generarListaEspecialidadService(WindowsFormsApp1.ServiceCliente.generarListaEspecialidadServiceRequest request) {
             return base.Channel.generarListaEspecialidadService(request);
         }
@@ -2244,10 +2348,11 @@ namespace WindowsFormsApp1.ServiceCliente {
             return base.Channel.listaReservasPorRutService(request);
         }
         
-        public WindowsFormsApp1.ServiceCliente.HoraAtencion[] listaReservasPorRutService(string rut) {
+        public WindowsFormsApp1.ServiceCliente.HoraAtencion[] listaReservasPorRutService(string rut, string correo) {
             WindowsFormsApp1.ServiceCliente.listaReservasPorRutServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.listaReservasPorRutServiceRequest();
             inValue.Body = new WindowsFormsApp1.ServiceCliente.listaReservasPorRutServiceRequestBody();
             inValue.Body.rut = rut;
+            inValue.Body.correo = correo;
             WindowsFormsApp1.ServiceCliente.listaReservasPorRutServiceResponse retVal = ((WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap)(this)).listaReservasPorRutService(inValue);
             return retVal.Body.listaReservasPorRutServiceResult;
         }
@@ -2257,10 +2362,11 @@ namespace WindowsFormsApp1.ServiceCliente {
             return base.Channel.listaReservasPorRutServiceAsync(request);
         }
         
-        public System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.listaReservasPorRutServiceResponse> listaReservasPorRutServiceAsync(string rut) {
+        public System.Threading.Tasks.Task<WindowsFormsApp1.ServiceCliente.listaReservasPorRutServiceResponse> listaReservasPorRutServiceAsync(string rut, string correo) {
             WindowsFormsApp1.ServiceCliente.listaReservasPorRutServiceRequest inValue = new WindowsFormsApp1.ServiceCliente.listaReservasPorRutServiceRequest();
             inValue.Body = new WindowsFormsApp1.ServiceCliente.listaReservasPorRutServiceRequestBody();
             inValue.Body.rut = rut;
+            inValue.Body.correo = correo;
             return ((WindowsFormsApp1.ServiceCliente.WebServiceClienteSoap)(this)).listaReservasPorRutServiceAsync(inValue);
         }
         

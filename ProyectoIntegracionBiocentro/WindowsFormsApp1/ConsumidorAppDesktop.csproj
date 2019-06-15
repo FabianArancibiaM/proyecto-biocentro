@@ -74,6 +74,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Connected Services\ServiceCliente\WebServiceCliente.wsdl" />
+    <None Include="Connected Services\ServiceCliente\WindowsFormsApp1.ServiceCliente.buscarDetalleHoraServiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceCliente\WindowsFormsApp1.ServiceCliente.buscarHorasDisponiblesServiceResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
