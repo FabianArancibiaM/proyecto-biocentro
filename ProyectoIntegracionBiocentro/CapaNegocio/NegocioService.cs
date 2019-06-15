@@ -344,7 +344,68 @@ namespace CapaNegocio
                 return generarObjetoStatusResponce("error", ex.Message);
             }
         }
-        // Fin Metodos Publicos
+        //Metodo retorna empleado cuando clave ingresada concuerda con la clave desencriptada
+        public Empleado login(string usuario,string password)
+        {
+            try
+            {
+                String query = " SELECT CONTRASENA,ID_EMPLEADO,ID_CARGO,NOMBRE,TELEFONO,USUARIO,APELLIDO_MATERNO,APELLIDO_PATERNO,CORREO,FECHA_NACIMIENTO" +
+                    " from BIOCENTRO_DB.dbo.EMPLEADO WHERE USUARIO = '" + usuario + "' ;";
+                DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
+                if (dataTable.Tables[0].Rows.Count == 0)
+                {
+                    return null;
+                }
+                Empleado empleado = null;
+                foreach (DataRow row in dataTable.Tables[0].Rows)
+                {
+                    empleado = generarObjetoTerapeuta(row);
+                    if (validarClave(empleado,password))
+                    {
+                        return empleado;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                verErrorEnConsola(ex, "login");
+            }
+            return null;
+        }
+        //Metodo guarda empleado con clave encriptada
+        public StatusResponce agregarEmpleado(Empleado empleado)
+        {
+            try
+            {
+                string segurity = encriptarClave(empleado);
+                String query = "INSERT INTO BIOCENTRO_DB.dbo.EMPLEADO "+
+                    "(USUARIO, CONTRASENA, NOMBRE, APELLIDO_PATERNO, APELLIDO_MATERNO, TELEFONO, CORREO, ID_CARGO, FECHA_NACIMIENTO)" +
+                    " OUTPUT INSERTED.ID_EMPLEADO "
+                    + " VALUES('" +empleado.Usuario + "','" + segurity +
+                     "','" + empleado.Nombre + "','" + empleado.ApellidoPaterno + "','" + empleado.ApellidoMaterno + "',"+
+                     empleado.Telefono + ",'" + empleado.Correo + "'," + empleado.Cargo.IdCargo + ",'" + empleado.FechaNacimiento + "');";
+                this.utilMethods.guardarEliminarActualizarObjeto(query, true);
+                return generarObjetoStatusResponce(string.Empty,"Se ha registrado correctamente"); 
+            }
+            catch(Exception ex)
+            {
+                verErrorEnConsola(ex, "login");
+                return generarObjetoStatusResponce("error", "Se produjo un error al registrar el empleado");
+            }
+        }
+        // Fin Metodos Publicos /////////////////////////////////////////////////////////////////////////////////////////////////////
+        private string encriptarClave(Empleado em)
+        {
+            SeguritySystem segurity = new SeguritySystem();
+            return segurity.seguridad(em.Contraseña, true);
+        }
+        private bool validarClave(Empleado em,string claveIngresada)
+        {
+
+            SeguritySystem segurity = new SeguritySystem();
+            string claveDesen = segurity.seguridad(em.Contraseña, false);
+            return claveDesen.Equals(claveIngresada);
+        }
         private bool filtrarTerapeuta(HoraAtencion h, Empleado empleado)
         {
             if (empleado == null)

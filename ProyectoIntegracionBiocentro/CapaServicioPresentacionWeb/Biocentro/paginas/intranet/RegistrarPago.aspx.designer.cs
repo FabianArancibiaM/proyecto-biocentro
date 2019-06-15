@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora {
+namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet {
     
     
     public partial class RegistrarPago {

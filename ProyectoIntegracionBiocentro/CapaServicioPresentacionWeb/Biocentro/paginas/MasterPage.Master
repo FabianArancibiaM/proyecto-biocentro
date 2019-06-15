@@ -11,6 +11,9 @@
     </head>   
     <body>
     <form id="form1" runat="server">
+        
+
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link href="/Biocentro/assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen" runat="server"/>
         <link href="/Biocentro/assets/fontawesome/css/all.css" rel="stylesheet" type="text/css" media="screen" runat="server"/>    
@@ -49,7 +52,10 @@
                   </li>
                   <li><a href="#">Contácto</a></li>    
                   <li><a href="/Biocentro/paginas/reservar_hora/InicioReserva.aspx">Reserva de horas</a></li>                 
-                  <li><a href="/Biocentro/paginas/pago_hora/RegistrarPago.aspx">Intranet</a></li>
+                  <li><a href="/Biocentro/paginas/intranet/PaginaPrincipal.aspx">Intranet</a></li>
+                  <li id="menuLogOut" runat="server" style="margin-top:12px">
+                      <asp:Button ID="Button1" Text="LogOut" OnClick="validarSession_Click"  runat="server" BackColor="#ffcccc" />
+                  </li>
                 </ul>
               </div>
               <!--/.nav-collapse -->

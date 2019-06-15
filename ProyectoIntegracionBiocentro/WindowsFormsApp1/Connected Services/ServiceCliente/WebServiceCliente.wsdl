@@ -213,7 +213,7 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="listaReservasPorRutService">
+      <s:element name="listaReservasPorRutAndCorreoService">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="rut" type="s:string" />
@@ -221,10 +221,10 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="listaReservasPorRutServiceResponse">
+      <s:element name="listaReservasPorRutAndCorreoServiceResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="listaReservasPorRutServiceResult" type="tns:ArrayOfHoraAtencion" />
+            <s:element minOccurs="0" maxOccurs="1" name="listaReservasPorRutAndCorreoServiceResult" type="tns:ArrayOfHoraAtencion" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -292,6 +292,35 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="agregarEmpleadoService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="empleado" type="tns:Empleado" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="agregarEmpleadoServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="agregarEmpleadoServiceResult" type="tns:StatusResponce" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="loginService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="loginServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="loginServiceResult" type="tns:Empleado" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
       <s:simpleType name="char">
@@ -341,11 +370,11 @@
   <wsdl:message name="buscarPacienteServiceSoapOut">
     <wsdl:part name="parameters" element="tns:buscarPacienteServiceResponse" />
   </wsdl:message>
-  <wsdl:message name="listaReservasPorRutServiceSoapIn">
-    <wsdl:part name="parameters" element="tns:listaReservasPorRutService" />
+  <wsdl:message name="listaReservasPorRutAndCorreoServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:listaReservasPorRutAndCorreoService" />
   </wsdl:message>
-  <wsdl:message name="listaReservasPorRutServiceSoapOut">
-    <wsdl:part name="parameters" element="tns:listaReservasPorRutServiceResponse" />
+  <wsdl:message name="listaReservasPorRutAndCorreoServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:listaReservasPorRutAndCorreoServiceResponse" />
   </wsdl:message>
   <wsdl:message name="rechazarConfirmarReservaServiceSoapIn">
     <wsdl:part name="parameters" element="tns:rechazarConfirmarReservaService" />
@@ -370,6 +399,18 @@
   </wsdl:message>
   <wsdl:message name="horasPorRutPacienteMasVentaServiceSoapOut">
     <wsdl:part name="parameters" element="tns:horasPorRutPacienteMasVentaServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="agregarEmpleadoServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:agregarEmpleadoService" />
+  </wsdl:message>
+  <wsdl:message name="agregarEmpleadoServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:agregarEmpleadoServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="loginServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:loginService" />
+  </wsdl:message>
+  <wsdl:message name="loginServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:loginServiceResponse" />
   </wsdl:message>
   <wsdl:portType name="WebServiceClienteSoap">
     <wsdl:operation name="HelloWorld">
@@ -400,9 +441,9 @@
       <wsdl:input message="tns:buscarPacienteServiceSoapIn" />
       <wsdl:output message="tns:buscarPacienteServiceSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="listaReservasPorRutService">
-      <wsdl:input message="tns:listaReservasPorRutServiceSoapIn" />
-      <wsdl:output message="tns:listaReservasPorRutServiceSoapOut" />
+    <wsdl:operation name="listaReservasPorRutAndCorreoService">
+      <wsdl:input message="tns:listaReservasPorRutAndCorreoServiceSoapIn" />
+      <wsdl:output message="tns:listaReservasPorRutAndCorreoServiceSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="rechazarConfirmarReservaService">
       <wsdl:input message="tns:rechazarConfirmarReservaServiceSoapIn" />
@@ -419,6 +460,14 @@
     <wsdl:operation name="horasPorRutPacienteMasVentaService">
       <wsdl:input message="tns:horasPorRutPacienteMasVentaServiceSoapIn" />
       <wsdl:output message="tns:horasPorRutPacienteMasVentaServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarEmpleadoService">
+      <wsdl:input message="tns:agregarEmpleadoServiceSoapIn" />
+      <wsdl:output message="tns:agregarEmpleadoServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="loginService">
+      <wsdl:input message="tns:loginServiceSoapIn" />
+      <wsdl:output message="tns:loginServiceSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebServiceClienteSoap" type="tns:WebServiceClienteSoap">
@@ -486,8 +535,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="listaReservasPorRutService">
-      <soap:operation soapAction="http://tempuri.org/listaReservasPorRutService" style="document" />
+    <wsdl:operation name="listaReservasPorRutAndCorreoService">
+      <soap:operation soapAction="http://tempuri.org/listaReservasPorRutAndCorreoService" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -524,6 +573,24 @@
     </wsdl:operation>
     <wsdl:operation name="horasPorRutPacienteMasVentaService">
       <soap:operation soapAction="http://tempuri.org/horasPorRutPacienteMasVentaService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarEmpleadoService">
+      <soap:operation soapAction="http://tempuri.org/agregarEmpleadoService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loginService">
+      <soap:operation soapAction="http://tempuri.org/loginService" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -597,8 +664,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="listaReservasPorRutService">
-      <soap12:operation soapAction="http://tempuri.org/listaReservasPorRutService" style="document" />
+    <wsdl:operation name="listaReservasPorRutAndCorreoService">
+      <soap12:operation soapAction="http://tempuri.org/listaReservasPorRutAndCorreoService" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -635,6 +702,24 @@
     </wsdl:operation>
     <wsdl:operation name="horasPorRutPacienteMasVentaService">
       <soap12:operation soapAction="http://tempuri.org/horasPorRutPacienteMasVentaService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarEmpleadoService">
+      <soap12:operation soapAction="http://tempuri.org/agregarEmpleadoService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="loginService">
+      <soap12:operation soapAction="http://tempuri.org/loginService" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
