@@ -244,7 +244,7 @@ namespace WindowsFormsApp1
                 }
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
                 List<ServiceCliente.HoraAtencion> listReserva = new List<ServiceCliente.HoraAtencion>();
-                ServiceCliente.HoraAtencion[] listaSoap = soapClient.listaReservasPorRutService(this.rutMisReservas.Text, this.textBox2.Text);
+                ServiceCliente.HoraAtencion[] listaSoap = soapClient.listaReservasPorRutAndCorreoService(this.rutMisReservas.Text, this.textBox2.Text);
                 if (listaSoap!=null)
                 {
                     for (int i = 0; i<listaSoap.Length;i++)

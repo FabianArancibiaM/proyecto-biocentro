@@ -1273,8 +1273,8 @@ namespace CapaServicioPresentacionWeb.ServiceCliente {
         CapaServicioPresentacionWeb.ServiceCliente.buscarPacienteServiceResponse buscarPacienteService(CapaServicioPresentacionWeb.ServiceCliente.buscarPacienteServiceRequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento rut del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/listaReservasPorRutService", ReplyAction="*")]
-        CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutServiceResponse listaReservasPorRutService(CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutServiceRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/listaReservasPorRutAndCorreoService", ReplyAction="*")]
+        CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceResponse listaReservasPorRutAndCorreoService(CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceRequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento rechazarConfirmarReservaServiceResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/rechazarConfirmarReservaService", ReplyAction="*")]
@@ -1291,6 +1291,14 @@ namespace CapaServicioPresentacionWeb.ServiceCliente {
         // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento rut del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/horasPorRutPacienteMasVentaService", ReplyAction="*")]
         CapaServicioPresentacionWeb.ServiceCliente.horasPorRutPacienteMasVentaServiceResponse horasPorRutPacienteMasVentaService(CapaServicioPresentacionWeb.ServiceCliente.horasPorRutPacienteMasVentaServiceRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento empleado del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/agregarEmpleadoService", ReplyAction="*")]
+        CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceResponse agregarEmpleadoService(CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceRequest request);
+        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento usuario del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/loginService", ReplyAction="*")]
+        CapaServicioPresentacionWeb.ServiceCliente.loginServiceResponse loginService(CapaServicioPresentacionWeb.ServiceCliente.loginServiceRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1764,15 +1772,15 @@ namespace CapaServicioPresentacionWeb.ServiceCliente {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class listaReservasPorRutServiceRequest {
+    public partial class listaReservasPorRutAndCorreoServiceRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="listaReservasPorRutService", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutServiceRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="listaReservasPorRutAndCorreoService", Namespace="http://tempuri.org/", Order=0)]
+        public CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceRequestBody Body;
         
-        public listaReservasPorRutServiceRequest() {
+        public listaReservasPorRutAndCorreoServiceRequest() {
         }
         
-        public listaReservasPorRutServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutServiceRequestBody Body) {
+        public listaReservasPorRutAndCorreoServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -1781,16 +1789,20 @@ namespace CapaServicioPresentacionWeb.ServiceCliente {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class listaReservasPorRutServiceRequestBody {
+    public partial class listaReservasPorRutAndCorreoServiceRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public string rut;
         
-        public listaReservasPorRutServiceRequestBody() {
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string correo;
+        
+        public listaReservasPorRutAndCorreoServiceRequestBody() {
         }
         
-        public listaReservasPorRutServiceRequestBody(string rut) {
+        public listaReservasPorRutAndCorreoServiceRequestBody(string rut, string correo) {
             this.rut = rut;
+            this.correo = correo;
         }
     }
     
@@ -1798,15 +1810,15 @@ namespace CapaServicioPresentacionWeb.ServiceCliente {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class listaReservasPorRutServiceResponse {
+    public partial class listaReservasPorRutAndCorreoServiceResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="listaReservasPorRutServiceResponse", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutServiceResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="listaReservasPorRutAndCorreoServiceResponse", Namespace="http://tempuri.org/", Order=0)]
+        public CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceResponseBody Body;
         
-        public listaReservasPorRutServiceResponse() {
+        public listaReservasPorRutAndCorreoServiceResponse() {
         }
         
-        public listaReservasPorRutServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutServiceResponseBody Body) {
+        public listaReservasPorRutAndCorreoServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -1815,16 +1827,16 @@ namespace CapaServicioPresentacionWeb.ServiceCliente {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class listaReservasPorRutServiceResponseBody {
+    public partial class listaReservasPorRutAndCorreoServiceResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] listaReservasPorRutServiceResult;
+        public CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] listaReservasPorRutAndCorreoServiceResult;
         
-        public listaReservasPorRutServiceResponseBody() {
+        public listaReservasPorRutAndCorreoServiceResponseBody() {
         }
         
-        public listaReservasPorRutServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] listaReservasPorRutServiceResult) {
-            this.listaReservasPorRutServiceResult = listaReservasPorRutServiceResult;
+        public listaReservasPorRutAndCorreoServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] listaReservasPorRutAndCorreoServiceResult) {
+            this.listaReservasPorRutAndCorreoServiceResult = listaReservasPorRutAndCorreoServiceResult;
         }
     }
     
@@ -2101,6 +2113,146 @@ namespace CapaServicioPresentacionWeb.ServiceCliente {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class agregarEmpleadoServiceRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="agregarEmpleadoService", Namespace="http://tempuri.org/", Order=0)]
+        public CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceRequestBody Body;
+        
+        public agregarEmpleadoServiceRequest() {
+        }
+        
+        public agregarEmpleadoServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class agregarEmpleadoServiceRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public CapaServicioPresentacionWeb.ServiceCliente.Empleado empleado;
+        
+        public agregarEmpleadoServiceRequestBody() {
+        }
+        
+        public agregarEmpleadoServiceRequestBody(CapaServicioPresentacionWeb.ServiceCliente.Empleado empleado) {
+            this.empleado = empleado;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class agregarEmpleadoServiceResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="agregarEmpleadoServiceResponse", Namespace="http://tempuri.org/", Order=0)]
+        public CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceResponseBody Body;
+        
+        public agregarEmpleadoServiceResponse() {
+        }
+        
+        public agregarEmpleadoServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class agregarEmpleadoServiceResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public CapaServicioPresentacionWeb.ServiceCliente.StatusResponce agregarEmpleadoServiceResult;
+        
+        public agregarEmpleadoServiceResponseBody() {
+        }
+        
+        public agregarEmpleadoServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.StatusResponce agregarEmpleadoServiceResult) {
+            this.agregarEmpleadoServiceResult = agregarEmpleadoServiceResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class loginServiceRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="loginService", Namespace="http://tempuri.org/", Order=0)]
+        public CapaServicioPresentacionWeb.ServiceCliente.loginServiceRequestBody Body;
+        
+        public loginServiceRequest() {
+        }
+        
+        public loginServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.loginServiceRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class loginServiceRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string usuario;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string password;
+        
+        public loginServiceRequestBody() {
+        }
+        
+        public loginServiceRequestBody(string usuario, string password) {
+            this.usuario = usuario;
+            this.password = password;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class loginServiceResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="loginServiceResponse", Namespace="http://tempuri.org/", Order=0)]
+        public CapaServicioPresentacionWeb.ServiceCliente.loginServiceResponseBody Body;
+        
+        public loginServiceResponse() {
+        }
+        
+        public loginServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.loginServiceResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class loginServiceResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public CapaServicioPresentacionWeb.ServiceCliente.Empleado loginServiceResult;
+        
+        public loginServiceResponseBody() {
+        }
+        
+        public loginServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.Empleado loginServiceResult) {
+            this.loginServiceResult = loginServiceResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface WebServiceClienteSoapChannel : CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap, System.ServiceModel.IClientChannel {
     }
@@ -2220,16 +2372,17 @@ namespace CapaServicioPresentacionWeb.ServiceCliente {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutServiceResponse CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap.listaReservasPorRutService(CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutServiceRequest request) {
-            return base.Channel.listaReservasPorRutService(request);
+        CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceResponse CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap.listaReservasPorRutAndCorreoService(CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceRequest request) {
+            return base.Channel.listaReservasPorRutAndCorreoService(request);
         }
         
-        public CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] listaReservasPorRutService(string rut) {
-            CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutServiceRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutServiceRequest();
-            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutServiceRequestBody();
+        public CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] listaReservasPorRutAndCorreoService(string rut, string correo) {
+            CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceRequest();
+            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceRequestBody();
             inValue.Body.rut = rut;
-            CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).listaReservasPorRutService(inValue);
-            return retVal.Body.listaReservasPorRutServiceResult;
+            inValue.Body.correo = correo;
+            CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).listaReservasPorRutAndCorreoService(inValue);
+            return retVal.Body.listaReservasPorRutAndCorreoServiceResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2283,6 +2436,33 @@ namespace CapaServicioPresentacionWeb.ServiceCliente {
             inValue.Body.rut = rut;
             CapaServicioPresentacionWeb.ServiceCliente.horasPorRutPacienteMasVentaServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).horasPorRutPacienteMasVentaService(inValue);
             return retVal.Body.horasPorRutPacienteMasVentaServiceResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceResponse CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap.agregarEmpleadoService(CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceRequest request) {
+            return base.Channel.agregarEmpleadoService(request);
+        }
+        
+        public CapaServicioPresentacionWeb.ServiceCliente.StatusResponce agregarEmpleadoService(CapaServicioPresentacionWeb.ServiceCliente.Empleado empleado) {
+            CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceRequest();
+            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceRequestBody();
+            inValue.Body.empleado = empleado;
+            CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).agregarEmpleadoService(inValue);
+            return retVal.Body.agregarEmpleadoServiceResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        CapaServicioPresentacionWeb.ServiceCliente.loginServiceResponse CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap.loginService(CapaServicioPresentacionWeb.ServiceCliente.loginServiceRequest request) {
+            return base.Channel.loginService(request);
+        }
+        
+        public CapaServicioPresentacionWeb.ServiceCliente.Empleado loginService(string usuario, string password) {
+            CapaServicioPresentacionWeb.ServiceCliente.loginServiceRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.loginServiceRequest();
+            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.loginServiceRequestBody();
+            inValue.Body.usuario = usuario;
+            inValue.Body.password = password;
+            CapaServicioPresentacionWeb.ServiceCliente.loginServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).loginService(inValue);
+            return retVal.Body.loginServiceResult;
         }
     }
 }

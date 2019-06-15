@@ -125,9 +125,14 @@
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Biocentro\assets\js\custom.js" />
+    <Content Include="Biocentro\paginas\intranet\Login.aspx" />
+    <Content Include="Biocentro\paginas\intranet\PaginaPrincipal.aspx" />
     <Content Include="Biocentro\paginas\MasterPage.Master" />
+    <Content Include="Connected Services\ServiceCliente\CapaServicioPresentacionWeb.ServiceCliente.Empleado.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServiceCliente\WebServiceCliente.wsdl" />
-    <Content Include="Biocentro\paginas\pago_hora\RegistrarPago.aspx" />
+    <Content Include="Biocentro\paginas\intranet\RegistrarPago.aspx" />
     <Content Include="Biocentro\paginas\reservar_hora\BuscarHora.aspx" />
     <Content Include="Biocentro\paginas\reservar_hora\DatosPaciente.aspx" />
     <Content Include="Biocentro\paginas\reservar_hora\HorasDisponibles.aspx" />
@@ -1783,6 +1788,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Biocentro\paginas\intranet\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Biocentro\paginas\intranet\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Biocentro\paginas\intranet\PaginaPrincipal.aspx.cs">
+      <DependentUpon>PaginaPrincipal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Biocentro\paginas\intranet\PaginaPrincipal.aspx.designer.cs">
+      <DependentUpon>PaginaPrincipal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Biocentro\paginas\MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1790,11 +1809,11 @@
     <Compile Include="Biocentro\paginas\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
-    <Compile Include="Biocentro\paginas\pago_hora\RegistrarPago.aspx.cs">
+    <Compile Include="Biocentro\paginas\intranet\RegistrarPago.aspx.cs">
       <DependentUpon>RegistrarPago.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Biocentro\paginas\pago_hora\RegistrarPago.aspx.designer.cs">
+    <Compile Include="Biocentro\paginas\intranet\RegistrarPago.aspx.designer.cs">
       <DependentUpon>RegistrarPago.aspx</DependentUpon>
     </Compile>
     <Compile Include="Biocentro\paginas\reservar_hora\BuscarHora.aspx.cs">

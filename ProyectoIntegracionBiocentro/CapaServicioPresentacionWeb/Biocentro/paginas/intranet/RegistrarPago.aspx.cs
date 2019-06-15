@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace CapaServicioPresentacionWeb.Biocentro.paginas.pago_hora
+namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
 {
     public partial class RegistrarPago : System.Web.UI.Page
     {

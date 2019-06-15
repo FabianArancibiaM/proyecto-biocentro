@@ -89,5 +89,17 @@ namespace CapaServicio
             NegocioService negocio = new NegocioService();
             return negocio.horasPorRutPacienteMasVenta(rut);
         }
+        [WebMethod]
+        public StatusResponce agregarEmpleadoService(Empleado empleado)
+        {
+            NegocioService negocio = new NegocioService();
+            return negocio.agregarEmpleado(empleado);
+        }
+        [WebMethod]
+        public Empleado loginService(string usuario, string password)
+        {
+            NegocioService negocio = new NegocioService();
+            return negocio.login(usuario, password);
+        }
     }
 }
