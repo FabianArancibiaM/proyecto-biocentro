@@ -18,26 +18,26 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <label for="lblFechaHora">Fecha</label><br />
-                    <asp:Label ID="lblFechaHora" runat="server" Text="09/07/2019 09:00-10:00"></asp:Label>
+                    <asp:Label ID="lblFechaHora" runat="server" ></asp:Label>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <label for="lblLugar">Lugar de atención</label><br />
-                    <asp:Label ID="lblLugar" runat="server" Text="Sala 4, Providencia 180, Ñuñoa"></asp:Label>
+                    <asp:Label ID="lblLugar" runat="server" ></asp:Label>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <label for="lblEspecialidad">Especialidad</label><br />
-                    <asp:Label ID="lblEspecialidad" runat="server" Text="Masoterapia"></asp:Label>
+                    <asp:Label ID="lblEspecialidad" runat="server" ></asp:Label>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <label for="lblTerapeuta">Terapeuta</label><br />
-                    <asp:Label ID="lblTerapeuta" runat="server" Text="Juan Perez Soto"></asp:Label>
+                    <asp:Label ID="lblTerapeuta" runat="server" ></asp:Label>
                 </div>
             </div>
              <div class="row">
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
-                    <asp:Button ID="volver" class="btn btn-md btn-primary btn-block" runat="server" Text="Volver" />
+                    <asp:Button ID="volver" class="btn btn-md btn-primary btn-block" OnClick="btnVolver" runat="server" Text="Volver" />
                 </div>
             </div>
         </div>

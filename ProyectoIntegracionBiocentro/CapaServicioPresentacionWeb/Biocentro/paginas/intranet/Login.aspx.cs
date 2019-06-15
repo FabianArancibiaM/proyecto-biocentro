@@ -11,9 +11,16 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["empleado"] != null)
+            try
             {
-                Response.Write("<script language='javascript'>window.location='PaginaPrincipal.aspx';</script>");
+                if (Session["empleado"] != null)
+                {
+                    Response.Write("<script language='javascript'>window.location='PaginaPrincipal.aspx';</script>");
+                }
+            }
+            catch(Exception ex)
+            {
+                ShowMessage("Error al ingresar al portal");
             }
         }
 
@@ -21,12 +28,12 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
         {
             try
             {
-                if (this.txtUsuario.Text.Length==0)
+                if (this.txtUsuario.Text.Trim().Length==0)
                 {
                     ShowMessage("Debe ingresar el Usuario");
                     return;
                 }
-                if (this.txtContraseña.Text.Length == 0)
+                if (this.txtContraseña.Text.Trim().Length == 0)
                 {
                     ShowMessage("Debe ingresar la Contraseña");
                     return;

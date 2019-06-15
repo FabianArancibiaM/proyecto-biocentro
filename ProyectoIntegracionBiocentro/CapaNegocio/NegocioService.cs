@@ -42,7 +42,10 @@ namespace CapaNegocio
                 }
                 else
                 {
-                    idPersona = per.IdPaciente; //Falta actualizar los datos si los cambió
+                    query = "UPDATE BIOCENTRO_DB.dbo.PACIENTE  SET RUT = '" + paciente.Rut + "' ,NOMBRE = '" + paciente.Nombre + "' ,APELLIDO_PATERNO = '" + paciente.ApellidoPaterno + "' " +
+                        ",APELLIDO_MATERNO= '" + paciente.ApellidoMaterno + "',TELEFONO=" + paciente.Telefono + " ,FECHA_NACIMIENTO= '" + paciente.FechaNacimiento.ToString("yyyy-MM-dd HH:mm:ss") + "',SEXO='" + paciente.Sexo + "' ,CORREO='" + paciente.Correo + "'  WHERE ID_PACIENTE= " + per.IdPaciente+";";
+                    this.utilMethods.guardarEliminarActualizarObjeto(query, false);
+                    idPersona = per.IdPaciente;
                 }
                 query = "UPDATE BIOCENTRO_DB.dbo.HORA_ATENCION SET ID_ESTADO=1,ID_PACIENTE="+ idPersona+ " WHERE ID_HORA=" + idHoraAtencion + " ; ";
                 this.utilMethods.guardarEliminarActualizarObjeto(query, false);

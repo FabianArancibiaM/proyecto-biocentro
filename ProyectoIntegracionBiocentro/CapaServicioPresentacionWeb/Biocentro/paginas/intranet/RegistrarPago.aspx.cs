@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -20,23 +21,30 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
 
         private void validarTabla()
         {
-            if (this.tablaResumen != null)
+            try
             {
-                for (int i = 0; i < this.tablaResumen.Rows.Count; i++)
+                if (this.tablaResumen != null)
                 {
-                    GridViewRow row = this.tablaResumen.Rows[i];
-                    if (((Label)row.FindControl("lblEstado")).Text.Length > 0)
+                    for (int i = 0; i < this.tablaResumen.Rows.Count; i++)
                     {
-                        ((Label)row.FindControl("lblEstado")).Visible = true;
-                        ((CheckBox)row.FindControl("CheckBox1")).Visible = false;
-                    }
-                    else
-                    {
-                        ((CheckBox)row.FindControl("CheckBox1")).Visible = true;
-                        ((Label)row.FindControl("lblEstado")).Visible = false;
-                    }
+                        GridViewRow row = this.tablaResumen.Rows[i];
+                        if (((Label)row.FindControl("lblEstado")).Text.Trim().Length > 0)
+                        {
+                            ((Label)row.FindControl("lblEstado")).Visible = true;
+                            ((CheckBox)row.FindControl("CheckBox1")).Visible = false;
+                        }
+                        else
+                        {
+                            ((CheckBox)row.FindControl("CheckBox1")).Visible = true;
+                            ((Label)row.FindControl("lblEstado")).Visible = false;
+                        }
 
+                    }
                 }
+            }
+            catch(Exception ex)
+            {
+                ShowMessage("Error al cargar la pagina");
             }
         }
 
@@ -71,9 +79,15 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
 
             try
             {
-                if (this.txtBuscarPaciente.Text.Length == 0)
+                if (this.txtBuscarPaciente.Text.Trim().Length == 0)
                 {
                     ShowMessage("Error: Ingrese un rut");
+                    return;
+                }
+                if (!validarRut(this.txtBuscarPaciente.Text))
+                {
+                    ShowMessage("Error: Rut ingresado invalido");
+                    return;
                 }
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
                 this.tablaResumen.DataSource = null;
@@ -101,6 +115,34 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
             {
                 ShowMessage("Se produjo un error: " + ex.Message);
             }
+        }
+
+        public bool validarRut(string rut)
+        {
+            bool validacion = false;
+            try
+            {
+                rut = rut.ToUpper();
+                rut = rut.Replace(".", "");
+                rut = rut.Replace("-", "");
+                int rutAux = int.Parse(rut.Substring(0, rut.Length - 1));
+
+                char dv = char.Parse(rut.Substring(rut.Length - 1, 1));
+
+                int m = 0, s = 1;
+                for (; rutAux != 0; rutAux /= 10)
+                {
+                    s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
+                }
+                if (dv == (char)(s != 0 ? s + 47 : 75))
+                {
+                    validacion = true;
+                }
+            }
+            catch (Exception)
+            {
+            }
+            return validacion;
         }
         public void ShowMessage(string message)
         {

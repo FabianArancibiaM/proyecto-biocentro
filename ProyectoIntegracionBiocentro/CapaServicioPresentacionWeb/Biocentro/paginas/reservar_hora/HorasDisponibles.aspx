@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    Horas disponibles para/con juan perez
+    Horas Disponibles
     <asp:GridView ID="gvHorasDisponibles" class="table" runat="server"  AutoGenerateColumns="False" DataKeyNames="Id"  AutoPostBack="true">
         <Columns>
             <asp:BoundField DataField="Id" HeaderText="Id" />
@@ -21,6 +21,11 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
+    <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+                    <asp:Button ID="volver" class="btn btn-md btn-primary btn-block" OnClick="btnVolver" runat="server" Text="Volver" />
+                </div>
+            </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
 </asp:Content>
