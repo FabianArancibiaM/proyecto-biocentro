@@ -15,7 +15,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             {
                 cargarEspecialista();
                 cargarEspecialidades();
-                this.ddlEspecialidad.Visible = false;
+                this.ddlEspecialidad.Visible = true;
                 this.ddlTerapeuta.Visible = false;
             }
             

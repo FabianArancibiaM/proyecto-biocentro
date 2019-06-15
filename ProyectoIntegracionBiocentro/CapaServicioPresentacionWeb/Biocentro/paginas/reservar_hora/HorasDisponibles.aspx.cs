@@ -75,5 +75,16 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             
         }
+        protected void btnVolver(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Write("<script language='javascript'>window.location='BuscarHora.aspx';</script>");
+            }
+            catch (Exception ex)
+            {
+                ShowMessage("Ocurrio un error al cargar la pagina");
+            }
+        }
     }
 }

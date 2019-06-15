@@ -27,7 +27,7 @@
             <div class="row">
                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <label for="fechaNac">Fecha Nacimiento</label><br />
-                     <asp:TextBox type="date"  style="width: 200px;" runat="server" name="fechaNac" id="fechaNac"/>
+                     <asp:Calendar runat="server" ID="fechaNac" />
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <label for="radioSexo">Sexo</label><br />
