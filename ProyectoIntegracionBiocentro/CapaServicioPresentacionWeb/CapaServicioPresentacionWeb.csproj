@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -20,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <TypeScriptToolsVersion>3.4</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -122,8 +124,68 @@
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Biocentro\paginas\master_page.Master" />
+    <Content Include="Biocentro\assets\js\custom.js" />
+    <Content Include="Biocentro\paginas\MasterPage.Master" />
     <None Include="Connected Services\ServiceCliente\WebServiceCliente.wsdl" />
+    <Content Include="Biocentro\paginas\pago_hora\RegistrarPago.aspx" />
+    <Content Include="Biocentro\paginas\reservar_hora\BuscarHora.aspx" />
+    <Content Include="Biocentro\paginas\reservar_hora\DatosPaciente.aspx" />
+    <Content Include="Biocentro\paginas\reservar_hora\HorasDisponibles.aspx" />
+    <Content Include="Biocentro\paginas\reservar_hora\IngresarRut.aspx" />
+    <Content Include="Biocentro\paginas\reservar_hora\InicioReserva.aspx" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.0.0.js" />
+    <Content Include="Scripts\jquery-3.0.0.min.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.min.js" />
+    <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.0.0.min.map" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1693,11 +1755,6 @@
     <Content Include="Biocentro\assets\js\bootstrap.js" />
     <Content Include="Biocentro\assets\js\bootstrap.min.js" />
     <Content Include="Biocentro\assets\js\npm.js" />
-    <Content Include="Biocentro\paginas\pago_hora\registrar_pago.aspx" />
-    <Content Include="Biocentro\paginas\reservar_hora\buscar_hora.aspx" />
-    <Content Include="Biocentro\paginas\reservar_hora\horas_disponibles.aspx" />
-    <Content Include="Biocentro\paginas\reservar_hora\ingresar_rut.aspx" />
-    <Content Include="Biocentro\paginas\reservar_hora\inicio_reservar.aspx" />
     <Content Include="Connected Services\ServiceCliente\CapaServicioPresentacionWeb.ServiceCliente.EspecialidadClinica.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -1726,32 +1783,54 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Biocentro\paginas\master_page.Master.cs">
-      <DependentUpon>master_page.Master</DependentUpon>
+    <Compile Include="Biocentro\paginas\MasterPage.Master.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Biocentro\paginas\pago_hora\registrar_pago.aspx.cs">
-      <DependentUpon>registrar_pago.aspx</DependentUpon>
+    <Compile Include="Biocentro\paginas\MasterPage.Master.designer.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Biocentro\paginas\pago_hora\RegistrarPago.aspx.cs">
+      <DependentUpon>RegistrarPago.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Biocentro\paginas\pago_hora\registrar_pago.aspx.designer.cs">
-      <DependentUpon>registrar_pago.aspx</DependentUpon>
+    <Compile Include="Biocentro\paginas\pago_hora\RegistrarPago.aspx.designer.cs">
+      <DependentUpon>RegistrarPago.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Biocentro\paginas\reservar_hora\buscar_hora.aspx.cs">
-      <DependentUpon>buscar_hora.aspx</DependentUpon>
+    <Compile Include="Biocentro\paginas\reservar_hora\BuscarHora.aspx.cs">
+      <DependentUpon>BuscarHora.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Biocentro\paginas\reservar_hora\horas_disponibles.aspx.cs">
-      <DependentUpon>horas_disponibles.aspx</DependentUpon>
+    <Compile Include="Biocentro\paginas\reservar_hora\BuscarHora.aspx.designer.cs">
+      <DependentUpon>BuscarHora.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\DatosPaciente.aspx.cs">
+      <DependentUpon>DatosPaciente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Biocentro\paginas\reservar_hora\ingresar_rut.aspx.cs">
-      <DependentUpon>ingresar_rut.aspx</DependentUpon>
+    <Compile Include="Biocentro\paginas\reservar_hora\DatosPaciente.aspx.designer.cs">
+      <DependentUpon>DatosPaciente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\HorasDisponibles.aspx.cs">
+      <DependentUpon>HorasDisponibles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Biocentro\paginas\reservar_hora\inicio_reservar.aspx.cs">
-      <DependentUpon>inicio_reservar.aspx</DependentUpon>
+    <Compile Include="Biocentro\paginas\reservar_hora\HorasDisponibles.aspx.designer.cs">
+      <DependentUpon>HorasDisponibles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\IngresarRut.aspx.cs">
+      <DependentUpon>IngresarRut.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\IngresarRut.aspx.designer.cs">
+      <DependentUpon>IngresarRut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\InicioReserva.aspx.cs">
+      <DependentUpon>InicioReserva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\InicioReserva.aspx.designer.cs">
+      <DependentUpon>InicioReserva.aspx</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\ServiceCliente\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -1766,11 +1845,18 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServiceCliente\" />
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>

@@ -1,0 +1,130 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="CapaServicioPresentacionWeb.Biocentro.paginas.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+    <head runat="server">
+        <title></title>
+        <asp:ContentPlaceHolder ID="head" runat="server">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </asp:ContentPlaceHolder>
+    </head>   
+    <body>
+    <form id="form1" runat="server">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link href="/Biocentro/assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="screen" runat="server"/>
+        <link href="/Biocentro/assets/fontawesome/css/all.css" rel="stylesheet" type="text/css" media="screen" runat="server"/>    
+        <script src="/Biocentro/assets/js/bootstrap.js"></script>
+        <script src="/Biocentro/assets/js/custom.js"></script>
+        <link href="/Biocentro/assets/css/custom.css" rel="stylesheet" type="text/css" media="screen" runat="server"/>       
+        <div class="container">
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="/Biocentro/assets/img/1240576_10152247804764572_1285943579_n.jpg" alt="Biocentro">
+                </a>
+              </div>
+              <div id="navbar1" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                  <li class="active"><a href="#">Inicio</a></li>
+                  <li><a href="#">Sobre Nosotros</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Servicios <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#">Quiropraxia</a></li>
+                      <li><a href="#">Acupuntura</a></li>
+                      <li><a href="#">Medicina China</a></li>
+                      <li class="divider"></li>
+                      <li class="dropdown-header">Masoterapia</li>
+                      <li><a href="#">Masoterapia</a></li>
+                      <li><a href="#">Masoterapia</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Contácto</a></li>    
+                  <li><a href="/Biocentro/paginas/reservar_hora/InicioReserva.aspx">Reserva de horas</a></li>                 
+                  <li><a href="/Biocentro/paginas/pago_hora/RegistrarPago.aspx">Intranet</a></li>
+                </ul>
+              </div>
+              <!--/.nav-collapse -->
+            </div>
+            <!--/.container-fluid -->
+          </nav>
+        </div>
+
+        <div class="container body-container">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div>
+                <asp:ContentPlaceHolder ID="footer" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+            <footer class="site-footer">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <h6>Sobre nosotros</h6>
+                        <p class="text-justify">
+                            Nuestra Misión es entregar un servicio de salud integral a través de la Medicina Tradicional 
+                            China, enfocándonos en conservar el estado de salud, prevenir enfermedades y captar problemas
+                            cuando estén en su inicio. Además de tratar como método único, complementario o como terapia
+                            secundaria muchas de las enfermedad físico-mentales.
+                        </p>        
+                      </div>
+
+                      <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                        <h6>Servicios</h6>
+                        <ul class="footer-links">
+                          <li><a href="#">Masoterapia</a></li>
+                          <li><a href="#">Acupuntura</a></li>
+                          <li><a href="#">Quiropraxia</a></li>
+                          <li><a href="#">Psicoterapia</a></li>
+                          <li><a href="#">Medicina China</a></li>
+                        </ul>
+                      </div>
+
+                      <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                        <h6>Mapa del Sitio</h6>
+                        <ul class="footer-links">
+                          <li><a href="#">Sobre Nosotros</a></li>
+                          <li><a href="#">Servicios</a></li>
+                          <li><a href="#">Contácto</a></li>
+                          <li><a href="/reservar_hora/inicio_paciente.aspx">Reservar hora</a></li>
+                          <li><a href="#">Intranet</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <hr class="small">
+                  </div>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-8 col-sm-6 col-xs-12">
+                        <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by 
+                     <a href="#">Biocentro</a>.
+                        </p>
+                      </div>
+
+                      <div class="col-md-4 col-sm-6 col-xs-12">
+                        <ul class="social-icons">
+                          <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                          <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                          <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                          <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+            </footer>
+        </form>
+    </body>
+</html>

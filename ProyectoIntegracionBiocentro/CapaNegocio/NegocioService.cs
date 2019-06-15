@@ -42,12 +42,12 @@ namespace CapaNegocio
                 }
                 else
                 {
-                    idPersona = per.IdPaciente;
+                    idPersona = per.IdPaciente; //Falta actualizar los datos si los cambió
                 }
                 query = "UPDATE BIOCENTRO_DB.dbo.HORA_ATENCION SET ID_ESTADO=1,ID_PACIENTE="+ idPersona+ " WHERE ID_HORA=" + idHoraAtencion + " ; ";
                 this.utilMethods.guardarEliminarActualizarObjeto(query, false);
                 
-                return generarObjetoStatusResponce(String.Empty, "Su reserva se realizo correctamente");
+                return generarObjetoStatusResponce(String.Empty, "Su reserva se realizó correctamente");
             }
             catch (Exception ex)
             {
@@ -324,9 +324,10 @@ namespace CapaNegocio
                         return generarObjetoStatusResponce("error", "Debe seleccionar una venta que este pendiente de pago");
                     }
                 }
+                String fecha = venta.FechaPago.Year+"-"+ venta.FechaPago.Month+"-"+ venta.FechaPago.Day+" "+ venta.FechaPago.Hour+":"+ venta.FechaPago.Minute+":"+ venta.FechaPago.Second;
                 String query = "INSERT INTO BIOCENTRO_DB.dbo.VENTA (ID_ESTADO_VENTA,ID_MEDIO_PAGO,FECHA_PAGO,MONTO) OUTPUT INSERTED.ID_VENTA "
                     + " VALUES("+ venta.EstadoVenta.IdEstadoVenta+"," + venta.MedioPago.IdMedioPago +
-                     ",'" + venta.FechaPago + "',"+ venta.Monto+")";
+                     ",'" + fecha + "',"+ venta.Monto+")";
                 int? idVenta = this.utilMethods.guardarEliminarActualizarObjeto(query, true);
                 query = "UPDATE BIOCENTRO_DB.dbo.HORA_ATENCION SET ID_ESTADO=2,ID_VENTA=" + idVenta + " WHERE ID_HORA in (" + ids + ") ; ";
                 this.utilMethods.guardarEliminarActualizarObjeto(query, false);
@@ -464,6 +465,45 @@ namespace CapaNegocio
                 throw new Exception("Ocurrio un error al buscar las horas de los especialistas ", new Exception());
             }
         }
+        
+        //Retorna el listado de las horas, los bloques, los especialistas y persona, sin parametros
+        // O Filtro por id de la HoraAtencion
+        public HoraAtencion buscarDetalleHora(int idHoraAtencion)
+        {
+            try
+            {
+                //Query retorna el listado de las horas, los bloques, los especialistas y persona
+                String query = "select emp.ID_EMPLEADO,emp.NOMBRE,emp.APELLIDO_PATERNO,emp.APELLIDO_MATERNO,"
+                + " hora.ID_HORA,hora.FECHA,"
+                + " blo.HORA_INICIO,blo.HORA_FIN,"
+                + " sal.ID_SALA,sal.NOMBRE as sNo, "
+                + " espClin.ID_ESPECIALIDAD,espClin.NOMBRE as nombreEspecialidad,espClin.PRECIO"
+                + " FROM BIOCENTRO_DB.dbo.HORA_ATENCION as hora "
+                + " JOIN BIOCENTRO_DB.dbo.BLOQUE as blo on hora.ID_BLOQUE=blo.ID_BLOQUE "
+                + " JOIN BIOCENTRO_DB.dbo.ESPECIALIDAD_CLINICA as espClin on espClin.ID_ESPECIALIDAD=hora.ID_ESPECIALIDAD "
+                + " JOIN BIOCENTRO_DB.dbo.SALA as sal on sal.ID_SALA = hora.ID_SALA "
+                + " JOIN BIOCENTRO_DB.dbo.EMPLEADO as emp on emp.ID_EMPLEADO = hora.ID_TERAPEUTA "
+                + " WHERE hora.ID_HORA = " + idHoraAtencion  + " ; ";
+               
+                DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
+                if (dataTable.Tables[0].Rows.Count == 0)
+                {
+                    return null;
+                }
+                HoraAtencion horaAtencion = new HoraAtencion();
+                foreach (DataRow row in dataTable.Tables[0].Rows)
+                {
+                    horaAtencion = (generarObjetoHoraAtencion(row, true, true, false, true, false, false, true));
+                }
+                return horaAtencion;
+            }
+            catch (Exception ex)
+            {
+                verErrorEnConsola(ex, "buscarDetalleHora");
+                throw new Exception("Ocurrio un error al buscar las horas de los especialistas ", new Exception());
+            }
+        }
+
         //Crea un objeto de tipo HoraAtencion
         private HoraAtencion generarObjetoHoraAtencion(DataRow row,Boolean bloque, Boolean terapeuta, Boolean paciente, Boolean sala, Boolean estadoRes,
             Boolean venta, Boolean espeClinica)

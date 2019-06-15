@@ -1256,6 +1256,10 @@ namespace CapaServicioPresentacionWeb.ServiceCliente {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/buscarHorasDisponiblesService", ReplyAction="*")]
         CapaServicioPresentacionWeb.ServiceCliente.buscarHorasDisponiblesServiceResponse buscarHorasDisponiblesService(CapaServicioPresentacionWeb.ServiceCliente.buscarHorasDisponiblesServiceRequest request);
         
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento buscarDetalleHoraServiceResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/buscarDetalleHoraService", ReplyAction="*")]
+        CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceResponse buscarDetalleHoraService(CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceRequest request);
+        
         // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento generarListaEspecialidadServiceResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/generarListaEspecialidadService", ReplyAction="*")]
         CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialidadServiceResponse generarListaEspecialidadService(CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialidadServiceRequest request);
@@ -1495,6 +1499,74 @@ namespace CapaServicioPresentacionWeb.ServiceCliente {
         
         public buscarHorasDisponiblesServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] buscarHorasDisponiblesServiceResult) {
             this.buscarHorasDisponiblesServiceResult = buscarHorasDisponiblesServiceResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class buscarDetalleHoraServiceRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="buscarDetalleHoraService", Namespace="http://tempuri.org/", Order=0)]
+        public CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceRequestBody Body;
+        
+        public buscarDetalleHoraServiceRequest() {
+        }
+        
+        public buscarDetalleHoraServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class buscarDetalleHoraServiceRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int idHoraAtencion;
+        
+        public buscarDetalleHoraServiceRequestBody() {
+        }
+        
+        public buscarDetalleHoraServiceRequestBody(int idHoraAtencion) {
+            this.idHoraAtencion = idHoraAtencion;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class buscarDetalleHoraServiceResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="buscarDetalleHoraServiceResponse", Namespace="http://tempuri.org/", Order=0)]
+        public CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceResponseBody Body;
+        
+        public buscarDetalleHoraServiceResponse() {
+        }
+        
+        public buscarDetalleHoraServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class buscarDetalleHoraServiceResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion buscarDetalleHoraServiceResult;
+        
+        public buscarDetalleHoraServiceResponseBody() {
+        }
+        
+        public buscarDetalleHoraServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion buscarDetalleHoraServiceResult) {
+            this.buscarDetalleHoraServiceResult = buscarDetalleHoraServiceResult;
         }
     }
     
@@ -2095,6 +2167,19 @@ namespace CapaServicioPresentacionWeb.ServiceCliente {
             inValue.Body.persona = persona;
             CapaServicioPresentacionWeb.ServiceCliente.buscarHorasDisponiblesServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).buscarHorasDisponiblesService(inValue);
             return retVal.Body.buscarHorasDisponiblesServiceResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceResponse CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap.buscarDetalleHoraService(CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceRequest request) {
+            return base.Channel.buscarDetalleHoraService(request);
+        }
+        
+        public CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion buscarDetalleHoraService(int idHoraAtencion) {
+            CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceRequest();
+            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceRequestBody();
+            inValue.Body.idHoraAtencion = idHoraAtencion;
+            CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).buscarDetalleHoraService(inValue);
+            return retVal.Body.buscarDetalleHoraServiceResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
