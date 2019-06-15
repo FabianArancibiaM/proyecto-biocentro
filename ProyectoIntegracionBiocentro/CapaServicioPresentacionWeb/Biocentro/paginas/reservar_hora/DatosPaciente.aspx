@@ -27,8 +27,7 @@
             <div class="row">
                  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <label for="fechaNac">Fecha Nacimiento</label><br />
-                     <input type="text" value="9/23/2009" style="width: 100px;" runat="server"
-                         name="fechaNac" id="fechaNac" class="hasDatepicker"/>
+                     <asp:TextBox type="date"  style="width: 200px;" runat="server" name="fechaNac" id="fechaNac"/>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <label for="radioSexo">Sexo</label><br />

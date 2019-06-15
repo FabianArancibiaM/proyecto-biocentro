@@ -29,7 +29,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                     this.txtNombre.Text = paciente.Nombre;
                     this.txtApPaterno.Text = paciente.ApellidoPaterno;
                     this.txtApMaterno.Text = paciente.ApellidoMaterno;
-                    this.fechaNac.Value = paciente.FechaNacimiento.ToString();
+                    this.fechaNac.Text = paciente.FechaNacimiento.ToString();
                     if (paciente.Sexo == 'M')
                     {
                         this.radioMujer.Checked = true;
@@ -59,7 +59,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             paciente.Nombre = this.txtNombre.Text;
             paciente.ApellidoPaterno = this.txtApPaterno.Text;
             paciente.ApellidoMaterno = this.txtApMaterno.Text;
-            paciente.FechaNacimiento = Convert.ToDateTime(this.fechaNac.Value);
+            paciente.FechaNacimiento = Convert.ToDateTime(this.fechaNac.Text);
             if (this.radioHombre.Checked == true)
             {
                 paciente.Sexo = 'H';
@@ -80,7 +80,6 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
             ServiceCliente.StatusResponce registrarPaciente = soapClient.registrarPacienteService(paciente, idHoraAtencion);
             ShowMessage(registrarPaciente.Mensaje);
-
         }
 
         public void ShowMessage(string message)

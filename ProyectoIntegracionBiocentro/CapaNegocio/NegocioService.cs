@@ -36,7 +36,7 @@ namespace CapaNegocio
                 {
                     query = "INSERT INTO BIOCENTRO_DB.dbo.PACIENTE (RUT,NOMBRE,APELLIDO_PATERNO,APELLIDO_MATERNO,TELEFONO,FECHA_NACIMIENTO,SEXO,CORREO) OUTPUT INSERTED.ID_PACIENTE VALUES " +
                             " ('" + paciente.Rut + "','" + paciente.Nombre + "','" + paciente.ApellidoPaterno + "','" + paciente.ApellidoMaterno + "',"
-                            + paciente.Telefono + ",'"+ paciente.FechaNacimiento +"','"+ paciente.Sexo+"','"+ paciente.Correo+"');";
+                            + paciente.Telefono + ",'"+ paciente.FechaNacimiento.ToString("yyyy-MM-dd HH:mm:ss") +"','"+ paciente.Sexo+"','"+ paciente.Correo+"');";
                     idPersona =  this.utilMethods.guardarEliminarActualizarObjeto(query, true);
                     esNuevo = true;
                 }
@@ -53,7 +53,7 @@ namespace CapaNegocio
             {
                 if (esNuevo)
                 {
-                    eliminar("PERSONA", "ID_PERSONA", idPersona);
+                    eliminar("PACIENTE", "ID_PACIENTE", idPersona);
                 }
                 verErrorEnConsola(ex, "guardarPaciente");
                 return generarObjetoStatusResponce("error", ex.Message);
@@ -362,6 +362,7 @@ namespace CapaNegocio
                     empleado = generarObjetoTerapeuta(row);
                     if (validarClave(empleado,password))
                     {
+                        empleado.Contraseña = string.Empty;
                         return empleado;
                     }
                 }
