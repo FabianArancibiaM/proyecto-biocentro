@@ -152,7 +152,7 @@ namespace CapaNegocio
             }
         }
         //Retorna la data de pacientes y reservas
-        public List<HoraAtencion> listaReservasPorRut(String rut)
+        public List<HoraAtencion> listaReservasPorRut(String rut,String correo)
         {
             try
             {
@@ -172,7 +172,12 @@ namespace CapaNegocio
                     + "JOIN BIOCENTRO_DB.dbo.ESPECIALIDAD_CLINICA as espCli on espCli.ID_ESPECIALIDAD = hora.ID_ESPECIALIDAD "
                     + "JOIN BIOCENTRO_DB.dbo.ESTADO_RESERVA as estRes on estRes.ID_ESTADO=hora.ID_ESTADO "
                     + "JOIN EMPLEADO as emp on emp.ID_EMPLEADO = hora.ID_TERAPEUTA "
-                    + " WHERE paciente.RUT = '" + rut + "' and estRes.ID_ESTADO <> 3 ; "; ;
+                    + " WHERE paciente.RUT = '" + rut +"' and estRes.ID_ESTADO <> 3 ";
+                if (correo!=null)
+                {
+                    query = query + " and paciente.CORREO = '" + correo + "'";
+                }
+                query = query + " ;";
                 DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
                 if (dataTable.Tables[0].Rows.Count == 0)
                 {
@@ -260,7 +265,7 @@ namespace CapaNegocio
         {
             try
             {
-                List<HoraAtencion> horas = listaReservasPorRut(rut);
+                List<HoraAtencion> horas = listaReservasPorRut(rut,null);
                 List<int> ids = new List<int>();
                 horas.ForEach( h => {
                     if (h.Venta!=null)
@@ -339,7 +344,68 @@ namespace CapaNegocio
                 return generarObjetoStatusResponce("error", ex.Message);
             }
         }
-        // Fin Metodos Publicos
+        //Metodo retorna empleado cuando clave ingresada concuerda con la clave desencriptada
+        public Empleado login(string usuario,string password)
+        {
+            try
+            {
+                String query = " SELECT CONTRASENA,ID_EMPLEADO,ID_CARGO,NOMBRE,TELEFONO,USUARIO,APELLIDO_MATERNO,APELLIDO_PATERNO,CORREO,FECHA_NACIMIENTO" +
+                    " from BIOCENTRO_DB.dbo.EMPLEADO WHERE USUARIO = '" + usuario + "' ;";
+                DataSet dataTable = this.utilMethods.listarObjetoMultiTabla(query);
+                if (dataTable.Tables[0].Rows.Count == 0)
+                {
+                    return null;
+                }
+                Empleado empleado = null;
+                foreach (DataRow row in dataTable.Tables[0].Rows)
+                {
+                    empleado = generarObjetoTerapeuta(row);
+                    if (validarClave(empleado,password))
+                    {
+                        return empleado;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                verErrorEnConsola(ex, "login");
+            }
+            return null;
+        }
+        //Metodo guarda empleado con clave encriptada
+        public StatusResponce agregarEmpleado(Empleado empleado)
+        {
+            try
+            {
+                string segurity = encriptarClave(empleado);
+                String query = "INSERT INTO BIOCENTRO_DB.dbo.EMPLEADO "+
+                    "(USUARIO, CONTRASENA, NOMBRE, APELLIDO_PATERNO, APELLIDO_MATERNO, TELEFONO, CORREO, ID_CARGO, FECHA_NACIMIENTO)" +
+                    " OUTPUT INSERTED.ID_EMPLEADO "
+                    + " VALUES('" +empleado.Usuario + "','" + segurity +
+                     "','" + empleado.Nombre + "','" + empleado.ApellidoPaterno + "','" + empleado.ApellidoMaterno + "',"+
+                     empleado.Telefono + ",'" + empleado.Correo + "'," + empleado.Cargo.IdCargo + ",'" + empleado.FechaNacimiento + "');";
+                this.utilMethods.guardarEliminarActualizarObjeto(query, true);
+                return generarObjetoStatusResponce(string.Empty,"Se ha registrado correctamente"); 
+            }
+            catch(Exception ex)
+            {
+                verErrorEnConsola(ex, "login");
+                return generarObjetoStatusResponce("error", "Se produjo un error al registrar el empleado");
+            }
+        }
+        // Fin Metodos Publicos /////////////////////////////////////////////////////////////////////////////////////////////////////
+        private string encriptarClave(Empleado em)
+        {
+            SeguritySystem segurity = new SeguritySystem();
+            return segurity.seguridad(em.Contraseña, true);
+        }
+        private bool validarClave(Empleado em,string claveIngresada)
+        {
+
+            SeguritySystem segurity = new SeguritySystem();
+            string claveDesen = segurity.seguridad(em.Contraseña, false);
+            return claveDesen.Equals(claveIngresada);
+        }
         private bool filtrarTerapeuta(HoraAtencion h, Empleado empleado)
         {
             if (empleado == null)

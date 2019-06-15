@@ -67,6 +67,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -208,7 +210,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(35, 313);
+            this.button2.Location = new System.Drawing.Point(35, 342);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(112, 23);
             this.button2.TabIndex = 17;
@@ -246,7 +248,7 @@
             // 
             // rutMisReservas
             // 
-            this.rutMisReservas.Location = new System.Drawing.Point(47, 287);
+            this.rutMisReservas.Location = new System.Drawing.Point(49, 270);
             this.rutMisReservas.Name = "rutMisReservas";
             this.rutMisReservas.Size = new System.Drawing.Size(100, 20);
             this.rutMisReservas.TabIndex = 21;
@@ -254,7 +256,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 290);
+            this.label7.Location = new System.Drawing.Point(13, 273);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(30, 13);
             this.label7.TabIndex = 22;
@@ -262,7 +264,7 @@
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.Location = new System.Drawing.Point(35, 371);
+            this.btnConfirmar.Location = new System.Drawing.Point(35, 400);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(112, 23);
             this.btnConfirmar.TabIndex = 23;
@@ -272,7 +274,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(35, 342);
+            this.btnCancelar.Location = new System.Drawing.Point(35, 371);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(112, 23);
             this.btnCancelar.TabIndex = 24;
@@ -427,11 +429,30 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.Button5_Click);
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(47, 303);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 41;
+            this.textBox2.TextChanged += new System.EventHandler(this.TextBox2_TextChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(9, 306);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(38, 13);
+            this.label14.TabIndex = 42;
+            this.label14.Text = "Correo";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label13);
@@ -520,6 +541,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label14;
     }
 }
 
