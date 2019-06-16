@@ -15,7 +15,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
         }
         protected void btnMisHoras_Click(object sender, EventArgs e)
         {
-            Response.Write("<script language='javascript'>window.location='../mis_horas/inicio_mis_horas.aspx';</script>");
+            Response.Write("<script language='javascript'>window.location='MisHoras.aspx';</script>");
         }
 
         protected void btnInicioReserva_Click(object sender, EventArgs e)

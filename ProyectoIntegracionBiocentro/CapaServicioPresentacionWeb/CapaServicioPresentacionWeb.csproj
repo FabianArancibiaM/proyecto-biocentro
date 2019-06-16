@@ -128,6 +128,9 @@
     <Content Include="Biocentro\paginas\intranet\Login.aspx" />
     <Content Include="Biocentro\paginas\intranet\PaginaPrincipal.aspx" />
     <Content Include="Biocentro\paginas\MasterPage.Master" />
+    <Content Include="Biocentro\paginas\reservar_hora\MisHoras.aspx" />
+    <Content Include="Biocentro\paginas\reservar_hora\MisHorasDetalle.aspx" />
+    <Content Include="Biocentro\paginas\reservar_hora\MisHorasFinal.aspx" />
     <Content Include="Connected Services\ServiceCliente\CapaServicioPresentacionWeb.ServiceCliente.Empleado.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -1850,6 +1853,27 @@
     </Compile>
     <Compile Include="Biocentro\paginas\reservar_hora\InicioReserva.aspx.designer.cs">
       <DependentUpon>InicioReserva.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\MisHoras.aspx.cs">
+      <DependentUpon>MisHoras.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\MisHoras.aspx.designer.cs">
+      <DependentUpon>MisHoras.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\MisHorasDetalle.aspx.cs">
+      <DependentUpon>MisHorasDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\MisHorasDetalle.aspx.designer.cs">
+      <DependentUpon>MisHorasDetalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\MisHorasFinal.aspx.cs">
+      <DependentUpon>MisHorasFinal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\MisHorasFinal.aspx.designer.cs">
+      <DependentUpon>MisHorasFinal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\ServiceCliente\Reference.cs">
       <AutoGen>True</AutoGen>
