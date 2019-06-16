@@ -211,7 +211,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
                     return;
                 }
                 int total = 0;
-                ServiceCliente.ArrayOfInt listaIdHora = new ServiceCliente.ArrayOfInt();
+                List<int> listaIdHora = new List<int>();
                 foreach (ServiceCliente.HoraAtencion h in listReserva)
                 {
                     total = total + h.EspecialidadClinica.Precio;
@@ -227,7 +227,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
                 esVenta.IdEstadoVenta = 2;
                 venta.EstadoVenta = esVenta;
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
-                ServiceCliente.StatusResponce responce = soapClient.guardarVentaRealizadaService(venta, listaIdHora);
+                ServiceCliente.StatusResponce responce = soapClient.guardarVentaRealizadaService(venta, listaIdHora.ToArray());
                 if (responce.Estado.Equals("error"))
                 {
                     ShowMessage("Se produjo un error: " + responce.Mensaje);

@@ -9,1467 +9,1180 @@
 //------------------------------------------------------------------------------
 
 namespace CapaServicioPresentacionWeb.ServiceCliente {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Paciente", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class Paciente : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RutField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NombreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ApellidoPaternoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ApellidoMaternoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TelefonoField;
-        
-        private System.DateTime FechaNacimientoField;
-        
-        private char SexoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CorreoField;
-        
-        private int IdPacienteField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Rut {
-            get {
-                return this.RutField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RutField, value) != true)) {
-                    this.RutField = value;
-                    this.RaisePropertyChanged("Rut");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string Nombre {
-            get {
-                return this.NombreField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
-                    this.NombreField = value;
-                    this.RaisePropertyChanged("Nombre");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string ApellidoPaterno {
-            get {
-                return this.ApellidoPaternoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ApellidoPaternoField, value) != true)) {
-                    this.ApellidoPaternoField = value;
-                    this.RaisePropertyChanged("ApellidoPaterno");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string ApellidoMaterno {
-            get {
-                return this.ApellidoMaternoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ApellidoMaternoField, value) != true)) {
-                    this.ApellidoMaternoField = value;
-                    this.RaisePropertyChanged("ApellidoMaterno");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public string Telefono {
-            get {
-                return this.TelefonoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TelefonoField, value) != true)) {
-                    this.TelefonoField = value;
-                    this.RaisePropertyChanged("Telefono");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
-        public System.DateTime FechaNacimiento {
-            get {
-                return this.FechaNacimientoField;
-            }
-            set {
-                if ((this.FechaNacimientoField.Equals(value) != true)) {
-                    this.FechaNacimientoField = value;
-                    this.RaisePropertyChanged("FechaNacimiento");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
-        public char Sexo {
-            get {
-                return this.SexoField;
-            }
-            set {
-                if ((this.SexoField.Equals(value) != true)) {
-                    this.SexoField = value;
-                    this.RaisePropertyChanged("Sexo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
-        public string Correo {
-            get {
-                return this.CorreoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CorreoField, value) != true)) {
-                    this.CorreoField = value;
-                    this.RaisePropertyChanged("Correo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=8)]
-        public int IdPaciente {
-            get {
-                return this.IdPacienteField;
-            }
-            set {
-                if ((this.IdPacienteField.Equals(value) != true)) {
-                    this.IdPacienteField = value;
-                    this.RaisePropertyChanged("IdPaciente");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StatusResponce", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class StatusResponce : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EstadoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MensajeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Estado {
-            get {
-                return this.EstadoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EstadoField, value) != true)) {
-                    this.EstadoField = value;
-                    this.RaisePropertyChanged("Estado");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Mensaje {
-            get {
-                return this.MensajeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MensajeField, value) != true)) {
-                    this.MensajeField = value;
-                    this.RaisePropertyChanged("Mensaje");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EspecialidadClinica", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class EspecialidadClinica : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NombreField;
-        
-        private int PrecioField;
-        
-        private int IdEspecialidadClinicaField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Nombre {
-            get {
-                return this.NombreField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
-                    this.NombreField = value;
-                    this.RaisePropertyChanged("Nombre");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int Precio {
-            get {
-                return this.PrecioField;
-            }
-            set {
-                if ((this.PrecioField.Equals(value) != true)) {
-                    this.PrecioField = value;
-                    this.RaisePropertyChanged("Precio");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
-        public int IdEspecialidadClinica {
-            get {
-                return this.IdEspecialidadClinicaField;
-            }
-            set {
-                if ((this.IdEspecialidadClinicaField.Equals(value) != true)) {
-                    this.IdEspecialidadClinicaField = value;
-                    this.RaisePropertyChanged("IdEspecialidadClinica");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Empleado", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class Empleado : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IdEmpleadoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UsuarioField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ContraseñaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NombreField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ApellidoPaternoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ApellidoMaternoField;
-        
-        private int TelefonoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CorreoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FechaNacimientoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private CapaServicioPresentacionWeb.ServiceCliente.Cargo CargoField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int IdEmpleado {
-            get {
-                return this.IdEmpleadoField;
-            }
-            set {
-                if ((this.IdEmpleadoField.Equals(value) != true)) {
-                    this.IdEmpleadoField = value;
-                    this.RaisePropertyChanged("IdEmpleado");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Usuario {
-            get {
-                return this.UsuarioField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UsuarioField, value) != true)) {
-                    this.UsuarioField = value;
-                    this.RaisePropertyChanged("Usuario");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public string Contraseña {
-            get {
-                return this.ContraseñaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ContraseñaField, value) != true)) {
-                    this.ContraseñaField = value;
-                    this.RaisePropertyChanged("Contraseña");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public string Nombre {
-            get {
-                return this.NombreField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
-                    this.NombreField = value;
-                    this.RaisePropertyChanged("Nombre");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public string ApellidoPaterno {
-            get {
-                return this.ApellidoPaternoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ApellidoPaternoField, value) != true)) {
-                    this.ApellidoPaternoField = value;
-                    this.RaisePropertyChanged("ApellidoPaterno");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
-        public string ApellidoMaterno {
-            get {
-                return this.ApellidoMaternoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ApellidoMaternoField, value) != true)) {
-                    this.ApellidoMaternoField = value;
-                    this.RaisePropertyChanged("ApellidoMaterno");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=6)]
-        public int Telefono {
-            get {
-                return this.TelefonoField;
-            }
-            set {
-                if ((this.TelefonoField.Equals(value) != true)) {
-                    this.TelefonoField = value;
-                    this.RaisePropertyChanged("Telefono");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
-        public string Correo {
-            get {
-                return this.CorreoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CorreoField, value) != true)) {
-                    this.CorreoField = value;
-                    this.RaisePropertyChanged("Correo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
-        public string FechaNacimiento {
-            get {
-                return this.FechaNacimientoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FechaNacimientoField, value) != true)) {
-                    this.FechaNacimientoField = value;
-                    this.RaisePropertyChanged("FechaNacimiento");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=9)]
-        public CapaServicioPresentacionWeb.ServiceCliente.Cargo Cargo {
-            get {
-                return this.CargoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CargoField, value) != true)) {
-                    this.CargoField = value;
-                    this.RaisePropertyChanged("Cargo");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Cargo", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class Cargo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IdCargoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NombreField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int IdCargo {
-            get {
-                return this.IdCargoField;
-            }
-            set {
-                if ((this.IdCargoField.Equals(value) != true)) {
-                    this.IdCargoField = value;
-                    this.RaisePropertyChanged("IdCargo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Nombre {
-            get {
-                return this.NombreField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
-                    this.NombreField = value;
-                    this.RaisePropertyChanged("Nombre");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="HoraAtencion", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class HoraAtencion : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IdHoraField;
-        
-        private System.DateTime FechaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private CapaServicioPresentacionWeb.ServiceCliente.Bloque IdBloqueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private CapaServicioPresentacionWeb.ServiceCliente.Paciente PacienteField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private CapaServicioPresentacionWeb.ServiceCliente.EstadoReserva EstadoReservaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private CapaServicioPresentacionWeb.ServiceCliente.EspecialidadClinica EspecialidadClinicaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private CapaServicioPresentacionWeb.ServiceCliente.Empleado TerapeutaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private CapaServicioPresentacionWeb.ServiceCliente.Sala SalaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private CapaServicioPresentacionWeb.ServiceCliente.Venta VentaField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int IdHora {
-            get {
-                return this.IdHoraField;
-            }
-            set {
-                if ((this.IdHoraField.Equals(value) != true)) {
-                    this.IdHoraField = value;
-                    this.RaisePropertyChanged("IdHora");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
-        public System.DateTime Fecha {
-            get {
-                return this.FechaField;
-            }
-            set {
-                if ((this.FechaField.Equals(value) != true)) {
-                    this.FechaField = value;
-                    this.RaisePropertyChanged("Fecha");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public CapaServicioPresentacionWeb.ServiceCliente.Bloque IdBloque {
-            get {
-                return this.IdBloqueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IdBloqueField, value) != true)) {
-                    this.IdBloqueField = value;
-                    this.RaisePropertyChanged("IdBloque");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public CapaServicioPresentacionWeb.ServiceCliente.Paciente Paciente {
-            get {
-                return this.PacienteField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PacienteField, value) != true)) {
-                    this.PacienteField = value;
-                    this.RaisePropertyChanged("Paciente");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public CapaServicioPresentacionWeb.ServiceCliente.EstadoReserva EstadoReserva {
-            get {
-                return this.EstadoReservaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EstadoReservaField, value) != true)) {
-                    this.EstadoReservaField = value;
-                    this.RaisePropertyChanged("EstadoReserva");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
-        public CapaServicioPresentacionWeb.ServiceCliente.EspecialidadClinica EspecialidadClinica {
-            get {
-                return this.EspecialidadClinicaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EspecialidadClinicaField, value) != true)) {
-                    this.EspecialidadClinicaField = value;
-                    this.RaisePropertyChanged("EspecialidadClinica");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=6)]
-        public CapaServicioPresentacionWeb.ServiceCliente.Empleado Terapeuta {
-            get {
-                return this.TerapeutaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TerapeutaField, value) != true)) {
-                    this.TerapeutaField = value;
-                    this.RaisePropertyChanged("Terapeuta");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=7)]
-        public CapaServicioPresentacionWeb.ServiceCliente.Sala Sala {
-            get {
-                return this.SalaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SalaField, value) != true)) {
-                    this.SalaField = value;
-                    this.RaisePropertyChanged("Sala");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=8)]
-        public CapaServicioPresentacionWeb.ServiceCliente.Venta Venta {
-            get {
-                return this.VentaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.VentaField, value) != true)) {
-                    this.VentaField = value;
-                    this.RaisePropertyChanged("Venta");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Bloque", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class Bloque : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IdBloqueField;
-        
-        private int HoraInicioField;
-        
-        private int HoraFinField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int IdBloque {
-            get {
-                return this.IdBloqueField;
-            }
-            set {
-                if ((this.IdBloqueField.Equals(value) != true)) {
-                    this.IdBloqueField = value;
-                    this.RaisePropertyChanged("IdBloque");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
-        public int HoraInicio {
-            get {
-                return this.HoraInicioField;
-            }
-            set {
-                if ((this.HoraInicioField.Equals(value) != true)) {
-                    this.HoraInicioField = value;
-                    this.RaisePropertyChanged("HoraInicio");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
-        public int HoraFin {
-            get {
-                return this.HoraFinField;
-            }
-            set {
-                if ((this.HoraFinField.Equals(value) != true)) {
-                    this.HoraFinField = value;
-                    this.RaisePropertyChanged("HoraFin");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EstadoReserva", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class EstadoReserva : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IdEstadoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescripcionField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int IdEstado {
-            get {
-                return this.IdEstadoField;
-            }
-            set {
-                if ((this.IdEstadoField.Equals(value) != true)) {
-                    this.IdEstadoField = value;
-                    this.RaisePropertyChanged("IdEstado");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string Descripcion {
-            get {
-                return this.DescripcionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescripcionField, value) != true)) {
-                    this.DescripcionField = value;
-                    this.RaisePropertyChanged("Descripcion");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Sala", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class Sala : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IdSalaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NombreField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int IdSala {
-            get {
-                return this.IdSalaField;
-            }
-            set {
-                if ((this.IdSalaField.Equals(value) != true)) {
-                    this.IdSalaField = value;
-                    this.RaisePropertyChanged("IdSala");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Nombre {
-            get {
-                return this.NombreField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
-                    this.NombreField = value;
-                    this.RaisePropertyChanged("Nombre");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Venta", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class Venta : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IdVentaField;
-        
-        private System.DateTime FechaPagoField;
-        
-        private int MontoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private CapaServicioPresentacionWeb.ServiceCliente.EstadoVenta EstadoVentaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private CapaServicioPresentacionWeb.ServiceCliente.MedioPago MedioPagoField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int IdVenta {
-            get {
-                return this.IdVentaField;
-            }
-            set {
-                if ((this.IdVentaField.Equals(value) != true)) {
-                    this.IdVentaField = value;
-                    this.RaisePropertyChanged("IdVenta");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=1)]
-        public System.DateTime FechaPago {
-            get {
-                return this.FechaPagoField;
-            }
-            set {
-                if ((this.FechaPagoField.Equals(value) != true)) {
-                    this.FechaPagoField = value;
-                    this.RaisePropertyChanged("FechaPago");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
-        public int Monto {
-            get {
-                return this.MontoField;
-            }
-            set {
-                if ((this.MontoField.Equals(value) != true)) {
-                    this.MontoField = value;
-                    this.RaisePropertyChanged("Monto");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
-        public CapaServicioPresentacionWeb.ServiceCliente.EstadoVenta EstadoVenta {
-            get {
-                return this.EstadoVentaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EstadoVentaField, value) != true)) {
-                    this.EstadoVentaField = value;
-                    this.RaisePropertyChanged("EstadoVenta");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
-        public CapaServicioPresentacionWeb.ServiceCliente.MedioPago MedioPago {
-            get {
-                return this.MedioPagoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MedioPagoField, value) != true)) {
-                    this.MedioPagoField = value;
-                    this.RaisePropertyChanged("MedioPago");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EstadoVenta", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class EstadoVenta : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IdEstadoVentaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescripcionField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int IdEstadoVenta {
-            get {
-                return this.IdEstadoVentaField;
-            }
-            set {
-                if ((this.IdEstadoVentaField.Equals(value) != true)) {
-                    this.IdEstadoVentaField = value;
-                    this.RaisePropertyChanged("IdEstadoVenta");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string Descripcion {
-            get {
-                return this.DescripcionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescripcionField, value) != true)) {
-                    this.DescripcionField = value;
-                    this.RaisePropertyChanged("Descripcion");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MedioPago", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class MedioPago : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IdMedioPagoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NombreField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int IdMedioPago {
-            get {
-                return this.IdMedioPagoField;
-            }
-            set {
-                if ((this.IdMedioPagoField.Equals(value) != true)) {
-                    this.IdMedioPagoField = value;
-                    this.RaisePropertyChanged("IdMedioPago");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
-        public string Nombre {
-            get {
-                return this.NombreField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
-                    this.NombreField = value;
-                    this.RaisePropertyChanged("Nombre");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EspecialidadTerapeuta", Namespace="http://tempuri.org/")]
-    [System.SerializableAttribute()]
-    public partial class EspecialidadTerapeuta : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private int IdEspecialidadTerapeutaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private CapaServicioPresentacionWeb.ServiceCliente.EspecialidadClinica EspecialidadClinicaField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private CapaServicioPresentacionWeb.ServiceCliente.Empleado EmpleadoField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        public int IdEspecialidadTerapeuta {
-            get {
-                return this.IdEspecialidadTerapeutaField;
-            }
-            set {
-                if ((this.IdEspecialidadTerapeutaField.Equals(value) != true)) {
-                    this.IdEspecialidadTerapeutaField = value;
-                    this.RaisePropertyChanged("IdEspecialidadTerapeuta");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public CapaServicioPresentacionWeb.ServiceCliente.EspecialidadClinica EspecialidadClinica {
-            get {
-                return this.EspecialidadClinicaField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EspecialidadClinicaField, value) != true)) {
-                    this.EspecialidadClinicaField = value;
-                    this.RaisePropertyChanged("EspecialidadClinica");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public CapaServicioPresentacionWeb.ServiceCliente.Empleado Empleado {
-            get {
-                return this.EmpleadoField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EmpleadoField, value) != true)) {
-                    this.EmpleadoField = value;
-                    this.RaisePropertyChanged("Empleado");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfInt", Namespace="http://tempuri.org/", ItemName="int")]
-    [System.SerializableAttribute()]
-    public class ArrayOfInt : System.Collections.Generic.List<int> {
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceCliente.WebServiceClienteSoap")]
     public interface WebServiceClienteSoap {
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento HelloWorldResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje AutenticacionUsuarioRequest tiene encabezados.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AutenticacionUsuario", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        CapaServicioPresentacionWeb.ServiceCliente.AutenticacionUsuarioResponse AutenticacionUsuario(CapaServicioPresentacionWeb.ServiceCliente.AutenticacionUsuarioRequest request);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
-        CapaServicioPresentacionWeb.ServiceCliente.HelloWorldResponse HelloWorld(CapaServicioPresentacionWeb.ServiceCliente.HelloWorldRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string HelloWorld();
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento persona del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/registrarPacienteService", ReplyAction="*")]
-        CapaServicioPresentacionWeb.ServiceCliente.registrarPacienteServiceResponse registrarPacienteService(CapaServicioPresentacionWeb.ServiceCliente.registrarPacienteServiceRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        CapaServicioPresentacionWeb.ServiceCliente.StatusResponce registrarPacienteService(CapaServicioPresentacionWeb.ServiceCliente.Paciente persona, int idHoraAtencion);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento especialidad del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        // CODEGEN: El parámetro 'fecha' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/buscarHorasDisponiblesService", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         CapaServicioPresentacionWeb.ServiceCliente.buscarHorasDisponiblesServiceResponse buscarHorasDisponiblesService(CapaServicioPresentacionWeb.ServiceCliente.buscarHorasDisponiblesServiceRequest request);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento buscarDetalleHoraServiceResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/buscarDetalleHoraService", ReplyAction="*")]
-        CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceResponse buscarDetalleHoraService(CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion buscarDetalleHoraService(int idHoraAtencion);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento generarListaEspecialidadServiceResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/generarListaEspecialidadService", ReplyAction="*")]
-        CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialidadServiceResponse generarListaEspecialidadService(CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialidadServiceRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        CapaServicioPresentacionWeb.ServiceCliente.EspecialidadClinica[] generarListaEspecialidadService();
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento generarListaEspecialistaServiceResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/generarListaEspecialistaService", ReplyAction="*")]
-        CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialistaServiceResponse generarListaEspecialistaService(CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialistaServiceRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        CapaServicioPresentacionWeb.ServiceCliente.EspecialidadTerapeuta[] generarListaEspecialistaService();
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento rut del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/buscarPacienteService", ReplyAction="*")]
-        CapaServicioPresentacionWeb.ServiceCliente.buscarPacienteServiceResponse buscarPacienteService(CapaServicioPresentacionWeb.ServiceCliente.buscarPacienteServiceRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        CapaServicioPresentacionWeb.ServiceCliente.Paciente buscarPacienteService(string rut);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento rut del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/listaReservasPorRutAndCorreoService", ReplyAction="*")]
-        CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceResponse listaReservasPorRutAndCorreoService(CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] listaReservasPorRutAndCorreoService(string rut, string correo);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento rechazarConfirmarReservaServiceResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/rechazarConfirmarReservaService", ReplyAction="*")]
-        CapaServicioPresentacionWeb.ServiceCliente.rechazarConfirmarReservaServiceResponse rechazarConfirmarReservaService(CapaServicioPresentacionWeb.ServiceCliente.rechazarConfirmarReservaServiceRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        CapaServicioPresentacionWeb.ServiceCliente.StatusResponce rechazarConfirmarReservaService(char cambioEstado, int idReserva);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento generarListaMedioPagoServiceResult del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/generarListaMedioPagoService", ReplyAction="*")]
-        CapaServicioPresentacionWeb.ServiceCliente.generarListaMedioPagoServiceResponse generarListaMedioPagoService(CapaServicioPresentacionWeb.ServiceCliente.generarListaMedioPagoServiceRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        CapaServicioPresentacionWeb.ServiceCliente.MedioPago[] generarListaMedioPagoService();
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento venta del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/guardarVentaRealizadaService", ReplyAction="*")]
-        CapaServicioPresentacionWeb.ServiceCliente.guardarVentaRealizadaServiceResponse guardarVentaRealizadaService(CapaServicioPresentacionWeb.ServiceCliente.guardarVentaRealizadaServiceRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        CapaServicioPresentacionWeb.ServiceCliente.StatusResponce guardarVentaRealizadaService(CapaServicioPresentacionWeb.ServiceCliente.Venta venta, int[] idHora);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento rut del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/horasPorRutPacienteMasVentaService", ReplyAction="*")]
-        CapaServicioPresentacionWeb.ServiceCliente.horasPorRutPacienteMasVentaServiceResponse horasPorRutPacienteMasVentaService(CapaServicioPresentacionWeb.ServiceCliente.horasPorRutPacienteMasVentaServiceRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] horasPorRutPacienteMasVentaService(string rut);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento empleado del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/agregarEmpleadoService", ReplyAction="*")]
-        CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceResponse agregarEmpleadoService(CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        CapaServicioPresentacionWeb.ServiceCliente.StatusResponce agregarEmpleadoService(CapaServicioPresentacionWeb.ServiceCliente.Empleado empleado);
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento usuario del espacio de nombres http://tempuri.org/ no está marcado para aceptar valores nil.
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje loginServiceRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/loginService", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         CapaServicioPresentacionWeb.ServiceCliente.loginServiceResponse loginService(CapaServicioPresentacionWeb.ServiceCliente.loginServiceRequest request);
     }
     
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3190.0")]
+    [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloWorldRequest {
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class TokenSecurity : object, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorld", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.HelloWorldRequestBody Body;
+        private string stTokenField;
         
-        public HelloWorldRequest() {
+        private string autenticacionTokenField;
+        
+        private System.Xml.XmlAttribute[] anyAttrField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string StToken {
+            get {
+                return this.stTokenField;
+            }
+            set {
+                this.stTokenField = value;
+                this.RaisePropertyChanged("StToken");
+            }
         }
         
-        public HelloWorldRequest(CapaServicioPresentacionWeb.ServiceCliente.HelloWorldRequestBody Body) {
-            this.Body = Body;
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string AutenticacionToken {
+            get {
+                return this.autenticacionTokenField;
+            }
+            set {
+                this.autenticacionTokenField = value;
+                this.RaisePropertyChanged("AutenticacionToken");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAnyAttributeAttribute()]
+        public System.Xml.XmlAttribute[] AnyAttr {
+            get {
+                return this.anyAttrField;
+            }
+            set {
+                this.anyAttrField = value;
+                this.RaisePropertyChanged("AnyAttr");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3190.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class EspecialidadTerapeuta : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int idEspecialidadTerapeutaField;
+        
+        private EspecialidadClinica especialidadClinicaField;
+        
+        private Empleado empleadoField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int IdEspecialidadTerapeuta {
+            get {
+                return this.idEspecialidadTerapeutaField;
+            }
+            set {
+                this.idEspecialidadTerapeutaField = value;
+                this.RaisePropertyChanged("IdEspecialidadTerapeuta");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public EspecialidadClinica EspecialidadClinica {
+            get {
+                return this.especialidadClinicaField;
+            }
+            set {
+                this.especialidadClinicaField = value;
+                this.RaisePropertyChanged("EspecialidadClinica");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public Empleado Empleado {
+            get {
+                return this.empleadoField;
+            }
+            set {
+                this.empleadoField = value;
+                this.RaisePropertyChanged("Empleado");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3190.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class EspecialidadClinica : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string nombreField;
+        
+        private int precioField;
+        
+        private int idEspecialidadClinicaField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string Nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                this.nombreField = value;
+                this.RaisePropertyChanged("Nombre");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int Precio {
+            get {
+                return this.precioField;
+            }
+            set {
+                this.precioField = value;
+                this.RaisePropertyChanged("Precio");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public int IdEspecialidadClinica {
+            get {
+                return this.idEspecialidadClinicaField;
+            }
+            set {
+                this.idEspecialidadClinicaField = value;
+                this.RaisePropertyChanged("IdEspecialidadClinica");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3190.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Empleado : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int idEmpleadoField;
+        
+        private string usuarioField;
+        
+        private string contraseñaField;
+        
+        private string nombreField;
+        
+        private string apellidoPaternoField;
+        
+        private string apellidoMaternoField;
+        
+        private int telefonoField;
+        
+        private string correoField;
+        
+        private string fechaNacimientoField;
+        
+        private Cargo cargoField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int IdEmpleado {
+            get {
+                return this.idEmpleadoField;
+            }
+            set {
+                this.idEmpleadoField = value;
+                this.RaisePropertyChanged("IdEmpleado");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Usuario {
+            get {
+                return this.usuarioField;
+            }
+            set {
+                this.usuarioField = value;
+                this.RaisePropertyChanged("Usuario");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string Contraseña {
+            get {
+                return this.contraseñaField;
+            }
+            set {
+                this.contraseñaField = value;
+                this.RaisePropertyChanged("Contraseña");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string Nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                this.nombreField = value;
+                this.RaisePropertyChanged("Nombre");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string ApellidoPaterno {
+            get {
+                return this.apellidoPaternoField;
+            }
+            set {
+                this.apellidoPaternoField = value;
+                this.RaisePropertyChanged("ApellidoPaterno");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public string ApellidoMaterno {
+            get {
+                return this.apellidoMaternoField;
+            }
+            set {
+                this.apellidoMaternoField = value;
+                this.RaisePropertyChanged("ApellidoMaterno");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public int Telefono {
+            get {
+                return this.telefonoField;
+            }
+            set {
+                this.telefonoField = value;
+                this.RaisePropertyChanged("Telefono");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public string Correo {
+            get {
+                return this.correoField;
+            }
+            set {
+                this.correoField = value;
+                this.RaisePropertyChanged("Correo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public string FechaNacimiento {
+            get {
+                return this.fechaNacimientoField;
+            }
+            set {
+                this.fechaNacimientoField = value;
+                this.RaisePropertyChanged("FechaNacimiento");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=9)]
+        public Cargo Cargo {
+            get {
+                return this.cargoField;
+            }
+            set {
+                this.cargoField = value;
+                this.RaisePropertyChanged("Cargo");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3190.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Cargo : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int idCargoField;
+        
+        private string nombreField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int IdCargo {
+            get {
+                return this.idCargoField;
+            }
+            set {
+                this.idCargoField = value;
+                this.RaisePropertyChanged("IdCargo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                this.nombreField = value;
+                this.RaisePropertyChanged("Nombre");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3190.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class MedioPago : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int idMedioPagoField;
+        
+        private string nombreField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int IdMedioPago {
+            get {
+                return this.idMedioPagoField;
+            }
+            set {
+                this.idMedioPagoField = value;
+                this.RaisePropertyChanged("IdMedioPago");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                this.nombreField = value;
+                this.RaisePropertyChanged("Nombre");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3190.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class EstadoVenta : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int idEstadoVentaField;
+        
+        private string descripcionField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int IdEstadoVenta {
+            get {
+                return this.idEstadoVentaField;
+            }
+            set {
+                this.idEstadoVentaField = value;
+                this.RaisePropertyChanged("IdEstadoVenta");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Descripcion {
+            get {
+                return this.descripcionField;
+            }
+            set {
+                this.descripcionField = value;
+                this.RaisePropertyChanged("Descripcion");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3190.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Venta : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int idVentaField;
+        
+        private System.DateTime fechaPagoField;
+        
+        private int montoField;
+        
+        private EstadoVenta estadoVentaField;
+        
+        private MedioPago medioPagoField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int IdVenta {
+            get {
+                return this.idVentaField;
+            }
+            set {
+                this.idVentaField = value;
+                this.RaisePropertyChanged("IdVenta");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public System.DateTime FechaPago {
+            get {
+                return this.fechaPagoField;
+            }
+            set {
+                this.fechaPagoField = value;
+                this.RaisePropertyChanged("FechaPago");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public int Monto {
+            get {
+                return this.montoField;
+            }
+            set {
+                this.montoField = value;
+                this.RaisePropertyChanged("Monto");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public EstadoVenta EstadoVenta {
+            get {
+                return this.estadoVentaField;
+            }
+            set {
+                this.estadoVentaField = value;
+                this.RaisePropertyChanged("EstadoVenta");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public MedioPago MedioPago {
+            get {
+                return this.medioPagoField;
+            }
+            set {
+                this.medioPagoField = value;
+                this.RaisePropertyChanged("MedioPago");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3190.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Sala : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int idSalaField;
+        
+        private string nombreField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int IdSala {
+            get {
+                return this.idSalaField;
+            }
+            set {
+                this.idSalaField = value;
+                this.RaisePropertyChanged("IdSala");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                this.nombreField = value;
+                this.RaisePropertyChanged("Nombre");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3190.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class EstadoReserva : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int idEstadoField;
+        
+        private string descripcionField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int IdEstado {
+            get {
+                return this.idEstadoField;
+            }
+            set {
+                this.idEstadoField = value;
+                this.RaisePropertyChanged("IdEstado");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Descripcion {
+            get {
+                return this.descripcionField;
+            }
+            set {
+                this.descripcionField = value;
+                this.RaisePropertyChanged("Descripcion");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3190.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Bloque : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int idBloqueField;
+        
+        private int horaInicioField;
+        
+        private int horaFinField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int IdBloque {
+            get {
+                return this.idBloqueField;
+            }
+            set {
+                this.idBloqueField = value;
+                this.RaisePropertyChanged("IdBloque");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public int HoraInicio {
+            get {
+                return this.horaInicioField;
+            }
+            set {
+                this.horaInicioField = value;
+                this.RaisePropertyChanged("HoraInicio");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public int HoraFin {
+            get {
+                return this.horaFinField;
+            }
+            set {
+                this.horaFinField = value;
+                this.RaisePropertyChanged("HoraFin");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3190.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class HoraAtencion : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private int idHoraField;
+        
+        private System.DateTime fechaField;
+        
+        private Bloque idBloqueField;
+        
+        private Paciente pacienteField;
+        
+        private EstadoReserva estadoReservaField;
+        
+        private EspecialidadClinica especialidadClinicaField;
+        
+        private Empleado terapeutaField;
+        
+        private Sala salaField;
+        
+        private Venta ventaField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public int IdHora {
+            get {
+                return this.idHoraField;
+            }
+            set {
+                this.idHoraField = value;
+                this.RaisePropertyChanged("IdHora");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public System.DateTime Fecha {
+            get {
+                return this.fechaField;
+            }
+            set {
+                this.fechaField = value;
+                this.RaisePropertyChanged("Fecha");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public Bloque IdBloque {
+            get {
+                return this.idBloqueField;
+            }
+            set {
+                this.idBloqueField = value;
+                this.RaisePropertyChanged("IdBloque");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public Paciente Paciente {
+            get {
+                return this.pacienteField;
+            }
+            set {
+                this.pacienteField = value;
+                this.RaisePropertyChanged("Paciente");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public EstadoReserva EstadoReserva {
+            get {
+                return this.estadoReservaField;
+            }
+            set {
+                this.estadoReservaField = value;
+                this.RaisePropertyChanged("EstadoReserva");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public EspecialidadClinica EspecialidadClinica {
+            get {
+                return this.especialidadClinicaField;
+            }
+            set {
+                this.especialidadClinicaField = value;
+                this.RaisePropertyChanged("EspecialidadClinica");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public Empleado Terapeuta {
+            get {
+                return this.terapeutaField;
+            }
+            set {
+                this.terapeutaField = value;
+                this.RaisePropertyChanged("Terapeuta");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public Sala Sala {
+            get {
+                return this.salaField;
+            }
+            set {
+                this.salaField = value;
+                this.RaisePropertyChanged("Sala");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public Venta Venta {
+            get {
+                return this.ventaField;
+            }
+            set {
+                this.ventaField = value;
+                this.RaisePropertyChanged("Venta");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3190.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Paciente : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string rutField;
+        
+        private string nombreField;
+        
+        private string apellidoPaternoField;
+        
+        private string apellidoMaternoField;
+        
+        private string telefonoField;
+        
+        private System.DateTime fechaNacimientoField;
+        
+        private char sexoField;
+        
+        private string correoField;
+        
+        private int idPacienteField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string Rut {
+            get {
+                return this.rutField;
+            }
+            set {
+                this.rutField = value;
+                this.RaisePropertyChanged("Rut");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                this.nombreField = value;
+                this.RaisePropertyChanged("Nombre");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public string ApellidoPaterno {
+            get {
+                return this.apellidoPaternoField;
+            }
+            set {
+                this.apellidoPaternoField = value;
+                this.RaisePropertyChanged("ApellidoPaterno");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
+        public string ApellidoMaterno {
+            get {
+                return this.apellidoMaternoField;
+            }
+            set {
+                this.apellidoMaternoField = value;
+                this.RaisePropertyChanged("ApellidoMaterno");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
+        public string Telefono {
+            get {
+                return this.telefonoField;
+            }
+            set {
+                this.telefonoField = value;
+                this.RaisePropertyChanged("Telefono");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=5)]
+        public System.DateTime FechaNacimiento {
+            get {
+                return this.fechaNacimientoField;
+            }
+            set {
+                this.fechaNacimientoField = value;
+                this.RaisePropertyChanged("FechaNacimiento");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=6)]
+        public char Sexo {
+            get {
+                return this.sexoField;
+            }
+            set {
+                this.sexoField = value;
+                this.RaisePropertyChanged("Sexo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=7)]
+        public string Correo {
+            get {
+                return this.correoField;
+            }
+            set {
+                this.correoField = value;
+                this.RaisePropertyChanged("Correo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=8)]
+        public int IdPaciente {
+            get {
+                return this.idPacienteField;
+            }
+            set {
+                this.idPacienteField = value;
+                this.RaisePropertyChanged("IdPaciente");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3190.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class StatusResponce : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string estadoField;
+        
+        private string mensajeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string Estado {
+            get {
+                return this.estadoField;
+            }
+            set {
+                this.estadoField = value;
+                this.RaisePropertyChanged("Estado");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=1)]
+        public string Mensaje {
+            get {
+                return this.mensajeField;
+            }
+            set {
+                this.mensajeField = value;
+                this.RaisePropertyChanged("Mensaje");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class HelloWorldRequestBody {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AutenticacionUsuario", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AutenticacionUsuarioRequest {
         
-        public HelloWorldRequestBody() {
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public CapaServicioPresentacionWeb.ServiceCliente.TokenSecurity TokenSecurity;
+        
+        public AutenticacionUsuarioRequest() {
+        }
+        
+        public AutenticacionUsuarioRequest(CapaServicioPresentacionWeb.ServiceCliente.TokenSecurity TokenSecurity) {
+            this.TokenSecurity = TokenSecurity;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloWorldResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AutenticacionUsuarioResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class AutenticacionUsuarioResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorldResponse", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.HelloWorldResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string AutenticacionUsuarioResult;
         
-        public HelloWorldResponse() {
+        public AutenticacionUsuarioResponse() {
         }
         
-        public HelloWorldResponse(CapaServicioPresentacionWeb.ServiceCliente.HelloWorldResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class HelloWorldResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string HelloWorldResult;
-        
-        public HelloWorldResponseBody() {
-        }
-        
-        public HelloWorldResponseBody(string HelloWorldResult) {
-            this.HelloWorldResult = HelloWorldResult;
+        public AutenticacionUsuarioResponse(string AutenticacionUsuarioResult) {
+            this.AutenticacionUsuarioResult = AutenticacionUsuarioResult;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class registrarPacienteServiceRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="registrarPacienteService", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.registrarPacienteServiceRequestBody Body;
-        
-        public registrarPacienteServiceRequest() {
-        }
-        
-        public registrarPacienteServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.registrarPacienteServiceRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class registrarPacienteServiceRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.Paciente persona;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-        public int idHoraAtencion;
-        
-        public registrarPacienteServiceRequestBody() {
-        }
-        
-        public registrarPacienteServiceRequestBody(CapaServicioPresentacionWeb.ServiceCliente.Paciente persona, int idHoraAtencion) {
-            this.persona = persona;
-            this.idHoraAtencion = idHoraAtencion;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class registrarPacienteServiceResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="registrarPacienteServiceResponse", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.registrarPacienteServiceResponseBody Body;
-        
-        public registrarPacienteServiceResponse() {
-        }
-        
-        public registrarPacienteServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.registrarPacienteServiceResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class registrarPacienteServiceResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.StatusResponce registrarPacienteServiceResult;
-        
-        public registrarPacienteServiceResponseBody() {
-        }
-        
-        public registrarPacienteServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.StatusResponce registrarPacienteServiceResult) {
-            this.registrarPacienteServiceResult = registrarPacienteServiceResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarHorasDisponiblesService", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class buscarHorasDisponiblesServiceRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="buscarHorasDisponiblesService", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.buscarHorasDisponiblesServiceRequestBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public CapaServicioPresentacionWeb.ServiceCliente.EspecialidadClinica especialidad;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<System.DateTime> fecha;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public CapaServicioPresentacionWeb.ServiceCliente.Empleado persona;
         
         public buscarHorasDisponiblesServiceRequest() {
         }
         
-        public buscarHorasDisponiblesServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.buscarHorasDisponiblesServiceRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class buscarHorasDisponiblesServiceRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.EspecialidadClinica especialidad;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-        public System.Nullable<System.DateTime> fecha;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=2)]
-        public CapaServicioPresentacionWeb.ServiceCliente.Empleado persona;
-        
-        public buscarHorasDisponiblesServiceRequestBody() {
-        }
-        
-        public buscarHorasDisponiblesServiceRequestBody(CapaServicioPresentacionWeb.ServiceCliente.EspecialidadClinica especialidad, System.Nullable<System.DateTime> fecha, CapaServicioPresentacionWeb.ServiceCliente.Empleado persona) {
+        public buscarHorasDisponiblesServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.EspecialidadClinica especialidad, System.Nullable<System.DateTime> fecha, CapaServicioPresentacionWeb.ServiceCliente.Empleado persona) {
             this.especialidad = especialidad;
             this.fecha = fecha;
             this.persona = persona;
@@ -1479,33 +1192,16 @@ namespace CapaServicioPresentacionWeb.ServiceCliente {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarHorasDisponiblesServiceResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class buscarHorasDisponiblesServiceResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="buscarHorasDisponiblesServiceResponse", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.buscarHorasDisponiblesServiceResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] buscarHorasDisponiblesServiceResult;
         
         public buscarHorasDisponiblesServiceResponse() {
         }
         
-        public buscarHorasDisponiblesServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.buscarHorasDisponiblesServiceResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class buscarHorasDisponiblesServiceResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] buscarHorasDisponiblesServiceResult;
-        
-        public buscarHorasDisponiblesServiceResponseBody() {
-        }
-        
-        public buscarHorasDisponiblesServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] buscarHorasDisponiblesServiceResult) {
+        public buscarHorasDisponiblesServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] buscarHorasDisponiblesServiceResult) {
             this.buscarHorasDisponiblesServiceResult = buscarHorasDisponiblesServiceResult;
         }
     }
@@ -1513,707 +1209,23 @@ namespace CapaServicioPresentacionWeb.ServiceCliente {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class buscarDetalleHoraServiceRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="buscarDetalleHoraService", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceRequestBody Body;
-        
-        public buscarDetalleHoraServiceRequest() {
-        }
-        
-        public buscarDetalleHoraServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class buscarDetalleHoraServiceRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public int idHoraAtencion;
-        
-        public buscarDetalleHoraServiceRequestBody() {
-        }
-        
-        public buscarDetalleHoraServiceRequestBody(int idHoraAtencion) {
-            this.idHoraAtencion = idHoraAtencion;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class buscarDetalleHoraServiceResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="buscarDetalleHoraServiceResponse", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceResponseBody Body;
-        
-        public buscarDetalleHoraServiceResponse() {
-        }
-        
-        public buscarDetalleHoraServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class buscarDetalleHoraServiceResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion buscarDetalleHoraServiceResult;
-        
-        public buscarDetalleHoraServiceResponseBody() {
-        }
-        
-        public buscarDetalleHoraServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion buscarDetalleHoraServiceResult) {
-            this.buscarDetalleHoraServiceResult = buscarDetalleHoraServiceResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class generarListaEspecialidadServiceRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="generarListaEspecialidadService", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialidadServiceRequestBody Body;
-        
-        public generarListaEspecialidadServiceRequest() {
-        }
-        
-        public generarListaEspecialidadServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialidadServiceRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class generarListaEspecialidadServiceRequestBody {
-        
-        public generarListaEspecialidadServiceRequestBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class generarListaEspecialidadServiceResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="generarListaEspecialidadServiceResponse", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialidadServiceResponseBody Body;
-        
-        public generarListaEspecialidadServiceResponse() {
-        }
-        
-        public generarListaEspecialidadServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialidadServiceResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class generarListaEspecialidadServiceResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.EspecialidadClinica[] generarListaEspecialidadServiceResult;
-        
-        public generarListaEspecialidadServiceResponseBody() {
-        }
-        
-        public generarListaEspecialidadServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.EspecialidadClinica[] generarListaEspecialidadServiceResult) {
-            this.generarListaEspecialidadServiceResult = generarListaEspecialidadServiceResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class generarListaEspecialistaServiceRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="generarListaEspecialistaService", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialistaServiceRequestBody Body;
-        
-        public generarListaEspecialistaServiceRequest() {
-        }
-        
-        public generarListaEspecialistaServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialistaServiceRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class generarListaEspecialistaServiceRequestBody {
-        
-        public generarListaEspecialistaServiceRequestBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class generarListaEspecialistaServiceResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="generarListaEspecialistaServiceResponse", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialistaServiceResponseBody Body;
-        
-        public generarListaEspecialistaServiceResponse() {
-        }
-        
-        public generarListaEspecialistaServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialistaServiceResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class generarListaEspecialistaServiceResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.EspecialidadTerapeuta[] generarListaEspecialistaServiceResult;
-        
-        public generarListaEspecialistaServiceResponseBody() {
-        }
-        
-        public generarListaEspecialistaServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.EspecialidadTerapeuta[] generarListaEspecialistaServiceResult) {
-            this.generarListaEspecialistaServiceResult = generarListaEspecialistaServiceResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class buscarPacienteServiceRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="buscarPacienteService", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.buscarPacienteServiceRequestBody Body;
-        
-        public buscarPacienteServiceRequest() {
-        }
-        
-        public buscarPacienteServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.buscarPacienteServiceRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class buscarPacienteServiceRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string rut;
-        
-        public buscarPacienteServiceRequestBody() {
-        }
-        
-        public buscarPacienteServiceRequestBody(string rut) {
-            this.rut = rut;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class buscarPacienteServiceResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="buscarPacienteServiceResponse", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.buscarPacienteServiceResponseBody Body;
-        
-        public buscarPacienteServiceResponse() {
-        }
-        
-        public buscarPacienteServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.buscarPacienteServiceResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class buscarPacienteServiceResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.Paciente buscarPacienteServiceResult;
-        
-        public buscarPacienteServiceResponseBody() {
-        }
-        
-        public buscarPacienteServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.Paciente buscarPacienteServiceResult) {
-            this.buscarPacienteServiceResult = buscarPacienteServiceResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class listaReservasPorRutAndCorreoServiceRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="listaReservasPorRutAndCorreoService", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceRequestBody Body;
-        
-        public listaReservasPorRutAndCorreoServiceRequest() {
-        }
-        
-        public listaReservasPorRutAndCorreoServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class listaReservasPorRutAndCorreoServiceRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string rut;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string correo;
-        
-        public listaReservasPorRutAndCorreoServiceRequestBody() {
-        }
-        
-        public listaReservasPorRutAndCorreoServiceRequestBody(string rut, string correo) {
-            this.rut = rut;
-            this.correo = correo;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class listaReservasPorRutAndCorreoServiceResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="listaReservasPorRutAndCorreoServiceResponse", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceResponseBody Body;
-        
-        public listaReservasPorRutAndCorreoServiceResponse() {
-        }
-        
-        public listaReservasPorRutAndCorreoServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class listaReservasPorRutAndCorreoServiceResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] listaReservasPorRutAndCorreoServiceResult;
-        
-        public listaReservasPorRutAndCorreoServiceResponseBody() {
-        }
-        
-        public listaReservasPorRutAndCorreoServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] listaReservasPorRutAndCorreoServiceResult) {
-            this.listaReservasPorRutAndCorreoServiceResult = listaReservasPorRutAndCorreoServiceResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class rechazarConfirmarReservaServiceRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="rechazarConfirmarReservaService", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.rechazarConfirmarReservaServiceRequestBody Body;
-        
-        public rechazarConfirmarReservaServiceRequest() {
-        }
-        
-        public rechazarConfirmarReservaServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.rechazarConfirmarReservaServiceRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class rechazarConfirmarReservaServiceRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public char cambioEstado;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
-        public int idReserva;
-        
-        public rechazarConfirmarReservaServiceRequestBody() {
-        }
-        
-        public rechazarConfirmarReservaServiceRequestBody(char cambioEstado, int idReserva) {
-            this.cambioEstado = cambioEstado;
-            this.idReserva = idReserva;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class rechazarConfirmarReservaServiceResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="rechazarConfirmarReservaServiceResponse", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.rechazarConfirmarReservaServiceResponseBody Body;
-        
-        public rechazarConfirmarReservaServiceResponse() {
-        }
-        
-        public rechazarConfirmarReservaServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.rechazarConfirmarReservaServiceResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class rechazarConfirmarReservaServiceResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.StatusResponce rechazarConfirmarReservaServiceResult;
-        
-        public rechazarConfirmarReservaServiceResponseBody() {
-        }
-        
-        public rechazarConfirmarReservaServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.StatusResponce rechazarConfirmarReservaServiceResult) {
-            this.rechazarConfirmarReservaServiceResult = rechazarConfirmarReservaServiceResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class generarListaMedioPagoServiceRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="generarListaMedioPagoService", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.generarListaMedioPagoServiceRequestBody Body;
-        
-        public generarListaMedioPagoServiceRequest() {
-        }
-        
-        public generarListaMedioPagoServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.generarListaMedioPagoServiceRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute()]
-    public partial class generarListaMedioPagoServiceRequestBody {
-        
-        public generarListaMedioPagoServiceRequestBody() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class generarListaMedioPagoServiceResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="generarListaMedioPagoServiceResponse", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.generarListaMedioPagoServiceResponseBody Body;
-        
-        public generarListaMedioPagoServiceResponse() {
-        }
-        
-        public generarListaMedioPagoServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.generarListaMedioPagoServiceResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class generarListaMedioPagoServiceResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.MedioPago[] generarListaMedioPagoServiceResult;
-        
-        public generarListaMedioPagoServiceResponseBody() {
-        }
-        
-        public generarListaMedioPagoServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.MedioPago[] generarListaMedioPagoServiceResult) {
-            this.generarListaMedioPagoServiceResult = generarListaMedioPagoServiceResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class guardarVentaRealizadaServiceRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="guardarVentaRealizadaService", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.guardarVentaRealizadaServiceRequestBody Body;
-        
-        public guardarVentaRealizadaServiceRequest() {
-        }
-        
-        public guardarVentaRealizadaServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.guardarVentaRealizadaServiceRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class guardarVentaRealizadaServiceRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.Venta venta;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public CapaServicioPresentacionWeb.ServiceCliente.ArrayOfInt idHora;
-        
-        public guardarVentaRealizadaServiceRequestBody() {
-        }
-        
-        public guardarVentaRealizadaServiceRequestBody(CapaServicioPresentacionWeb.ServiceCliente.Venta venta, CapaServicioPresentacionWeb.ServiceCliente.ArrayOfInt idHora) {
-            this.venta = venta;
-            this.idHora = idHora;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class guardarVentaRealizadaServiceResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="guardarVentaRealizadaServiceResponse", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.guardarVentaRealizadaServiceResponseBody Body;
-        
-        public guardarVentaRealizadaServiceResponse() {
-        }
-        
-        public guardarVentaRealizadaServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.guardarVentaRealizadaServiceResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class guardarVentaRealizadaServiceResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.StatusResponce guardarVentaRealizadaServiceResult;
-        
-        public guardarVentaRealizadaServiceResponseBody() {
-        }
-        
-        public guardarVentaRealizadaServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.StatusResponce guardarVentaRealizadaServiceResult) {
-            this.guardarVentaRealizadaServiceResult = guardarVentaRealizadaServiceResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class horasPorRutPacienteMasVentaServiceRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="horasPorRutPacienteMasVentaService", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.horasPorRutPacienteMasVentaServiceRequestBody Body;
-        
-        public horasPorRutPacienteMasVentaServiceRequest() {
-        }
-        
-        public horasPorRutPacienteMasVentaServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.horasPorRutPacienteMasVentaServiceRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class horasPorRutPacienteMasVentaServiceRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string rut;
-        
-        public horasPorRutPacienteMasVentaServiceRequestBody() {
-        }
-        
-        public horasPorRutPacienteMasVentaServiceRequestBody(string rut) {
-            this.rut = rut;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class horasPorRutPacienteMasVentaServiceResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="horasPorRutPacienteMasVentaServiceResponse", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.horasPorRutPacienteMasVentaServiceResponseBody Body;
-        
-        public horasPorRutPacienteMasVentaServiceResponse() {
-        }
-        
-        public horasPorRutPacienteMasVentaServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.horasPorRutPacienteMasVentaServiceResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class horasPorRutPacienteMasVentaServiceResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] horasPorRutPacienteMasVentaServiceResult;
-        
-        public horasPorRutPacienteMasVentaServiceResponseBody() {
-        }
-        
-        public horasPorRutPacienteMasVentaServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] horasPorRutPacienteMasVentaServiceResult) {
-            this.horasPorRutPacienteMasVentaServiceResult = horasPorRutPacienteMasVentaServiceResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class agregarEmpleadoServiceRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="agregarEmpleadoService", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceRequestBody Body;
-        
-        public agregarEmpleadoServiceRequest() {
-        }
-        
-        public agregarEmpleadoServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class agregarEmpleadoServiceRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.Empleado empleado;
-        
-        public agregarEmpleadoServiceRequestBody() {
-        }
-        
-        public agregarEmpleadoServiceRequestBody(CapaServicioPresentacionWeb.ServiceCliente.Empleado empleado) {
-            this.empleado = empleado;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class agregarEmpleadoServiceResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="agregarEmpleadoServiceResponse", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceResponseBody Body;
-        
-        public agregarEmpleadoServiceResponse() {
-        }
-        
-        public agregarEmpleadoServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class agregarEmpleadoServiceResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.StatusResponce agregarEmpleadoServiceResult;
-        
-        public agregarEmpleadoServiceResponseBody() {
-        }
-        
-        public agregarEmpleadoServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.StatusResponce agregarEmpleadoServiceResult) {
-            this.agregarEmpleadoServiceResult = agregarEmpleadoServiceResult;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="loginService", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class loginServiceRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="loginService", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.loginServiceRequestBody Body;
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public CapaServicioPresentacionWeb.ServiceCliente.TokenSecurity TokenSecurity;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string usuario;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string password;
         
         public loginServiceRequest() {
         }
         
-        public loginServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.loginServiceRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class loginServiceRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string usuario;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string password;
-        
-        public loginServiceRequestBody() {
-        }
-        
-        public loginServiceRequestBody(string usuario, string password) {
+        public loginServiceRequest(CapaServicioPresentacionWeb.ServiceCliente.TokenSecurity TokenSecurity, string usuario, string password) {
+            this.TokenSecurity = TokenSecurity;
             this.usuario = usuario;
             this.password = password;
         }
@@ -2222,33 +1234,16 @@ namespace CapaServicioPresentacionWeb.ServiceCliente {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="loginServiceResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
     public partial class loginServiceResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="loginServiceResponse", Namespace="http://tempuri.org/", Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.loginServiceResponseBody Body;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public CapaServicioPresentacionWeb.ServiceCliente.Empleado loginServiceResult;
         
         public loginServiceResponse() {
         }
         
-        public loginServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.loginServiceResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class loginServiceResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public CapaServicioPresentacionWeb.ServiceCliente.Empleado loginServiceResult;
-        
-        public loginServiceResponseBody() {
-        }
-        
-        public loginServiceResponseBody(CapaServicioPresentacionWeb.ServiceCliente.Empleado loginServiceResult) {
+        public loginServiceResponse(CapaServicioPresentacionWeb.ServiceCliente.Empleado loginServiceResult) {
             this.loginServiceResult = loginServiceResult;
         }
     }
@@ -2281,29 +1276,23 @@ namespace CapaServicioPresentacionWeb.ServiceCliente {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        CapaServicioPresentacionWeb.ServiceCliente.HelloWorldResponse CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap.HelloWorld(CapaServicioPresentacionWeb.ServiceCliente.HelloWorldRequest request) {
-            return base.Channel.HelloWorld(request);
+        CapaServicioPresentacionWeb.ServiceCliente.AutenticacionUsuarioResponse CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap.AutenticacionUsuario(CapaServicioPresentacionWeb.ServiceCliente.AutenticacionUsuarioRequest request) {
+            return base.Channel.AutenticacionUsuario(request);
+        }
+        
+        public string AutenticacionUsuario(CapaServicioPresentacionWeb.ServiceCliente.TokenSecurity TokenSecurity) {
+            CapaServicioPresentacionWeb.ServiceCliente.AutenticacionUsuarioRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.AutenticacionUsuarioRequest();
+            inValue.TokenSecurity = TokenSecurity;
+            CapaServicioPresentacionWeb.ServiceCliente.AutenticacionUsuarioResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).AutenticacionUsuario(inValue);
+            return retVal.AutenticacionUsuarioResult;
         }
         
         public string HelloWorld() {
-            CapaServicioPresentacionWeb.ServiceCliente.HelloWorldRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.HelloWorldRequest();
-            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.HelloWorldRequestBody();
-            CapaServicioPresentacionWeb.ServiceCliente.HelloWorldResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).HelloWorld(inValue);
-            return retVal.Body.HelloWorldResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        CapaServicioPresentacionWeb.ServiceCliente.registrarPacienteServiceResponse CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap.registrarPacienteService(CapaServicioPresentacionWeb.ServiceCliente.registrarPacienteServiceRequest request) {
-            return base.Channel.registrarPacienteService(request);
+            return base.Channel.HelloWorld();
         }
         
         public CapaServicioPresentacionWeb.ServiceCliente.StatusResponce registrarPacienteService(CapaServicioPresentacionWeb.ServiceCliente.Paciente persona, int idHoraAtencion) {
-            CapaServicioPresentacionWeb.ServiceCliente.registrarPacienteServiceRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.registrarPacienteServiceRequest();
-            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.registrarPacienteServiceRequestBody();
-            inValue.Body.persona = persona;
-            inValue.Body.idHoraAtencion = idHoraAtencion;
-            CapaServicioPresentacionWeb.ServiceCliente.registrarPacienteServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).registrarPacienteService(inValue);
-            return retVal.Body.registrarPacienteServiceResult;
+            return base.Channel.registrarPacienteService(persona, idHoraAtencion);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2313,142 +1302,51 @@ namespace CapaServicioPresentacionWeb.ServiceCliente {
         
         public CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] buscarHorasDisponiblesService(CapaServicioPresentacionWeb.ServiceCliente.EspecialidadClinica especialidad, System.Nullable<System.DateTime> fecha, CapaServicioPresentacionWeb.ServiceCliente.Empleado persona) {
             CapaServicioPresentacionWeb.ServiceCliente.buscarHorasDisponiblesServiceRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.buscarHorasDisponiblesServiceRequest();
-            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.buscarHorasDisponiblesServiceRequestBody();
-            inValue.Body.especialidad = especialidad;
-            inValue.Body.fecha = fecha;
-            inValue.Body.persona = persona;
+            inValue.especialidad = especialidad;
+            inValue.fecha = fecha;
+            inValue.persona = persona;
             CapaServicioPresentacionWeb.ServiceCliente.buscarHorasDisponiblesServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).buscarHorasDisponiblesService(inValue);
-            return retVal.Body.buscarHorasDisponiblesServiceResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceResponse CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap.buscarDetalleHoraService(CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceRequest request) {
-            return base.Channel.buscarDetalleHoraService(request);
+            return retVal.buscarHorasDisponiblesServiceResult;
         }
         
         public CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion buscarDetalleHoraService(int idHoraAtencion) {
-            CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceRequest();
-            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceRequestBody();
-            inValue.Body.idHoraAtencion = idHoraAtencion;
-            CapaServicioPresentacionWeb.ServiceCliente.buscarDetalleHoraServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).buscarDetalleHoraService(inValue);
-            return retVal.Body.buscarDetalleHoraServiceResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialidadServiceResponse CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap.generarListaEspecialidadService(CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialidadServiceRequest request) {
-            return base.Channel.generarListaEspecialidadService(request);
+            return base.Channel.buscarDetalleHoraService(idHoraAtencion);
         }
         
         public CapaServicioPresentacionWeb.ServiceCliente.EspecialidadClinica[] generarListaEspecialidadService() {
-            CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialidadServiceRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialidadServiceRequest();
-            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialidadServiceRequestBody();
-            CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialidadServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).generarListaEspecialidadService(inValue);
-            return retVal.Body.generarListaEspecialidadServiceResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialistaServiceResponse CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap.generarListaEspecialistaService(CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialistaServiceRequest request) {
-            return base.Channel.generarListaEspecialistaService(request);
+            return base.Channel.generarListaEspecialidadService();
         }
         
         public CapaServicioPresentacionWeb.ServiceCliente.EspecialidadTerapeuta[] generarListaEspecialistaService() {
-            CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialistaServiceRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialistaServiceRequest();
-            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialistaServiceRequestBody();
-            CapaServicioPresentacionWeb.ServiceCliente.generarListaEspecialistaServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).generarListaEspecialistaService(inValue);
-            return retVal.Body.generarListaEspecialistaServiceResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        CapaServicioPresentacionWeb.ServiceCliente.buscarPacienteServiceResponse CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap.buscarPacienteService(CapaServicioPresentacionWeb.ServiceCliente.buscarPacienteServiceRequest request) {
-            return base.Channel.buscarPacienteService(request);
+            return base.Channel.generarListaEspecialistaService();
         }
         
         public CapaServicioPresentacionWeb.ServiceCliente.Paciente buscarPacienteService(string rut) {
-            CapaServicioPresentacionWeb.ServiceCliente.buscarPacienteServiceRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.buscarPacienteServiceRequest();
-            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.buscarPacienteServiceRequestBody();
-            inValue.Body.rut = rut;
-            CapaServicioPresentacionWeb.ServiceCliente.buscarPacienteServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).buscarPacienteService(inValue);
-            return retVal.Body.buscarPacienteServiceResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceResponse CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap.listaReservasPorRutAndCorreoService(CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceRequest request) {
-            return base.Channel.listaReservasPorRutAndCorreoService(request);
+            return base.Channel.buscarPacienteService(rut);
         }
         
         public CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] listaReservasPorRutAndCorreoService(string rut, string correo) {
-            CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceRequest();
-            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceRequestBody();
-            inValue.Body.rut = rut;
-            inValue.Body.correo = correo;
-            CapaServicioPresentacionWeb.ServiceCliente.listaReservasPorRutAndCorreoServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).listaReservasPorRutAndCorreoService(inValue);
-            return retVal.Body.listaReservasPorRutAndCorreoServiceResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        CapaServicioPresentacionWeb.ServiceCliente.rechazarConfirmarReservaServiceResponse CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap.rechazarConfirmarReservaService(CapaServicioPresentacionWeb.ServiceCliente.rechazarConfirmarReservaServiceRequest request) {
-            return base.Channel.rechazarConfirmarReservaService(request);
+            return base.Channel.listaReservasPorRutAndCorreoService(rut, correo);
         }
         
         public CapaServicioPresentacionWeb.ServiceCliente.StatusResponce rechazarConfirmarReservaService(char cambioEstado, int idReserva) {
-            CapaServicioPresentacionWeb.ServiceCliente.rechazarConfirmarReservaServiceRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.rechazarConfirmarReservaServiceRequest();
-            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.rechazarConfirmarReservaServiceRequestBody();
-            inValue.Body.cambioEstado = cambioEstado;
-            inValue.Body.idReserva = idReserva;
-            CapaServicioPresentacionWeb.ServiceCliente.rechazarConfirmarReservaServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).rechazarConfirmarReservaService(inValue);
-            return retVal.Body.rechazarConfirmarReservaServiceResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        CapaServicioPresentacionWeb.ServiceCliente.generarListaMedioPagoServiceResponse CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap.generarListaMedioPagoService(CapaServicioPresentacionWeb.ServiceCliente.generarListaMedioPagoServiceRequest request) {
-            return base.Channel.generarListaMedioPagoService(request);
+            return base.Channel.rechazarConfirmarReservaService(cambioEstado, idReserva);
         }
         
         public CapaServicioPresentacionWeb.ServiceCliente.MedioPago[] generarListaMedioPagoService() {
-            CapaServicioPresentacionWeb.ServiceCliente.generarListaMedioPagoServiceRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.generarListaMedioPagoServiceRequest();
-            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.generarListaMedioPagoServiceRequestBody();
-            CapaServicioPresentacionWeb.ServiceCliente.generarListaMedioPagoServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).generarListaMedioPagoService(inValue);
-            return retVal.Body.generarListaMedioPagoServiceResult;
+            return base.Channel.generarListaMedioPagoService();
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        CapaServicioPresentacionWeb.ServiceCliente.guardarVentaRealizadaServiceResponse CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap.guardarVentaRealizadaService(CapaServicioPresentacionWeb.ServiceCliente.guardarVentaRealizadaServiceRequest request) {
-            return base.Channel.guardarVentaRealizadaService(request);
-        }
-        
-        public CapaServicioPresentacionWeb.ServiceCliente.StatusResponce guardarVentaRealizadaService(CapaServicioPresentacionWeb.ServiceCliente.Venta venta, CapaServicioPresentacionWeb.ServiceCliente.ArrayOfInt idHora) {
-            CapaServicioPresentacionWeb.ServiceCliente.guardarVentaRealizadaServiceRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.guardarVentaRealizadaServiceRequest();
-            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.guardarVentaRealizadaServiceRequestBody();
-            inValue.Body.venta = venta;
-            inValue.Body.idHora = idHora;
-            CapaServicioPresentacionWeb.ServiceCliente.guardarVentaRealizadaServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).guardarVentaRealizadaService(inValue);
-            return retVal.Body.guardarVentaRealizadaServiceResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        CapaServicioPresentacionWeb.ServiceCliente.horasPorRutPacienteMasVentaServiceResponse CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap.horasPorRutPacienteMasVentaService(CapaServicioPresentacionWeb.ServiceCliente.horasPorRutPacienteMasVentaServiceRequest request) {
-            return base.Channel.horasPorRutPacienteMasVentaService(request);
+        public CapaServicioPresentacionWeb.ServiceCliente.StatusResponce guardarVentaRealizadaService(CapaServicioPresentacionWeb.ServiceCliente.Venta venta, int[] idHora) {
+            return base.Channel.guardarVentaRealizadaService(venta, idHora);
         }
         
         public CapaServicioPresentacionWeb.ServiceCliente.HoraAtencion[] horasPorRutPacienteMasVentaService(string rut) {
-            CapaServicioPresentacionWeb.ServiceCliente.horasPorRutPacienteMasVentaServiceRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.horasPorRutPacienteMasVentaServiceRequest();
-            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.horasPorRutPacienteMasVentaServiceRequestBody();
-            inValue.Body.rut = rut;
-            CapaServicioPresentacionWeb.ServiceCliente.horasPorRutPacienteMasVentaServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).horasPorRutPacienteMasVentaService(inValue);
-            return retVal.Body.horasPorRutPacienteMasVentaServiceResult;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceResponse CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap.agregarEmpleadoService(CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceRequest request) {
-            return base.Channel.agregarEmpleadoService(request);
+            return base.Channel.horasPorRutPacienteMasVentaService(rut);
         }
         
         public CapaServicioPresentacionWeb.ServiceCliente.StatusResponce agregarEmpleadoService(CapaServicioPresentacionWeb.ServiceCliente.Empleado empleado) {
-            CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceRequest();
-            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceRequestBody();
-            inValue.Body.empleado = empleado;
-            CapaServicioPresentacionWeb.ServiceCliente.agregarEmpleadoServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).agregarEmpleadoService(inValue);
-            return retVal.Body.agregarEmpleadoServiceResult;
+            return base.Channel.agregarEmpleadoService(empleado);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -2456,13 +1354,13 @@ namespace CapaServicioPresentacionWeb.ServiceCliente {
             return base.Channel.loginService(request);
         }
         
-        public CapaServicioPresentacionWeb.ServiceCliente.Empleado loginService(string usuario, string password) {
+        public CapaServicioPresentacionWeb.ServiceCliente.Empleado loginService(CapaServicioPresentacionWeb.ServiceCliente.TokenSecurity TokenSecurity, string usuario, string password) {
             CapaServicioPresentacionWeb.ServiceCliente.loginServiceRequest inValue = new CapaServicioPresentacionWeb.ServiceCliente.loginServiceRequest();
-            inValue.Body = new CapaServicioPresentacionWeb.ServiceCliente.loginServiceRequestBody();
-            inValue.Body.usuario = usuario;
-            inValue.Body.password = password;
+            inValue.TokenSecurity = TokenSecurity;
+            inValue.usuario = usuario;
+            inValue.password = password;
             CapaServicioPresentacionWeb.ServiceCliente.loginServiceResponse retVal = ((CapaServicioPresentacionWeb.ServiceCliente.WebServiceClienteSoap)(this)).loginService(inValue);
-            return retVal.Body.loginServiceResult;
+            return retVal.loginServiceResult;
         }
     }
 }

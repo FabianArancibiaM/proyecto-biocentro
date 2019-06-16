@@ -2,6 +2,7 @@
 using CapaNegocio;
 using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.Services;
 
 namespace CapaServicio
@@ -16,6 +17,31 @@ namespace CapaServicio
     //[System.Web.Script.Services.ScriptService]
     public class WebServiceCliente : System.Web.Services.WebService
     {
+
+        public CapaNegocio.TokenSecurity SoapHeader;
+        [WebMethod]
+        [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
+        public string AutenticacionUsuario()
+        {
+            try
+            {
+                if (SoapHeader == null) return "-1";
+                if (!SoapHeader.credencialesValidas(SoapHeader.StToken)) return "-1";
+                string token = Guid.NewGuid().ToString();
+                HttpRuntime.Cache.Add(token,
+                    SoapHeader.StToken,
+                    null,
+                    System.Web.Caching.Cache.NoAbsoluteExpiration,
+                    TimeSpan.FromMinutes(60),
+                    System.Web.Caching.CacheItemPriority.NotRemovable,
+                    null);
+                return token;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         [WebMethod]
         public string HelloWorld()
@@ -96,10 +122,20 @@ namespace CapaServicio
             return negocio.agregarEmpleado(empleado);
         }
         [WebMethod]
+        [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
         public Empleado loginService(string usuario, string password)
         {
-            NegocioService negocio = new NegocioService();
-            return negocio.login(usuario, password);
+            try
+            {
+                if (SoapHeader == null) throw new Exception("Requiere validacion");
+                if (!SoapHeader.credencialesValidas(SoapHeader.StToken)) throw new Exception("Requiere validacion");
+                NegocioService negocio = new NegocioService();
+                return negocio.login(usuario, password);
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+            
         }
     }
 }

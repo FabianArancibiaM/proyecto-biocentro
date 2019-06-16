@@ -39,7 +39,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
                     return;
                 }
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
-                ServiceCliente.Empleado empleado = soapClient.loginService(this.txtUsuario.Text, this.txtContraseña.Text);
+                ServiceCliente.Empleado empleado = soapClient.loginService(null,this.txtUsuario.Text, this.txtContraseña.Text);
                 if (empleado != null)
                 {
                     Session["empleado"] = empleado;
