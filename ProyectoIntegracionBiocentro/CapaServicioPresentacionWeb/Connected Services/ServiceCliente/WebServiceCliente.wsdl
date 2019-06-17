@@ -3,16 +3,6 @@
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:import namespace="http://microsoft.com/wsdl/types/" />
-      <s:element name="HelloWorld">
-        <s:complexType />
-      </s:element>
-      <s:element name="HelloWorldResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="registrarPacienteService">
         <s:complexType>
           <s:sequence>
@@ -328,12 +318,6 @@
       </s:simpleType>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="HelloWorldSoapIn">
-    <wsdl:part name="parameters" element="tns:HelloWorld" />
-  </wsdl:message>
-  <wsdl:message name="HelloWorldSoapOut">
-    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
-  </wsdl:message>
   <wsdl:message name="registrarPacienteServiceSoapIn">
     <wsdl:part name="parameters" element="tns:registrarPacienteService" />
   </wsdl:message>
@@ -413,10 +397,6 @@
     <wsdl:part name="parameters" element="tns:loginServiceResponse" />
   </wsdl:message>
   <wsdl:portType name="WebServiceClienteSoap">
-    <wsdl:operation name="HelloWorld">
-      <wsdl:input message="tns:HelloWorldSoapIn" />
-      <wsdl:output message="tns:HelloWorldSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="registrarPacienteService">
       <wsdl:input message="tns:registrarPacienteServiceSoapIn" />
       <wsdl:output message="tns:registrarPacienteServiceSoapOut" />
@@ -472,15 +452,6 @@
   </wsdl:portType>
   <wsdl:binding name="WebServiceClienteSoap" type="tns:WebServiceClienteSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="registrarPacienteService">
       <soap:operation soapAction="http://tempuri.org/registrarPacienteService" style="document" />
       <wsdl:input>
@@ -601,15 +572,6 @@
   </wsdl:binding>
   <wsdl:binding name="WebServiceClienteSoap12" type="tns:WebServiceClienteSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="HelloWorld">
-      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="registrarPacienteService">
       <soap12:operation soapAction="http://tempuri.org/registrarPacienteService" style="document" />
       <wsdl:input>

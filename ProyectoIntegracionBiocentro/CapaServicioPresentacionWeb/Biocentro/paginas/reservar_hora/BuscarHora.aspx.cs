@@ -18,18 +18,22 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                 this.ddlEspecialidad.Visible = true;
                 this.ddlTerapeuta.Visible = false;
             }
-            
-
         }
         protected void botonEspecialidadClick(object sender, EventArgs e)
         {
-            this.ddlEspecialidad.Visible = true;
             this.ddlTerapeuta.Visible = false;
+            this.ddlTerapeuta.SelectedIndex = 0;
+            this.ddlEspecialidad.Visible = true;
+            this.btnTerapeuta.CssClass = "btn  btn-md btn-basic";
+            this.btnEspecialidad.CssClass = "btn btn-md btn-success";
         }
         protected void botonEspecialistaClick(object sender, EventArgs e)
         {
             this.ddlEspecialidad.Visible = false;
+            this.ddlEspecialidad.SelectedIndex = 0;
             this.ddlTerapeuta.Visible = true;
+            this.btnEspecialidad.CssClass = "btn btn-md btn-basic";
+            this.btnTerapeuta.CssClass = "btn btn-md btn-success";
         }
         private void cargarEspecialista()
         {
@@ -76,24 +80,26 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-                ShowMessage("Error al cargar las Especialidades : " + ex.Message);
+                ShowMessage("Error al cargar las Especialidades: " + ex.Message);
             }
         }
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             try
             {
-                ServiceCliente.Empleado persona = null;
+                ServiceCliente.Empleado terapeuta = null;
                 if (this.ddlTerapeuta.SelectedIndex > 0)
                 {
-                    persona = new ServiceCliente.Empleado();
-                    persona.IdEmpleado = Convert.ToInt32(this.ddlTerapeuta.SelectedItem.Value);
+                    terapeuta = new ServiceCliente.Empleado();
+                    terapeuta.IdEmpleado = Convert.ToInt32(this.ddlTerapeuta.SelectedItem.Value);
+                    Session["terapeuta"] = this.ddlTerapeuta.SelectedItem.Text;
                 }
                 ServiceCliente.EspecialidadClinica especialidad = null;
                 if (this.ddlEspecialidad.SelectedIndex > 0)
                 {
                     especialidad = new ServiceCliente.EspecialidadClinica();
                     especialidad.IdEspecialidadClinica = Convert.ToInt32(this.ddlEspecialidad.SelectedItem.Value);
+                    Session["especialidad"] = this.ddlEspecialidad.SelectedItem.Text;
                 }
                 DateTime? fecha = null;
                 /*if (this.dateTimePicker1.Value.CompareTo(DateTime.Today) < 0)
@@ -103,7 +109,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
 
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
                 List<ServiceCliente.HoraAtencion> listHoraAtencion = new List<ServiceCliente.HoraAtencion>();
-                listHoraAtencion.AddRange(soapClient.buscarHorasDisponiblesService(especialidad, fecha, persona));
+                listHoraAtencion.AddRange(soapClient.buscarHorasDisponiblesService(especialidad, fecha, terapeuta));
                 if (listHoraAtencion == null || listHoraAtencion.Count == 0)
                 {
                     return;

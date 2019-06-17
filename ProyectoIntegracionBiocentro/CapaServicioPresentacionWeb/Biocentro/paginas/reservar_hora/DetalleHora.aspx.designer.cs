@@ -10,51 +10,51 @@
 namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora {
     
     
-    public partial class BuscarHora {
+    public partial class DetalleHora {
         
         /// <summary>
-        /// btnEspecialidad control.
+        /// lblFechaHora control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEspecialidad;
+        protected global::System.Web.UI.WebControls.Label lblFechaHora;
         
         /// <summary>
-        /// btnTerapeuta control.
+        /// lblLugar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTerapeuta;
+        protected global::System.Web.UI.WebControls.Label lblLugar;
         
         /// <summary>
-        /// ddlEspecialidad control.
+        /// lblEspecialidad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEspecialidad;
+        protected global::System.Web.UI.WebControls.Label lblEspecialidad;
         
         /// <summary>
-        /// ddlTerapeuta control.
+        /// lblTerapeuta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTerapeuta;
+        protected global::System.Web.UI.WebControls.Label lblTerapeuta;
         
         /// <summary>
-        /// btnBuscar control.
+        /// volver control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscar;
+        protected global::System.Web.UI.WebControls.Button volver;
     }
 }

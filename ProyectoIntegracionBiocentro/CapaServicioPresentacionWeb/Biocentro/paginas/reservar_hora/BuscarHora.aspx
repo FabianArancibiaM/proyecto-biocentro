@@ -2,29 +2,24 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div class="separador-md">&nbsp;</div>
+    <h3 class="text-center">Buscar horas</h3>
+    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-center col-centered">
         <div class="row m-b-md">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <asp:button id="btnEspecialidad" runat="server" OnClick="botonEspecialidadClick" class="btn btn-md btn-primary btn-block form-group" Text="Por Especialidad">
-                </asp:button>
-             </div>
-             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                  <asp:button id="btnTerapeuta" runat="server" OnClick="botonEspecialistaClick" class="btn btn-md btn-primary btn-block form-group" Text="Por Terapeuta">
-                </asp:button>
+            <div class="btn-group form-group">
+                <asp:button ID="btnEspecialidad" runat="server" OnClick="botonEspecialidadClick" CssClass="btn btn-md btn-success" 
+                    Text="Por Especialidad" ClientIDMode="Static"></asp:button>
+                <asp:button ID="btnTerapeuta" runat="server" OnClick="botonEspecialistaClick" CssClass="btn btn-md btn-basic" 
+                    Text="Por Terapeuta" ClientIDMode="Static"></asp:button>
             </div>
-        </div>
-        <div class="row text-center form-group">
-            <asp:DropDownList ID="ddlEspecialidad" CssClass="form-control" runat="server" ClientIDMode="Static"></asp:DropDownList>
-            <asp:DropDownList ID="ddlTerapeuta" CssClass="form-control" runat="server" ClientIDMode="Static"></asp:DropDownList>
-        </div>
-        <div class="row text-center form-group">
+            <div class="separador-sm">&nbsp;</div>
+            <asp:DropDownList ID="ddlEspecialidad" class="form-control" runat="server" ClientIDMode="Static"></asp:DropDownList>
+            <asp:DropDownList ID="ddlTerapeuta" class="form-control" runat="server" ClientIDMode="Static"></asp:DropDownList>
+       </div>       
+        <div class="separador-md">&nbsp;</div>
+        <div class="row form-group">
             <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click"  class="btn btn-md btn-primary form-group" />
         </div>
-    </div>
-
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">

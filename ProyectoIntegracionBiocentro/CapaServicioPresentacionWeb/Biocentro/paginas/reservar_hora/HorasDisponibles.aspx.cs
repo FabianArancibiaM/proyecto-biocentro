@@ -11,9 +11,23 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["horas"] == null)
+            {
+               Response.Redirect("~/Biocentro/paginas/reservar_hora/InicioReserva.aspx");                
+
+            }
+
             if (!IsPostBack)
             {
                 cargarHoras();
+                if (Session["terapeuta"] != null && Session["terapeuta"].ToString().Trim() != string.Empty)
+                {
+                    this.lblTitulo.Text = " con " + Session["terapeuta"].ToString().Trim();
+                }
+                if (Session["especialidad"] != null && Session["especialidad"].ToString().Trim() != string.Empty)
+                {
+                    this.lblTitulo.Text = " de " + Session["especialidad"].ToString().Trim();
+                }
             }
         }
 

@@ -18,6 +18,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                 {
                     Response.Redirect("~/Biocentro/paginas/reservar_hora/InicioReserva.aspx");
                 }
+
                 if (!IsPostBack)
                 {
                     string rutPaciente = (string)Session["rut"];
@@ -32,8 +33,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                         this.txtNombre.Text = paciente.Nombre;
                         this.txtApPaterno.Text = paciente.ApellidoPaterno;
                         this.txtApMaterno.Text = paciente.ApellidoMaterno;
-                        this.fechaNac.SelectedDate = paciente.FechaNacimiento;
-                        this.fechaNac.VisibleDate = paciente.FechaNacimiento;
+                        this.fechaNac.Text = paciente.FechaNacimiento.ToString("dd/M/yyyy");
                         if (paciente.Sexo == 'M')
                         {
                             this.radioMujer.Checked = true;
@@ -65,90 +65,39 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                 {
                     paciente = (ServiceCliente.Paciente)Session["paciente"];
                 }
-                if (this.txtRut.Text.Trim().Length == 0)
-                {
-                    ShowMessage("Error: Ingrese un Rut");
-                    return;
-                }
-                if (this.txtNombre.Text.Trim().Length == 0)
-                {
-                    ShowMessage("Error: Ingrese un Nombre");
-                    return;
-                }
-                if (this.txtApPaterno.Text.Trim().Length == 0)
-                {
-                    ShowMessage("Error: Ingrese su Apellido");
-                    return;
-                }
-                if (this.txtApMaterno.Text.Trim().Length == 0)
-                {
-                    ShowMessage("Error: Ingrese su Apellido");
-                    return;
-                }
-                if (this.fechaNac.SelectedDate>=DateTime.Now)
-                {
-                    ShowMessage("Error: Seleccione su fecha de Nacimiento");
-                    return;
-                }
-                if (this.txtCorreo.Text.Trim().Length == 0)
-                {
-                    ShowMessage("Error: Ingrese su Correo");
-                    return;
-                }
-                if (this.txtTelefono.Text.Trim().Length == 0)
-                {
-                    ShowMessage("Error: Ingrese su numero de telefono");
-                    return;
-                }
-                if (!radioHombre.Checked && !radioMujer.Checked && !radioOtro.Checked)
-                {
-                    ShowMessage("Error: Seleccione su Sexo");
-                    return;
-                }
-                if (!validarRut(this.txtRut.Text))
-                {
-                    ShowMessage("Error: Rut ingresado invalido");
-                    return;
-                }
-                if (!ComprobarFormatoEmail(this.txtCorreo.Text))
-                {
-                    ShowMessage("Error: Correo ingresado invalido");
-                    return;
-                }
-                if (!ValidarTelefono(this.txtTelefono.Text))
-                {
-                    ShowMessage("Error: Numero de Telefono ingresado invalido");
-                    return;
-                }
-                paciente.Rut = this.txtRut.Text;
-                paciente.Nombre = this.txtNombre.Text;
-                paciente.ApellidoPaterno = this.txtApPaterno.Text;
-                paciente.ApellidoMaterno = this.txtApMaterno.Text;
-                paciente.FechaNacimiento = this.fechaNac.SelectedDate;
-                if (this.radioHombre.Checked == true)
-                {
-                    paciente.Sexo = 'H';
-                }
-                if (this.radioMujer.Checked == true)
-                {
-                    paciente.Sexo = 'M';
-                }
-                if (this.radioOtro.Checked == true)
-                {
-                    paciente.Sexo = 'O';
-                }
-                paciente.Correo = this.txtCorreo.Text;
-                paciente.Telefono = this.txtTelefono.Text;
 
-                int idHoraAtencion = (int)Session["id_hora"];
+                if (ValidarDatosPaciente())
+                {
+                    paciente.Rut = this.txtRut.Text;
+                    paciente.Nombre = this.txtNombre.Text;
+                    paciente.ApellidoPaterno = this.txtApPaterno.Text;
+                    paciente.ApellidoMaterno = this.txtApMaterno.Text;
+                    paciente.FechaNacimiento = Convert.ToDateTime(this.fechaNac.Text);
+                    if (this.radioHombre.Checked == true)
+                    {
+                        paciente.Sexo = 'H';
+                    }
+                    if (this.radioMujer.Checked == true)
+                    {
+                        paciente.Sexo = 'M';
+                    }
+                    if (this.radioOtro.Checked == true)
+                    {
+                        paciente.Sexo = 'O';
+                    }
+                    paciente.Correo = this.txtCorreo.Text;
+                    paciente.Telefono = this.txtTelefono.Text;
 
-                ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
-                ServiceCliente.StatusResponce registrarPaciente = soapClient.registrarPacienteService(paciente, idHoraAtencion);
-                ShowMessage(registrarPaciente.Mensaje);
+                    int idHoraAtencion = (int)Session["id_hora"];
+
+                    ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
+                    ServiceCliente.StatusResponce registrarPaciente = soapClient.registrarPacienteService(paciente, idHoraAtencion);
+                    ShowMessage(registrarPaciente.Mensaje);
+                }
             }
             catch(Exception ex)
             {
-                ShowMessage("Ocurrio un error al intentar guardar");
+                ShowMessage("Ocurrió un error al intentar guardar");
             }
         }
 
@@ -219,6 +168,66 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             {
                 return false;
             }
+        }
+
+        public bool ValidarDatosPaciente()
+        {
+            if (this.txtRut.Text.Trim().Length == 0)
+            {
+                ShowMessage("Error: Ingrese un RUT");
+                return false;
+            }
+            if (this.txtNombre.Text.Trim().Length == 0)
+            {
+                ShowMessage("Error: Ingrese un Nombre");
+                return false;
+            }
+            if (this.txtApPaterno.Text.Trim().Length == 0)
+            {
+                ShowMessage("Error: Ingrese su Apellido Paterno");
+                return false;
+            }
+            if (this.txtApMaterno.Text.Trim().Length == 0)
+            {
+                ShowMessage("Error: Ingrese su Apellido Materno");
+                return false;
+            }
+            if (Convert.ToDateTime(this.fechaNac.Text) >= DateTime.Now)
+            {
+                ShowMessage("Error: Seleccione una fecha de Nacimiento válida");
+                return false;
+            }
+            if (this.txtCorreo.Text.Trim().Length == 0)
+            {
+                ShowMessage("Error: Ingrese su Correo");
+                return false;
+            }
+            if (this.txtTelefono.Text.Trim().Length == 0)
+            {
+                ShowMessage("Error: Ingrese su número de teléfono");
+                return false;
+            }
+            if (!radioHombre.Checked && !radioMujer.Checked && !radioOtro.Checked)
+            {
+                ShowMessage("Error: Seleccione su Sexo");
+                return false;
+            }
+            if (!validarRut(this.txtRut.Text))
+            {
+                ShowMessage("Error: El RUT ingresado es inválido");
+                return false;
+            }
+            if (!ComprobarFormatoEmail(this.txtCorreo.Text))
+            {
+                ShowMessage("Error: El Correo ingresado  es inválido");
+                return false;
+            }
+            if (!ValidarTelefono(this.txtTelefono.Text))
+            {
+                ShowMessage("Error: El Número de Teléfono ingresado es inválido");
+                return false;
+            }
+            return true;
         }
     }
 }
