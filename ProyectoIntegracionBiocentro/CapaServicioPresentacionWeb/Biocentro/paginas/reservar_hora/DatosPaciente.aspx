@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="m-t-md">
+    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 m-t-md col-centered">
         <h3 class="text-center">Datos paciente</h3>
         <div class="separador-sm">&nbsp;</div>
         <div class="row">
@@ -26,24 +26,23 @@
             </div>
         </div>
         <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 form-group">
                 <label for="fechaNac">Fecha Nacimiento</label><br />
-                <asp:TextBox ID="fechaNac" runat="server" TextMode="Date"></asp:TextBox>
-
+                <asp:TextBox ID="fechaNac" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
             </div>
+            <div class="col-lg-2"> </div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
                 <label for="radioSexo">Sexo</label><br />
                 <asp:RadioButton ID="radioHombre" runat="server" GroupName="radioSexo" Text=" Hombre"/>
                 <asp:RadioButton ID="radioMujer" runat="server" GroupName="radioSexo" Text=" Mujer"/>
-                <asp:RadioButton ID="radioOtro" runat="server" GroupName="radioSexo" Text=" Otro"/>
-            </div>
+            </div>           
         </div>
             <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
                 <label for="txtCorreo">Correo electrónico</label><br />
                 <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 form-group">
                 <label for="txtTelefono">Teléfono</label><br />
                 <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control"></asp:TextBox>
             </div>

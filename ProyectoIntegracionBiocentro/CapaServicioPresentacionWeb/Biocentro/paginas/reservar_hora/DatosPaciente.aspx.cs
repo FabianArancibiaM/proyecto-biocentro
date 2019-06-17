@@ -42,10 +42,6 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                         {
                             this.radioHombre.Checked = true;
                         }
-                        if (paciente.Sexo == 'O')
-                        {
-                            this.radioOtro.Checked = true;
-                        }
                         this.txtCorreo.Text = paciente.Correo;
                         this.txtTelefono.Text = paciente.Telefono;
                     }
@@ -80,10 +76,6 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                     if (this.radioMujer.Checked == true)
                     {
                         paciente.Sexo = 'M';
-                    }
-                    if (this.radioOtro.Checked == true)
-                    {
-                        paciente.Sexo = 'O';
                     }
                     paciente.Correo = this.txtCorreo.Text;
                     paciente.Telefono = this.txtTelefono.Text;
@@ -216,7 +208,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                 ShowMessage("Error: Ingrese su número de teléfono");
                 return false;
             }
-            if (!radioHombre.Checked && !radioMujer.Checked && !radioOtro.Checked)
+            if (!radioHombre.Checked && !radioMujer.Checked)
             {
                 ShowMessage("Error: Seleccione su Sexo");
                 return false;
