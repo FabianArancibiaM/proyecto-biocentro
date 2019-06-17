@@ -31,24 +31,6 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora {
         protected global::System.Web.UI.WebControls.Button btn_buscar_rut;
         
         /// <summary>
-        /// lblFechaHora control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFechaHora;
-        
-        /// <summary>
-        /// lblLugar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLugar;
-        
-        /// <summary>
         /// lblEspecialidad control.
         /// </summary>
         /// <remarks>
@@ -65,6 +47,24 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTerapeuta;
+        
+        /// <summary>
+        /// lblFechaHora control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFechaHora;
+        
+        /// <summary>
+        /// lblLugar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLugar;
         
         /// <summary>
         /// volver control.

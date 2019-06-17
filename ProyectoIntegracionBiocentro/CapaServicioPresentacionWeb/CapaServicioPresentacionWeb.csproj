@@ -124,6 +124,7 @@
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Biocentro\assets\img\logo.jpg" />
     <Content Include="Biocentro\assets\js\custom.js" />
     <Content Include="Biocentro\paginas\intranet\Login.aspx" />
     <Content Include="Biocentro\paginas\intranet\PaginaPrincipal.aspx" />

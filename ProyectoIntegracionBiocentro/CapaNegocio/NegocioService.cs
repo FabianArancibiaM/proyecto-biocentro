@@ -49,8 +49,11 @@ namespace CapaNegocio
                 }
                 query = "UPDATE BIOCENTRO_DB.dbo.HORA_ATENCION SET ID_ESTADO=1,ID_PACIENTE="+ idPersona+ " WHERE ID_HORA=" + idHoraAtencion + " ; ";
                 this.utilMethods.guardarEliminarActualizarObjeto(query, false);
-                
-                return generarObjetoStatusResponce(String.Empty, "Su reserva se realizó correctamente");
+                HoraAtencion HoraAtencion = buscarDetalleHora(idHoraAtencion);
+                UtilMethods util = new UtilMethods();
+                util.enviarEmailReserva(paciente, HoraAtencion);
+
+                return generarObjetoStatusResponce("ok", "Su reserva se realizó correctamente");
             }
             catch (Exception ex)
             {

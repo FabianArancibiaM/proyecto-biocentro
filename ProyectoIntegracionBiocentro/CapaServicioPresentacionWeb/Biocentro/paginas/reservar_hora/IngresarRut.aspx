@@ -22,17 +22,7 @@
         <div class="m-t-md col-xs-12 col-sm-8 col-md-8 col-lg-8 col-centered">
             <hr />
             <h4>Hora seleccionada</h4>
-            <div class="separador-sm">&nbsp;</div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
-                    <label for="lblFechaHora">Fecha</label><br />
-                    <asp:Label ID="lblFechaHora" runat="server" ></asp:Label>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                    <label for="lblLugar">Lugar de atención</label><br />
-                    <asp:Label ID="lblLugar" runat="server" ></asp:Label>
-                </div>
-            </div>
+            <div class="separador-sm">&nbsp;</div>          
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
                     <label for="lblEspecialidad">Especialidad</label><br />
@@ -41,6 +31,16 @@
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <label for="lblTerapeuta">Terapeuta</label><br />
                     <asp:Label ID="lblTerapeuta" runat="server" ></asp:Label>
+                </div>
+            </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
+                    <label for="lblFechaHora">Fecha</label><br />
+                    <asp:Label ID="lblFechaHora" runat="server" ></asp:Label>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <label for="lblLugar">Lugar de atención</label><br />
+                    <asp:Label ID="lblLugar" runat="server" ></asp:Label>
                 </div>
             </div>
             <div class="separador-md">&nbsp;</div>

@@ -66,8 +66,6 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             sb.Append("</script>");
             ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
         }
-
-
         protected void btnSeleccionar_Click(object sender, EventArgs e)
         {
             try
@@ -86,8 +84,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             catch(Exception ex)
             {
                 ShowMessage("Error al seleccionar hora horas : " + ex.Message);
-            }
-            
+            }            
         }
         protected void btnVolver(object sender, EventArgs e)
         {

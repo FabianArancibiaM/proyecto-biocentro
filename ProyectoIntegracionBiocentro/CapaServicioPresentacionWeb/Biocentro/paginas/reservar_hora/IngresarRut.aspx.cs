@@ -25,10 +25,10 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                     ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
                     ServiceCliente.HoraAtencion horaAtencion = soapClient.buscarDetalleHoraService(idHoraAtencion);
 
-                    string fechaHora = horaAtencion.Fecha.ToString("dd/M/yyyy ") + " " + horaAtencion.IdBloque.HoraInicio + ":00 - " +
+                    string fechaHora = horaAtencion.Fecha.ToString("dd/M/yyyy ") + " de " + horaAtencion.IdBloque.HoraInicio + ":00 - " +
                                        horaAtencion.IdBloque.HoraFin + ":00";
                     this.lblFechaHora.Text = fechaHora;
-                    string lugar = horaAtencion.Sala.Nombre + " Av. Valenzuela Castillo,Ñuñoa";
+                    string lugar = horaAtencion.Sala.Nombre + " Miguel Claro 195, oficina 610, Providencia";
                     this.lblLugar.Text = lugar;
                     string especialidad = horaAtencion.EspecialidadClinica.Nombre;
                     this.lblEspecialidad.Text = especialidad;

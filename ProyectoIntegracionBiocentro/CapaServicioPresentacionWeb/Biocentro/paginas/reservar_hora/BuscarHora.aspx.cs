@@ -92,6 +92,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                 {
                     terapeuta = new ServiceCliente.Empleado();
                     terapeuta.IdEmpleado = Convert.ToInt32(this.ddlTerapeuta.SelectedItem.Value);
+                    terapeuta.Nombre = this.ddlTerapeuta.SelectedItem.Text;
                     Session["terapeuta"] = this.ddlTerapeuta.SelectedItem.Text;
                 }
                 ServiceCliente.EspecialidadClinica especialidad = null;
@@ -99,6 +100,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                 {
                     especialidad = new ServiceCliente.EspecialidadClinica();
                     especialidad.IdEspecialidadClinica = Convert.ToInt32(this.ddlEspecialidad.SelectedItem.Value);
+                    especialidad.Nombre = this.ddlEspecialidad.SelectedItem.Text;
                     Session["especialidad"] = this.ddlEspecialidad.SelectedItem.Text;
                 }
                 DateTime? fecha = null;
@@ -109,10 +111,25 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
 
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
                 List<ServiceCliente.HoraAtencion> listHoraAtencion = new List<ServiceCliente.HoraAtencion>();
-                listHoraAtencion.AddRange(soapClient.buscarHorasDisponiblesService(especialidad, fecha, terapeuta));
-                if (listHoraAtencion == null || listHoraAtencion.Count == 0)
+                ServiceCliente.HoraAtencion[] horasDisponibles = soapClient.buscarHorasDisponiblesService(especialidad, fecha, terapeuta);
+
+                String horaPara = "";
+                if (especialidad != null)
                 {
-                    return;
+                    horaPara = " para " + especialidad.Nombre;
+                }
+                if (terapeuta != null)
+                {
+                    horaPara = " con " + terapeuta.Nombre;
+                }
+                if (horasDisponibles == null)
+                {
+                    ShowMessage("No se ecnontraron horas disponibles" + horaPara);
+                }
+                listHoraAtencion.AddRange(horasDisponibles);
+                if (listHoraAtencion == null || listHoraAtencion.Count == 0)
+                {                    
+                    ShowMessage("No se ecnontraron horas disponibles" + horaPara);
                 }
 
                 Session["horas"] = listHoraAtencion;
