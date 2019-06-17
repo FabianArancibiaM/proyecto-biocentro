@@ -11,7 +11,10 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!IsPostBack)
+            {
+                Session["horas"] = null;
+            }
         }
         protected void btnMisHoras_Click(object sender, EventArgs e)
         {

@@ -40,12 +40,9 @@
                     <ul class="dropdown-menu" role="menu">
                       <li><a href="#">Quiropraxia</a></li>
                       <li><a href="#">Acupuntura</a></li>
+                      <li><a href="#">Psicoterapia</a></li>
                       <li><a href="#">Medicina China</a></li>
-                      <li class="divider"></li>
-                      <li class="dropdown-header">Masoterapia</li>
-                      <li><a href="#">Masaje descontracturante</a></li>
-                      <li><a href="#">Masaje de relajación</a></li>
-                      <li><a href="#">Masaje deportivo</a></li>
+                      <li><a href="#">Masoterapiaa</a></li>
                     </ul>
                   </li>
                   <li><a href="#">Contácto</a></li>    

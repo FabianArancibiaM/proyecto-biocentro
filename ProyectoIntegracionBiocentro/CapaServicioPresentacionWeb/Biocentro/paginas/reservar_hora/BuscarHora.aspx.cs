@@ -13,6 +13,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
         {
             if (!IsPostBack)
             {
+                Session["horas"] = null;
                 cargarEspecialista();
                 cargarEspecialidades();
                 this.ddlEspecialidad.Visible = true;
@@ -49,7 +50,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                                                t.Empleado.ApellidoPaterno,
                                                t.Empleado.ApellidoMaterno,
                                                IdTerapeuta = String.Format("{0}", t.Empleado.IdEmpleado),
-                                               NombreTerapeuta = String.Format("{0} {1} {1}", t.Empleado.Nombre,
+                                               NombreTerapeuta = String.Format("{0} {1} {2}", t.Empleado.Nombre,
                                                            t.Empleado.ApellidoPaterno, t.Empleado.ApellidoMaterno)
                                            }).Distinct();
 
@@ -87,6 +88,12 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
         {
             try
             {
+                if(this.ddlTerapeuta.SelectedIndex == 0 && this.ddlEspecialidad.SelectedIndex == 0)
+                {
+                    ShowMessage("Debe seleccionar una especialidad o un terapeuta");
+                    return;
+                }
+
                 ServiceCliente.Empleado terapeuta = null;
                 if (this.ddlTerapeuta.SelectedIndex > 0)
                 {
@@ -122,14 +129,16 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                 {
                     horaPara = " con " + terapeuta.Nombre;
                 }
-                if (horasDisponibles == null)
+                if (horasDisponibles == null || horasDisponibles.Length == 0)
                 {
-                    ShowMessage("No se ecnontraron horas disponibles" + horaPara);
+                    ShowMessage("No se encontraron horas disponibles" + horaPara);
+                    return;
                 }
                 listHoraAtencion.AddRange(horasDisponibles);
                 if (listHoraAtencion == null || listHoraAtencion.Count == 0)
                 {                    
-                    ShowMessage("No se ecnontraron horas disponibles" + horaPara);
+                    ShowMessage("No se encontraron horas disponibles" + horaPara);
+                    return;
                 }
 
                 Session["horas"] = listHoraAtencion;
