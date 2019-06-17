@@ -860,10 +860,10 @@ namespace CapaNegocio
         {
             String query = "UPDATE BIOCENTRO_DB.dbo." + tabla
                 + " SET "+ columnaSet + " = " + valorSet;
-            if (valorSet.Equals("3"))
-            {
-                query = query + " ,SET ID_VENTA=NULL";
-            }
+            //if (valorSet.Equals("3"))
+            //{
+            //    query = query + " ,SET ID_VENTA=NULL";
+            //}
             query = query + " WHERE " + columnaWhere + " = " + valorWhere;
             this.utilMethods.guardarEliminarActualizarObjeto(query, false);
         }
