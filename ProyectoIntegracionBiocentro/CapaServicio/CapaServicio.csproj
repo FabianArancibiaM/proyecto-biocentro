@@ -79,6 +79,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\logo.jpg" />
     <Content Include="Web.config" />
     <Content Include="WebServiceCliente.asmx" />
   </ItemGroup>

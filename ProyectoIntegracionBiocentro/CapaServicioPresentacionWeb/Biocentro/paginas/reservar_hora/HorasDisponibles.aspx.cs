@@ -11,9 +11,23 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["horas"] == null)
+            {
+               Response.Redirect("~/Biocentro/paginas/reservar_hora/InicioReserva.aspx");                
+
+            }
+
             if (!IsPostBack)
             {
                 cargarHoras();
+                if (Session["terapeuta"] != null && Session["terapeuta"].ToString().Trim() != string.Empty)
+                {
+                    this.lblTitulo.Text = " con " + Session["terapeuta"].ToString().Trim();
+                }
+                if (Session["especialidad"] != null && Session["especialidad"].ToString().Trim() != string.Empty)
+                {
+                    this.lblTitulo.Text = " de " + Session["especialidad"].ToString().Trim();
+                }
             }
         }
 
@@ -52,8 +66,6 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             sb.Append("</script>");
             ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
         }
-
-
         protected void btnSeleccionar_Click(object sender, EventArgs e)
         {
             try
@@ -72,8 +84,18 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             catch(Exception ex)
             {
                 ShowMessage("Error al seleccionar hora horas : " + ex.Message);
+            }            
+        }
+        protected void btnVolver(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Write("<script language='javascript'>window.location='BuscarHora.aspx';</script>");
             }
-            
+            catch (Exception ex)
+            {
+                ShowMessage("Ocurrio un error al cargar la pagina");
+            }
         }
     }
 }

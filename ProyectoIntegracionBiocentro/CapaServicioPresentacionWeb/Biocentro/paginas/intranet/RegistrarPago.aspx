@@ -42,7 +42,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="EspecialidadClinica.Nombre" HeaderText="ESPECIALIDAD" />
-                            <asp:BoundField DataField="Fecha" HeaderText="FECHA" />
+                            <asp:BoundField DataField="Fecha" HeaderText="FECHA" DataFormatString="{0:dd-MM-yyyy}" />
                             <asp:TemplateField HeaderText="HORA" >
                                 <ItemTemplate>
                                     <asp:Label ID="lblHora" runat="server" Enabled="false" Text='<%#Eval("IdBloque.HoraInicio")+ " - " + Eval("IdBloque.HoraFin") + " Hrs" %>'/>
@@ -50,12 +50,12 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="VALOR" >
                                 <ItemTemplate>
-                                    <asp:Label ID="lblValor" runat="server" Enabled="false" Text='<%# "$ "+Eval("EspecialidadClinica.Precio")%>'/>
+                                    <asp:Label ID="lblValor" runat="server" Enabled="false" Text='<%# "$ "+ Eval("EspecialidadClinica.Precio")%>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Pagar" >
                                 <ItemTemplate>
-                                    <asp:CheckBox ID='CheckBox1' runat='server' AutoPostBack='false' OnCheckedChanged='sumarHorasSeleccionadas' Enabled='true'/>
+                                    <asp:CheckBox ID='CheckBox1' runat='server' AutoPostBack='true' OnCheckedChanged='sumarHorasSeleccionadas' Enabled='true'/>
                                     <asp:Label ID="lblEstado" runat="server" Enabled="false" Text='<%# (Eval("Venta") != null)? Eval("Venta.EstadoVenta.Descripcion"):null%>'/>                                    
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -66,7 +66,7 @@
                         </emptydatatemplate> 
                     </asp:GridView>
                 </div>
-                <hr style="color:black;margin-top: 3%; border-top: 4px solid"/>
+                <hr />
                 <div style="margin:5px 0px 30px 0px;" class="col-md-10" >
                     <h3 style="margin-top:5px">Total:</h3>
                         <asp:TextBox ID="txtTotal" runat="server" Enabled="false" />

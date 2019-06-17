@@ -36,24 +36,30 @@ namespace CapaNegocio
                 {
                     query = "INSERT INTO BIOCENTRO_DB.dbo.PACIENTE (RUT,NOMBRE,APELLIDO_PATERNO,APELLIDO_MATERNO,TELEFONO,FECHA_NACIMIENTO,SEXO,CORREO) OUTPUT INSERTED.ID_PACIENTE VALUES " +
                             " ('" + paciente.Rut + "','" + paciente.Nombre + "','" + paciente.ApellidoPaterno + "','" + paciente.ApellidoMaterno + "',"
-                            + paciente.Telefono + ",'"+ paciente.FechaNacimiento +"','"+ paciente.Sexo+"','"+ paciente.Correo+"');";
+                            + paciente.Telefono + ",'"+ paciente.FechaNacimiento.ToString("yyyy-MM-dd HH:mm:ss") +"','"+ paciente.Sexo+"','"+ paciente.Correo+"');";
                     idPersona =  this.utilMethods.guardarEliminarActualizarObjeto(query, true);
                     esNuevo = true;
                 }
                 else
                 {
-                    idPersona = per.IdPaciente; //Falta actualizar los datos si los cambió
+                    query = "UPDATE BIOCENTRO_DB.dbo.PACIENTE  SET RUT = '" + paciente.Rut + "' ,NOMBRE = '" + paciente.Nombre + "' ,APELLIDO_PATERNO = '" + paciente.ApellidoPaterno + "' " +
+                        ",APELLIDO_MATERNO= '" + paciente.ApellidoMaterno + "',TELEFONO=" + paciente.Telefono + " ,FECHA_NACIMIENTO= '" + paciente.FechaNacimiento.ToString("yyyy-MM-dd HH:mm:ss") + "',SEXO='" + paciente.Sexo + "' ,CORREO='" + paciente.Correo + "'  WHERE ID_PACIENTE= " + per.IdPaciente+";";
+                    this.utilMethods.guardarEliminarActualizarObjeto(query, false);
+                    idPersona = per.IdPaciente;
                 }
                 query = "UPDATE BIOCENTRO_DB.dbo.HORA_ATENCION SET ID_ESTADO=1,ID_PACIENTE="+ idPersona+ " WHERE ID_HORA=" + idHoraAtencion + " ; ";
                 this.utilMethods.guardarEliminarActualizarObjeto(query, false);
-                
-                return generarObjetoStatusResponce(String.Empty, "Su reserva se realizó correctamente");
+                HoraAtencion HoraAtencion = buscarDetalleHora(idHoraAtencion);
+                UtilMethods util = new UtilMethods();
+                util.enviarEmailReserva(paciente, HoraAtencion);
+
+                return generarObjetoStatusResponce("ok", "Su reserva se realizó correctamente");
             }
             catch (Exception ex)
             {
                 if (esNuevo)
                 {
-                    eliminar("PERSONA", "ID_PERSONA", idPersona);
+                    eliminar("PACIENTE", "ID_PACIENTE", idPersona);
                 }
                 verErrorEnConsola(ex, "guardarPaciente");
                 return generarObjetoStatusResponce("error", ex.Message);
@@ -362,6 +368,7 @@ namespace CapaNegocio
                     empleado = generarObjetoTerapeuta(row);
                     if (validarClave(empleado,password))
                     {
+                        empleado.Contraseña = string.Empty;
                         return empleado;
                     }
                 }

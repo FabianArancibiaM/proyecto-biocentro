@@ -55,7 +55,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText fechaNac;
+        protected global::System.Web.UI.WebControls.TextBox fechaNac;
         
         /// <summary>
         /// radioHombre control.
@@ -74,15 +74,6 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton radioMujer;
-        
-        /// <summary>
-        /// radioOtro control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radioOtro;
         
         /// <summary>
         /// txtCorreo control.

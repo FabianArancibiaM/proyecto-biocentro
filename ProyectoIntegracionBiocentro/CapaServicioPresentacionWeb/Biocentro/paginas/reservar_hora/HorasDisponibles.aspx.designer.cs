@@ -13,6 +13,15 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora {
     public partial class HorasDisponibles {
         
         /// <summary>
+        /// lblTitulo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTitulo;
+        
+        /// <summary>
         /// gvHorasDisponibles control.
         /// </summary>
         /// <remarks>
@@ -20,5 +29,14 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvHorasDisponibles;
+        
+        /// <summary>
+        /// volver control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button volver;
     }
 }

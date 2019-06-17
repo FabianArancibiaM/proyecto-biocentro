@@ -18,12 +18,6 @@ namespace CapaServicio
     {
 
         [WebMethod]
-        public string HelloWorld()
-        {
-            return "Hola a todos";
-        }
-
-        [WebMethod]
         public StatusResponce registrarPacienteService(Paciente persona, int idHoraAtencion)
         {
             NegocioService negocio = new NegocioService();

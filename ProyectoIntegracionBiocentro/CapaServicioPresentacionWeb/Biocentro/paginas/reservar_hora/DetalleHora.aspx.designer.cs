@@ -10,51 +10,78 @@
 namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora {
     
     
-    public partial class BuscarHora {
+    public partial class DetalleHora {
         
         /// <summary>
-        /// btnEspecialidad control.
+        /// lblIdHora control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEspecialidad;
+        protected global::System.Web.UI.WebControls.Label lblIdHora;
         
         /// <summary>
-        /// btnTerapeuta control.
+        /// lblEspecialidad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTerapeuta;
+        protected global::System.Web.UI.WebControls.Label lblEspecialidad;
         
         /// <summary>
-        /// ddlEspecialidad control.
+        /// lblTerapeuta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEspecialidad;
+        protected global::System.Web.UI.WebControls.Label lblTerapeuta;
         
         /// <summary>
-        /// ddlTerapeuta control.
+        /// lblFechaHora control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTerapeuta;
+        protected global::System.Web.UI.WebControls.Label lblFechaHora;
         
         /// <summary>
-        /// btnBuscar control.
+        /// lblLugar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscar;
+        protected global::System.Web.UI.WebControls.Label lblLugar;
+        
+        /// <summary>
+        /// lblPaciente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPaciente;
+        
+        /// <summary>
+        /// lblEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmail;
+        
+        /// <summary>
+        /// btnMisHoras control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMisHoras;
     }
 }

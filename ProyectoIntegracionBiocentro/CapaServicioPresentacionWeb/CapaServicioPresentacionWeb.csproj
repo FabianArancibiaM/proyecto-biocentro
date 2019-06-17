@@ -124,13 +124,12 @@
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Biocentro\assets\img\logo.jpg" />
     <Content Include="Biocentro\assets\js\custom.js" />
     <Content Include="Biocentro\paginas\intranet\Login.aspx" />
     <Content Include="Biocentro\paginas\intranet\PaginaPrincipal.aspx" />
     <Content Include="Biocentro\paginas\MasterPage.Master" />
-    <Content Include="Biocentro\paginas\reservar_hora\MisHoras.aspx" />
-    <Content Include="Biocentro\paginas\reservar_hora\MisHorasDetalle.aspx" />
-    <Content Include="Biocentro\paginas\reservar_hora\MisHorasFinal.aspx" />
+    <Content Include="Biocentro\paginas\reservar_hora\DetalleHora.aspx" />
     <Content Include="Connected Services\ServiceCliente\CapaServicioPresentacionWeb.ServiceCliente.Empleado.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -141,59 +140,7 @@
     <Content Include="Biocentro\paginas\reservar_hora\HorasDisponibles.aspx" />
     <Content Include="Biocentro\paginas\reservar_hora\IngresarRut.aspx" />
     <Content Include="Biocentro\paginas\reservar_hora\InicioReserva.aspx" />
-    <Content Include="Content\bootstrap-grid.css" />
-    <Content Include="Content\bootstrap-grid.min.css" />
-    <Content Include="Content\bootstrap-reboot.css" />
-    <Content Include="Content\bootstrap-reboot.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\esm\popper-utils.js" />
-    <Content Include="Scripts\esm\popper-utils.min.js" />
-    <Content Include="Scripts\esm\popper.js" />
-    <Content Include="Scripts\esm\popper.min.js" />
-    <Content Include="Scripts\esm\popper.min.js.map" />
-    <Content Include="Scripts\esm\popper.js.map" />
-    <Content Include="Scripts\esm\popper-utils.min.js.map" />
-    <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
-    <Content Include="Scripts\jquery-3.0.0.js" />
-    <Content Include="Scripts\jquery-3.0.0.min.js" />
-    <Content Include="Scripts\jquery-3.0.0.slim.js" />
-    <Content Include="Scripts\jquery-3.0.0.slim.min.js" />
-    <Content Include="Scripts\jquery-3.0.0.slim.min.map" />
-    <Content Include="Scripts\jquery-3.0.0.min.map" />
-    <Content Include="Scripts\popper-utils.js" />
-    <Content Include="Scripts\popper-utils.min.js" />
-    <Content Include="Scripts\popper.js" />
-    <Content Include="Scripts\popper.min.js" />
-    <Content Include="Scripts\umd\popper-utils.js" />
-    <Content Include="Scripts\umd\popper-utils.min.js" />
-    <Content Include="Scripts\umd\popper.js" />
-    <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Scripts\umd\popper.min.js.map" />
-    <Content Include="Scripts\umd\popper.js.map" />
-    <Content Include="Scripts\umd\popper-utils.min.js.map" />
-    <Content Include="Scripts\umd\popper-utils.js.map" />
-    <Content Include="Scripts\README.md" />
-    <Content Include="Scripts\popper.min.js.map" />
-    <Content Include="Scripts\popper.js.map" />
-    <Content Include="Scripts\popper-utils.min.js.map" />
-    <Content Include="Scripts\popper-utils.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1833,6 +1780,13 @@
     <Compile Include="Biocentro\paginas\reservar_hora\DatosPaciente.aspx.designer.cs">
       <DependentUpon>DatosPaciente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\DetalleHora.aspx.cs">
+      <DependentUpon>DetalleHora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\DetalleHora.aspx.designer.cs">
+      <DependentUpon>DetalleHora.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Biocentro\paginas\reservar_hora\HorasDisponibles.aspx.cs">
       <DependentUpon>HorasDisponibles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1854,27 +1808,6 @@
     <Compile Include="Biocentro\paginas\reservar_hora\InicioReserva.aspx.designer.cs">
       <DependentUpon>InicioReserva.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Biocentro\paginas\reservar_hora\MisHoras.aspx.cs">
-      <DependentUpon>MisHoras.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Biocentro\paginas\reservar_hora\MisHoras.aspx.designer.cs">
-      <DependentUpon>MisHoras.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Biocentro\paginas\reservar_hora\MisHorasDetalle.aspx.cs">
-      <DependentUpon>MisHorasDetalle.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Biocentro\paginas\reservar_hora\MisHorasDetalle.aspx.designer.cs">
-      <DependentUpon>MisHorasDetalle.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Biocentro\paginas\reservar_hora\MisHorasFinal.aspx.cs">
-      <DependentUpon>MisHorasFinal.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Biocentro\paginas\reservar_hora\MisHorasFinal.aspx.designer.cs">
-      <DependentUpon>MisHorasFinal.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Connected Services\ServiceCliente\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1887,9 +1820,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServiceCliente\" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

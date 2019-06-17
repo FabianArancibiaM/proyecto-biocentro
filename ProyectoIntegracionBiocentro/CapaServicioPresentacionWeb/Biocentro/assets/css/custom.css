@@ -2,17 +2,25 @@
     min-height: 60vh;
 }
 
+.navbar{
+    font-size: 1em;
+    font-weight: 600;
+}
 .navbar-brand {
     padding: 0px;
     width: 20em;
+    background-color: white;
 }
 
     .navbar-brand > img {
         height: 100%;
-        padding: 15px;
         width: auto;
     }
-    
+
+.navbar-default {
+    background-color: white;
+}
+
 .site-footer {
     background-color: #26272b;
     padding: 20px 0 10px;
@@ -35,7 +43,8 @@
         font-size: 16px;
         text-transform: uppercase;
         margin-top: 5px;
-        letter-spacing: 2px
+        letter-spacing: 2px;
+        font-weight: 600;
     }
 
     .site-footer a {
@@ -174,6 +183,10 @@
     }
 }
 
+hr{
+     border-top: 1px solid #cecece;
+}
+
 .placeholder
 {
     font-size: 0.9em;
@@ -186,19 +199,25 @@
 }
 
 h3 {
-    font-size: 18px;
+    font-size: 1.5em;
     font-weight: 600;
-    color: darkslategrey;
+    color: #5c768c;
 }
 
-h5{
-    font-size: 13px;
+h4 {
+    font-size: 1.2em;
     font-weight: 600;
-    color: lightslategrey;
+    color: #6f9b4d;
 }
 
-label {
-    font-size: 11px;
+h5 {
+    font-size: 1.05em;
+    font-weight: 600;
+    color: #6f9b4d;
+}
+
+label, .label {
+    font-size: 0.9em;
     font-weight: 600;
     color: dimgray;
 }
@@ -210,4 +229,121 @@ label {
 
 .m-t-md {
     margin-top: 15px;
+}
+
+.m-t-lg {
+    margin-top: 25px;
+}
+
+.separador-lg{
+    margin-bottom: 50px;
+}
+
+.separador-md {
+    margin-bottom: 25px;
+}
+
+.separador-sm {
+    margin-bottom: 10px;
+}
+
+.centered{
+    margin: auto;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+table.table-design {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+    table.table-design caption {
+        font-size: 1.5em;
+        margin: .5em 0 .75em;
+    }
+
+    table.table-design tr {
+        background-color: #f8f8f8;
+        border: 1px solid #ddd;
+        padding: .35em;
+    }
+
+    table.table-design th,
+    table.table-design td {
+        padding: .625em;
+        text-align: center;
+    }
+
+    table.table-design th {
+        font-size: .85em;
+        letter-spacing: .1em;
+    }
+
+@media screen and (max-width: 600px) {
+    table.table-design {
+        border: 0;
+    }
+
+        table.table-design caption {
+            font-size: 1.3em;
+        }
+
+        table.table-design thead {
+            border: none;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+        }
+
+        table.table-design tr {
+            border-bottom: 3px solid #ddd;
+            display: block;
+            margin-bottom: .625em;
+        }
+
+        table.table-design td {
+            border-bottom: 1px solid #ddd;
+            display: block;
+            font-size: .8em;
+            text-align: right;
+        }
+
+            table.table-design td::before {
+                /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+
+            table.table-design td:last-child {
+                border-bottom: 0;
+            }
+}
+
+table.table-design tr {
+    -moz-transition: background-color 300ms ease-in-out 0s;
+    -ms-transition: background-color 300ms ease-in-out 0s;
+    -o-transition: background-color 300ms ease-in-out 0s;
+    -webkit-transition: background-color 300ms ease-in-out 0s;
+    transition: background-color 300ms ease-in-out 0s;
+}
+
+table.table-design tr:hover {
+    background-color: #c8fc8d;
 }
