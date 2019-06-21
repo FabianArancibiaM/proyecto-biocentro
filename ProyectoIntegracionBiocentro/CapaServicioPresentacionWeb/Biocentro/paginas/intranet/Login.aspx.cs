@@ -30,27 +30,27 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
             {
                 if (this.txtUsuario.Text.Trim().Length==0)
                 {
-                    ShowMessage("Debe ingresar el Usuario");
+                    ShowMessage("Debe ingresar su Usuario");
                     return;
                 }
                 if (this.txtContraseña.Text.Trim().Length == 0)
                 {
-                    ShowMessage("Debe ingresar la Contraseña");
+                    ShowMessage("Debe ingresar su Contraseña");
                     return;
                 }
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
                 ServiceCliente.Empleado empleado = soapClient.loginService(this.txtUsuario.Text, this.txtContraseña.Text);
-                if (empleado != null)
+                if (empleado == null)
                 {
-                    Session["empleado"] = empleado;
-                    Response.Write("<script language='javascript'>window.location='PaginaPrincipal.aspx';</script>");
+                    ShowMessage("Usuario o clave incorrectos");
+                    return;
                 }
-                ShowMessage("Usuario o clave incorrectos");
-
+                Session["empleado"] = empleado;
+                Response.Write("<script language='javascript'>window.location='PaginaPrincipal.aspx';</script>");
             }
             catch (Exception ex)
             {
-                ShowMessage("Error al intentar logearse");
+                ShowMessage("Error inesperado al iniciar sesión. Inténtelo nuevamente");
             }
         }
         public void ShowMessage(string message)

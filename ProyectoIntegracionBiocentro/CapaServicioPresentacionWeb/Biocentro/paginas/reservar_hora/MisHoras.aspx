@@ -7,18 +7,15 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div class="text-center">
-        <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4" style="left: 30%;margin-top:40px;">
-            <div >
-                <asp:Label Text="Rut"  runat="server" CssClass="separacion"></asp:Label>
-                <asp:TextBox runat="server" ID="txtRut" CssClass="separacion"></asp:TextBox> 
-                <asp:Label runat="server"  Text="Email" CssClass="separacion"></asp:Label>
-                <asp:TextBox runat="server" ID="txtEmail" CssClass="separacion"></asp:TextBox> 
-            </div>
-            <asp:Button ID="btnBuscar" class="btn btn-lg btn-primary btn-block" 
-                runat="server" Text="Buscar" OnClick="btnBuscar_Click"  />
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-centered">
+        <div class="form-group" >
+            <label for="txtRut">RUT</label>
+            <asp:TextBox ID="txtRut" runat="server" CssClass="form-control"></asp:TextBox>
+            <label for="txtEmail">Correo electrónico</label>
+            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
         </div>
-        <div class="col-xs-12 col-sm-1 col-md-2 col-lg-2"></div>
+        <asp:Button ID="btnBuscar" class="btn btn-md btn-primary btn-block" 
+            runat="server" Text="Buscar" OnClick="btnBuscar_Click"  />
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">

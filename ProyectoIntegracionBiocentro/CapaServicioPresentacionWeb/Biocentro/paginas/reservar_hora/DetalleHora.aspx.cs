@@ -25,10 +25,8 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                 string fechaHora = horaAtencion.Fecha.ToString("dd/MM/yyyy ") + " de " + horaAtencion.IdBloque.HoraInicio + ":00 - " +
                                    horaAtencion.IdBloque.HoraFin + ":00";
                 this.lblFechaHora.Text = fechaHora;
-                string lugar = horaAtencion.Sala.Nombre + ", Miguel Claro 195, Providencia";
-                this.lblLugar.Text = lugar;
-                string especialidad = horaAtencion.EspecialidadClinica.Nombre;
-                this.lblEspecialidad.Text = especialidad;
+                this.lblLugar.Text = horaAtencion.Sala.Nombre + ", Miguel Claro 195, Providencia";
+                this.lblEspecialidad.Text = horaAtencion.EspecialidadClinica.Nombre;
                 string terapeuta = horaAtencion.Terapeuta.Nombre + " " + horaAtencion.Terapeuta.ApellidoPaterno +
                                    " " + horaAtencion.Terapeuta.ApellidoMaterno;
                 this.lblTerapeuta.Text = terapeuta;

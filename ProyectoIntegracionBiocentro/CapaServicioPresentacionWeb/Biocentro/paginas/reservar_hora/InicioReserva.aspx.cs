@@ -21,11 +21,11 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             
             try
             {
-                Response.Write("<script language='javascript'>window.location='../reservar_hora/MisHoras.aspx';</script>");
+                Response.Write("<script language='javascript'>window.location='MisHoras.aspx';</script>");
             }
             catch (Exception ex)
             {
-                ShowMessage("Error al intentar cargar la pagina");
+                ShowMessage("Error al cargar la página");
             }
         }
 
@@ -38,7 +38,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-                ShowMessage("Error al intentar cargar la pagina");
+                ShowMessage("Error al cargar la página");
             }
         }
         public void ShowMessage(string message)

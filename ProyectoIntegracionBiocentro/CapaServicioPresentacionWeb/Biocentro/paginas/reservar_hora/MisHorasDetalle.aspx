@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:GridView ID="gvwMisHoras" class="table" runat="server"  AutoGenerateColumns="False" DataKeyNames="Id"  AutoPostBack="true">
+    <asp:GridView ID="gvwMisHoras" class="table table-design" runat="server"  AutoGenerateColumns="False" DataKeyNames="Id"  AutoPostBack="true">
          <Columns>
             <asp:BoundField DataField="Id" HeaderText="Id" />
             <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
@@ -13,7 +13,7 @@
             <asp:TemplateField>
                 <ItemTemplate> 
                     <span>    <i class="fa fa-check-square-o"></i>
-                        <asp:Button ID="btnConfirmar" runat="server" CssClass="btn btn-sm" 
+                        <asp:Button ID="btnConfirmar" runat="server" CssClass="btn btn-sm btn-primary" 
                          OnClick="btnConfirmar_Click" Text="Confirmar"/> 
                     </span>                    
                 </ItemTemplate>
@@ -21,7 +21,7 @@
             <asp:TemplateField>
                 <ItemTemplate> 
                     <span>    <i class="fa fa-check-square-o"></i>
-                        <asp:Button ID="btnAnular" runat="server" CssClass="btn btn-sm" 
+                        <asp:Button ID="btnAnular" runat="server" CssClass="btn btn-sm btn-danger" 
                          OnClick="btnAnular_Click" Text="Anular"/> 
                     </span>                    
                 </ItemTemplate>

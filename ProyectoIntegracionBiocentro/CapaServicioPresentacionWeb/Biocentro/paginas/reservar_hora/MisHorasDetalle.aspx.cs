@@ -11,7 +11,6 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack)
             {
                 CargarGrilla();
@@ -21,9 +20,9 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
         {
             try
             {
-                //creamos objeto lista que carga sesion
+                //crear objeto lista que carga sesion
                 List<ServiceCliente.HoraAtencion> horas = (List<ServiceCliente.HoraAtencion>)Session["misHoras"];
-                //formateamos lista
+                //formatear lista
                 var horas_disponibles = from h in horas
                                         select new
                                         {
@@ -41,8 +40,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-
-                ShowMessage("Error al cargar las horas : " + ex.Message);
+                ShowMessage("Error inesperado al cargar las horas");
             }
         }
 
