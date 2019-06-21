@@ -1741,6 +1741,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Biocentro\paginas\helpers\Commons.cs" />
     <Compile Include="Biocentro\paginas\intranet\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

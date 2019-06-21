@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaServicioPresentacionWeb.Biocentro.paginas.helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,8 +10,10 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
 {
     public partial class MisHorasFinal : System.Web.UI.Page
     {
+        Commons commons;
         protected void Page_Load(object sender, EventArgs e)
         {
+            commons = new Commons(Page);
             CargarHora();
         }
 

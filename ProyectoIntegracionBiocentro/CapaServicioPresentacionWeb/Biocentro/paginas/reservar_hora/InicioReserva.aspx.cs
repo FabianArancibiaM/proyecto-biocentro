@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaServicioPresentacionWeb.Biocentro.paginas.helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,12 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
 {
     public partial class InicioReserva : System.Web.UI.Page
     {
+        Commons commons;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            commons = new Commons(Page);
+
+            if (!IsPostBack)
             {
                 Session["horas"] = null;
             }
@@ -25,7 +29,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-                ShowMessage("Error al cargar la página");
+                commons.ShowMessage("Error al cargar la página");
             }
         }
 
@@ -38,19 +42,8 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-                ShowMessage("Error al cargar la página");
+                commons.ShowMessage("Error al cargar la página");
             }
-        }
-        public void ShowMessage(string message)
-        {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            sb.Append("<script type = 'text/javascript'> ");
-            sb.Append("window.onload=function(){");
-            sb.Append("alert('");
-            sb.Append(message);
-            sb.Append("')};");
-            sb.Append("</script>");
-            ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
         }
     }
 }

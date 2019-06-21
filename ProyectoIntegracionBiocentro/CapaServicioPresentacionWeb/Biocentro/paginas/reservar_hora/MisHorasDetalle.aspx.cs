@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaServicioPresentacionWeb.Biocentro.paginas.helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,8 +10,11 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
 {
     public partial class MisHorasDetalle : System.Web.UI.Page
     {
+        Commons commons;
         protected void Page_Load(object sender, EventArgs e)
         {
+            commons = new Commons(Page);
+
             if (!IsPostBack)
             {
                 CargarGrilla();
@@ -40,20 +44,8 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-                ShowMessage("Error inesperado al cargar las horas");
+                commons.ShowMessage("Error inesperado al cargar las horas");
             }
-        }
-
-        public void ShowMessage(string message)
-        {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            sb.Append("<script type = 'text/javascript'> ");
-            sb.Append("window.onload=function(){");
-            sb.Append("alert('");
-            sb.Append(message);
-            sb.Append("')};");
-            sb.Append("</script>");
-            ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
         }
 
         protected void btnConfirmar_Click(object sender, EventArgs e)
@@ -79,7 +71,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-                ShowMessage("Error al seleccionar hora horas : " + ex.Message);
+                commons.ShowMessage("Error al seleccionar hora horas : " + ex.Message);
             }
 
         }
@@ -105,7 +97,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-                ShowMessage("Error al seleccionar hora horas : " + ex.Message);
+                commons.ShowMessage("Error al seleccionar hora horas : " + ex.Message);
             }
 
         }
