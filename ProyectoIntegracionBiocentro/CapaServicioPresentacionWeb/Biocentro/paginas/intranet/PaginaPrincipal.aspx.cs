@@ -38,7 +38,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
             }
             catch(Exception ex)
             {
-                ShowMessage("No se encontro la pagina solicitada");
+                ShowMessage("No se encontró la página solicitada");
             }
         }
 

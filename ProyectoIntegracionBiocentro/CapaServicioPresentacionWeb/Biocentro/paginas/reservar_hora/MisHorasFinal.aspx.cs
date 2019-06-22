@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaServicioPresentacionWeb.Biocentro.paginas.helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,8 +10,10 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
 {
     public partial class MisHorasFinal : System.Web.UI.Page
     {
+        Commons commons;
         protected void Page_Load(object sender, EventArgs e)
         {
+            commons = new Commons(Page);
             CargarHora();
         }
 
@@ -36,10 +39,12 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             List<ServiceCliente.HoraAtencion> horaAtencionsDetalle = (List<ServiceCliente.HoraAtencion>)Session["misHoras"];
             horaAtencion = horaAtencionsDetalle.Where(h => h.IdHora == idHora).FirstOrDefault();
             //llenamos los controles
-            lblFechaHora.Text = horaAtencion.Fecha.ToString();
-            lblEspecialidad.Text = horaAtencion.EspecialidadClinica.Nombre;
-            lblTerapeuta.Text = horaAtencion.Terapeuta.Nombre + " " + horaAtencion.Terapeuta.ApellidoPaterno;
-            lblLugar.Text = horaAtencion.Sala.Nombre+ ", Providencia 180, Ñuñoa";
+            string fechaHora = horaAtencion.Fecha.ToString("dd/MM/yyyy ") + " de " + horaAtencion.IdBloque.HoraInicio + ":00 - " +
+                                   horaAtencion.IdBloque.HoraFin + ":00";
+            this.lblFechaHora.Text = fechaHora;
+            this.lblLugar.Text = horaAtencion.Sala.Nombre + ", Miguel Claro 195, Providencia";
+            this.lblEspecialidad.Text = horaAtencion.EspecialidadClinica.Nombre;
+            this.lblTerapeuta.Text = horaAtencion.Terapeuta.Nombre + " " + horaAtencion.Terapeuta.ApellidoPaterno;
         }
     }
 }

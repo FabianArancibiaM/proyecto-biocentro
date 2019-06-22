@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaServicioPresentacionWeb.Biocentro.paginas.helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,8 +10,11 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
 {
     public partial class DetalleHora : System.Web.UI.Page
     {
+        Commons commons;
         protected void Page_Load(object sender, EventArgs e)
         {
+            commons = new Commons(Page);
+
             if (Session["id_hora"] == null || Session["paciente"] == null)
             {
                 Response.Redirect("~/Biocentro/paginas/reservar_hora/InicioReserva.aspx");
@@ -25,10 +29,8 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                 string fechaHora = horaAtencion.Fecha.ToString("dd/MM/yyyy ") + " de " + horaAtencion.IdBloque.HoraInicio + ":00 - " +
                                    horaAtencion.IdBloque.HoraFin + ":00";
                 this.lblFechaHora.Text = fechaHora;
-                string lugar = horaAtencion.Sala.Nombre + ", Miguel Claro 195, Providencia";
-                this.lblLugar.Text = lugar;
-                string especialidad = horaAtencion.EspecialidadClinica.Nombre;
-                this.lblEspecialidad.Text = especialidad;
+                this.lblLugar.Text = horaAtencion.Sala.Nombre + ", Miguel Claro 195, Providencia";
+                this.lblEspecialidad.Text = horaAtencion.EspecialidadClinica.Nombre;
                 string terapeuta = horaAtencion.Terapeuta.Nombre + " " + horaAtencion.Terapeuta.ApellidoPaterno +
                                    " " + horaAtencion.Terapeuta.ApellidoMaterno;
                 this.lblTerapeuta.Text = terapeuta;
@@ -47,19 +49,8 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-                ShowMessage("Ocurrió un error al cargar la pagina");
+                commons.ShowMessage("Ocurrió un error al cargar la pagina");
             }
-        }
-        public void ShowMessage(string message)
-        {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            sb.Append("<script type = 'text/javascript'> ");
-            sb.Append("window.onload=function(){");
-            sb.Append("alert('");
-            sb.Append(message);
-            sb.Append("')};");
-            sb.Append("</script>");
-            ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
         }
     }
 }
