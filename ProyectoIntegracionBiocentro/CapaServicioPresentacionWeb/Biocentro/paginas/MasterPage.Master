@@ -49,7 +49,7 @@
                   <li><a href="/Biocentro/paginas/reservar_hora/InicioReserva.aspx">Reserva de horas</a></li>                 
                   <li><a href="/Biocentro/paginas/intranet/PaginaPrincipal.aspx">Intranet</a></li>
                   <li id="menuLogOut" runat="server" style="margin-top:12px">
-                      <asp:Button ID="Button1" Text="LogOut" OnClick="validarSession_Click"  runat="server" BackColor="#ffcccc" />
+                      <asp:Button ID="Button1" Text="Cerrar Sesión" OnClick="validarSession_Click"  runat="server" CssClass="btn btn-danger"/>
                   </li>
                 </ul>
               </div>
