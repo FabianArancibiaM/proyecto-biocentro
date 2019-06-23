@@ -8,7 +8,7 @@
 }
 .navbar-brand {
     padding: 0px;
-    width: 20em;
+    width: 14em;
     background-color: white;
 }
 
@@ -222,8 +222,12 @@ label, .label {
     color: dimgray;
 }
 
-.m-b-md
-{
+.text-md{
+    font-size: 1.2em;
+}
+
+
+.m-b-md {
     margin-bottom: 15px;
 }
 
@@ -235,7 +239,19 @@ label, .label {
     margin-top: 25px;
 }
 
-.separador-lg{
+.m-l-md {
+    margin-left: 15px;
+}
+
+.m-t-sm {
+    margin-top: 5px;
+}
+
+.p-t-sm {
+    padding-top: 10px;
+}
+
+.separador-lg {
     margin-bottom: 50px;
 }
 

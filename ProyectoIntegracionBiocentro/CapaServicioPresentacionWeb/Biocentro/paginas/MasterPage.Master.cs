@@ -30,7 +30,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas
         protected void validarSession_Click(object sender, EventArgs e)
         {
             Session["empleado"] = null;
-            Response.Write("<script language='javascript'>window.location='/Biocentro/paginas/reservar_hora/InicioReserva.aspx';</script>");
+            Response.Write("<script language='javascript'>window.location='/Biocentro/paginas/intranet/Login.aspx';</script>");
         }
     }
 }
