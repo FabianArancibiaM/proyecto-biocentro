@@ -8,6 +8,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4 col-centered">
+        <div class="separador-md"></div>
+        <h3 class="text-center">Inicio de sesión</h3>
         <div class="separador-lg"></div>
         <div class="form-group">
             <asp:Label Text="Usuario" runat="server" CssClass="label separacion"></asp:Label>
