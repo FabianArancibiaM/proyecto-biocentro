@@ -24,12 +24,12 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
                 else
                 {
                     ServiceCliente.Empleado empleado = (ServiceCliente.Empleado)Session["empleado"];
-                    this.msjBienvenida.Text = "Bienvenido/a " + empleado.Nombre + " " + empleado.ApellidoPaterno + " " + empleado.ApellidoMaterno;
+                    this.msjBienvenida.Text = "Bienvenid@ " + empleado.Nombre + " " + empleado.ApellidoPaterno + " " + empleado.ApellidoMaterno;
                 }
             }
             catch(Exception ex)
             {
-                this.msjBienvenida.Text = "Bienvenido/a ";
+                this.msjBienvenida.Text = "Bienvenid@";
             }
             
         }

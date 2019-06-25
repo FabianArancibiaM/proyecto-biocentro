@@ -41,7 +41,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                 }
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
                 List<ServiceCliente.HoraAtencion> misHoras = new List<ServiceCliente.HoraAtencion>();
-                ServiceCliente.HoraAtencion[] listaHoras = soapClient.listaReservasPorRutAndCorreoService(txtRut.Text, txtEmail.Text);
+                ServiceCliente.HoraAtencion[] listaHoras = soapClient.listaReservasPorRutAndCorreoService(commons.formatearRut(this.txtRut.Text).Replace(".", ""), this.txtEmail.Text);
                 if(listaHoras == null || listaHoras.Length == 0)
                 {
                     commons.ShowMessage("Atención", "No tiene horas asociadas", "warning");
