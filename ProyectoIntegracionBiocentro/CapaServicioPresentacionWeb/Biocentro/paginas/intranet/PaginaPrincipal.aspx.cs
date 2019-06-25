@@ -42,7 +42,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
             }
             catch(Exception ex)
             {
-                commons.ShowMessage("No se encontró la página solicitada");
+                commons.ShowMessage("Error", "Error al cargar la página", "error");
             }
         }
     }

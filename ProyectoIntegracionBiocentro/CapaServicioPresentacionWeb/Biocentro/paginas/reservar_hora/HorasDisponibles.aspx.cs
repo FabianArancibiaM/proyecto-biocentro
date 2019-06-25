@@ -14,24 +14,30 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
         protected void Page_Load(object sender, EventArgs e)
         {
             commons = new Commons(Page);
-
-            if (Session["horas"] == null)
+            try
             {
-               Response.Redirect("~/Biocentro/paginas/reservar_hora/InicioReserva.aspx");                
+                if (Session["horas"] == null)
+                {
+                    Response.Redirect("~/Biocentro/paginas/reservar_hora/InicioReserva.aspx");                
 
+                }
+
+                if (!IsPostBack)
+                {
+                    cargarHoras();
+                    if (Session["terapeuta"] != null && Session["terapeuta"].ToString().Trim() != string.Empty)
+                    {
+                        this.lblTitulo.Text = " con " + Session["terapeuta"].ToString().Trim();
+                    }
+                    if (Session["especialidad"] != null && Session["especialidad"].ToString().Trim() != string.Empty)
+                    {
+                        this.lblTitulo.Text = " de " + Session["especialidad"].ToString().Trim();
+                    }
+                }
             }
-
-            if (!IsPostBack)
+            catch(Exception ex)
             {
-                cargarHoras();
-                if (Session["terapeuta"] != null && Session["terapeuta"].ToString().Trim() != string.Empty)
-                {
-                    this.lblTitulo.Text = " con " + Session["terapeuta"].ToString().Trim();
-                }
-                if (Session["especialidad"] != null && Session["especialidad"].ToString().Trim() != string.Empty)
-                {
-                    this.lblTitulo.Text = " de " + Session["especialidad"].ToString().Trim();
-                }
+                commons.ShowMessage("Error", "Error al cargar la página", "error");
             }
         }
 
@@ -56,7 +62,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-                commons.ShowMessage("Error al cargar las horas : " + ex.Message);
+                commons.ShowMessage("Error", "Error al cargar las horas", "error");
             }
         }
         protected void btnSeleccionar_Click(object sender, EventArgs e)
@@ -76,8 +82,8 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch(Exception ex)
             {
-                commons.ShowMessage("Error al seleccionar hora horas : " + ex.Message);
-            }            
+                commons.ShowMessage("Error", "Error al seleccionar la hora", "error");
+            }
         }
         protected void btnVolver(object sender, EventArgs e)
         {
@@ -87,7 +93,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-                commons.ShowMessage("Ocurrio un error al cargar la pagina");
+                commons.ShowMessage("Error", "Ocurrió un error al cargar la página", "error");
             }
         }
     }

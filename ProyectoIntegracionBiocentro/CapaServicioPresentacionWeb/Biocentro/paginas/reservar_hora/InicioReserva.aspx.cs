@@ -29,7 +29,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-                commons.ShowMessage("Error al cargar la página");
+                commons.ShowMessage("Error", "Ocurrió un error al cargar la página", "error");
             }
         }
 
@@ -42,7 +42,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-                commons.ShowMessage("Error al cargar la página");
+                commons.ShowMessage("Error", "Ocurrió un error al cargar la página", "error");
             }
         }
     }

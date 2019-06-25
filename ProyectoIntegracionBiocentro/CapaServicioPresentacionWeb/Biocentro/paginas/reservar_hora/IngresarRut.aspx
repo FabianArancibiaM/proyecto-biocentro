@@ -10,7 +10,6 @@
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
                     <label for="txtRut">RUT</label>
                     <asp:TextBox ID="txtRut" runat="server" CssClass="form-control"></asp:TextBox>
-                    <span class="placeholder">Ingrese su RUT sin puntos ni guión</span>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
                     <asp:Button ID="btn_buscar_rut" runat="server" Text="Siguiente" class="btn btn-md btn-primary m-t-lg"

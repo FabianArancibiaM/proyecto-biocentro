@@ -15,19 +15,28 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
         {
             commons = new Commons(Page);
         }
-
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             try
             {
                 if(string.IsNullOrEmpty(this.txtRut.Text))
                 {
-                    commons.ShowMessage("Debe ingresar SU RUT");
+                    commons.ShowMessage("Error", "Debe ingresar su RUT", "error");
                     return;
                 }
                 if(string.IsNullOrEmpty(this.txtEmail.Text))
                 {
-                    commons.ShowMessage("Debe ingresar su correo");
+                    commons.ShowMessage("Error", "Debe ingresar su correo", "error");
+                    return;
+                }
+                if (!commons.validarRut(this.txtRut.Text))
+                {
+                    commons.ShowMessage("Error", "El formato del RUT ingresado es inválido", "error");
+                    return;
+                }
+                if (!commons.ComprobarFormatoEmail(this.txtEmail.Text))
+                {
+                    commons.ShowMessage("Error", "El formato del correo ingresado  es inválido", "error");
                     return;
                 }
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
@@ -35,13 +44,21 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                 ServiceCliente.HoraAtencion[] listaHoras = soapClient.listaReservasPorRutAndCorreoService(txtRut.Text, txtEmail.Text);
                 if(listaHoras == null || listaHoras.Length == 0)
                 {
-                    commons.ShowMessage("No tiene horas asociadas");
+                    commons.ShowMessage("Atención", "No tiene horas asociadas", "warning");
                     return;
                 }
-                misHoras.AddRange(listaHoras);
+               // misHoras.AddRange(listaHoras);
+                for (int i = 0; i < listaHoras.Length; i++)
+                {
+                    //Mostrar reservas que no hayan sido anuladas,
+                    if (listaHoras[i].EstadoReserva.IdEstado != 3)
+                    {
+                        misHoras.Add(listaHoras[i]);
+                    }
+                }
                 if (misHoras == null || misHoras.Count == 0)
                 {
-                    commons.ShowMessage("No tiene horas asociadas");
+                    commons.ShowMessage("Atención", "No tiene horas asociadas", "warning");
                     return;
                 }
                 Session["misHoras"] = misHoras;
@@ -49,7 +66,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-                commons.ShowMessage("Error inesperado al buscar sus horas. Inténtelo nuevamente");
+                commons.ShowMessage("Error", "Error inesperado al buscar sus horas. Inténtelo nuevamente", "error");
             }
         }
     }

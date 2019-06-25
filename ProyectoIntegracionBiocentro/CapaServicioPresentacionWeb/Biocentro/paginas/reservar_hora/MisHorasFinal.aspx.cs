@@ -19,32 +19,51 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
 
         private void CargarHora()
         {
-            // label confirmacion
-            Char idConfirmacion = (Char)Session["idConfirmacion"];
-            if (idConfirmacion.Equals('1'))
+            try
             {
-                lblConfirmacionHora.Text = "confirmada";
+                // label confirmacion
+                Char idConfirmacion = (Char)Session["idConfirmacion"];
+                if (idConfirmacion.Equals('1'))
+                {
+                    lblConfirmacionHora.Text = "confirmada";
+                }
+                else
+                {
+                    lblConfirmacionHora.Text = "anulada";
+                }
+
+                //id hora
+                int idHora = (int)Session["idHora"];
+                lblIdHora.Text = idHora.ToString();
+
+                //detalle hora
+                ServiceCliente.HoraAtencion horaAtencion = new ServiceCliente.HoraAtencion();
+                List<ServiceCliente.HoraAtencion> horaAtencionsDetalle = (List<ServiceCliente.HoraAtencion>)Session["misHoras"];
+                horaAtencion = horaAtencionsDetalle.Where(h => h.IdHora == idHora).FirstOrDefault();
+                //llenamos los controles
+                string fechaHora = horaAtencion.Fecha.ToString("dd/MM/yyyy ") + " de " + horaAtencion.IdBloque.HoraInicio + ":00 - " +
+                                       horaAtencion.IdBloque.HoraFin + ":00";
+                this.lblFechaHora.Text = fechaHora;
+                this.lblLugar.Text = horaAtencion.Sala.Nombre + ", Miguel Claro 195, Providencia";
+                this.lblEspecialidad.Text = horaAtencion.EspecialidadClinica.Nombre;
+                this.lblTerapeuta.Text = horaAtencion.Terapeuta.Nombre + " " + horaAtencion.Terapeuta.ApellidoPaterno;
             }
-            else
+            catch(Exception ex)
             {
-                lblConfirmacionHora.Text = "anulada";
+                commons.ShowMessage("Error", "Ocurrió un error al cargar la página", "error");
             }
+        }
 
-            //id hora
-            int idHora = (int)Session["idHora"];
-            lblIdHora.Text = idHora.ToString();
-
-            //detalle hora
-            ServiceCliente.HoraAtencion horaAtencion = new ServiceCliente.HoraAtencion();
-            List<ServiceCliente.HoraAtencion> horaAtencionsDetalle = (List<ServiceCliente.HoraAtencion>)Session["misHoras"];
-            horaAtencion = horaAtencionsDetalle.Where(h => h.IdHora == idHora).FirstOrDefault();
-            //llenamos los controles
-            string fechaHora = horaAtencion.Fecha.ToString("dd/MM/yyyy ") + " de " + horaAtencion.IdBloque.HoraInicio + ":00 - " +
-                                   horaAtencion.IdBloque.HoraFin + ":00";
-            this.lblFechaHora.Text = fechaHora;
-            this.lblLugar.Text = horaAtencion.Sala.Nombre + ", Miguel Claro 195, Providencia";
-            this.lblEspecialidad.Text = horaAtencion.EspecialidadClinica.Nombre;
-            this.lblTerapeuta.Text = horaAtencion.Terapeuta.Nombre + " " + horaAtencion.Terapeuta.ApellidoPaterno;
+        protected void btnMisHoras(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Write("<script language='javascript'>window.location='MisHoras.aspx';</script>");
+            }
+            catch (Exception ex)
+            {
+                commons.ShowMessage("Error", "Ocurrió un error al cargar la página", "error");
+            }
         }
     }
 }

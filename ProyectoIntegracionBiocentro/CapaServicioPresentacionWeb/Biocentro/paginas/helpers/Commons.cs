@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -42,14 +43,12 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.helpers
             output.Write(Text);
         }
 
-        public void ShowMessage(string message)
+        public void ShowMessage(string titulo, string message, string type)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             sb.Append("<script type = 'text/javascript'> ");
             sb.Append("window.onload=function(){");
-            sb.Append("alert('");
-            sb.Append(message);
-            sb.Append("')};");
+            sb.Append("Swal.fire('"+ message + "', '', '" + type + "')};");
             sb.Append("</script>");
             ClientScriptManager clientScript = this.page.ClientScript;
             clientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
@@ -81,6 +80,64 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.helpers
                 validacion = false;
             }
             return validacion;
+        }
+
+        public string formatearRut(string rut)
+        {
+            int cont = 0;
+            string format;
+            if (rut.Length == 0)
+            {
+                return "";
+            }
+            else
+            {
+                rut = rut.Replace(".", "");
+                rut = rut.Replace("-", "");
+                format = "-" + rut.Substring(rut.Length - 1);
+                for (int i = rut.Length - 2; i >= 0; i--)
+                {
+                    format = rut.Substring(i, 1) + format;
+                    cont++;
+                    if (cont == 3 && i != 0)
+                    {
+                        format = "." + format;
+                        cont = 0;
+                    }
+                }
+                return format;
+            }
+        }
+
+        public bool ValidarTelefono(string strNumber)
+        {
+            Regex regex = new Regex("^[0-9]{7,10}|(\\S[0-9]{3})[0-9]{7,10}");
+            Match match = regex.Match(strNumber);
+
+            if (match.Success)
+                return true;
+            else
+                return false;
+        }
+        public bool ComprobarFormatoEmail(string sEmailAComprobar)
+        {
+            String sFormato;
+            sFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(sEmailAComprobar, sFormato))
+            {
+                if (Regex.Replace(sEmailAComprobar, sFormato, String.Empty).Length == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

@@ -28,8 +28,8 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                     string rutPaciente = (string)Session["rut"];
 
                     ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
-                    ServiceCliente.Paciente paciente = soapClient.buscarPacienteService(rutPaciente);
-                    this.txtRut.Text = rutPaciente;
+                    ServiceCliente.Paciente paciente = soapClient.buscarPacienteService(commons.formatearRut(rutPaciente).Replace(".",""));
+                    this.txtRut.Text = commons.formatearRut(rutPaciente);
 
                     if (paciente != null)
                     {
@@ -46,6 +46,10 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                         {
                             this.radioHombre.Checked = true;
                         }
+                        if (paciente.Sexo == 'O')
+                        {
+                            this.radioOtro.Checked = true;
+                        }
                         this.txtCorreo.Text = paciente.Correo;
                         this.txtTelefono.Text = paciente.Telefono;
                     }
@@ -53,7 +57,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch(Exception ex)
             {
-                commons.ShowMessage("Se produjo un error al cargar la pagina");
+                commons.ShowMessage("Error", "Se produjo un error al cargar la pagina", "error");
             }
         }
         protected void btnReservar_Click(object sender, EventArgs e)
@@ -68,7 +72,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
 
                 if (ValidarDatosPaciente())
                 {
-                    paciente.Rut = this.txtRut.Text;
+                    paciente.Rut = this.txtRut.Text.Replace(".", "");
                     paciente.Nombre = this.txtNombre.Text;
                     paciente.ApellidoPaterno = this.txtApPaterno.Text;
                     paciente.ApellidoMaterno = this.txtApMaterno.Text;
@@ -80,6 +84,10 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                     if (this.radioMujer.Checked == true)
                     {
                         paciente.Sexo = 'M';
+                    }
+                    if (this.radioOtro.Checked == true)
+                    {
+                        paciente.Sexo = 'O';
                     }
                     paciente.Correo = this.txtCorreo.Text;
                     paciente.Telefono = this.txtTelefono.Text;
@@ -93,105 +101,80 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                     {
                         Session["paciente"] = paciente;
                         Response.Write("<script language='javascript'>window.location='DetalleHora.aspx';</script>");
+                        return;
                     }
                     else
                     {
-                        commons.ShowMessage(registrarPaciente.Mensaje);
+                        commons.ShowMessage("Error", "Ocurrió un error al reservar la hora", "error");
                     }
                 }
             }
             catch(Exception ex)
             {
-                commons.ShowMessage("Ocurrió un error al intentar guardar");
+                commons.ShowMessage("Error", "Ocurrió un error al reservar la hora", "error");
             }
         }
-
-        public static bool ValidarTelefono(string strNumber)
-        {
-            Regex regex = new Regex("^[0-9]{7,10}|(\\S[0-9]{3})[0-9]{7,10}");
-            Match match = regex.Match(strNumber);
-
-            if (match.Success)
-                return true;
-            else
-                return false;
-        }
-        public static bool ComprobarFormatoEmail(string sEmailAComprobar)
-        {
-            String sFormato;
-            sFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-            if (Regex.IsMatch(sEmailAComprobar, sFormato))
-            {
-                if (Regex.Replace(sEmailAComprobar, sFormato, String.Empty).Length == 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
-        }
-
+        
         public bool ValidarDatosPaciente()
         {
-            if (this.txtRut.Text.Trim().Length == 0)
+            if (string.IsNullOrEmpty(this.txtRut.Text.Trim()))
             {
-                commons.ShowMessage("Error: Ingrese un RUT");
+                commons.ShowMessage("Error", "Ingrese su RUT", "error");
                 return false;
             }
-            if (this.txtNombre.Text.Trim().Length == 0)
+            if (string.IsNullOrEmpty(this.txtNombre.Text.Trim()))
             {
-                commons.ShowMessage("Error: Ingrese un Nombre");
+                commons.ShowMessage("Error", "Ingrese su Nombre", "error");
                 return false;
             }
-            if (this.txtApPaterno.Text.Trim().Length == 0)
+            if (string.IsNullOrEmpty(this.txtApPaterno.Text.Trim()))
             {
-                commons.ShowMessage("Error: Ingrese su Apellido Paterno");
+                commons.ShowMessage("Error", "Ingrese su Apellido Paterno", "error");
                 return false;
             }
-            if (this.txtApMaterno.Text.Trim().Length == 0)
+            if (string.IsNullOrEmpty(this.txtApMaterno.Text.Trim()))
             {
-                commons.ShowMessage("Error: Ingrese su Apellido Materno");
+                commons.ShowMessage("Error", "Ingrese su Apellido Materno", "error");
+                return false;
+            }
+            if (string.IsNullOrEmpty(this.fechaNac.Text.Trim()))
+            {
+                commons.ShowMessage("Error", "Seleccione una fecha de Nacimiento", "error");
                 return false;
             }
             if (Convert.ToDateTime(this.fechaNac.Text) >= DateTime.Now)
             {
-                commons.ShowMessage("Error: Seleccione una fecha de Nacimiento válida");
+                commons.ShowMessage("Error", "Seleccione una fecha de Nacimiento válida", "error");
                 return false;
             }
-            if (this.txtCorreo.Text.Trim().Length == 0)
+            if (string.IsNullOrEmpty(this.txtCorreo.Text.Trim()))
             {
-                commons.ShowMessage("Error: Ingrese su Correo");
+                commons.ShowMessage("Error", "Ingrese su Correo electrónico", "error");
                 return false;
             }
-            if (this.txtTelefono.Text.Trim().Length == 0)
+            if (string.IsNullOrEmpty(this.txtTelefono.Text.Trim()))
             {
-                commons.ShowMessage("Error: Ingrese su número de teléfono");
+                commons.ShowMessage("Error", "Ingrese su número de teléfono", "error");
                 return false;
             }
-            if (!radioHombre.Checked && !radioMujer.Checked)
+            if (!radioHombre.Checked && !radioMujer.Checked && !radioOtro.Checked)
             {
-                commons.ShowMessage("Error: Seleccione su Sexo");
+                commons.ShowMessage("Error", "Seleccione su Sexo", "error");
                 return false;
             }
             if (!commons.validarRut(this.txtRut.Text))
             {
-                commons.ShowMessage("Error: El RUT ingresado es inválido");
+                commons.ShowMessage("Error", "El RUT ingresado es inválido", "error");
                 return false;
             }
-            if (!ComprobarFormatoEmail(this.txtCorreo.Text))
+            if (!commons.ComprobarFormatoEmail(this.txtCorreo.Text))
             {
-                commons.ShowMessage("Error: El Correo ingresado  es inválido");
+                commons.ShowMessage("Error", "El Correo ingresado  es inválido", "error");
                 return false;
             }
-            if (!ValidarTelefono(this.txtTelefono.Text))
+            if (!commons.ValidarTelefono(this.txtTelefono.Text))
             {
-                commons.ShowMessage("Error: El Número de Teléfono ingresado es inválido");
+                commons.ShowMessage("Error", "El Número de Teléfono ingresado es inválido", "error");
                 return false;
             }
             return true;
