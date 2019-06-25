@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container-fluid">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <h1 class="display-4 mx-auto text-center" >Recibir Pago</h1>
+            <h3 class="display-4 mx-auto text-center">Recibir Pago</h3>
             <div class="separador-md"></div >
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-md-3 col-lg-3">
@@ -61,19 +61,17 @@
                         </asp:GridView>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
-                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
-                            <h4>Total:</h4>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                            <h4>Total: $ <asp:Label ID="txtTotal" runat="server" CssClass="text-md"></asp:Label>.-</h4>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center p-t-sm">
-                            <asp:Label ID="txtTotal" runat="server" CssClass="text-md"></asp:Label>
-                         </div>
-                        <div class="separador-sm"></div>
+                        <div class="separador-md"></div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <asp:DropDownList  id="comboMedioPago"
                                 AutoPostBack="false"
                                 runat="server" CssClass="form-control form-group" >
                             </asp:DropDownList>
-                            <asp:Button ID="Button2" runat="server" OnClick="guardarPago" Text="Registrar Pago" CssClass="btn btn-primary " />
+                            <div class="separador-md"></div>
+                            <asp:Button ID="Button2" runat="server" OnClick="guardarPago" Text="Registrar Pago" CssClass="btn btn-primary btn-block" />
                         </div>
                     </div>
                 </div>

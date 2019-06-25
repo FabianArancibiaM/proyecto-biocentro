@@ -124,7 +124,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
                 this.tablaResumen.DataSource = null;
                 this.tablaResumen.DataBind();
                 //Buscar horas registradas
-                ServiceCliente.HoraAtencion[] listaHoras = soapClient.horasPorRutPacienteMasVentaService(this.txtBuscarPaciente.Text);
+                ServiceCliente.HoraAtencion[] listaHoras = soapClient.horasPorRutPacienteMasVentaService(commons.formatearRut(this.txtBuscarPaciente.Text).Replace(".", ""));
                 if (listaHoras == null || listaHoras.Count() == 0)
                 {
                     commons.ShowMessage("Atención", "El paciente no tiene horas registradas", "warning");
@@ -227,10 +227,10 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
                 ServiceCliente.StatusResponce responce = soapClient.guardarVentaRealizadaService(venta, listaIdHora);
                 if (responce.Estado.Equals("error"))
                 {
-                    commons.ShowMessage("Error", "Se produjo un error al guardar el pago", "error");
+                    commons.ShowMessage("Error", "Se produjo un error al registrar el pago", "error");
                     return;
                 }
-                commons.ShowMessage("Pago exitoso", "Se guardó exitosamente el pago", "success");
+                commons.ShowMessage("Pago exitoso", "El pago se registró exitosamente", "success");
                 this.comboMedioPago.SelectedIndex = 0;
                 this.txtTotal.Text = "0";
                 btnBuscarPaciente_Click(sender, e);
@@ -238,7 +238,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
             }
             catch (Exception ex)
             {
-                commons.ShowMessage("Error", "Se produjo un error al guardar el pago", "error");
+                commons.ShowMessage("Error", "Se produjo un error al registrar el pago", "error");
             }
         }
     }
