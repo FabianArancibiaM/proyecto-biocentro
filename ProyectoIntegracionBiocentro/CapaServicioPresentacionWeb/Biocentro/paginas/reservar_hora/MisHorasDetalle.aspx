@@ -2,6 +2,18 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="separador-lg"></div>
+    <h3 class="text-center">Mis horas</h3>
+    <div class="separador-sm"></div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
+            <label for="lblPaciente">Nombre</label>
+            <asp:Label ID="lblPaciente" runat="server" ></asp:Label><br />
+            <label for="lblRut">RUT</label>
+            <asp:Label ID="lblRut" runat="server" ></asp:Label>
+        </div>
+    </div>  
+    <div class="separador-sm"></div>
     <asp:GridView ID="gvwMisHoras" class="table table-design" runat="server"  AutoGenerateColumns="False" DataKeyNames="Id"  AutoPostBack="true">
          <Columns>
             <asp:BoundField DataField="Id" HeaderText="Id" />
@@ -12,18 +24,15 @@
             <asp:BoundField DataField="NombreTerapeuta" HeaderText="Terapeuta" />
             <asp:TemplateField>
                 <ItemTemplate> 
-                    <span>    <i class="fa fa-check-square-o"></i>
-                        <asp:Button ID="btnConfirmar" runat="server" CssClass="btn btn-sm btn-primary" 
-                         OnClick="btnConfirmar_Click" Text="Confirmar"/> 
-                    </span>                    
+                    <b><asp:Label ID="lblConfirmada" runat="server" Enabled="false" Text='<%# Eval("Confirmada").ToString() == "2"? "Confirmada" : "" %>' /></b>
+                    <asp:Button ID="btnConfirmar" runat="server" CssClass="btn btn-sm btn-primary" 
+                        OnClick="btnConfirmar_Click" Text="Confirmar" Visible='<%# Eval("Confirmada").ToString() == "2"? false : true %>'/> 
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField>
                 <ItemTemplate> 
-                    <span>    <i class="fa fa-check-square-o"></i>
-                        <asp:Button ID="btnAnular" runat="server" CssClass="btn btn-sm btn-danger" 
-                         OnClick="btnAnular_Click" Text="Anular"/> 
-                    </span>                    
+                    <asp:Button ID="btnAnular" runat="server" CssClass="btn btn-sm btn-danger" 
+                        OnClick="btnAnular_Click" Text="Anular" Visible='<%# Eval("Confirmada").ToString() == "2"? false : true %>'/> 
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

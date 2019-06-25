@@ -67,7 +67,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-                commons.ShowMessage("Error al cargar las Especialidades : " + ex.Message);
+                commons.ShowMessage("Error", "Error al cargar las Especialidades", "error");
             }
         }
         private void cargarEspecialidades()
@@ -85,7 +85,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-                commons.ShowMessage("Error al cargar las Especialidades: " + ex.Message);
+                commons.ShowMessage("Error", "Error al cargar las Especialidades", "error");
             }
         }
         protected void btnBuscar_Click(object sender, EventArgs e)
@@ -94,7 +94,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             {
                 if(this.ddlTerapeuta.SelectedIndex == 0 && this.ddlEspecialidad.SelectedIndex == 0)
                 {
-                    commons.ShowMessage("Debe seleccionar una especialidad o un terapeuta");
+                    commons.ShowMessage("Atención", "Debe seleccionar una especialidad o un terapeuta", "warning");
                     return;
                 }
 
@@ -115,11 +115,6 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                     Session["especialidad"] = this.ddlEspecialidad.SelectedItem.Text;
                 }
                 DateTime? fecha = null;
-                /*if (this.dateTimePicker1.Value.CompareTo(DateTime.Today) < 0)
-                {
-                    return;
-                }*/
-
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
                 List<ServiceCliente.HoraAtencion> listHoraAtencion = new List<ServiceCliente.HoraAtencion>();
                 ServiceCliente.HoraAtencion[] horasDisponibles = soapClient.buscarHorasDisponiblesService(especialidad, fecha, terapeuta);
@@ -135,13 +130,14 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
                 }
                 if (horasDisponibles == null || horasDisponibles.Length == 0)
                 {
-                    commons.ShowMessage("No se encontraron horas disponibles" + horaPara);
+                    commons.ShowMessage("Atención", "No se encontraron horas disponibles" + horaPara, "warning");
+
                     return;
                 }
                 listHoraAtencion.AddRange(horasDisponibles);
                 if (listHoraAtencion == null || listHoraAtencion.Count == 0)
                 {
-                    commons.ShowMessage("No se encontraron horas disponibles" + horaPara);
+                    commons.ShowMessage("Atención", "No se encontraron horas disponibles" + horaPara, "warning");
                     return;
                 }
 
@@ -150,7 +146,8 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-                commons.ShowMessage("Error al guardar: "+ ex.Message);
+                commons.ShowMessage("Error", "Error al buscar las horas disponibles", "error"); commons.ShowMessage("Error", "Error al buscar las horas disponibles", "error");
+
             }
         }
     }

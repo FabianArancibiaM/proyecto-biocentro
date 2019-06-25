@@ -11,7 +11,7 @@
                 <asp:TextBox ID="txtRut" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
-                <label for="txtNombre">Nombres</label><br />
+                <label for="txtNombre">Nombre</label><br />
                 <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
         </div>
@@ -32,9 +32,10 @@
             </div>
             <div class="col-lg-2"> </div>
             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
-                <label for="radioSexo">Sexo</label><br />
+                <label for="radioSexo">Género</label><br />
                 <asp:RadioButton ID="radioHombre" runat="server" GroupName="radioSexo" Text=" Hombre"/>
                 <asp:RadioButton ID="radioMujer" runat="server" GroupName="radioSexo" Text=" Mujer"/>
+                <asp:RadioButton ID="radioOtro" runat="server" GroupName="radioSexo" Text=" Otro"/>
             </div>           
         </div>
             <div class="row">

@@ -39,7 +39,7 @@
                                 <asp:BoundField DataField="Fecha" HeaderText="FECHA" DataFormatString="{0:dd-MM-yyyy}" />
                                 <asp:TemplateField HeaderText="HORA" >
                                     <ItemTemplate>
-                                        <asp:Label ID="lblHora" runat="server" Enabled="false" Text='<%#Eval("IdBloque.HoraInicio")+ " - " + Eval("IdBloque.HoraFin") + " Hrs" %>'/>
+                                        <asp:Label ID="lblHora" runat="server" Enabled="false" Text='<%#Eval("IdBloque.HoraInicio")+ ":00 - " + Eval("IdBloque.HoraFin") + ":00 Hrs" %>'/>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="VALOR" >

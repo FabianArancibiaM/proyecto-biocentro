@@ -66,6 +66,7 @@
     <Content Include="Biocentro\assets\css\bootstrap-theme.min.css.map" />
     <Content Include="Biocentro\assets\css\bootstrap.css.map" />
     <Content Include="Biocentro\assets\css\bootstrap.min.css.map" />
+    <Content Include="Biocentro\assets\css\sweetalert2.min.css" />
     <Content Include="Biocentro\assets\fontawesome\less\_animated.less" />
     <Content Include="Biocentro\assets\fontawesome\less\_bordered-pulled.less" />
     <Content Include="Biocentro\assets\fontawesome\less\_core.less" />
@@ -124,12 +125,16 @@
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Biocentro\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Biocentro\assets\img\inicio.png" />
     <Content Include="Biocentro\assets\img\logo.jpg" />
     <Content Include="Biocentro\assets\js\custom.js" />
+    <Content Include="Biocentro\assets\js\sweetalert2.all.min.js" />
+    <Content Include="Biocentro\assets\js\sweetalert2.min.js" />
     <Content Include="Biocentro\paginas\intranet\Login.aspx" />
     <Content Include="Biocentro\paginas\intranet\PaginaPrincipal.aspx" />
     <Content Include="Biocentro\paginas\MasterPage.Master" />
     <Content Include="Biocentro\paginas\reservar_hora\DetalleHora.aspx" />
+    <Content Include="Biocentro\paginas\reservar_hora\Inicio.aspx" />
     <Content Include="Biocentro\paginas\reservar_hora\MisHoras.aspx" />
     <Content Include="Biocentro\paginas\reservar_hora\MisHorasDetalle.aspx" />
     <Content Include="Biocentro\paginas\reservar_hora\MisHorasFinal.aspx" />
@@ -1804,6 +1809,13 @@
     </Compile>
     <Compile Include="Biocentro\paginas\reservar_hora\IngresarRut.aspx.designer.cs">
       <DependentUpon>IngresarRut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Biocentro\paginas\reservar_hora\Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Biocentro\paginas\reservar_hora\InicioReserva.aspx.cs">
       <DependentUpon>InicioReserva.aspx</DependentUpon>

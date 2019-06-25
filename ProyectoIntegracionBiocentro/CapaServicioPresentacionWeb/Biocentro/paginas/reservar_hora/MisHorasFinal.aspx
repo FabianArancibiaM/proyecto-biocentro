@@ -31,7 +31,7 @@
         <div class="separador-md"></div>
         <div class="row">
             <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
-                <asp:Button ID="volver" class="btn btn-md btn-primary btn-block" runat="server" Text="Volver" />
+                <asp:Button ID="volver" class="btn btn-md btn-primary btn-block" OnClick="btnMisHoras" runat="server" Text="Ir a Mis horas" />
             </div>
         </div>
     </div>

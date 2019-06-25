@@ -43,7 +43,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch(Exception ex)
             {
-                commons.ShowMessage("Ocurrio un error al cargar la pagina");
+                commons.ShowMessage("Error", "Ocurrió un error al cargar la página", "error");
             }
         }
 
@@ -55,7 +55,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-                commons.ShowMessage("Ocurrio un error al cargar la pagina");
+                commons.ShowMessage("Error", "Ocurrió un error al cargar la página", "error");
             }
         }
 
@@ -65,12 +65,12 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             {
                 if (this.txtRut.Text.Trim().Length == 0)
                 {
-                    commons.ShowMessage("Error: Ingrese un rut");
+                    commons.ShowMessage("Error", "Ingrese un rut", "error");
                     return;
                 }
                 if (!commons.validarRut(this.txtRut.Text))
                 {
-                    commons.ShowMessage("Error: el RUT ingresado inválido");
+                    commons.ShowMessage("Error", "El RUT ingresado inválido", "error");
                     return;
                 }
                 string rut = this.txtRut.Text;
@@ -79,7 +79,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
             }
             catch (Exception ex)
             {
-                commons.ShowMessage("Error al intentar cargar la pagina");
+                commons.ShowMessage("Error", "Ocurrió un error al cargar la página", "error");
             }
         }
     }

@@ -8,12 +8,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4 col-centered">
+        <div class="separador-lg"></div>
         <div class="form-group">
-            <asp:Label Text="Usuario" runat="server" CssClass="label separacion"></asp:Label><br />
-            <asp:TextBox runat="server" ID="txtUsuario" CssClass="form-control separacion"></asp:TextBox> <br />
-            <asp:Label runat="server"  Text="Contraseña" CssClass="label separacion"></asp:Label><br />
-            <asp:TextBox runat="server" ID="txtContraseña" CssClass="form-control separacion" TextMode="Password"></asp:TextBox> <br />
+            <asp:Label Text="Usuario" runat="server" CssClass="label separacion"></asp:Label>
+            <asp:TextBox runat="server" ID="txtUsuario" CssClass="form-control separacion"></asp:TextBox>
+            <div class="separador-sm"></div>
+            <asp:Label runat="server"  Text="Contraseña" CssClass="label separacion"></asp:Label>
+            <asp:TextBox runat="server" ID="txtContraseña" CssClass="form-control separacion" TextMode="Password"></asp:TextBox>
         </div>
+        <div class="separador-md"></div>
         <asp:Button ID="btnLogin" class="btn btn-md btn-primary btn-block" 
             runat="server" Text="Ingresar" OnClick="btnLogearseClick" />
     </div>

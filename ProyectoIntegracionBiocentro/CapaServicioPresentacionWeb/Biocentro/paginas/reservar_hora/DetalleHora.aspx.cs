@@ -45,11 +45,11 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora
         {
             try
             {
-                Response.Write("<script language='javascript'>window.location='InicioReserva.aspx';</script>");
+                Response.Write("<script language='javascript'>window.location='MisHoras.aspx';</script>");
             }
             catch (Exception ex)
             {
-                commons.ShowMessage("Ocurrió un error al cargar la pagina");
+                commons.ShowMessage("Error", "Ocurrió un error al cargar la página", "error");
             }
         }
     }

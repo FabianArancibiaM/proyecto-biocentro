@@ -22,10 +22,10 @@ namespace CapaNegocio
         {
             this.conexion = new Conexion();
             this.conexion.NombreBaseDeDatos = "BIOCENTRO_DB";
-            //Conex casa
-            this.conexion.CadenaConexion = "Data Source=lfdbserver.database.windows.net;Initial Catalog=BIOCENTRO_DB;User ID=us_lfloresl;Password=PA$$W0RD;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            //Conex pega
-            //this.conexion.CadenaConexion = "Data Source=DESKTOP-E5RAPBM\\SQLSERVER;Initial Catalog=BIOCENTRO_DB;Integrated Security=True";
+            //Conex azure
+            //this.conexion.CadenaConexion = "Data Source=lfdbserver.database.windows.net;Initial Catalog=BIOCENTRO_DB;User ID=us_lfloresl;Password=PA$$W0RD;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            //Conex coni
+            this.conexion.CadenaConexion = "Data Source=CONY-PC\\SERVIDOR_LOCAL;Initial Catalog=BIOCENTRO_DB;Integrated Security=True";
         }
 
         public int? guardarEliminarActualizarObjeto(String sqlInsert,Boolean esInsert)
@@ -82,6 +82,7 @@ namespace CapaNegocio
                                 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Lugar:</b> " + horaAtencion.Sala.Nombre + ", Miguel Claro 195, Providencia" + 
                                 "<hr>" +
                                 "<br><br><img src=cid:imgFirma>" +
+                                "<a href='www.biocentro.cl'/>" +
                             "</body>" +
                          "</html>";
             mail.IsBodyHtml = true;

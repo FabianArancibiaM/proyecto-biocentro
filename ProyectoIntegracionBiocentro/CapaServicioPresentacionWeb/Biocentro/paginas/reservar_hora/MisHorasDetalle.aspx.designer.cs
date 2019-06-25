@@ -13,6 +13,24 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.reservar_hora {
     public partial class MisHorasDetalle {
         
         /// <summary>
+        /// lblPaciente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPaciente;
+        
+        /// <summary>
+        /// lblRut control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRut;
+        
+        /// <summary>
         /// gvwMisHoras control.
         /// </summary>
         /// <remarks>

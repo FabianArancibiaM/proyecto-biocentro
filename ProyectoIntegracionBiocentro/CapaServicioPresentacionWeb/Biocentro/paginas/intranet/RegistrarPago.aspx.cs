@@ -16,24 +16,31 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
         protected void Page_Load(object sender, EventArgs e)
         {
             commons = new Commons(Page);
-            //Validar inicio de sesión
-            if (Session["empleado"] == null)
+            try
             {
-                Response.Write("<script language='javascript'>window.location='Login.aspx';</script>");
-            }
+                //Validar inicio de sesión
+                if (Session["empleado"] == null)
+                {
+                    Response.Write("<script language='javascript'>window.location='Login.aspx';</script>");
+                }
 
-            ServiceCliente.Empleado empleado = (ServiceCliente.Empleado)Session["empleado"];
-            //Validar empleado recepctionista
-            if(empleado.Cargo.IdCargo !=1)
-            {
-                Response.Write("<script language='javascript'>window.location='Login.aspx';</script>");
-            }
+                ServiceCliente.Empleado empleado = (ServiceCliente.Empleado)Session["empleado"];
+                //Validar empleado recepctionista
+                if (empleado.Cargo.IdCargo != 1)
+                {
+                    Response.Write("<script language='javascript'>window.location='Login.aspx';</script>");
+                }
 
-            validarTabla();
-            if (!IsPostBack)
+                validarTabla();
+                if (!IsPostBack)
+                {
+                    cargarMedioPago();
+                    this.datosReserva.Visible = false;
+                }
+            }
+            catch (Exception ex)
             {
-                cargarMedioPago();
-                this.datosReserva.Visible = false;
+                commons.ShowMessage("Error", "Se produjo un error al cargar la página", "error");
             }
         }
 
@@ -56,13 +63,12 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
                             ((CheckBox)row.FindControl("CheckBox1")).Visible = true;
                             ((Label)row.FindControl("lblEstado")).Visible = false;
                         }
-
                     }
                 }
             }
             catch(Exception ex)
             {
-                commons.ShowMessage("Error al cargar la pagina");
+                commons.ShowMessage("Error", "Se produjo un error al cargar la página", "error");
             }
         }
 
@@ -73,9 +79,16 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
                 this.comboMedioPago.Items.Clear();
                 ServiceCliente.WebServiceClienteSoapClient soapClient = new ServiceCliente.WebServiceClienteSoapClient();
                 List<ServiceCliente.MedioPago> listaMedioPago = new List<ServiceCliente.MedioPago>();
-                listaMedioPago.AddRange(soapClient.generarListaMedioPagoService());
-                if (listaMedioPago == null)
+                ServiceCliente.MedioPago[] mediosPago = soapClient.generarListaMedioPagoService();
+                if(mediosPago == null || mediosPago.Length == 0)
                 {
+                    commons.ShowMessage("Error", "Se produjo un error al cargar los medios de pago", "error");
+                    return;
+                }
+                listaMedioPago.AddRange(mediosPago);
+                if (listaMedioPago == null || listaMedioPago.Count == 0)
+                {
+                    commons.ShowMessage("Error", "Se produjo un error al cargar los medios de pago", "error");
                     return;
                 }
                 this.comboMedioPago.Items.Add(new ListItem("Seleccionar Medio de pago", "0"));
@@ -88,7 +101,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
             }
             catch (Exception ex)
             {
-                commons.ShowMessage("Se produjo un error: " + ex.Message);
+                commons.ShowMessage("Error", "Se produjo un error al cargar los medios de pago", "error");
             }
         }
 
@@ -98,12 +111,12 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
             {
                 if (string.IsNullOrEmpty(this.txtBuscarPaciente.Text.Trim()))
                 {
-                    commons.ShowMessage("Error: Ingrese un rut");
+                    commons.ShowMessage("Error", "Debe ingresar el RUT del paciente", "error");
                     return;
                 }
                 if (!commons.validarRut(this.txtBuscarPaciente.Text))
                 {
-                    commons.ShowMessage("Error: El formato del RUT ingresado es inválido");
+                    commons.ShowMessage("Error", "El formato del RUT ingresado es incorrecto", "error");
                     return;
                 }
                 //Limpiar Gridview
@@ -114,7 +127,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
                 ServiceCliente.HoraAtencion[] listaHoras = soapClient.horasPorRutPacienteMasVentaService(this.txtBuscarPaciente.Text);
                 if (listaHoras == null || listaHoras.Count() == 0)
                 {
-                    commons.ShowMessage("El paciente no tiene horas registradas");
+                    commons.ShowMessage("Atención", "El paciente no tiene horas registradas", "warning");
                     return;
                 }
                 List<ServiceCliente.HoraAtencion> listReserva = new List<ServiceCliente.HoraAtencion>();                
@@ -127,15 +140,16 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
                     }
                 }
                 this.datosReserva.Visible = true;
-                this.txtRutPaciente.Text = listReserva.First().Paciente.Rut;
+                this.txtRutPaciente.Text = commons.formatearRut(listReserva.First().Paciente.Rut);
                 this.txtNombrePaciente.Text = listReserva.First().Paciente.Nombre + " " + listReserva.First().Paciente.ApellidoPaterno + " " + listReserva.First().Paciente.ApellidoMaterno;
                 this.tablaResumen.DataSource = listReserva;
                 this.tablaResumen.DataBind();
+                this.txtTotal.Text = "0";
                 validarTabla();
             }
             catch (Exception ex)
             {
-                commons.ShowMessage("Se produjo un error: " + ex.Message);
+                commons.ShowMessage("Error", "Se produjo un error al cargar las reservas del paciente", "error");
             }
         }
 
@@ -156,23 +170,22 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
                             total = total + valor;
                         }
                     }
-                    this.txtTotal.Text = total.ToString("N", new CultureInfo("is-IS"));
+                    this.txtTotal.Text = total.ToString("N0", new CultureInfo("es-ES"));
                 }
             }
             catch (Exception ex)
             {
-                commons.ShowMessage("Se produjo un error: " + ex.Message);
+                commons.ShowMessage("Error", "Se produjo un error al calcular el  total", "error");
             }
         }
 
         protected void guardarPago(object sender, EventArgs e)
         {
-
             try
             {
                 if (this.comboMedioPago.SelectedItem.Value.Equals("0"))
                 {
-                    commons.ShowMessage("Debe seleccionar un medio de pago");
+                    commons.ShowMessage("Error", "Debe seleccionar un medio de pago", "error");
                     return;
                 }
                 List<ServiceCliente.HoraAtencion> listReserva = new List<ServiceCliente.HoraAtencion>();
@@ -191,7 +204,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
                 }
                 if (listReserva.Count <= 0)
                 {
-                    commons.ShowMessage("Error: Debe seleccionar una hora a pagar.");
+                    commons.ShowMessage("Error", "Debe seleccionar al menos una hora a pagar", "error");
                     return;
                 }
                 int total = 0;
@@ -214,10 +227,10 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
                 ServiceCliente.StatusResponce responce = soapClient.guardarVentaRealizadaService(venta, listaIdHora);
                 if (responce.Estado.Equals("error"))
                 {
-                    commons.ShowMessage("Se produjo un error: " + responce.Mensaje);
+                    commons.ShowMessage("Error", "Se produjo un error al guardar el pago", "error");
                     return;
                 }
-                commons.ShowMessage(responce.Mensaje);
+                commons.ShowMessage("Pago exitoso", "Se guardó exitosamente el pago", "success");
                 this.comboMedioPago.SelectedIndex = 0;
                 this.txtTotal.Text = "0";
                 btnBuscarPaciente_Click(sender, e);
@@ -225,7 +238,7 @@ namespace CapaServicioPresentacionWeb.Biocentro.paginas.intranet
             }
             catch (Exception ex)
             {
-                commons.ShowMessage("Se produjo un error: " + ex.Message);
+                commons.ShowMessage("Error", "Se produjo un error al guardar el pago", "error");
             }
         }
     }
